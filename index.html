@@ -11,7 +11,7 @@
 <body>
 
 <header class="navbar">
-  <a href="#inicio" class="logo">Agro<span>Map</span><b>.</b></a>
+  <a href="#inicio" class="logo">AgroMap<span>.</span></a>
 
   <nav id="menu">
     <a href="#inicio">Início</a>
@@ -29,6 +29,7 @@
 </header>
 
 <main>
+  <!-- Capa principal com foto atrás do cabeçalho -->
   <section class="hero" id="inicio">
     <div class="hero-conteudo">
       <span class="etiqueta">TECNOLOGIA NO CAMPO</span>
@@ -56,34 +57,51 @@
       </div>
     </div>
 
+    <!-- Painel com mapa -->
     <div class="hero-painel">
       <div class="painel-topo">
         <div>
           <small>AGROMAP • PAINEL RURAL</small>
           <h3>Sua propriedade</h3>
         </div>
-        <span class="status"><i></i> Tecnologia rural</span>
+        <span class="status"><i></i> Visão geográfica</span>
       </div>
 
-      <img
-        class="imagem-propriedade"
-        src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=85"
-        alt="Vista ampla de campos agrícolas"
-      >
+      <div class="mapa-container">
+        <img
+          class="imagem-mapa"
+          src="https://images.unsplash.com/photo-1524666041070-9d87656c25bb?auto=format&fit=crop&w=1200&q=85"
+          alt="Mapa geográfico com ruas e áreas vistas de cima"
+        >
+        <div class="mapa-legenda">
+          <span><i class="ponto-verde"></i> Área rural</span>
+          <span><i class="ponto-amarelo"></i> Localização</span>
+        </div>
+      </div>
 
       <div class="painel-dados">
-        <div><small>Propriedade</small><strong>Organização</strong></div>
-        <div><small>Clima</small><strong>Monitoramento</strong></div>
-        <div><small>Produção</small><strong>Planejamento</strong></div>
+        <div>
+          <small>Propriedade</small>
+          <strong>Organização</strong>
+        </div>
+        <div>
+          <small>Clima</small>
+          <strong>Monitoramento</strong>
+        </div>
+        <div>
+          <small>Produção</small>
+          <strong>Planejamento</strong>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Recursos -->
   <section class="recursos secao" id="recursos">
     <div class="secao-titulo">
       <span class="etiqueta etiqueta-verde">SOLUÇÕES PARA O CAMPO</span>
       <h2>Tudo para sua propriedade <span>evoluir.</span></h2>
-      <p>Conheça as ferramentas que ajudam na organização e na gestão rural.</p>
+      <p>Conheça ferramentas que ajudam na organização e na gestão rural.</p>
     </div>
 
     <div class="cards">
@@ -96,27 +114,27 @@
         <div class="card-conteudo">
           <span class="numero">01 / GESTÃO</span>
           <h3>Propriedade rural</h3>
-          <p>Organize as informações da propriedade e tenha os dados rurais mais acessíveis.</p>
+          <p>Organize as informações da propriedade e facilite o acompanhamento da área rural.</p>
         </div>
       </article>
 
       <article class="card">
         <img
           src="https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=800&q=85"
-          alt="Nuvens no céu para representar o clima"
+          alt="Nuvens no céu representando as condições climáticas"
           loading="lazy"
         >
         <div class="card-conteudo">
           <span class="numero">02 / MONITORAMENTO</span>
           <h3>Dados climáticos</h3>
-          <p>Acompanhe informações sobre o tempo para apoiar as decisões da sua atividade agrícola.</p>
+          <p>Acompanhe informações sobre o tempo para apoiar as decisões agrícolas.</p>
         </div>
       </article>
 
       <article class="card">
         <img
           src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=85"
-          alt="Máquina agrícola trabalhando em uma plantação"
+          alt="Máquina agrícola trabalhando na plantação"
           loading="lazy"
         >
         <div class="card-conteudo">
@@ -129,23 +147,25 @@
       <article class="card">
         <img
           src="https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=800&q=85"
-          alt="Cultivo agrícola em uma área rural"
+          alt="Cultivo agrícola em área rural"
           loading="lazy"
         >
         <div class="card-conteudo">
           <span class="numero">04 / ORGANIZAÇÃO</span>
           <h3>Planejamento agrícola</h3>
-          <p>Planeje as tarefas da propriedade e organize as próximas etapas do cultivo.</p>
+          <p>Planeje as tarefas da propriedade e organize as etapas do cultivo.</p>
         </div>
       </article>
     </div>
   </section>
 
+  <!-- Sobre -->
   <section class="sobre secao" id="sobre">
     <div>
       <span class="etiqueta etiqueta-verde">NOSSA PROPOSTA</span>
       <h2>Mais informação.<br><span>Melhores decisões.</span></h2>
     </div>
+
     <p>
       O AgroMap aproxima a tecnologia do campo, reunindo recursos
       para apoiar a gestão da propriedade, o acompanhamento do clima,
@@ -153,6 +173,7 @@
     </p>
   </section>
 
+  <!-- Chamada final -->
   <section class="chamada">
     <span class="etiqueta">SEU CAMPO, MAIS CONECTADO</span>
     <h2>Conhecimento para cultivar o futuro.</h2>
@@ -163,11 +184,11 @@
 </main>
 
 <footer>
-  <a href="#inicio" class="logo">Agro<span>Map</span><b>.</b></a>
+  <a href="#inicio" class="logo">AgroMap<span>.</span></a>
   <p>© 2026 AgroMap — Tecnologia para o agronegócio.</p>
 </footer>
 
-<!-- Modal de autenticação -->
+<!-- Janela de login e cadastro -->
 <div class="modal" id="modal" aria-hidden="true">
   <div class="modal-caixa" role="dialog" aria-modal="true"
     aria-labelledby="modalTitulo">
@@ -175,7 +196,7 @@
     <button class="modal-fechar" id="fecharModal" type="button"
       aria-label="Fechar janela">×</button>
 
-    <a href="#inicio" class="logo modal-logo">Agro<span>Map</span><b>.</b></a>
+    <a href="#inicio" class="logo modal-logo">AgroMap<span>.</span></a>
 
     <h2 id="modalTitulo">Bem-vindo de volta!</h2>
     <p id="modalDescricao">Entre na sua conta para continuar.</p>
