@@ -4,13 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123d2b">
   <title>AgroMap | Tecnologia para o campo</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="navbar">
-  <a href="#" class="logo"><span>Agro</span>Map<span class="ponto">.</span></a>
+  <a href="#inicio" class="logo">Agro<span>Map</span><b>.</b></a>
 
   <nav id="menu">
     <a href="#inicio">Início</a>
@@ -19,27 +20,35 @@
   </nav>
 
   <div class="nav-botoes">
-    <button class="btn btn-claro" id="abrirLogin">Entrar</button>
-    <button class="btn btn-amarelo" id="abrirCadastro">Criar conta</button>
+    <button class="btn btn-claro" id="abrirLogin" type="button">Entrar</button>
+    <button class="btn btn-amarelo" id="abrirCadastro" type="button">Criar conta</button>
   </div>
-  <button class="menu-mobile" id="menuMobile" aria-label="Abrir menu">☰</button>
+
+  <button class="menu-mobile" id="menuMobile" type="button"
+    aria-label="Abrir menu" aria-expanded="false">☰</button>
 </header>
 
 <main>
   <section class="hero" id="inicio">
     <div class="hero-conteudo">
       <span class="etiqueta">TECNOLOGIA NO CAMPO</span>
+
       <h1>O futuro do<br>agronegócio é <span>inteligente.</span></h1>
+
       <p>
-        Gerencie sua propriedade, acompanhe o clima e planeje
+        Gerencie sua propriedade, acompanhe o clima e organize
         sua produção agrícola em um só lugar.
       </p>
+
       <div class="hero-botoes">
-        <button class="btn btn-amarelo btn-grande" id="heroCadastro">
+        <button class="btn btn-amarelo btn-grande" id="heroCadastro" type="button">
           Começar agora →
         </button>
-        <a href="#recursos" class="btn btn-contorno btn-grande">Conhecer recursos</a>
+        <a href="#recursos" class="btn btn-contorno btn-grande">
+          Conhecer recursos
+        </a>
       </div>
+
       <div class="hero-info">
         <span>✓ Gestão rural</span>
         <span>✓ Dados climáticos</span>
@@ -53,16 +62,19 @@
           <small>AGROMAP • PAINEL RURAL</small>
           <h3>Sua propriedade</h3>
         </div>
-        <span class="status"><span></span> Monitoramento</span>
+        <span class="status"><i></i> Tecnologia rural</span>
       </div>
+
       <img
         class="imagem-propriedade"
         src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=85"
-        alt="Plantação agrícola vista de cima">
+        alt="Vista ampla de campos agrícolas"
+      >
+
       <div class="painel-dados">
-        <div><small>Planejamento</small><strong>Organizado</strong></div>
-        <div><small>Clima</small><strong>Acompanhe</strong></div>
-        <div><small>Produção</small><strong>Gerencie</strong></div>
+        <div><small>Propriedade</small><strong>Organização</strong></div>
+        <div><small>Clima</small><strong>Monitoramento</strong></div>
+        <div><small>Produção</small><strong>Planejamento</strong></div>
       </div>
     </div>
   </section>
@@ -71,43 +83,59 @@
     <div class="secao-titulo">
       <span class="etiqueta etiqueta-verde">SOLUÇÕES PARA O CAMPO</span>
       <h2>Tudo para sua propriedade <span>evoluir.</span></h2>
-      <p>Informações e ferramentas para ajudar você a tomar decisões melhores.</p>
+      <p>Conheça as ferramentas que ajudam na organização e na gestão rural.</p>
     </div>
 
     <div class="cards">
       <article class="card">
-        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=700&q=80" alt="Propriedade rural">
+        <img
+          src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=85"
+          alt="Paisagem de uma propriedade rural"
+          loading="lazy"
+        >
         <div class="card-conteudo">
-          <span class="numero">01</span>
+          <span class="numero">01 / GESTÃO</span>
           <h3>Propriedade rural</h3>
-          <p>Organize as informações e acompanhe os dados da sua propriedade.</p>
+          <p>Organize as informações da propriedade e tenha os dados rurais mais acessíveis.</p>
         </div>
       </article>
 
       <article class="card">
-        <img src="https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&w=700&q=80" alt="Céu e condições climáticas">
+        <img
+          src="https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=800&q=85"
+          alt="Nuvens no céu para representar o clima"
+          loading="lazy"
+        >
         <div class="card-conteudo">
-          <span class="numero">02</span>
+          <span class="numero">02 / MONITORAMENTO</span>
           <h3>Dados climáticos</h3>
-          <p>Acompanhe informações sobre o clima para apoiar suas decisões.</p>
+          <p>Acompanhe informações sobre o tempo para apoiar as decisões da sua atividade agrícola.</p>
         </div>
       </article>
 
       <article class="card">
-        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=700&q=80" alt="Produção agrícola">
+        <img
+          src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=85"
+          alt="Máquina agrícola trabalhando em uma plantação"
+          loading="lazy"
+        >
         <div class="card-conteudo">
-          <span class="numero">03</span>
+          <span class="numero">03 / CULTIVO</span>
           <h3>Produção agrícola</h3>
-          <p>Organize suas culturas e acompanhe o desenvolvimento da produção.</p>
+          <p>Organize o acompanhamento das culturas e das atividades de produção.</p>
         </div>
       </article>
 
       <article class="card">
-        <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=700&q=80" alt="Cultivo agrícola">
+        <img
+          src="https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=800&q=85"
+          alt="Cultivo agrícola em uma área rural"
+          loading="lazy"
+        >
         <div class="card-conteudo">
-          <span class="numero">04</span>
-          <h3>Planejamento</h3>
-          <p>Planeje atividades e tenha mais organização no dia a dia rural.</p>
+          <span class="numero">04 / ORGANIZAÇÃO</span>
+          <h3>Planejamento agrícola</h3>
+          <p>Planeje as tarefas da propriedade e organize as próximas etapas do cultivo.</p>
         </div>
       </article>
     </div>
@@ -119,24 +147,36 @@
       <h2>Mais informação.<br><span>Melhores decisões.</span></h2>
     </div>
     <p>
-      O AgroMap reúne recursos para apoiar a gestão rural,
-      facilitar o planejamento e aproximar a tecnologia
-      das necessidades de quem trabalha no campo.
+      O AgroMap aproxima a tecnologia do campo, reunindo recursos
+      para apoiar a gestão da propriedade, o acompanhamento do clima,
+      a produção agrícola e o planejamento rural.
     </p>
+  </section>
+
+  <section class="chamada">
+    <span class="etiqueta">SEU CAMPO, MAIS CONECTADO</span>
+    <h2>Conhecimento para cultivar o futuro.</h2>
+    <button class="btn btn-amarelo btn-grande" id="chamadaCadastro" type="button">
+      Começar agora →
+    </button>
   </section>
 </main>
 
 <footer>
-  <a href="#inicio" class="logo"><span>Agro</span>Map<span class="ponto">.</span></a>
+  <a href="#inicio" class="logo">Agro<span>Map</span><b>.</b></a>
   <p>© 2026 AgroMap — Tecnologia para o agronegócio.</p>
 </footer>
 
-<!-- Janela de login e cadastro -->
+<!-- Modal de autenticação -->
 <div class="modal" id="modal" aria-hidden="true">
-  <div class="modal-caixa">
-    <button class="modal-fechar" id="fecharModal" aria-label="Fechar">×</button>
+  <div class="modal-caixa" role="dialog" aria-modal="true"
+    aria-labelledby="modalTitulo">
 
-    <a href="#inicio" class="logo modal-logo"><span>Agro</span>Map<span class="ponto">.</span></a>
+    <button class="modal-fechar" id="fecharModal" type="button"
+      aria-label="Fechar janela">×</button>
+
+    <a href="#inicio" class="logo modal-logo">Agro<span>Map</span><b>.</b></a>
+
     <h2 id="modalTitulo">Bem-vindo de volta!</h2>
     <p id="modalDescricao">Entre na sua conta para continuar.</p>
 
@@ -145,35 +185,47 @@
       <button type="button" class="aba" id="abaCadastro">Criar conta</button>
     </div>
 
-    <form id="formLogin">
+    <form id="formLogin" action="login.php" method="post">
       <label for="loginEmail">E-mail</label>
-      <input id="loginEmail" type="email" name="email" placeholder="voce@exemplo.com" required>
+      <input id="loginEmail" type="email" name="email"
+        placeholder="voce@exemplo.com" autocomplete="email" required>
 
       <label for="loginSenha">Senha</label>
-      <input id="loginSenha" type="password" name="senha" placeholder="Digite sua senha" required>
+      <input id="loginSenha" type="password" name="senha"
+        placeholder="Digite sua senha" autocomplete="current-password" required>
 
       <p class="mensagem" id="mensagemLogin" role="status"></p>
-      <button class="btn btn-verde btn-formulario" type="submit">Entrar na conta</button>
+      <button class="btn btn-verde btn-formulario" type="submit">
+        Entrar na conta
+      </button>
     </form>
 
-    <form id="formCadastro" hidden>
+    <form id="formCadastro" action="cadastrar.php" method="post" hidden>
       <label for="cadNome">Nome completo</label>
-      <input id="cadNome" type="text" name="nome" placeholder="Seu nome" autocomplete="name" required>
+      <input id="cadNome" type="text" name="nome"
+        placeholder="Seu nome" autocomplete="name" required>
 
       <label for="cadEmail">E-mail</label>
-      <input id="cadEmail" type="email" name="email" placeholder="voce@exemplo.com" autocomplete="email" required>
+      <input id="cadEmail" type="email" name="email"
+        placeholder="voce@exemplo.com" autocomplete="email" required>
 
       <label for="cadSenha">Senha</label>
-      <input id="cadSenha" type="password" name="senha" placeholder="Mínimo de 8 caracteres" minlength="8" autocomplete="new-password" required>
+      <input id="cadSenha" type="password" name="senha"
+        placeholder="Mínimo de 8 caracteres" minlength="8"
+        autocomplete="new-password" required>
 
       <label for="cadConfirmar">Confirmar senha</label>
-      <input id="cadConfirmar" type="password" name="confirmar_senha" placeholder="Digite a senha novamente" minlength="8" autocomplete="new-password" required>
+      <input id="cadConfirmar" type="password" name="confirmar_senha"
+        placeholder="Digite a senha novamente" minlength="8"
+        autocomplete="new-password" required>
 
       <p class="mensagem" id="mensagemCadastro" role="status"></p>
-      <button class="btn btn-verde btn-formulario" type="submit">Criar minha conta</button>
+      <button class="btn btn-verde btn-formulario" type="submit">
+        Criar minha conta
+      </button>
     </form>
 
-    <p class="aviso-seguranca">Seus dados devem ser tratados com segurança.</p>
+    <p class="aviso-seguranca">AgroMap — tecnologia a favor do campo.</p>
   </div>
 </div>
 
