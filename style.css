@@ -1,3 +1,10 @@
+
+/* ==========================================
+   AGROMAP — STYLE.CSS COMPLETO
+   Página inicial, cartões, tema escuro
+   e responsividade
+========================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -5,62 +12,57 @@
 }
 
 :root {
-
-    --background: #f5f8f3;
+    --background: #f5f7f1;
     --white: #ffffff;
-
-    --text: #18251c;
-    --muted: #68756c;
-
-    --green: #2e8b57;
-    --dark-green: #155c35;
-    --light-green: #dff0e3;
-
-    --border: #dfe7df;
-
-    --shadow:
-        0 25px 70px rgba(30, 70, 40, 0.10);
+    --text: #183b2a;
+    --muted: #687b70;
+    --green: #25834c;
+    --dark-green: #124d31;
+    --light-green: #e4f0e5;
+    --border: #dce6dc;
+    --shadow: 0 18px 48px rgba(28, 61, 39, 0.10);
 }
 
 body.dark {
-
-    --background: #0b120d;
-    --white: #131c16;
-
-    --text: #f2f7f3;
-    --muted: #9aa79e;
-
-    --green: #52bd77;
-    --dark-green: #2e9c58;
-    --light-green: #193a25;
-
-    --border: #29372d;
-
-    --shadow:
-        0 25px 70px rgba(0, 0, 0, 0.30);
+    --background: #101812;
+    --white: #19241c;
+    --text: #eef5ef;
+    --muted: #a4b4a8;
+    --green: #62c483;
+    --dark-green: #245d38;
+    --light-green: #243a2a;
+    --border: #304235;
+    --shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
 }
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 90px;
 }
 
 body {
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+    font-family: Arial, Helvetica, sans-serif;
     background: var(--background);
-
     color: var(--text);
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+    -webkit-font-smoothing: antialiased;
+}
 
-    transition: 0.3s;
+button,
+input,
+select,
+textarea {
+    font: inherit;
 }
 
 button,
 a {
-    font-family: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    cursor: pointer;
 }
 
 a {
@@ -68,644 +70,590 @@ a {
     color: inherit;
 }
 
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid #78bd8d;
+    outline-offset: 3px;
+}
 
-/* =========================
-   MENU
-========================= */
+::selection {
+    background: #cce8d2;
+    color: #124d31;
+}
+
+/* ==========================================
+   CABEÇALHO E NAVEGAÇÃO
+========================================== */
 
 .header {
-
     width: 100%;
-
-    padding: 20px 7%;
+    min-height: 76px;
+    padding: 15px 6%;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
+    gap: 25px;
 
     background: var(--white);
-
-    border-bottom:
-        1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 
     position: sticky;
-
     top: 0;
-
     z-index: 100;
 
-    transition: 0.3s;
+    transition: background 0.3s, border-color 0.3s;
 }
 
 .logo {
-
-    display: flex;
-
+    display: inline-flex;
     align-items: center;
+    gap: 7px;
 
-    gap: 8px;
-
-    font-size: 21px;
-
+    font-size: 25px;
     font-weight: 800;
+    letter-spacing: -1px;
+    white-space: nowrap;
+}
+
+.logo > span:first-child {
+    font-size: 27px;
 }
 
 .logo span:last-child {
     color: var(--green);
 }
 
-.logo > span:first-child {
-    font-size: 24px;
-}
-
 nav {
-
     display: flex;
-
-    gap: 35px;
+    align-items: center;
+    gap: 30px;
 }
 
 nav a {
+    position: relative;
+    padding: 8px 0;
 
-    font-size: 12px;
-
+    font-size: 13px;
+    font-weight: 500;
     color: var(--muted);
 
-    transition: 0.2s;
+    transition: color 0.2s;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--green);
+    transition: width 0.2s;
 }
 
 nav a:hover {
     color: var(--green);
 }
 
+nav a:hover::after {
+    width: 100%;
+}
+
 .header-buttons {
-
     display: flex;
-
     align-items: center;
-
     gap: 10px;
 }
 
 .theme-button {
+    width: 40px;
+    height: 40px;
 
-    width: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    height: 38px;
-
-    border:
-        1px solid var(--border);
+    border: 1px solid var(--border);
+    border-radius: 10px;
 
     background: transparent;
+    color: var(--text);
 
-    border-radius: 8px;
+    font-size: 17px;
+    transition: background 0.2s, border-color 0.2s;
+}
 
-    cursor: pointer;
-
-    font-size: 15px;
+.theme-button:hover {
+    background: var(--light-green);
 }
 
 .login-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    padding:
-        10px 18px;
+    padding: 11px 22px;
 
     background: var(--green);
+    color: #ffffff;
 
-    color: white;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 700;
 
-    border-radius: 7px;
-
-    font-size: 11px;
-
-    font-weight: bold;
+    transition: background 0.2s, transform 0.2s;
 }
 
+.login-button:hover {
+    background: var(--dark-green);
+    transform: translateY(-1px);
+}
 
-/* =========================
-   HERO
-========================= */
+/* ==========================================
+   APRESENTAÇÃO PRINCIPAL
+========================================== */
 
 .hero {
-
-    min-height: 700px;
-
-    padding:
-        90px 7%;
+    min-height: 650px;
+    padding: 75px 6%;
 
     display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: center;
+    gap: 35px;
 
-    gap: 50px;
+    overflow: hidden;
 }
 
 .hero-text {
-    max-width: 570px;
+    max-width: 590px;
 }
 
 .small-title {
+    margin-bottom: 22px;
 
     color: var(--green);
-
-    font-size: 10px;
-
-    font-weight: bold;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
 }
 
 .hero h1 {
-
-    font-size:
-        clamp(45px, 6vw, 78px);
-
-    line-height: 0.98;
-
-    letter-spacing: -4px;
-
     margin-bottom: 25px;
+
+    font-size: clamp(44px, 5.2vw, 70px);
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -3px;
 }
 
 .hero h1 span {
     display: block;
-
+    margin-top: 7px;
     color: var(--green);
 }
 
 .hero-text > p {
-
     max-width: 500px;
+    margin-bottom: 30px;
 
     color: var(--muted);
-
-    line-height: 1.7;
-
-    font-size: 14px;
-
-    margin-bottom: 30px;
+    font-size: 15px;
+    line-height: 1.85;
 }
 
 .hero-buttons {
-
     display: flex;
-
-    gap: 12px;
-
     align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
-.main-button {
+.main-button,
+.secondary-button,
+.hero-buttons > button {
+    min-height: 48px;
+    padding: 13px 22px;
 
-    padding:
-        15px 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    border: none;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 700;
 
-    border-radius: 8px;
+    transition:
+        transform 0.2s,
+        background 0.2s,
+        border-color 0.2s;
+}
 
+.main-button,
+.hero-buttons > button {
+    border: 1px solid var(--green);
     background: var(--green);
-
-    color: white;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: 0.2s;
+    color: #ffffff;
 }
 
-.main-button:hover {
-
-    background:
-        var(--dark-green);
-
-    transform:
-        translateY(-2px);
+.main-button:hover,
+.hero-buttons > button:hover {
+    background: var(--dark-green);
+    border-color: var(--dark-green);
+    transform: translateY(-2px);
 }
 
 .secondary-button {
-
-    padding:
-        14px 20px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 8px;
-
-    color: var(--muted);
-
-    font-size: 11px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
 }
 
+.secondary-button:hover {
+    border-color: var(--green);
+    color: var(--green);
+    transform: translateY(-2px);
+}
 
-/* NÚMEROS */
+/* ==========================================
+   INDICADORES DA APRESENTAÇÃO
+========================================== */
 
 .numbers {
-
     display: flex;
+    flex-wrap: wrap;
+    gap: 35px;
 
-    gap: 40px;
+    margin-top: 42px;
+    padding-top: 24px;
 
-    margin-top: 50px;
+    border-top: 1px solid var(--border);
+}
 
-    padding-top: 25px;
-
-    border-top:
-        1px solid var(--border);
+.numbers > div {
+    min-width: 75px;
 }
 
 .numbers strong {
-
     display: block;
-
-    font-size: 21px;
+    font-size: 23px;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
 }
 
 .numbers span {
-
     display: block;
+    margin-top: 5px;
 
     color: var(--muted);
-
-    font-size: 9px;
-
-    margin-top: 5px;
+    font-size: 11px;
 }
 
-
-/* =========================
-   VISUAL
-========================= */
+/* ==========================================
+   ÁREA VISUAL DA PROPRIEDADE
+========================================== */
 
 .hero-visual {
-
     min-height: 500px;
-
     position: relative;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
+
+    isolation: isolate;
 }
+
+/* Círculo decorativo */
 
 .circle {
-
     width: 390px;
-
     height: 390px;
 
-    background:
-        var(--light-green);
+    position: absolute;
+    z-index: -2;
 
     border-radius: 50%;
-
-    position: absolute;
+    background: var(--light-green);
 }
 
+/*
+   Fotografia de paisagem agrícola.
+   Se não houver Internet, o fundo verde
+   continuará visível.
+*/
 
-/* CARTÃO DA FAZENDA */
+.hero-visual::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 15px 0;
 
-.farm-card {
+    border-radius: 20px;
 
-    width: 410px;
-
-    background: var(--white);
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 15px;
-
-    padding: 18px;
-
-    position: relative;
-
-    z-index: 2;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(13, 48, 29, 0.25),
+            rgba(13, 48, 29, 0.05)
+        ),
+        url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=85")
+        center / cover no-repeat;
 
     box-shadow: var(--shadow);
 }
 
+/* ==========================================
+   CARTÃO DA FAZENDA
+========================================== */
+
+.farm-card {
+    width: min(100%, 430px);
+    padding: 20px;
+
+    position: relative;
+    z-index: 2;
+
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 17px;
+
+    box-shadow: 0 25px 65px rgba(24, 59, 42, 0.18);
+
+    transition: background 0.3s, border-color 0.3s;
+}
+
 .farm-top {
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
+    gap: 12px;
 
     margin-bottom: 15px;
 }
 
 .farm-top small {
-
     display: block;
-
     color: var(--muted);
-
-    font-size: 7px;
-
+    font-size: 9px;
     letter-spacing: 1px;
 }
 
 .farm-top strong {
-
     display: block;
-
-    font-size: 14px;
-
     margin-top: 4px;
+    font-size: 15px;
 }
 
 .status {
-
     color: var(--green);
-
-    font-size: 9px;
-
-    font-weight: bold;
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
 }
 
-
-/* MAPA */
+/* ==========================================
+   MAPA ILUSTRATIVO DOS TALHÕES
+========================================== */
 
 .farm-map {
-
-    height: 250px;
-
-    background:
-        #c6dcae;
-
-    border-radius: 10px;
-
+    height: 255px;
     padding: 8px;
 
     position: relative;
-
     overflow: hidden;
 
     display: grid;
-
-    grid-template-columns:
-        1fr 1.3fr;
-
-    grid-template-rows:
-        1fr 1fr;
-    
+    grid-template-columns: 1fr 1.3fr;
+    grid-template-rows: 1fr 1fr;
     gap: 5px;
+
+    background: #dce8cf;
+    border-radius: 12px;
 }
 
 .field {
-
-    background:
-        #4b9a5d;
-
-    border-radius: 5px;
-
     position: relative;
+    overflow: hidden;
 
-    transition: 0.3s;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-radius: 6px;
+
+    transition: filter 0.2s, transform 0.2s;
 }
 
 .field:hover {
-    transform: scale(1.02);
+    filter: brightness(1.08);
+    transform: scale(1.015);
 }
 
 .field span {
+    width: 28px;
+    height: 28px;
 
     position: absolute;
-
-    top: 10px;
-
-    left: 10px;
-
-    width: 25px;
-
-    height: 25px;
+    top: 9px;
+    left: 9px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
-    background:
-        rgba(255,255,255,0.8);
-
-    color:
-        #24633a;
-
     border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    color: #24633a;
 
-    font-size: 9px;
-
-    font-weight: bold;
+    font-size: 10px;
+    font-weight: 700;
 }
 
 .field-a {
-    background: #3f8953;
+    background: #39794a;
 }
 
 .field-b {
-    background: #68a85b;
+    background: #6b9c59;
 }
 
 .field-c {
-    background: #438f58;
+    background: #4b8851;
 }
 
 .field-d {
-    background: #7eae57;
+    background: #86a961;
 }
 
 .road {
-
-    position: absolute;
-
     width: 30px;
-
     height: 120%;
 
-    background:
-        #d9c99c;
-
+    position: absolute;
+    top: -10%;
     left: 48%;
 
-    top: -10%;
-
-    transform:
-        rotate(20deg);
+    background: #d9c99c;
+    transform: rotate(20deg);
+    pointer-events: none;
 }
 
-
-/* INFORMAÇÕES */
+/* ==========================================
+   INFORMAÇÕES DA PROPRIEDADE
+========================================== */
 
 .farm-info {
-
     display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 8px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
 
     margin-top: 12px;
 }
 
 .farm-info div {
+    min-width: 0;
+    padding: 12px;
 
-    padding: 10px;
-
-    background:
-        var(--background);
-
-    border-radius: 7px;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 9px;
 }
 
 .farm-info span {
-
     display: block;
-
     color: var(--muted);
-
-    font-size: 8px;
+    font-size: 10px;
 }
 
 .farm-info strong {
-
     display: block;
-
-    font-size: 13px;
-
     margin-top: 3px;
+    font-size: 14px;
+    overflow-wrap: anywhere;
 }
 
 .green {
     color: var(--green);
 }
 
-
-/* CARTÕES FLUTUANTES */
+/* ==========================================
+   CARTÕES FLUTUANTES
+========================================== */
 
 .floating-card {
+    padding: 14px 16px;
 
     position: absolute;
-
     z-index: 5;
 
     display: flex;
-
     align-items: center;
-
     gap: 10px;
 
-    padding: 13px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
 
-    background:
-        var(--white);
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 9px;
-
-    box-shadow: var(--shadow);
+    box-shadow: 0 12px 32px rgba(24, 59, 42, 0.16);
 }
 
 .floating-card > span {
-
-    font-size: 22px;
+    font-size: 23px;
 }
 
 .floating-card small {
-
     display: block;
-
     color: var(--muted);
-
-    font-size: 8px;
+    font-size: 10px;
 }
 
 .floating-card strong {
-
     display: block;
-
-    font-size: 14px;
-
     margin-top: 3px;
+    font-size: 15px;
 }
 
 .weather {
-
-    top: 55px;
-
-    right: 0;
+    top: 45px;
+    right: -10px;
 }
 
 .production {
-
-    bottom: 60px;
-
-    left: 5px;
+    bottom: 45px;
+    left: -10px;
 }
 
-
-/* =========================
-   RECURSOS
-========================= */
+/* ==========================================
+   SECÇÃO DE RECURSOS
+========================================== */
 
 .resources {
+    padding: 90px 6%;
 
-    padding:
-        110px 7%;
-
-    background:
-        var(--white);
-
-    border-top:
-        1px solid var(--border);
-
-    border-bottom:
-        1px solid var(--border);
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
 .section-title {
-
     max-width: 650px;
-
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .section-title small {
-
     color: var(--green);
-
-    font-size: 9px;
-
-    font-weight: bold;
-
-    letter-spacing: 2px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
 }
 
 .section-title h2 {
-
-    font-size: 43px;
-
-    line-height: 1.05;
-
-    letter-spacing: -2px;
-
     margin: 12px 0;
+
+    font-size: clamp(32px, 4vw, 44px);
+    line-height: 1.12;
+    letter-spacing: -1.5px;
 }
 
 .section-title h2 span {
@@ -713,402 +661,537 @@ nav a:hover {
 }
 
 .section-title p {
-
     color: var(--muted);
-
-    font-size: 13px;
-
-    line-height: 1.6;
-}
-
-.resource-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 15px;
-}
-
-.resource-card {
-
-    padding: 25px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 10px;
-
-    background:
-        var(--background);
-
-    transition: 0.3s;
-}
-
-.resource-card:hover {
-
-    transform:
-        translateY(-5px);
-
-    border-color:
-        var(--green);
-}
-
-.resource-icon {
-
-    width: 45px;
-
-    height: 45px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background:
-        var(--light-green);
-
-    border-radius: 9px;
-
-    font-size: 20px;
-
-    margin-bottom: 25px;
-}
-
-.resource-card > span {
-
-    color: var(--green);
-
-    font-size: 8px;
-}
-
-.resource-card h3 {
-
-    font-size: 17px;
-
-    margin: 10px 0;
-}
-
-.resource-card p {
-
-    color: var(--muted);
-
-    font-size: 11px;
-
-    line-height: 1.7;
-}
-
-
-/* =========================
-   SOBRE
-========================= */
-
-.about {
-
-    padding:
-        100px 7%;
-}
-
-.about-box {
-
-    max-width: 1100px;
-
-    margin: auto;
-
-    padding: 60px;
-
-    background:
-        var(--dark-green);
-
-    border-radius: 15px;
-
-    color: white;
-
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 70px;
-}
-
-.about-box small {
-
-    color:
-        #bce4c9;
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-}
-
-.about-box h2 {
-
-    font-size: 38px;
-
-    line-height: 1.1;
-
-    margin-top: 15px;
-}
-
-.about-box p {
-
-    color:
-        rgba(255,255,255,0.75);
-
-    font-size: 13px;
-
+    font-size: 14px;
     line-height: 1.8;
 }
 
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
 
-/* =========================
-   CTA
-========================= */
+.resource-card {
+    padding: 25px 22px;
+
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    transition:
+        transform 0.25s,
+        box-shadow 0.25s,
+        border-color 0.25s;
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--green);
+    box-shadow: var(--shadow);
+}
+
+.resource-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--light-green);
+    border-radius: 12px;
+    font-size: 21px;
+}
+
+.resource-card > span {
+    color: var(--green);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.resource-card h3 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.resource-card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* ==========================================
+   SOBRE O AGROMAP
+========================================== */
+
+.about {
+    padding: 80px 6%;
+}
+
+.about-box {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: clamp(30px, 5vw, 60px);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 55px;
+
+    background: linear-gradient(125deg, #164d32, #247647);
+    border-radius: 20px;
+    color: #ffffff;
+
+    box-shadow: var(--shadow);
+}
+
+.about-box small {
+    color: #c3e8ce;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+}
+
+.about-box h2 {
+    margin-top: 15px;
+
+    font-size: clamp(29px, 3.5vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -1px;
+}
+
+.about-box p {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+/* ==========================================
+   CHAMADA PARA AÇÃO
+========================================== */
 
 .cta {
-
-    padding:
-        100px 7%;
-
+    padding: 80px 6%;
     text-align: center;
 }
 
+.cta > div {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
 .cta small {
-
     color: var(--green);
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-
-    font-weight: bold;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
 }
 
 .cta h2 {
-
     max-width: 650px;
-
     margin: 15px auto 25px;
 
-    font-size: 45px;
-
-    line-height: 1.05;
-
-    letter-spacing: -2px;
+    font-size: clamp(32px, 4vw, 46px);
+    line-height: 1.15;
+    letter-spacing: -1.5px;
 }
 
 .cta button {
+    padding: 15px 25px;
 
-    border: none;
+    border: 1px solid var(--green);
+    border-radius: 9px;
 
-    background:
-        var(--green);
+    background: var(--green);
+    color: #ffffff;
 
-    color: white;
+    font-size: 14px;
+    font-weight: 700;
 
-    padding:
-        15px 25px;
-
-    border-radius: 8px;
-
-    font-weight: bold;
-
-    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
 }
 
+.cta button:hover {
+    background: var(--dark-green);
+    border-color: var(--dark-green);
+    transform: translateY(-2px);
+}
 
-/* =========================
+/* ==========================================
    RODAPÉ
-========================= */
+========================================== */
 
 footer {
-
-    padding:
-        35px 7%;
-
-    background:
-        var(--white);
-
-    border-top:
-        1px solid var(--border);
+    padding: 28px 6%;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 18px;
 
-    gap: 20px;
+    background: var(--white);
+    border-top: 1px solid var(--border);
 }
 
 footer p {
-
     color: var(--muted);
-
-    font-size: 10px;
+    font-size: 12px;
 }
 
 footer small {
-
     color: var(--muted);
-
-    font-size: 9px;
+    font-size: 11px;
 }
 
+/* ==========================================
+   MODO ESCURO
+========================================== */
 
-/* =========================
-   RESPONSIVO
-========================= */
+body.dark .resource-card {
+    background: var(--white);
+}
 
-@media(max-width: 1000px) {
+body.dark .secondary-button {
+    color: var(--text);
+    border-color: var(--border);
+}
+
+body.dark .farm-map {
+    border: 1px solid var(--border);
+}
+
+body.dark .field-a,
+body.dark .field-b,
+body.dark .field-c,
+body.dark .field-d {
+    filter: brightness(0.85);
+}
+
+body.dark .about-box {
+    background: linear-gradient(125deg, #163c28, #205a35);
+}
+
+/* ==========================================
+   TABLETS
+========================================== */
+
+@media (max-width: 1000px) {
+    .header {
+        padding-left: 4%;
+        padding-right: 4%;
+        gap: 15px;
+    }
+
+    nav {
+        gap: 18px;
+    }
 
     .hero {
-
         grid-template-columns: 1fr;
-
         padding-top: 60px;
+        padding-bottom: 60px;
     }
 
     .hero-text {
-
         max-width: 700px;
     }
 
     .hero-visual {
-
-        margin-top: 30px;
+        width: 100%;
+        max-width: 650px;
+        margin: 10px auto 0;
     }
 
     .resource-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .about-box {
+        gap: 30px;
+    }
+
+    .weather {
+        right: 0;
+    }
+
+    .production {
+        left: 0;
+    }
 }
 
+/* ==========================================
+   TELEMÓVEIS
+========================================== */
 
-@media(max-width: 700px) {
-
+@media (max-width: 700px) {
     .header {
+        min-height: 68px;
+        padding: 13px 5%;
+        gap: 10px;
+    }
 
-        padding:
-            15px 5%;
+    .logo {
+        font-size: 21px;
+    }
+
+    .logo > span:first-child {
+        font-size: 23px;
     }
 
     nav {
         display: none;
     }
 
+    .header-buttons {
+        gap: 7px;
+    }
+
+    .theme-button {
+        width: 36px;
+        height: 36px;
+    }
+
     .login-button {
-        display: none;
+        padding: 10px 13px;
+        font-size: 12px;
     }
 
     .hero {
+        padding: 48px 5%;
+        gap: 15px;
+    }
 
-        padding:
-            60px 5%;
+    .small-title {
+        font-size: 9px;
+        letter-spacing: 1.3px;
     }
 
     .hero h1 {
-
-        font-size: 50px;
-
-        letter-spacing: -3px;
+        font-size: clamp(38px, 10vw, 50px);
+        letter-spacing: -2px;
     }
 
-    .hero-visual {
-
-        min-height: 400px;
+    .hero-text > p {
+        font-size: 14px;
     }
 
-    .circle {
-
-        width: 300px;
-
-        height: 300px;
+    .hero-buttons {
+        gap: 9px;
     }
 
-    .farm-card {
-
-        width: 330px;
-    }
-
-    .farm-map {
-
-        height: 200px;
-    }
-
-    .weather {
-
-        right: -5px;
-    }
-
-    .production {
-
-        left: -5px;
+    .main-button,
+    .secondary-button,
+    .hero-buttons > button {
+        padding: 12px 15px;
+        font-size: 12px;
     }
 
     .numbers {
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 30px;
+    }
 
-        gap: 20px;
+    .numbers > div {
+        min-width: 0;
+    }
+
+    .numbers strong {
+        font-size: 18px;
+    }
+
+    .numbers span {
+        font-size: 10px;
+    }
+
+    .hero-visual {
+        min-height: 390px;
+        margin-top: 10px;
+    }
+
+    .hero-visual::before {
+        inset: 15px -5px;
+        border-radius: 15px;
+    }
+
+    .circle {
+        width: 290px;
+        height: 290px;
+    }
+
+    .farm-card {
+        width: min(100%, 350px);
+        padding: 14px;
+    }
+
+    .farm-top strong {
+        font-size: 13px;
+    }
+
+    .farm-map {
+        height: 190px;
+    }
+
+    .farm-info {
+        gap: 6px;
+    }
+
+    .farm-info div {
+        padding: 8px;
+    }
+
+    .farm-info span {
+        font-size: 9px;
+    }
+
+    .farm-info strong {
+        font-size: 12px;
+    }
+
+    .floating-card {
+        padding: 9px 11px;
+        gap: 7px;
+    }
+
+    .floating-card > span {
+        font-size: 18px;
+    }
+
+    .floating-card small {
+        font-size: 9px;
+    }
+
+    .floating-card strong {
+        font-size: 12px;
+    }
+
+    .weather {
+        top: 0;
+        right: -2px;
+    }
+
+    .production {
+        bottom: 0;
+        left: -2px;
     }
 
     .resources {
+        padding: 60px 5%;
+    }
 
-        padding:
-            70px 5%;
+    .section-title {
+        margin-bottom: 30px;
     }
 
     .section-title h2 {
-
-        font-size: 35px;
+        font-size: 34px;
     }
 
     .resource-grid {
-
         grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    .resource-card {
+        padding: 22px;
+    }
+
+    .resource-card p {
+        font-size: 13px;
     }
 
     .about {
-
-        padding:
-            60px 5%;
+        padding: 50px 5%;
     }
 
     .about-box {
-
-        padding: 35px;
-
         grid-template-columns: 1fr;
-
-        gap: 30px;
+        gap: 22px;
+        padding: 30px 24px;
+        border-radius: 16px;
     }
 
     .about-box h2 {
-
         font-size: 30px;
     }
 
-    .cta {
+    .about-box p {
+        font-size: 13px;
+    }
 
-        padding:
-            70px 5%;
+    .cta {
+        padding: 55px 5%;
     }
 
     .cta h2 {
-
-        font-size: 35px;
+        font-size: 34px;
     }
 
     footer {
-
+        padding: 25px 5%;
         flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
 
+/* ==========================================
+   TELEMÓVEIS PEQUENOS
+========================================== */
+
+@media (max-width: 380px) {
+    .logo {
+        font-size: 18px;
+    }
+
+    .theme-button {
+        width: 32px;
+        height: 32px;
+    }
+
+    .login-button {
+        padding: 9px 10px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .numbers {
+        gap: 8px;
+    }
+
+    .numbers strong {
+        font-size: 16px;
+    }
+
+    .farm-top {
         align-items: flex-start;
     }
 
+    .status {
+        font-size: 9px;
+    }
+
+    .farm-info strong {
+        font-size: 11px;
+    }
+}
+
+/* ==========================================
+   ACESSIBILIDADE: MOVIMENTO REDUZIDO
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
