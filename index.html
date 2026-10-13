@@ -2,121 +2,168 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AgroMap | Tecnologia para o campo</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroMap | Tecnologia para o campo</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="topo">
-  <a class="logo" href="#inicio">🌱 AgroMap</a>
-  <nav>
-    <a href="#inicio">Início</a>
-    <a href="#recursos">Recursos</a>
-    <a href="#como-funciona">Como funciona</a>
-    <a href="#sobre">Sobre</a>
-  </nav>
-  <a class="botao entrar" href="login.html">Entrar</a>
+<header class="header">
+    <a href="login.html" class="logo">
+        <span>🌱</span> Agro<span>Map</span>
+    </a>
+
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#recursos">Recursos</a>
+        <a href="#sobre">Sobre</a>
+    </nav>
+
+    <div class="header-buttons">
+        <button id="themeButton" class="theme-button" type="button" aria-label="Alternar tema">🌙</button>
+        <a href="login.html" class="login-button">Entrar</a>
+    </div>
 </header>
 
-<main>
-  <section class="hero" id="inicio">
-    <div class="hero-conteudo">
-      <span class="destaque">TECNOLOGIA PARA O CAMPO</span>
-      <h1>O futuro da produção agrícola começa com <span>informação.</span></h1>
-      <p>O AgroMap conecta tecnologia e agricultura para ajudar a organizar informações e tornar a gestão rural mais prática.</p>
-      <div class="acoes">
-        <a class="botao amarelo" href="#recursos">Conheça os recursos →</a>
-        <a class="botao contorno" href="#sobre">Saiba mais</a>
-      </div>
-      <div class="beneficios">
-        <span>✓ Mais organização</span>
-        <span>✓ Acompanhamento das atividades</span>
-        <span>✓ Planejamento rural</span>
-      </div>
-    </div>
-    <div class="aviso aviso-1">📍 <div><strong>Gestão rural</strong><small>Informações em um só lugar.</small></div></div>
-    <div class="aviso aviso-2">📊 <div><strong>Visão da propriedade</strong><small>Mais clareza para planejar.</small></div></div>
-  </section>
+<main id="inicio">
+    <section class="hero">
+        <div class="hero-text">
+            <div class="small-title">TECNOLOGIA PARA O AGRONEGÓCIO</div>
 
-  <section class="recursos secao" id="recursos">
-    <div class="cabecalho-secao">
-      <div>
-        <span class="subtitulo">O QUE VOCÊ PODE ORGANIZAR</span>
-        <h2>Ferramentas inteligentes para<br>cada etapa do campo.</h2>
-      </div>
-      <p>O AgroMap reúne áreas importantes da gestão rural para facilitar a organização do dia a dia.</p>
-    </div>
+            <h1>Sua propriedade.<span>Mais inteligente.</span></h1>
 
-    <div class="cartoes">
-      <article class="cartao">
-        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80" alt="Paisagem rural">
-        <div class="cartao-conteudo">
-          <span class="numero">01 / PROPRIEDADE</span>
-          <h3>⌂ Propriedade rural</h3>
-          <p>Organize informações sobre a fazenda e seus talhões em um só lugar.</p>
+            <p>
+                O AgroMap reúne informações da sua propriedade em um só lugar
+                para ajudar você a acompanhar sua produção e tomar decisões melhores.
+            </p>
+
+            <div class="hero-buttons">
+                <button class="main-button" id="startButton" type="button"
+                    onclick="window.location.href='cadastro.html'">
+                    Conheça o AgroMap →
+                </button>
+
+                <a href="#recursos" class="secondary-button">Ver recursos</a>
+            </div>
+
+            <div class="numbers">
+                <div><strong>+1.200</strong><span>propriedades</span></div>
+                <div><strong>98%</strong><span>satisfação</span></div>
+                <div><strong>24h</strong><span>monitoramento</span></div>
+            </div>
         </div>
-      </article>
 
-      <article class="cartao">
-        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80" alt="Paisagem e clima">
-        <div class="cartao-conteudo">
-          <span class="numero">02 / CLIMA</span>
-          <h3>☁ Dados climáticos</h3>
-          <p>Registre e acompanhe informações climáticas relevantes para a rotina.</p>
+        <div class="hero-visual">
+            <div class="circle"></div>
+
+            <div class="farm-card">
+                <div class="farm-top">
+                    <div>
+                        <small>MINHA PROPRIEDADE</small>
+                        <strong>Fazenda Horizonte</strong>
+                    </div>
+                    <span class="status">● Ativa</span>
+                </div>
+
+                <div class="farm-map">
+                    <div class="field field-a"><span>01</span></div>
+                    <div class="field field-b"><span>02</span></div>
+                    <div class="field field-c"><span>03</span></div>
+                    <div class="field field-d"><span>04</span></div>
+                    <div class="road"></div>
+                </div>
+
+                <div class="farm-info">
+                    <div><span>Área</span><strong>248 ha</strong></div>
+                    <div><span>Produção</span><strong>1.840 t</strong></div>
+                    <div><span>Saúde</span><strong class="green">92%</strong></div>
+                </div>
+            </div>
+
+            <div class="floating-card weather">
+                <span>☀️</span>
+                <div><small>Clima hoje</small><strong>29°C</strong></div>
+            </div>
+
+            <div class="floating-card production">
+                <span>📈</span>
+                <div><small>Produção</small><strong>+8,4%</strong></div>
+            </div>
         </div>
-      </article>
+    </section>
 
-      <article class="cartao">
-        <img src="https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=800&q=80" alt="Plantação agrícola">
-        <div class="cartao-conteudo">
-          <span class="numero">03 / CULTURAS</span>
-          <h3>🌱 Produção agrícola</h3>
-          <p>Organize dados de culturas e plantios e acompanhe a produção.</p>
+    <section id="recursos" class="resources">
+        <div class="section-title">
+            <small>UMA PLATAFORMA COMPLETA</small>
+            <h2>Tudo que você precisa <span>em um só lugar.</span></h2>
+            <p>O AgroMap foi pensado para facilitar o gerenciamento da propriedade rural.</p>
         </div>
-      </article>
 
-      <article class="cartao">
-        <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=800&q=80" alt="Cultivo em campo">
-        <div class="cartao-conteudo">
-          <span class="numero">04 / PLANEJAMENTO</span>
-          <h3>▦ Planejamento</h3>
-          <p>Use os dados registrados como apoio às decisões da propriedade.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <div class="resource-icon">🗺️</div>
+                <span>01</span>
+                <h3>Propriedade</h3>
+                <p>Visualize seus talhões, áreas e informações da propriedade de maneira organizada.</p>
+            </article>
+
+            <article class="resource-card">
+                <div class="resource-icon">☁️</div>
+                <span>02</span>
+                <h3>Monitoramento</h3>
+                <p>Acompanhe condições climáticas e informações importantes para sua produção.</p>
+            </article>
+
+            <article class="resource-card">
+                <div class="resource-icon">📊</div>
+                <span>03</span>
+                <h3>Produção</h3>
+                <p>Organize dados da produção e acompanhe o desempenho da propriedade.</p>
+            </article>
+
+            <article class="resource-card">
+                <div class="resource-icon">💰</div>
+                <span>04</span>
+                <h3>Financeiro</h3>
+                <p>Tenha uma visão mais clara dos custos, receitas e resultados da propriedade.</p>
+            </article>
         </div>
-      </article>
-    </div>
-  </section>
+    </section>
 
-  <section class="como secao" id="como-funciona">
-    <div class="como-intro">
-      <span class="subtitulo">COMO O AGROMAP AJUDA</span>
-      <h2>Mais organização em cada etapa da produção.</h2>
-      <p>A proposta é reunir informações importantes da propriedade em um ambiente organizado, simples e fácil de consultar.</p>
-    </div>
-    <div class="etapas">
-      <article><span>01</span><h3>⌂ Organize a propriedade</h3><p>Mantenha as informações da propriedade, culturas e talhões organizadas.</p></article>
-      <article><span>02</span><h3>☁ Acompanhe os registros</h3><p>Consulte informações sobre culturas, clima e atividades agrícolas.</p></article>
-      <article><span>03</span><h3>▦ Planeje suas atividades</h3><p>Utilize os registros para organizar tarefas e acompanhar o planejamento.</p></article>
-    </div>
-  </section>
+    <section id="sobre" class="about">
+        <div class="about-box">
+            <div>
+                <small>SOBRE O AGROMAP</small>
+                <h2>Tecnologia que aproxima o produtor dos seus dados.</h2>
+            </div>
+            <p>
+                O AgroMap é uma proposta de plataforma digital voltada para o
+                gerenciamento inteligente de propriedades rurais.
+                <br><br>
+                A ideia é transformar dados em informações simples e úteis
+                para ajudar o produtor durante sua rotina.
+            </p>
+        </div>
+    </section>
 
-  <section class="sobre secao" id="sobre">
-    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80" alt="Campo agrícola ao pôr do sol">
-    <div>
-      <span class="subtitulo">SOBRE O AGROMAP</span>
-      <h2>Tecnologia que aproxima o produtor dos seus dados.</h2>
-      <p>O AgroMap é um projeto acadêmico voltado para a gestão de propriedades rurais e para o uso de informações como apoio ao planejamento da produção agrícola.</p>
-      <a class="link" href="#recursos">Conheça os recursos →</a>
-    </div>
-  </section>
+    <section class="cta">
+        <div>
+            <small>PRONTO PARA COMEÇAR?</small>
+            <h2>Leve sua propriedade para o próximo nível.</h2>
+            <button type="button" onclick="window.location.href='cadastro.html'">
+                Começar agora →
+            </button>
+        </div>
+    </section>
 </main>
 
 <footer>
-  <a class="logo" href="#inicio">🌱 AgroMap</a>
-  <p>Tecnologia para uma agricultura mais inteligente.</p>
-  <small>© 2026 AgroMap — Projeto acadêmico.</small>
+    <div class="logo"><span>🌱</span> Agro<span>Map</span></div>
+    <p>Tecnologia para um agronegócio mais inteligente.</p>
+    <small>© 2026 AgroMap. Projeto acadêmico.</small>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
