@@ -2,258 +2,140 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#f3f6ef">
-    <title>Entrar | AgroMap</title>
-    <link rel="stylesheet" href="login.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f7f1">
+  <title>Entrar | AgroMap</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="login.css">
 </head>
-<body>
+<body class="auth-page">
 
-<main class="login-container">
+  <main class="auth-layout">
+    <section class="auth-visual">
+      <a class="auth-brand" href="index.html">
+        <span class="brand-mark">✳</span> Agro<span>Map</span>
+      </a>
 
-    <!-- Painel visual com fotografia agrícola -->
-    <section class="login-visual">
-        <a href="index.html" class="visual-brand">
-            🌱 Agro<span>Map</span>
-        </a>
+      <div class="visual-content">
+        <span class="auth-eyebrow">TECNOLOGIA PARA O CAMPO</span>
+        <h1>O futuro da sua propriedade começa com informação.</h1>
+        <p>
+          Uma forma mais organizada de acompanhar a gestão
+          rural e planear os próximos passos.
+        </p>
+      </div>
 
-        <div class="visual-content">
-            <span class="eyebrow">TECNOLOGIA PARA O AGRONEGÓCIO</span>
-
-            <h2>
-                Um campo mais
-                <span>inteligente.</span>
-            </h2>
-
-            <p>
-                Organize sua propriedade, acompanhe seus recursos
-                e tome decisões com mais segurança.
-            </p>
-
-            <div class="visual-features">
-                <div class="visual-feature">
-                    <span class="feature-icon">⌖</span>
-                    <div>
-                        <strong>Mapeamento rural</strong>
-                        <p>Tenha suas áreas organizadas.</p>
-                    </div>
-                </div>
-
-                <div class="visual-feature">
-                    <span class="feature-icon">▥</span>
-                    <div>
-                        <strong>Gestão agrícola</strong>
-                        <p>Acompanhe seus dados em um só lugar.</p>
-                    </div>
-                </div>
-
-                <div class="visual-feature">
-                    <span class="feature-icon">♧</span>
-                    <div>
-                        <strong>Decisões inteligentes</strong>
-                        <p>Planeje sua produção com mais informação.</p>
-                    </div>
-                </div>
-            </div>
+      <div class="visual-caption">
+        <span>🌱</span>
+        <div>
+          <strong>Cultive novas possibilidades.</strong>
+          <small>AgroMap — gestão rural inteligente.</small>
         </div>
-
-        <span class="visual-footer">
-            AgroMap · Gestão inteligente da propriedade rural
-        </span>
+      </div>
     </section>
 
-    <!-- Formulário de acesso -->
-    <section class="login-panel">
-
-        <a href="index.html" class="back-link">
-            ← Voltar ao início
+    <section class="auth-panel">
+      <div class="auth-form-wrap">
+        <a class="mobile-brand" href="index.html">
+          <span class="brand-mark">✳</span> Agro<span>Map</span>
         </a>
 
-        <div class="login-heading">
-            <div class="mobile-logo">🌱 Agro<span>Map</span></div>
-            <span class="heading-tag">ÁREA DO PRODUTOR</span>
-            <h1>Bem-vindo de volta!</h1>
-            <p>Acesse sua conta para continuar.</p>
+        <div class="form-heading">
+          <span class="auth-eyebrow">BEM-VINDA DE VOLTA</span>
+          <h2>Entrar na conta</h2>
+          <p>Preenche os teus dados para continuar.</p>
         </div>
 
         <form id="loginForm">
-            <label for="email">E-mail</label>
-            <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Digite seu e-mail"
-                autocomplete="email"
-                required
-            >
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="teuemail@exemplo.com"
+            autocomplete="email"
+            required
+          >
 
-            <label for="senha">Senha</label>
-            <input
-                type="password"
-                id="senha"
-                name="senha"
-                placeholder="Digite sua senha"
-                autocomplete="current-password"
-                required
-            >
+          <label for="senha">Palavra-passe</label>
+          <input
+            type="password"
+            id="senha"
+            name="senha"
+            placeholder="Insere a tua palavra-passe"
+            autocomplete="current-password"
+            required
+          >
 
-            <button type="submit" id="entrarBtn" class="login-button">
-                Entrar na minha conta
-                <span aria-hidden="true">→</span>
-            </button>
+          <button class="auth-submit" type="submit">
+            Entrar na plataforma <span>→</span>
+          </button>
 
-            <p id="mensagem" role="status" aria-live="polite"></p>
+          <p id="mensagem" class="form-message" role="status"></p>
         </form>
 
-        <!-- Permissão de localização -->
-        <div class="location-card">
-            <div class="location-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="1.8"
-                     stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/>
-                    <circle cx="12" cy="10" r="2.5"/>
-                </svg>
-            </div>
-
-            <div class="location-content">
-                <strong>Localização da propriedade</strong>
-                <p id="locationStatus">
-                    Permita o acesso à localização para obter as coordenadas do dispositivo.
-                </p>
-
-                <button type="button" id="locationBtn" class="location-button">
-                    <svg viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="1.8"
-                         stroke-linecap="round" stroke-linejoin="round"
-                         aria-hidden="true">
-                        <circle cx="12" cy="12" r="8"/>
-                        <circle cx="12" cy="12" r="2.5"/>
-                        <path d="M12 2v2M12 20v2M2 12h2M20 12h2"/>
-                    </svg>
-                    Permitir localização
-                </button>
-            </div>
+        <div class="auth-switch">
+          Ainda não tens conta?
+          <a href="cadastro.html">Criar conta</a>
         </div>
 
-        <p class="register-link">
-            Ainda não possui uma conta?
-            <a href="cadastro.html">Criar conta</a>
-        </p>
+        <a href="index.html" class="back-home">← Voltar à página inicial</a>
+      </div>
 
-        <p class="privacy-note">
-            A localização só será solicitada com sua autorização.
-        </p>
-
+      <footer class="auth-footer">
+        © 2026 AgroMap · Projeto académico
+      </footer>
     </section>
-</main>
+  </main>
 
-<script>
-const loginForm = document.getElementById("loginForm");
-const entrarBtn = document.getElementById("entrarBtn");
-const mensagem = document.getElementById("mensagem");
+  <script>
+    const loginForm = document.getElementById("loginForm");
+    const mensagem = document.getElementById("mensagem");
 
-const locationBtn = document.getElementById("locationBtn");
-const locationStatus = document.getElementById("locationStatus");
+    loginForm.addEventListener("submit", async function(event) {
+      event.preventDefault();
 
-let coordenadasDispositivo = null;
+      const email = document.getElementById("email").value.trim();
+      const senha = document.getElementById("senha").value;
+      const botao = loginForm.querySelector("button[type='submit']");
 
-// Solicita autorização do navegador para obter a localização.
-locationBtn.addEventListener("click", function () {
-    if (!navigator.geolocation) {
-        locationStatus.textContent =
-            "Seu navegador não oferece suporte à geolocalização.";
-        return;
-    }
+      mensagem.textContent = "";
+      botao.disabled = true;
+      botao.textContent = "A entrar...";
 
-    locationBtn.disabled = true;
-    locationStatus.textContent = "Aguardando autorização do navegador...";
-
-    navigator.geolocation.getCurrentPosition(
-        function (position) {
-            coordenadasDispositivo = {
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude
-            };
-
-            locationStatus.textContent =
-                "Localização obtida! Latitude: " +
-                coordenadasDispositivo.latitude.toFixed(5) +
-                " · Longitude: " +
-                coordenadasDispositivo.longitude.toFixed(5);
-
-            locationBtn.innerHTML = "✓ Localização autorizada";
-            locationBtn.classList.add("location-success");
-            locationBtn.disabled = false;
-        },
-        function (error) {
-            const mensagens = {
-                1: "Permissão negada. Autorize a localização nas configurações do navegador.",
-                2: "Não foi possível determinar a localização do dispositivo.",
-                3: "A solicitação demorou demais. Tente novamente."
-            };
-
-            locationStatus.textContent =
-                mensagens[error.code] ||
-                "Não foi possível obter a localização.";
-
-            locationBtn.disabled = false;
-        },
-        {
-            enableHighAccuracy: true,
-            timeout: 15000,
-            maximumAge: 0
-        }
-    );
-});
-
-// Mantém o fluxo de login existente.
-loginForm.addEventListener("submit", async function (evento) {
-    evento.preventDefault();
-
-    mensagem.textContent = "Verificando seus dados...";
-    entrarBtn.disabled = true;
-
-    try {
+      try {
         const resposta = await fetch("api.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                action: "login",
-                email: document.getElementById("email").value.trim(),
-                senha: document.getElementById("senha").value
-            })
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            action: "login",
+            email: email,
+            senha: senha
+          })
         });
 
-        const resultado = await resposta.json();
+        const dados = await resposta.json();
 
-        if (!resposta.ok || resultado.erro ||
-            resultado.sucesso === false) {
-            throw new Error(
-                resultado.mensagem ||
-                resultado.erro ||
-                "E-mail ou senha inválidos."
-            );
+        if (resposta.ok && dados.success) {
+          window.location.href = "dashboard.html";
+        } else {
+          mensagem.textContent =
+            dados.message || "Não foi possível entrar. Verifica os teus dados.";
         }
-
+      } catch (erro) {
         mensagem.textContent =
-            resultado.mensagem || "Login realizado!";
-
-        setTimeout(function () {
-            window.location.href = "dashboard.html";
-        }, 500);
-
-    } catch (erro) {
-        mensagem.textContent =
-            "Não foi possível entrar: " + erro.message;
-    } finally {
-        entrarBtn.disabled = false;
-    }
-});
-</script>
+          "Não foi possível ligar ao servidor. Tenta novamente.";
+      } finally {
+        botao.disabled = false;
+        botao.innerHTML = 'Entrar na plataforma <span>→</span>';
+      }
+    });
+  </script>
 
 </body>
 </html>
