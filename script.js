@@ -98,13 +98,13 @@ document.querySelectorAll("#menu a").forEach((link) => {
   });
 });
 
-// Envio dos formulários para o servidor PHP
-async function enviarFormulario(url, formulario, elementoMensagem) {
+// Envio para os arquivos PHP existentes
+async function enviarFormulario(url, formulario, mensagem) {
   const botao = formulario.querySelector('button[type="submit"]');
   const textoOriginal = botao.textContent;
 
-  elementoMensagem.textContent = "";
-  elementoMensagem.classList.remove("sucesso");
+  mensagem.textContent = "";
+  mensagem.classList.remove("sucesso");
 
   botao.disabled = true;
   botao.textContent = "Aguarde...";
@@ -127,8 +127,8 @@ async function enviarFormulario(url, formulario, elementoMensagem) {
       );
     }
 
-    elementoMensagem.textContent = dados.mensagem;
-    elementoMensagem.classList.add("sucesso");
+    mensagem.textContent = dados.mensagem;
+    mensagem.classList.add("sucesso");
 
     if (url === "cadastrar.php") {
       formulario.reset();
@@ -145,16 +145,16 @@ async function enviarFormulario(url, formulario, elementoMensagem) {
     }
   } catch (erro) {
     if (erro instanceof SyntaxError) {
-      elementoMensagem.textContent =
-        "O servidor retornou uma resposta inesperada. Verifique a configuração do PHP.";
+      mensagem.textContent =
+        "O servidor retornou uma resposta inesperada. Verifique o PHP.";
     } else if (erro.message === "Failed to fetch") {
-      elementoMensagem.textContent =
-        "Não foi possível conectar ao servidor. Confira se o site está hospedado corretamente.";
+      mensagem.textContent =
+        "Não foi possível conectar ao servidor. Verifique sua conexão.";
     } else {
-      elementoMensagem.textContent = erro.message;
+      mensagem.textContent = erro.message;
     }
 
-    elementoMensagem.classList.remove("sucesso");
+    mensagem.classList.remove("sucesso");
   } finally {
     botao.disabled = false;
     botao.textContent = textoOriginal;
