@@ -2,8 +2,10 @@
 const modal = document.getElementById("modal");
 const formLogin = document.getElementById("formLogin");
 const formCadastro = document.getElementById("formCadastro");
+
 const modalTitulo = document.getElementById("modalTitulo");
 const modalDescricao = document.getElementById("modalDescricao");
+
 const abaLogin = document.getElementById("abaLogin");
 const abaCadastro = document.getElementById("abaCadastro");
 
@@ -11,6 +13,7 @@ function abrirModal(tipo = "login") {
   modal.classList.add("aberto");
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
+
   mostrarFormulario(tipo);
 }
 
@@ -53,36 +56,56 @@ document.getElementById("heroCadastro").addEventListener("click", () => {
   abrirModal("cadastro");
 });
 
+document.getElementById("chamadaCadastro").addEventListener("click", () => {
+  abrirModal("cadastro");
+});
+
 document.getElementById("fecharModal").addEventListener("click", fecharModal);
-abaLogin.addEventListener("click", () => mostrarFormulario("login"));
-abaCadastro.addEventListener("click", () => mostrarFormulario("cadastro"));
+
+abaLogin.addEventListener("click", () => {
+  mostrarFormulario("login");
+});
+
+abaCadastro.addEventListener("click", () => {
+  mostrarFormulario("cadastro");
+});
 
 modal.addEventListener("click", (evento) => {
-  if (evento.target === modal) fecharModal();
+  if (evento.target === modal) {
+    fecharModal();
+  }
 });
 
 document.addEventListener("keydown", (evento) => {
-  if (evento.key === "Escape") fecharModal();
+  if (evento.key === "Escape") {
+    fecharModal();
+  }
 });
 
 // Menu para celulares
-document.getElementById("menuMobile").addEventListener("click", () => {
-  document.getElementById("menu").classList.toggle("aberto");
+const menu = document.getElementById("menu");
+const botaoMenu = document.getElementById("menuMobile");
+
+botaoMenu.addEventListener("click", () => {
+  const aberto = menu.classList.toggle("aberto");
+  botaoMenu.setAttribute("aria-expanded", String(aberto));
 });
 
 document.querySelectorAll("#menu a").forEach((link) => {
   link.addEventListener("click", () => {
-    document.getElementById("menu").classList.remove("aberto");
+    menu.classList.remove("aberto");
+    botaoMenu.setAttribute("aria-expanded", "false");
   });
 });
 
-// Envia os formulários para o PHP e exibe a resposta.
+// Envio dos formulários para o servidor PHP
 async function enviarFormulario(url, formulario, elementoMensagem) {
   const botao = formulario.querySelector('button[type="submit"]');
   const textoOriginal = botao.textContent;
 
   elementoMensagem.textContent = "";
   elementoMensagem.classList.remove("sucesso");
+
   botao.disabled = true;
   botao.textContent = "Aguarde...";
 
@@ -90,14 +113,18 @@ async function enviarFormulario(url, formulario, elementoMensagem) {
     const resposta = await fetch(url, {
       method: "POST",
       body: new FormData(formulario),
-      headers: { "Accept": "application/json" },
+      headers: {
+        "Accept": "application/json"
+      },
       credentials: "same-origin"
     });
 
     const dados = await resposta.json();
 
     if (!resposta.ok || !dados.sucesso) {
-      throw new Error(dados.mensagem || "Não foi possível concluir a operação.");
+      throw new Error(
+        dados.mensagem || "Não foi possível concluir a operação."
+      );
     }
 
     elementoMensagem.textContent = dados.mensagem;
@@ -105,18 +132,29 @@ async function enviarFormulario(url, formulario, elementoMensagem) {
 
     if (url === "cadastrar.php") {
       formulario.reset();
-      setTimeout(() => mostrarFormulario("login"), 1200);
+
+      setTimeout(() => {
+        mostrarFormulario("login");
+      }, 1200);
     } else {
       formulario.reset();
+
       setTimeout(() => {
         window.location.href = dados.redirecionar || "painel.php";
       }, 500);
     }
   } catch (erro) {
-    elementoMensagem.textContent =
-      erro.message === "Failed to fetch"
-        ? "Não foi possível conectar ao servidor. Verifique se o PHP está funcionando."
-        : erro.message;
+    if (erro instanceof SyntaxError) {
+      elementoMensagem.textContent =
+        "O servidor retornou uma resposta inesperada. Verifique a configuração do PHP.";
+    } else if (erro.message === "Failed to fetch") {
+      elementoMensagem.textContent =
+        "Não foi possível conectar ao servidor. Confira se o site está hospedado corretamente.";
+    } else {
+      elementoMensagem.textContent = erro.message;
+    }
+
+    elementoMensagem.classList.remove("sucesso");
   } finally {
     botao.disabled = false;
     botao.textContent = textoOriginal;
@@ -140,17 +178,22 @@ formCadastro.addEventListener("submit", (evento) => {
   const confirmar = document.getElementById("cadConfirmar").value;
   const mensagem = document.getElementById("mensagemCadastro");
 
+  if (senha.length < 8) {
+    mensagem.textContent =
+      "A senha precisa ter pelo menos 8 caracteres.";
+    mensagem.classList.remove("sucesso");
+    return;
+  }
+
   if (senha !== confirmar) {
     mensagem.textContent = "As senhas não são iguais.";
     mensagem.classList.remove("sucesso");
     return;
   }
 
-  if (senha.length < 8) {
-    mensagem.textContent = "A senha deve ter pelo menos 8 caracteres.";
-    mensagem.classList.remove("sucesso");
-    return;
-  }
-
-  enviarFormulario("cadastrar.php", formCadastro, mensagem);
+  enviarFormulario(
+    "cadastrar.php",
+    formCadastro,
+    mensagem
+  );
 });
