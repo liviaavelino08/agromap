@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>AgroMap | Painel</title>
+
+    <link
+        rel="stylesheet"
+        href="dashboard.css">
+
+</head>
+
+<body>
+
+
+<!-- MENU LATERAL -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        🌱 Agro<span>Map</span>
+    </div>
+
+
+    <nav>
+
+        <button class="menu active">
+            🏠
+            <span>Visão geral</span>
+        </button>
+
+        <button class="menu">
+            🗺️
+            <span>Propriedade</span>
+        </button>
+
+        <button class="menu">
+            🌦️
+            <span>Clima</span>
+        </button>
+
+        <button class="menu">
+            📊
+            <span>Produção</span>
+        </button>
+
+        <button class="menu">
+            💰
+            <span>Financeiro</span>
+        </button>
+
+    </nav>
+
+
+    <button id="logout" class="logout">
+        ↪ Sair da conta
+    </button>
+
+</aside>
+
+
+<!-- CONTEÚDO -->
+
+<main class="dashboard">
+
+    <header class="topbar">
+
+        <div>
+
+            <small>
+                PAINEL DO PRODUTOR
+            </small>
+
+            <h1>
+                Olá, <span id="nomeUsuario">
+                    Produtor
+                </span> 👋
+            </h1>
+
+        </div>
+
+
+        <div class="profile">
+
+            <div class="avatar">
+                🌱
+            </div>
+
+            <div>
+
+                <strong id="propriedadeUsuario">
+                    Minha propriedade
+                </strong>
+
+                <small>
+                    Produtor
+                </small>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- CARDS -->
+
+    <section class="cards">
+
+        <article class="card">
+
+            <div class="card-icon">
+                🌾
+            </div>
+
+            <span>ÁREA TOTAL</span>
+
+            <strong>
+                248 ha
+            </strong>
+
+            <small>
+                +2,4% este ano
+            </small>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="card-icon">
+                📈
+            </div>
+
+            <span>PRODUÇÃO</span>
+
+            <strong>
+                1.840 t
+            </strong>
+
+            <small>
+                +8,4% comparado ao ano anterior
+            </small>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="card-icon">
+                ☀️
+            </div>
+
+            <span>TEMPERATURA</span>
+
+            <strong>
+                29°C
+            </strong>
+
+            <small>
+                Condições favoráveis
+            </small>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="card-icon">
+                💰
+            </div>
+
+            <span>RECEITA</span>
+
+            <strong>
+                R$ 428 mil
+            </strong>
+
+            <small>
+                +12,8% este período
+            </small>
+
+        </article>
+
+    </section>
+
+
+    <!-- ÁREA PRINCIPAL -->
+
+    <section class="main-grid">
+
+
+        <!-- MAPA -->
+
+        <article class="panel map-panel">
+
+            <div class="panel-title">
+
+                <div>
+
+                    <small>
+                        PROPRIEDADE
+                    </small>
+
+                    <h2>
+                        Mapa dos talhões
+                    </h2>
+
+                </div>
+
+                <button>
+                    Ver detalhes
+                </button>
+
+            </div>
+
+
+            <div class="big-map">
+
+                <div class="big-field field1">
+                    <span>Talhão 01</span>
+                </div>
+
+                <div class="big-field field2">
+                    <span>Talhão 02</span>
+                </div>
+
+                <div class="big-field field3">
+                    <span>Talhão 03</span>
+                </div>
+
+                <div class="big-field field4">
+                    <span>Talhão 04</span>
+                </div>
+
+                <div class="map-road"></div>
+
+            </div>
+
+        </article>
+
+
+        <!-- CLIMA -->
+
+        <article class="panel weather-panel">
+
+            <div class="panel-title">
+
+                <div>
+
+                    <small>
+                        MONITORAMENTO
+                    </small>
+
+                    <h2>
+                        Clima
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="weather-main">
+
+                <span>
+                    ☀️
+                </span>
+
+                <strong>
+                    29°
+                </strong>
+
+                <p>
+                    Ensolarado
+                </p>
+
+            </div>
+
+
+            <div class="weather-data">
+
+                <div>
+                    <span>Umidade</span>
+                    <strong>62%</strong>
+                </div>
+
+                <div>
+                    <span>Vento</span>
+                    <strong>12 km/h</strong>
+                </div>
+
+                <div>
+                    <span>Chuva</span>
+                    <strong>10%</strong>
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- PRODUÇÃO -->
+
+    <section class="panel production-panel">
+
+        <div class="panel-title">
+
+            <div>
+
+                <small>
+                    DESEMPENHO
+                </small>
+
+                <h2>
+                    Produção da propriedade
+                </h2>
+
+            </div>
+
+            <select>
+
+                <option>
+                    2026
+                </option>
+
+                <option>
+                    2025
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="chart">
+
+            <div class="bar" style="height:45%">
+                <span>Jan</span>
+            </div>
+
+            <div class="bar" style="height:60%">
+                <span>Fev</span>
+            </div>
+
+            <div class="bar" style="height:50%">
+                <span>Mar</span>
+            </div>
+
+            <div class="bar" style="height:75%">
+                <span>Abr</span>
+            </div>
+
+            <div class="bar" style="height:65%">
+                <span>Mai</span>
+            </div>
+
+            <div class="bar" style="height:90%">
+                <span>Jun</span>
+            </div>
+
+            <div class="bar" style="height:80%">
+                <span>Jul</span>
+            </div>
+
+            <div class="bar" style="height:95%">
+                <span>Ago</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<script src="dashboard.js"></script>
+
+</body>
+
+</html>

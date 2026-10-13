@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro - AgroMap</title>
+
+    <link rel="stylesheet"
+          href="cadastro.css">
+
+</head>
+
+<body>
+
+    <main class="cadastro-container">
+
+        <section class="cadastro-card">
+
+            <h1>Crie sua conta</h1>
+
+            <p>
+                Cadastre seus dados para começar
+                a utilizar o AgroMap.
+            </p>
+
+
+            <form id="cadastroForm">
+
+
+                <label for="nome">
+                    Nome completo
+                </label>
+
+                <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    placeholder="Digite seu nome"
+                    required
+                >
+
+
+                <label for="email">
+                    E-mail
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Digite seu e-mail"
+                    required
+                >
+
+
+                <label for="propriedade">
+                    Nome da propriedade
+                </label>
+
+                <input
+                    type="text"
+                    id="propriedade"
+                    name="propriedade"
+                    placeholder="Ex.: Fazenda Santa Maria"
+                    required
+                >
+
+
+                <!-- LOCALIZAÇÃO -->
+
+                <div class="localizacao-box">
+
+                    <h3>
+                        Localização da propriedade
+                    </h3>
+
+                    <p>
+                        Permita o acesso à sua localização
+                        para registrar as coordenadas
+                        da propriedade.
+                    </p>
+
+                    <button
+                        type="button"
+                        id="btnLocalizacao"
+                    >
+                        Permitir localização
+                    </button>
+
+                    <p id="statusLocalizacao">
+                        Localização ainda não autorizada.
+                    </p>
+
+                    <input
+                        type="hidden"
+                        id="latitude"
+                        name="latitude"
+                    >
+
+                    <input
+                        type="hidden"
+                        id="longitude"
+                        name="longitude"
+                    >
+
+                </div>
+
+
+                <label for="senha">
+                    Senha
+                </label>
+
+                <input
+                    type="password"
+                    id="senha"
+                    name="senha"
+                    placeholder="Crie uma senha"
+                    required
+                >
+
+
+                <label for="confirmarSenha">
+                    Confirmar senha
+                </label>
+
+                <input
+                    type="password"
+                    id="confirmarSenha"
+                    name="confirmarSenha"
+                    placeholder="Digite a senha novamente"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="btn-cadastrar"
+                >
+                    Criar minha conta
+                </button>
+
+
+                <div id="mensagem"></div>
+
+            </form>
+
+
+            <p class="login-link">
+
+                Já possui uma conta?
+
+                <a href="login.html">
+                    Entrar
+                </a>
+
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <script src="cadastro.js"></script>
+
+</body>
+
+</html>
