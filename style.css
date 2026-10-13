@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,15 +6,13 @@
 }
 
 :root {
-  --bg: #f5f7f1;
-  --white: #fff;
+  --bg: #f4f6f0;
   --text: #193b2a;
-  --muted: #52675a;
+  --muted: #dce5da;
   --green: #27834d;
-  --dark: #164c31;
-  --pale: #e7f0e5;
+  --dark: #153b29;
+  --yellow: #f7b82f;
   --border: #dce5da;
-  --shadow: 0 20px 60px rgba(25, 59, 42, .12);
 }
 
 html {
@@ -27,7 +26,6 @@ body {
   color: var(--text);
   line-height: 1.7;
   font-size: 16px;
-  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -35,30 +33,22 @@ a {
   text-decoration: none;
 }
 
-a:focus-visible {
-  outline: 3px solid #8bc89c;
-  outline-offset: 4px;
-}
-
-/* CABEÇALHO */
-
 .header {
-  min-height: 82px;
-  padding: 16px 6%;
+  min-height: 78px;
+  padding: 14px 6%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  background: rgba(255, 255, 255, .97);
+  background: white;
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 10;
-  backdrop-filter: blur(12px);
 }
 
 .logo {
-  font-size: 29px;
+  font-size: 27px;
   font-weight: 850;
   letter-spacing: -1px;
   white-space: nowrap;
@@ -75,13 +65,8 @@ nav {
 
 nav a {
   font-size: 16px;
-  color: var(--muted);
-  font-weight: 600;
-  transition: color .2s;
-}
-
-nav a:hover {
-  color: var(--green);
+  color: #5e7065;
+  font-weight: 650;
 }
 
 .login-button,
@@ -92,89 +77,99 @@ nav a:hover {
   justify-content: center;
   gap: 12px;
   min-height: 50px;
-  padding: 13px 24px;
+  padding: 12px 23px;
   border-radius: 10px;
   font-size: 16px;
   font-weight: 750;
-  transition: transform .2s, background .2s;
 }
 
-.login-button,
-.main-button {
+.login-button {
   background: var(--green);
   color: white;
-  border: 1px solid var(--green);
 }
-
-.login-button:hover,
-.main-button:hover {
-  background: var(--dark);
-  transform: translateY(-2px);
-}
-
-/* SEÇÃO PRINCIPAL */
 
 .hero {
-  min-height: 620px;
-  padding: 76px 6%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 6%;
+  min-height: 670px;
+  position: relative;
+  isolation: isolate;
   overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 5%;
+  padding: 80px 7%;
+  color: white;
+  background: #183c29;
 }
 
-.hero-text {
-  max-width: 600px;
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg,
+      rgba(8,32,20,.90),
+      rgba(8,32,20,.68) 55%,
+      rgba(8,32,20,.15)),
+    url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2200&q=90")
+    center / cover no-repeat;
+}
+
+.hero-content {
+  max-width: 700px;
+  padding-bottom: 35px;
 }
 
 .eyebrow {
   display: inline-block;
   color: var(--green);
   font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 1.5px;
+  font-weight: 850;
+  letter-spacing: 1.8px;
   text-transform: uppercase;
 }
 
+.hero .eyebrow {
+  color: #f8c94e;
+}
+
 .hero h1 {
-  font-size: clamp(44px, 5vw, 68px);
-  line-height: 1.1;
-  letter-spacing: -2px;
-  margin: 20px 0 24px;
+  font-size: clamp(44px, 5.2vw, 72px);
+  line-height: 1.06;
+  letter-spacing: -2.5px;
+  margin: 22px 0;
   font-weight: 850;
 }
 
 .hero h1 span {
-  color: var(--green);
+  color: var(--yellow);
 }
 
-.hero-text > p,
-.section-title > p,
-.about-copy > p,
-.cta > p {
-  color: var(--muted);
-  font-size: 17px;
+.hero-content > p {
+  color: rgba(255,255,255,.9);
+  font-size: 19px;
   line-height: 1.8;
-  max-width: 520px;
+  max-width: 630px;
 }
 
 .hero-buttons {
   display: flex;
-  gap: 12px;
+  gap: 13px;
   flex-wrap: wrap;
-  margin-top: 28px;
+  margin-top: 30px;
+}
+
+.main-button {
+  background: var(--yellow);
+  color: #183522;
+  border: 1px solid var(--yellow);
 }
 
 .secondary-button {
-  border: 1px solid var(--border);
-  background: white;
-  color: var(--text);
-}
-
-.secondary-button:hover {
-  border-color: var(--green);
-  transform: translateY(-2px);
+  border: 1px solid rgba(255,255,255,.7);
+  background: rgba(255,255,255,.12);
+  color: white;
 }
 
 .hero-points {
@@ -182,76 +177,76 @@ nav a:hover {
   gap: 18px;
   flex-wrap: wrap;
   margin-top: 32px;
-  padding-top: 22px;
-  border-top: 1px solid var(--border);
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,.3);
   font-size: 14px;
-  color: var(--muted);
 }
 
-/* IMAGEM PRINCIPAL */
-
-.hero-visual {
-  min-height: 490px;
+.hero-side {
+  min-height: 390px;
   position: relative;
-  border-radius: 24px;
-  background-color: #dce9d7;
-  background-image:
-    linear-gradient(
-      180deg,
-      rgba(13, 48, 29, .03),
-      rgba(13, 48, 29, .15)
-    ),
-    url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1400&q=85");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  box-shadow: var(--shadow);
 }
 
-.photo-label {
+.hero-stat {
   position: absolute;
-  top: 22px;
-  left: 22px;
-  right: 22px;
-  color: white;
-  font-size: 14px;
-  font-weight: 700;
-  text-shadow: 0 1px 8px #183b2a;
+  top: 40px;
+  right: 0;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,.4);
+  border-radius: 15px;
+  background: rgba(255,255,255,.16);
+  backdrop-filter: blur(12px);
 }
 
-.photo-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #b9e2a8;
-  margin-right: 8px;
+.hero-stat strong,
+.hero-stat span {
+  display: block;
+}
+
+.hero-stat strong {
+  font-size: 19px;
+}
+
+.hero-stat span {
+  font-size: 15px;
+}
+
+.stat-bottom {
+  top: auto;
+  right: auto;
+  left: 0;
+  bottom: 50px;
+}
+
+.hero-caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 15px;
 }
 
 .hero-note {
   position: absolute;
-  left: -15px;
-  bottom: 28px;
+  left: 7%;
+  bottom: 24px;
   display: flex;
   align-items: center;
   gap: 13px;
-  padding: 17px 20px;
+  padding: 15px 20px;
   background: white;
-  border: 1px solid var(--border);
+  color: var(--text);
   border-radius: 14px;
-  box-shadow: var(--shadow);
-  max-width: calc(100% - 5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,.2);
 }
 
 .note-icon {
-  width: 46px;
-  height: 46px;
-  flex-shrink: 0;
-  border-radius: 12px;
-  background: var(--pale);
   display: grid;
   place-items: center;
-  font-size: 23px;
+  width: 45px;
+  height: 45px;
+  background: #e7f0e5;
+  border-radius: 12px;
+  font-size: 24px;
 }
 
 .hero-note strong,
@@ -264,12 +259,9 @@ nav a:hover {
 }
 
 .hero-note small {
-  color: var(--muted);
   font-size: 13px;
-  margin-top: 3px;
+  color: #5e7065;
 }
-
-/* RECURSOS */
 
 .resources {
   padding: 88px 6%;
@@ -278,21 +270,30 @@ nav a:hover {
 }
 
 .section-title {
-  max-width: 690px;
+  max-width: 740px;
   margin-bottom: 38px;
 }
 
 .section-title h2,
 .about-copy h2,
 .cta h2 {
-  font-size: clamp(32px, 4vw, 46px);
-  line-height: 1.2;
-  letter-spacing: -1px;
+  font-size: clamp(34px, 4vw, 49px);
+  line-height: 1.14;
+  letter-spacing: -1.5px;
   margin: 13px 0 16px;
 }
 
 .section-title h2 span {
   color: var(--green);
+}
+
+.section-title > p,
+.about-copy > p,
+.cta > p {
+  color: #5e7065;
+  font-size: 17px;
+  line-height: 1.8;
+  max-width: 600px;
 }
 
 .resource-grid {
@@ -306,17 +307,16 @@ nav a:hover {
   border: 1px solid var(--border);
   border-radius: 16px;
   background: white;
-  transition: transform .25s, box-shadow .25s, border-color .25s;
+  transition: transform .25s, box-shadow .25s;
 }
 
 .resource-card:hover {
   transform: translateY(-5px);
-  box-shadow: var(--shadow);
-  border-color: #a8c9ad;
+  box-shadow: 0 15px 35px rgba(25,59,42,.15);
 }
 
 .resource-photo {
-  height: 180px;
+  height: 185px;
   background-color: #dce9d7;
   background-size: cover;
   background-position: center;
@@ -332,7 +332,7 @@ nav a:hover {
 }
 
 .photo-crops {
-  background-image: url("https://images.unsplash.com/photo-1499529112087-3cb3b73be8ae?auto=format&fit=crop&w=700&q=80");
+  background-image: url("images/producao-agricola.png");
 }
 
 .photo-planning {
@@ -345,27 +345,25 @@ nav a:hover {
 
 .resource-number {
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 850;
   letter-spacing: 1px;
   color: var(--green);
 }
 
 .resource-card h3 {
-  font-size: 19px;
+  font-size: 20px;
   line-height: 1.4;
   margin: 12px 0;
 }
 
 .resource-card p {
-  font-size: 15px;
-  line-height: 1.8;
-  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.75;
+  color: #5e7065;
 }
 
-/* SOBRE O AGROMAP */
-
 .about {
-  padding: 86px 6%;
+  padding: 88px 6%;
   display: grid;
   grid-template-columns: .9fr 1fr;
   align-items: center;
@@ -373,18 +371,11 @@ nav a:hover {
 }
 
 .about-image {
-  min-height: 350px;
+  min-height: 370px;
   border-radius: 20px;
-  background-color: #dce9d7;
-  background-image: url("https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1100&q=85");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  box-shadow: var(--shadow);
-}
-
-.about-copy h2 {
-  max-width: 560px;
+  background:
+    url("https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1100&q=85")
+    center / cover no-repeat;
 }
 
 .about-copy > p {
@@ -392,16 +383,10 @@ nav a:hover {
 }
 
 .text-link {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 800;
   color: var(--green);
 }
-
-.text-link span {
-  margin-left: 7px;
-}
-
-/* CHAMADA FINAL */
 
 .cta {
   margin: 0 6% 75px;
@@ -413,15 +398,13 @@ nav a:hover {
 }
 
 .cta h2 {
-  max-width: 650px;
+  max-width: 700px;
   margin: 14px auto;
 }
 
 .cta > p {
   margin: 0 auto 24px;
 }
-
-/* RODAPÉ */
 
 footer {
   padding: 30px 6%;
@@ -437,42 +420,33 @@ footer {
 footer p,
 footer small {
   font-size: 14px;
-  color: var(--muted);
+  color: #5e7065;
 }
 
-/* TABLETS */
-
-@media (max-width: 1000px) {
+@media (max-width: 1050px) {
   .hero {
-    grid-template-columns: 1fr;
-    padding-top: 60px;
+    grid-template-columns: 1fr .7fr;
+    padding-inline: 5%;
   }
 
-  .hero-text {
-    max-width: 720px;
-  }
-
-  .hero-visual {
-    min-height: 430px;
-    margin: 10px 0 0 20px;
+  .hero h1 {
+    font-size: clamp(42px, 5.5vw, 62px);
   }
 
   .resource-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .about {
-    gap: 35px;
+  .hero-note {
+    left: 5%;
   }
 }
 
-/* CELULARES */
-
-@media (max-width: 700px) {
+@media (max-width: 720px) {
   .header {
-    padding: 13px 5%;
-    min-height: 68px;
-    gap: 10px;
+    padding: 12px 5%;
+    min-height: 70px;
+    gap: 12px;
   }
 
   .logo {
@@ -484,27 +458,49 @@ footer small {
   }
 
   .hero {
-    padding: 48px 5%;
-    gap: 24px;
+    display: block;
+    padding: 55px 5% 145px;
+    min-height: auto;
   }
 
   .hero h1 {
-    font-size: clamp(38px, 10vw, 52px);
+    font-size: clamp(40px, 10vw, 54px);
     letter-spacing: -1.5px;
   }
 
-  .hero-text > p {
-    font-size: 16px;
+  .hero-content > p {
+    font-size: 17px;
   }
 
-  .hero-visual {
-    min-height: 320px;
-    margin-left: 8px;
+  .hero-points {
+    gap: 10px 15px;
+    font-size: 13px;
+  }
+
+  .hero-side {
+    min-height: 190px;
+    margin-top: 20px;
+  }
+
+  .hero-stat {
+    top: 0;
+    right: 0;
+  }
+
+  .stat-bottom {
+    top: auto;
+    bottom: 0;
+    left: 0;
+  }
+
+  .hero-caption {
+    display: none;
   }
 
   .hero-note {
-    left: -8px;
-    bottom: 16px;
+    left: 5%;
+    right: 5%;
+    bottom: 18px;
     padding: 12px;
   }
 
@@ -516,26 +512,14 @@ footer small {
     font-size: 12px;
   }
 
-  .hero-points {
-    gap: 10px;
-    font-size: 13px;
-  }
-
-  .hero-buttons {
-    align-items: stretch;
-  }
-
-  .hero-buttons a {
-    text-align: center;
-  }
-
-  .resources {
+  .resources,
+  .about {
     padding: 58px 5%;
   }
 
   .section-title h2,
   .about-copy h2 {
-    font-size: 34px;
+    font-size: 35px;
   }
 
   .resource-grid {
@@ -543,38 +527,25 @@ footer small {
   }
 
   .resource-photo {
-    height: 210px;
-  }
-
-  .resource-card h3 {
-    font-size: 20px;
-  }
-
-  .resource-card p {
-    font-size: 16px;
+    height: 220px;
   }
 
   .about {
-    padding: 58px 5%;
     grid-template-columns: 1fr;
     gap: 25px;
   }
 
   .about-image {
-    min-height: 250px;
+    min-height: 260px;
   }
 
   .cta {
     margin: 0 5% 50px;
-    padding: 45px 20px;
+    padding: 44px 20px;
   }
 
   .cta h2 {
-    font-size: 32px;
-  }
-
-  .cta > p {
-    font-size: 16px;
+    font-size: 33px;
   }
 
   footer {
@@ -583,8 +554,6 @@ footer small {
     flex-direction: column;
   }
 }
-
-/* ACESSIBILIDADE */
 
 @media (prefers-reduced-motion: reduce) {
   *,
