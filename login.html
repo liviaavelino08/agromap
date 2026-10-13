@@ -1,89 +1,83 @@
+
 <!DOCTYPE html>
-
 <html lang="pt-BR">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Login - AgroMap</title>
-
-    <link rel="stylesheet"
-          href="login.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar | AgroMap</title>
+    <link rel="stylesheet" href="login.css">
 </head>
-
 <body>
 
-    <main class="login-container">
+<main class="login-container">
+    <section class="login-card">
+        <a href="index.html" class="back-link">← Voltar ao início</a>
 
-        <section class="login-card">
+        <h1>Agro<span>Map</span></h1>
+        <p>Entre na sua conta.</p>
 
-            <h1>AgroMap</h1>
+        <form id="loginForm">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email"
+                   placeholder="Digite seu e-mail" required>
 
-            <p>
-                Entre na sua conta
-            </p>
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha"
+                   placeholder="Digite sua senha" required>
 
+            <button type="submit" id="entrarBtn">Entrar</button>
+            <p id="mensagem" role="status" aria-live="polite"></p>
+        </form>
 
-            <form id="loginForm">
+        <p>Ainda não possui uma conta?
+            <a href="cadastro.html">Criar conta</a>
+        </p>
+    </section>
+</main>
 
-                <label for="email">
-                    E-mail
-                </label>
+<script>
+document.getElementById("loginForm").addEventListener("submit",
+async function (evento) {
+    evento.preventDefault();
 
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Digite seu e-mail"
-                    required
-                >
+    const mensagem = document.getElementById("mensagem");
+    const botao = document.getElementById("entrarBtn");
 
+    mensagem.textContent = "Verificando seus dados...";
+    botao.disabled = true;
 
-                <label for="senha">
-                    Senha
-                </label>
+    try {
+        const resposta = await fetch("api.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                action: "login",
+                email: document.getElementById("email").value.trim(),
+                senha: document.getElementById("senha").value
+            })
+        });
 
-                <input
-                    type="password"
-                    id="senha"
-                    name="senha"
-                    placeholder="Digite sua senha"
-                    required
-                >
+        const resultado = await resposta.json();
 
+        if (!resposta.ok || resultado.erro || resultado.sucesso === false) {
+            throw new Error(resultado.mensagem || resultado.erro ||
+                            "E-mail ou senha inválidos.");
+        }
 
-                <button type="submit">
-                    Entrar
-                </button>
+        mensagem.textContent = resultado.mensagem || "Login realizado!";
 
+        setTimeout(() => {
+            window.location.href = "dashboard.html";
+        }, 500);
 
-                <div id="mensagem"></div>
-
-            </form>
-
-
-            <p>
-
-                Ainda não possui uma conta?
-
-                <a href="cadastro.html">
-                    Criar conta
-                </a>
-
-            </p>
-
-        </section>
-
-    </main>
-
-
-    <script src="login.js"></script>
+    } catch (erro) {
+        mensagem.textContent =
+            "Não foi possível entrar: " + erro.message;
+    } finally {
+        botao.disabled = false;
+    }
+});
+</script>
 
 </body>
-
 </html>
