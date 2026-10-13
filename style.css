@@ -1,417 +1,812 @@
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #f5f8f3;
+    --white: #ffffff;
+    --text: #18251c;
+    --muted: #68756c;
+    --green: #2e8b57;
+    --dark-green: #155c35;
+    --light-green: #dff0e3;
+    --border: #dfe7df;
+    --shadow: 0 25px 70px rgba(30, 70, 40, 0.10);
+}
+
+body.dark {
+    --background: #0b120d;
+    --white: #131c16;
+    --text: #f2f7f3;
+    --muted: #b0bdb3;
+    --green: #52bd77;
+    --dark-green: #2e9c58;
+    --light-green: #193a25;
+    --border: #29372d;
+    --shadow: 0 25px 70px rgba(0, 0, 0, 0.30);
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  color: #174b39;
-  background: #f8f7ef;
-  font-size: 17px;
-  line-height: 1.6;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+}
+
+button, a {
+    font-family: inherit;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
-.topo {
-  min-height: 76px;
-  padding: 14px 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 24px;
-  background: #fffef7;
+button {
+    cursor: pointer;
+}
+
+/* MENU */
+
+.header {
+    width: 100%;
+    padding: 17px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .logo {
-  font-size: 29px;
-  font-weight: 800;
-  color: #176641;
-  white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 25px;
+    font-weight: 800;
+    white-space: nowrap;
 }
 
-.topo nav {
-  display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
+.logo span:last-child {
+    color: var(--green);
 }
 
-.topo nav a {
-  font-size: 16px;
-  font-weight: 600;
+.logo > span:first-child {
+    font-size: 26px;
 }
 
-.topo nav a:hover,
-.link:hover {
-  color: #d69a00;
+nav {
+    display: flex;
+    gap: 30px;
 }
 
-.botao {
-  display: inline-block;
-  padding: 12px 24px;
-  border-radius: 28px;
-  font-size: 16px;
-  font-weight: 700;
-  transition: 0.2s;
+nav a {
+    font-size: 15px;
+    color: var(--muted);
+    transition: color 0.2s;
 }
 
-.entrar {
-  background: #176641;
-  color: white;
-  border-radius: 9px;
+nav a:hover {
+    color: var(--green);
 }
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.theme-button {
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    border-radius: 8px;
+    font-size: 17px;
+}
+
+.login-button {
+    padding: 11px 20px;
+    background: var(--green);
+    color: white;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.login-button:hover {
+    background: var(--dark-green);
+}
+
+/* INÍCIO */
 
 .hero {
-  min-height: 480px;
-  padding: 65px 7%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  background:
-    linear-gradient(90deg, rgba(4, 43, 29, .96) 0%, rgba(4, 43, 29, .83) 33%, rgba(4, 43, 29, .16) 72%),
-    url("imagens/trator.jpg") center 55% / cover no-repeat;
-  color: white;
+    min-height: 610px;
+    padding: 75px 7%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 45px;
 }
 
-.hero-conteudo {
-  max-width: 610px;
-  position: relative;
-  z-index: 2;
+.hero-text {
+    max-width: 600px;
 }
 
-.destaque {
-  color: #ffca27;
-  font-weight: 800;
-  font-size: 16px;
-  letter-spacing: 1.5px;
+.small-title {
+    color: var(--green);
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
 }
 
 .hero h1 {
-  font-size: clamp(36px, 4vw, 54px);
-  line-height: 1.13;
-  margin: 12px 0 18px;
+    font-size: clamp(40px, 4.5vw, 66px);
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
 }
 
 .hero h1 span {
-  color: #54d887;
+    display: block;
+    color: var(--green);
 }
 
-.hero p {
-  max-width: 550px;
-  font-size: 18px;
+.hero-text > p {
+    max-width: 510px;
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 17px;
+    margin-bottom: 28px;
 }
 
-.acoes {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  margin: 25px 0 20px;
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.amarelo {
-  background: #ffc629;
-  color: #193c2b;
+.main-button {
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    background: var(--green);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.2s;
 }
 
-.amarelo:hover {
-  background: #ffda66;
-  transform: translateY(-2px);
+.main-button:hover {
+    background: var(--dark-green);
+    transform: translateY(-2px);
 }
 
-.contorno {
-  border: 1px solid white;
-  color: white;
+.secondary-button {
+    display: inline-block;
+    padding: 12px 19px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--muted);
+    font-size: 15px;
 }
 
-.beneficios {
-  display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
-  font-size: 14px;
-  font-weight: 600;
+.secondary-button:hover {
+    border-color: var(--green);
+    color: var(--green);
 }
 
-.beneficios span::first-letter {
-  color: #55df88;
+/* NÚMEROS */
+
+.numbers {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 42px;
+    padding-top: 23px;
+    border-top: 1px solid var(--border);
 }
 
-.aviso {
-  position: absolute;
-  right: 7%;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: rgba(12, 75, 46, .94);
-  padding: 15px 20px;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px #0002;
+.numbers strong {
+    display: block;
+    font-size: 24px;
+    line-height: 1.3;
 }
 
-.aviso strong,
-.aviso small {
-  display: block;
+.numbers span {
+    display: block;
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 5px;
 }
 
-.aviso small {
-  font-size: 13px;
+/* ILUSTRAÇÃO DA FAZENDA */
+
+.hero-visual {
+    min-width: 0;
+    min-height: 460px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.aviso-1 {
-  top: 18%;
+.circle {
+    width: min(390px, 85%);
+    aspect-ratio: 1;
+    background: var(--light-green);
+    border-radius: 50%;
+    position: absolute;
 }
 
-.aviso-2 {
-  bottom: 18%;
+/* CARTÃO DA FAZENDA */
+
+.farm-card {
+    width: min(410px, 100%);
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 18px;
+    position: relative;
+    z-index: 2;
+    box-shadow: var(--shadow);
 }
 
-.secao {
-  padding: 55px 7%;
+.farm-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 15px;
 }
 
-.cabecalho-secao {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 35px;
-  margin-bottom: 25px;
+.farm-top small {
+    display: block;
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 0.7px;
 }
 
-.subtitulo {
-  color: #26734f;
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 1.4px;
+.farm-top strong {
+    display: block;
+    font-size: 16px;
+    margin-top: 4px;
 }
 
-h2 {
-  font-size: clamp(27px, 3vw, 36px);
-  line-height: 1.2;
-  margin: 7px 0 12px;
+.status {
+    color: var(--green);
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
 }
 
-.cabecalho-secao > p {
-  max-width: 440px;
+/* MAPA */
+
+.farm-map {
+    height: 250px;
+    background: #c6dcae;
+    border-radius: 10px;
+    padding: 8px;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 5px;
 }
 
-.cartoes {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
+.field {
+    background: #4b9a5d;
+    border-radius: 5px;
+    position: relative;
+    transition: transform 0.3s;
 }
 
-.cartao {
-  background: #fffef8;
-  border: 1px solid #e8e6dc;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 5px 18px #243b2a0c;
+.field:hover {
+    transform: scale(1.02);
 }
 
-.cartao img {
-  display: block;
-  width: 100%;
-  height: 155px;
-  object-fit: cover;
+.field span {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.9);
+    color: #24633a;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
 }
 
-.cartao-conteudo {
-  padding: 18px;
+.field-a {
+    background: #3f8953;
 }
 
-.numero {
-  color: #26734f;
-  font-size: 12px;
-  font-weight: 800;
+.field-b {
+    background: #68a85b;
 }
 
-.cartao h3 {
-  font-size: 19px;
-  margin: 8px 0;
+.field-c {
+    background: #438f58;
 }
 
-.cartao p {
-  font-size: 15px;
-  line-height: 1.5;
+.field-d {
+    background: #7eae57;
 }
 
-.como {
-  background: #edf0e4;
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 35px;
-  align-items: center;
+.road {
+    position: absolute;
+    width: 30px;
+    height: 120%;
+    background: #d9c99c;
+    left: 48%;
+    top: -10%;
+    transform: rotate(20deg);
 }
 
-.como-intro p {
-  max-width: 440px;
+/* INFORMAÇÕES DA FAZENDA */
+
+.farm-info {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 12px;
 }
 
-.etapas {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 15px;
+.farm-info div {
+    padding: 10px;
+    background: var(--background);
+    border-radius: 7px;
 }
 
-.etapas article {
-  background: #fffef8;
-  padding: 20px;
-  border-radius: 12px;
+.farm-info span {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
 }
 
-.etapas article > span {
-  display: inline-flex;
-  width: 38px;
-  height: 38px;
-  justify-content: center;
-  align-items: center;
-  background: #d5e8ce;
-  color: #176641;
-  border-radius: 50%;
-  font-weight: 800;
+.farm-info strong {
+    display: block;
+    font-size: 16px;
+    margin-top: 3px;
 }
 
-.etapas h3 {
-  font-size: 17px;
-  margin: 10px 0;
-  line-height: 1.35;
+.green {
+    color: var(--green);
 }
 
-.etapas p {
-  font-size: 14px;
-  line-height: 1.5;
+/* CARTÕES FLUTUANTES */
+
+.floating-card {
+    position: absolute;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    box-shadow: var(--shadow);
 }
 
-.sobre {
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: 35px;
-  align-items: center;
+.floating-card > span {
+    font-size: 25px;
 }
 
-.sobre img {
-  width: 100%;
-  height: 230px;
-  object-fit: cover;
-  border-radius: 12px;
+.floating-card small {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
 }
 
-.link {
-  display: inline-block;
-  font-weight: 800;
-  margin-top: 12px;
+.floating-card strong {
+    display: block;
+    font-size: 15px;
+    margin-top: 3px;
 }
+
+.weather {
+    top: 35px;
+    right: 0;
+}
+
+.production {
+    bottom: 40px;
+    left: 0;
+}
+
+/* RECURSOS */
+
+.resources {
+    padding: 85px 7%;
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.section-title {
+    max-width: 700px;
+    margin-bottom: 38px;
+}
+
+.section-title small {
+    color: var(--green);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.section-title h2 {
+    font-size: clamp(32px, 3.5vw, 44px);
+    line-height: 1.12;
+    letter-spacing: -1px;
+    margin: 12px 0;
+}
+
+.section-title h2 span {
+    color: var(--green);
+}
+
+.section-title p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 17px;
+}
+
+.resource-card {
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--background);
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.resource-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--green);
+}
+
+.resource-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--light-green);
+    border-radius: 9px;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.resource-card > span {
+    color: var(--green);
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.resource-card h3 {
+    font-size: 20px;
+    margin: 9px 0;
+}
+
+.resource-card p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* SOBRE */
+
+.about {
+    padding: 85px 7%;
+}
+
+.about-box {
+    max-width: 1100px;
+    margin: auto;
+    padding: 55px;
+    background: var(--dark-green);
+    border-radius: 15px;
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 55px;
+    align-items: center;
+}
+
+.about-box small {
+    color: #bce4c9;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+}
+
+.about-box h2 {
+    font-size: clamp(30px, 3vw, 39px);
+    line-height: 1.15;
+    margin-top: 15px;
+}
+
+.about-box p {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* CHAMADA FINAL */
+
+.cta {
+    padding: 80px 7%;
+    text-align: center;
+}
+
+.cta small {
+    color: var(--green);
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+}
+
+.cta h2 {
+    max-width: 650px;
+    margin: 15px auto 25px;
+    font-size: clamp(32px, 4vw, 46px);
+    line-height: 1.12;
+    letter-spacing: -1px;
+}
+
+.cta button {
+    border: none;
+    background: var(--green);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.cta button:hover {
+    background: var(--dark-green);
+}
+
+/* RODAPÉ */
 
 footer {
-  padding: 25px 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  background: #fffef7;
+    padding: 30px 7%;
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
-footer p,
-footer small {
-  color: #5e7c6d;
-  font-size: 14px;
+footer p {
+    color: var(--muted);
+    font-size: 14px;
 }
+
+footer small {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* TABLETS */
 
 @media (max-width: 1000px) {
-  .topo {
-    flex-wrap: wrap;
-  }
+    .hero {
+        grid-template-columns: 1fr;
+        padding-top: 55px;
+        gap: 25px;
+    }
 
-  .topo nav {
-    order: 3;
-    width: 100%;
-    gap: 18px;
-  }
+    .hero-text {
+        max-width: 750px;
+    }
 
-  .cartoes {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+    .hero-visual {
+        width: 100%;
+        max-width: 650px;
+        margin: 10px auto 0;
+    }
 
-  .como {
-    grid-template-columns: 1fr;
-  }
+    .resource-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 
-  .aviso {
-    display: none;
-  }
+    .about-box {
+        gap: 30px;
+        padding: 40px;
+    }
 }
 
-@media (max-width: 600px) {
-  body {
-    font-size: 16px;
-  }
+/* CELULARES */
 
-  .topo {
-    padding: 15px 5%;
-  }
+@media (max-width: 700px) {
+    .header {
+        padding: 14px 5%;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
 
-  .topo nav {
-    gap: 12px;
-  }
+    .logo {
+        font-size: 23px;
+    }
 
-  .topo nav a {
-    font-size: 14px;
-  }
+    nav {
+        order: 3;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+    }
 
-  .logo {
-    font-size: 25px;
-  }
+    nav a {
+        font-size: 14px;
+    }
 
-  .hero {
-    padding: 55px 5%;
-    min-height: 520px;
-    background-position: center;
-  }
+    .header-buttons {
+        margin-left: auto;
+    }
 
-  .hero h1 {
-    font-size: 36px;
-  }
+    .login-button {
+        padding: 9px 12px;
+        font-size: 13px;
+    }
 
-  .hero p {
-    font-size: 17px;
-  }
+    .hero {
+        padding: 45px 5%;
+    }
 
-  .beneficios {
-    flex-direction: column;
-    gap: 6px;
-  }
+    .hero h1 {
+        font-size: clamp(38px, 10vw, 50px);
+        letter-spacing: -1.5px;
+    }
 
-  .secao {
-    padding: 40px 5%;
-  }
+    .hero-text > p {
+        font-size: 16px;
+    }
 
-  .cabecalho-secao,
-  .sobre {
-    grid-template-columns: 1fr;
-    display: grid;
-  }
+    .hero-buttons {
+        align-items: stretch;
+    }
 
-  .cartoes,
-  .etapas {
-    grid-template-columns: 1fr;
-  }
+    .main-button,
+    .secondary-button {
+        text-align: center;
+    }
 
-  .cartao img {
-    height: 190px;
-  }
+    .numbers {
+        gap: 20px;
+        margin-top: 30px;
+    }
 
-  footer {
-    padding: 25px 5%;
-    flex-direction: column;
-    align-items: flex-start;
-  }
+    .numbers strong {
+        font-size: 21px;
+    }
+
+    .numbers span {
+        font-size: 12px;
+    }
+
+    .hero-visual {
+        min-height: 350px;
+    }
+
+    .farm-card {
+        width: 100%;
+        padding: 13px;
+    }
+
+    .farm-map {
+        height: 200px;
+    }
+
+    .circle {
+        width: 290px;
+    }
+
+    .weather {
+        top: 0;
+        right: -3px;
+    }
+
+    .production {
+        bottom: 0;
+        left: -3px;
+    }
+
+    .resources,
+    .about,
+    .cta {
+        padding: 55px 5%;
+    }
+
+    .section-title h2 {
+        font-size: 32px;
+    }
+
+    .resource-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .resource-card {
+        padding: 22px;
+    }
+
+    .about-box {
+        grid-template-columns: 1fr;
+        padding: 28px;
+        gap: 24px;
+    }
+
+    .about-box h2 {
+        font-size: 31px;
+    }
+
+    footer {
+        padding: 25px 5%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 380px) {
+    .header-buttons {
+        gap: 6px;
+    }
+
+    .theme-button {
+        width: 36px;
+        height: 36px;
+    }
+
+    .login-button {
+        padding: 8px 10px;
+    }
+
+    .farm-top strong {
+        font-size: 14px;
+    }
+
+    .farm-info {
+        gap: 5px;
+    }
+
+    .farm-info div {
+        padding: 7px;
+    }
+
+    .floating-card {
+        padding: 9px;
+    }
 }
