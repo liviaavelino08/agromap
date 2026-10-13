@@ -1,173 +1,159 @@
+
 <!DOCTYPE html>
-
 <html lang="pt-BR">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Cadastro - AgroMap</title>
-
-    <link rel="stylesheet"
-          href="cadastro.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar conta | AgroMap</title>
+    <link rel="stylesheet" href="login.css">
 </head>
-
 <body>
 
-    <main class="cadastro-container">
+<main class="login-container">
+    <section class="login-card">
+        <a href="index.html" class="back-link">← Voltar ao início</a>
 
-        <section class="cadastro-card">
+        <h1>Agro<span>Map</span></h1>
+        <p>Crie sua conta para começar.</p>
 
-            <h1>Crie sua conta</h1>
+        <form id="cadastroForm">
+            <label for="nome">Nome completo</label>
+            <input type="text" id="nome" name="nome"
+                   placeholder="Digite seu nome" required>
 
-            <p>
-                Cadastre seus dados para começar
-                a utilizar o AgroMap.
-            </p>
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email"
+                   placeholder="Digite seu e-mail" required>
 
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha"
+                   placeholder="Crie uma senha" minlength="6" required>
 
-            <form id="cadastroForm">
+            <div class="location-box">
+                <h3>Localização da propriedade</h3>
+                <p>
+                    Você pode permitir o acesso à localização para preencher
+                    as coordenadas automaticamente. Essa etapa é opcional.
+                </p>
 
-
-                <label for="nome">
-                    Nome completo
-                </label>
-
-                <input
-                    type="text"
-                    id="nome"
-                    name="nome"
-                    placeholder="Digite seu nome"
-                    required
-                >
-
-
-                <label for="email">
-                    E-mail
-                </label>
-
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Digite seu e-mail"
-                    required
-                >
-
-
-                <label for="propriedade">
-                    Nome da propriedade
-                </label>
-
-                <input
-                    type="text"
-                    id="propriedade"
-                    name="propriedade"
-                    placeholder="Ex.: Fazenda Santa Maria"
-                    required
-                >
-
-
-                <!-- LOCALIZAÇÃO -->
-
-                <div class="localizacao-box">
-
-                    <h3>
-                        Localização da propriedade
-                    </h3>
-
-                    <p>
-                        Permita o acesso à sua localização
-                        para registrar as coordenadas
-                        da propriedade.
-                    </p>
-
-                    <button
-                        type="button"
-                        id="btnLocalizacao"
-                    >
-                        Permitir localização
-                    </button>
-
-                    <p id="statusLocalizacao">
-                        Localização ainda não autorizada.
-                    </p>
-
-                    <input
-                        type="hidden"
-                        id="latitude"
-                        name="latitude"
-                    >
-
-                    <input
-                        type="hidden"
-                        id="longitude"
-                        name="longitude"
-                    >
-
-                </div>
-
-
-                <label for="senha">
-                    Senha
-                </label>
-
-                <input
-                    type="password"
-                    id="senha"
-                    name="senha"
-                    placeholder="Crie uma senha"
-                    required
-                >
-
-
-                <label for="confirmarSenha">
-                    Confirmar senha
-                </label>
-
-                <input
-                    type="password"
-                    id="confirmarSenha"
-                    name="confirmarSenha"
-                    placeholder="Digite a senha novamente"
-                    required
-                >
-
-
-                <button
-                    type="submit"
-                    class="btn-cadastrar"
-                >
-                    Criar minha conta
+                <button type="button" id="localizacaoBtn">
+                    Permitir minha localização
                 </button>
 
+                <p id="localizacaoStatus" role="status" aria-live="polite">
+                    Localização ainda não informada.
+                </p>
+            </div>
 
-                <div id="mensagem"></div>
+            <input type="hidden" id="latitude" name="latitude">
+            <input type="hidden" id="longitude" name="longitude">
 
-            </form>
+            <button type="submit" id="cadastrarBtn">Criar minha conta</button>
+            <p id="mensagem" role="status" aria-live="polite"></p>
+        </form>
 
+        <p>Já tem uma conta? <a href="login.html">Entrar</a></p>
+    </section>
+</main>
 
-            <p class="login-link">
+<script>
+const localizacaoBtn = document.getElementById("localizacaoBtn");
+const localizacaoStatus = document.getElementById("localizacaoStatus");
 
-                Já possui uma conta?
+localizacaoBtn.addEventListener("click", function () {
+    if (!navigator.geolocation) {
+        localizacaoStatus.textContent =
+            "Seu navegador não oferece suporte à localização.";
+        return;
+    }
 
-                <a href="login.html">
-                    Entrar
-                </a>
+    localizacaoStatus.textContent =
+        "Aguardando autorização do navegador...";
 
-            </p>
+    navigator.geolocation.getCurrentPosition(
+        function (posicao) {
+            document.getElementById("latitude").value =
+                posicao.coords.latitude;
+            document.getElementById("longitude").value =
+                posicao.coords.longitude;
 
-        </section>
+            localizacaoStatus.textContent =
+                "Localização autorizada e registrada neste formulário.";
+            localizacaoBtn.textContent = "Localização autorizada";
+        },
+        function (erro) {
+            const mensagens = {
+                1: "Permissão negada. Você pode continuar sem localização.",
+                2: "Não foi possível determinar a localização.",
+                3: "O pedido demorou muito. Tente novamente."
+            };
 
-    </main>
+            localizacaoStatus.textContent =
+                mensagens[erro.code] ||
+                "Não foi possível obter a localização.";
+        },
+        {
+            enableHighAccuracy: true,
+            timeout: 15000,
+            maximumAge: 0
+        }
+    );
+});
 
+document.getElementById("cadastroForm").addEventListener("submit",
+async function (evento) {
+    evento.preventDefault();
 
-    <script src="cadastro.js"></script>
+    const mensagem = document.getElementById("mensagem");
+    const botao = document.getElementById("cadastrarBtn");
+
+    mensagem.textContent = "Criando sua conta...";
+    botao.disabled = true;
+
+    const dados = {
+        action: "cadastro",
+        nome: document.getElementById("nome").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        senha: document.getElementById("senha").value,
+        latitude: document.getElementById("latitude").value || null,
+        longitude: document.getElementById("longitude").value || null
+    };
+
+    try {
+        const resposta = await fetch("api.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(dados)
+        });
+
+        const resultado = await resposta.json();
+
+        if (!resposta.ok || resultado.erro || resultado.sucesso === false) {
+            throw new Error(resultado.mensagem || resultado.erro ||
+                            "Não foi possível criar a conta.");
+        }
+
+        mensagem.textContent =
+            resultado.mensagem || "Cadastro concluído! Você já pode entrar.";
+
+        document.getElementById("cadastroForm").reset();
+        document.getElementById("latitude").value = "";
+        document.getElementById("longitude").value = "";
+        localizacaoStatus.textContent = "Localização ainda não informada.";
+
+        setTimeout(() => {
+            window.location.href = "login.html";
+        }, 1200);
+
+    } catch (erro) {
+        mensagem.textContent =
+            "Erro no cadastro: " + erro.message +
+            " Confira se o arquivo api.php está configurado corretamente.";
+    } finally {
+        botao.disabled = false;
+    }
+});
+</script>
 
 </body>
-
 </html>
