@@ -1,4 +1,3 @@
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,7 +8,7 @@
   --bg: #f5f7f1;
   --white: #fff;
   --text: #193b2a;
-  --muted: #68796e;
+  --muted: #52675a;
   --green: #27834d;
   --dark: #164c31;
   --pale: #e7f0e5;
@@ -23,11 +22,11 @@ html {
 }
 
 body {
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", sans-serif;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.7;
+  font-size: 16px;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -44,13 +43,13 @@ a:focus-visible {
 /* CABEÇALHO */
 
 .header {
-  min-height: 78px;
-  padding: 14px 6%;
+  min-height: 82px;
+  padding: 16px 6%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  background: rgba(255, 255, 255, .94);
+  background: rgba(255, 255, 255, .97);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
@@ -59,7 +58,7 @@ a:focus-visible {
 }
 
 .logo {
-  font-size: 25px;
+  font-size: 29px;
   font-weight: 850;
   letter-spacing: -1px;
   white-space: nowrap;
@@ -75,7 +74,7 @@ nav {
 }
 
 nav a {
-  font-size: 13px;
+  font-size: 16px;
   color: var(--muted);
   font-weight: 600;
   transition: color .2s;
@@ -92,10 +91,10 @@ nav a:hover {
   align-items: center;
   justify-content: center;
   gap: 12px;
-  min-height: 47px;
-  padding: 12px 21px;
+  min-height: 50px;
+  padding: 13px 24px;
   border-radius: 10px;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 750;
   transition: transform .2s, background .2s;
 }
@@ -113,7 +112,7 @@ nav a:hover {
   transform: translateY(-2px);
 }
 
-/* SECÇÃO PRINCIPAL */
+/* SEÇÃO PRINCIPAL */
 
 .hero {
   min-height: 620px;
@@ -132,16 +131,16 @@ nav a:hover {
 .eyebrow {
   display: inline-block;
   color: var(--green);
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 800;
-  letter-spacing: 1.8px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
 }
 
 .hero h1 {
-  font-size: clamp(43px, 5vw, 68px);
-  line-height: 1.04;
-  letter-spacing: -3px;
+  font-size: clamp(44px, 5vw, 68px);
+  line-height: 1.1;
+  letter-spacing: -2px;
   margin: 20px 0 24px;
   font-weight: 850;
 }
@@ -155,8 +154,8 @@ nav a:hover {
 .about-copy > p,
 .cta > p {
   color: var(--muted);
-  font-size: 15px;
-  line-height: 1.9;
+  font-size: 17px;
+  line-height: 1.8;
   max-width: 520px;
 }
 
@@ -169,7 +168,7 @@ nav a:hover {
 
 .secondary-button {
   border: 1px solid var(--border);
-  background: #fff;
+  background: white;
   color: var(--text);
 }
 
@@ -185,7 +184,7 @@ nav a:hover {
   margin-top: 32px;
   padding-top: 22px;
   border-top: 1px solid var(--border);
-  font-size: 11px;
+  font-size: 14px;
   color: var(--muted);
 }
 
@@ -195,14 +194,17 @@ nav a:hover {
   min-height: 490px;
   position: relative;
   border-radius: 24px;
-  background:
+  background-color: #dce9d7;
+  background-image:
     linear-gradient(
       180deg,
       rgba(13, 48, 29, .03),
       rgba(13, 48, 29, .15)
     ),
-    url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1400&q=85")
-    center / cover no-repeat;
+    url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1400&q=85");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   box-shadow: var(--shadow);
 }
 
@@ -212,16 +214,15 @@ nav a:hover {
   left: 22px;
   right: 22px;
   color: white;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: .3px;
   text-shadow: 0 1px 8px #183b2a;
 }
 
 .photo-dot {
   display: inline-block;
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: #b9e2a8;
   margin-right: 8px;
@@ -229,26 +230,28 @@ nav a:hover {
 
 .hero-note {
   position: absolute;
-  left: -28px;
+  left: -15px;
   bottom: 28px;
   display: flex;
   align-items: center;
   gap: 13px;
-  padding: 16px 20px;
+  padding: 17px 20px;
   background: white;
   border: 1px solid var(--border);
   border-radius: 14px;
   box-shadow: var(--shadow);
+  max-width: calc(100% - 5px);
 }
 
 .note-icon {
-  width: 42px;
-  height: 42px;
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
   border-radius: 12px;
   background: var(--pale);
   display: grid;
   place-items: center;
-  font-size: 21px;
+  font-size: 23px;
 }
 
 .hero-note strong,
@@ -257,12 +260,12 @@ nav a:hover {
 }
 
 .hero-note strong {
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .hero-note small {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
   margin-top: 3px;
 }
 
@@ -282,9 +285,9 @@ nav a:hover {
 .section-title h2,
 .about-copy h2,
 .cta h2 {
-  font-size: clamp(30px, 4vw, 45px);
-  line-height: 1.13;
-  letter-spacing: -1.6px;
+  font-size: clamp(32px, 4vw, 46px);
+  line-height: 1.2;
+  letter-spacing: -1px;
   margin: 13px 0 16px;
 }
 
@@ -295,7 +298,7 @@ nav a:hover {
 .resource-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
+  gap: 20px;
 }
 
 .resource-card {
@@ -303,8 +306,7 @@ nav a:hover {
   border: 1px solid var(--border);
   border-radius: 16px;
   background: white;
-  transition: transform .25s, box-shadow .25s,
-    border-color .25s;
+  transition: transform .25s, box-shadow .25s, border-color .25s;
 }
 
 .resource-card:hover {
@@ -314,9 +316,11 @@ nav a:hover {
 }
 
 .resource-photo {
-  height: 155px;
+  height: 180px;
+  background-color: #dce9d7;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .photo-farm {
@@ -340,19 +344,20 @@ nav a:hover {
 }
 
 .resource-number {
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 800;
-  letter-spacing: 1.1px;
+  letter-spacing: 1px;
   color: var(--green);
 }
 
 .resource-card h3 {
-  font-size: 17px;
-  margin: 10px 0;
+  font-size: 19px;
+  line-height: 1.4;
+  margin: 12px 0;
 }
 
 .resource-card p {
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.8;
   color: var(--muted);
 }
@@ -370,9 +375,11 @@ nav a:hover {
 .about-image {
   min-height: 350px;
   border-radius: 20px;
-  background:
-    url("https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1100&q=85")
-    center / cover no-repeat;
+  background-color: #dce9d7;
+  background-image: url("https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1100&q=85");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   box-shadow: var(--shadow);
 }
 
@@ -385,7 +392,7 @@ nav a:hover {
 }
 
 .text-link {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 800;
   color: var(--green);
 }
@@ -417,7 +424,7 @@ nav a:hover {
 /* RODAPÉ */
 
 footer {
-  padding: 27px 6%;
+  padding: 30px 6%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -429,7 +436,7 @@ footer {
 
 footer p,
 footer small {
-  font-size: 11px;
+  font-size: 14px;
   color: var(--muted);
 }
 
@@ -459,16 +466,17 @@ footer small {
   }
 }
 
-/* TELEMÓVEIS */
+/* CELULARES */
 
 @media (max-width: 700px) {
   .header {
     padding: 13px 5%;
     min-height: 68px;
+    gap: 10px;
   }
 
   .logo {
-    font-size: 21px;
+    font-size: 23px;
   }
 
   nav {
@@ -481,16 +489,16 @@ footer small {
   }
 
   .hero h1 {
-    font-size: clamp(40px, 11vw, 54px);
-    letter-spacing: -2px;
+    font-size: clamp(38px, 10vw, 52px);
+    letter-spacing: -1.5px;
   }
 
   .hero-text > p {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .hero-visual {
-    min-height: 350px;
+    min-height: 320px;
     margin-left: 8px;
   }
 
@@ -500,12 +508,34 @@ footer small {
     padding: 12px;
   }
 
+  .hero-note strong {
+    font-size: 14px;
+  }
+
+  .hero-note small {
+    font-size: 12px;
+  }
+
   .hero-points {
     gap: 10px;
+    font-size: 13px;
+  }
+
+  .hero-buttons {
+    align-items: stretch;
+  }
+
+  .hero-buttons a {
+    text-align: center;
   }
 
   .resources {
     padding: 58px 5%;
+  }
+
+  .section-title h2,
+  .about-copy h2 {
+    font-size: 34px;
   }
 
   .resource-grid {
@@ -513,7 +543,15 @@ footer small {
   }
 
   .resource-photo {
-    height: 190px;
+    height: 210px;
+  }
+
+  .resource-card h3 {
+    font-size: 20px;
+  }
+
+  .resource-card p {
+    font-size: 16px;
   }
 
   .about {
@@ -533,6 +571,10 @@ footer small {
 
   .cta h2 {
     font-size: 32px;
+  }
+
+  .cta > p {
+    font-size: 16px;
   }
 
   footer {
