@@ -1,224 +1,208 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-  const navegacao = document.getElementById("navegacao");
-  const menuMobile = document.getElementById("menuMobile");
+    const modalLogin = document.getElementById("modalLogin");
+    const modalCadastro = document.getElementById("modalCadastro");
+    const menuMobile = document.getElementById("menuMobile");
+    const navegacao = document.getElementById("navegacao");
 
-  document.getElementById("ano").textContent =
-    new Date().getFullYear();
+    function abrirModal(modal) {
+        if (!modal) return;
 
-  // ABRIR E FECHAR JANELAS
+        fecharTodosModais();
+        modal.classList.add("aberto");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-aberto");
 
-  function fecharModais() {
-    document.querySelectorAll(".modal").forEach(function (modal) {
-      modal.classList.remove("is-open");
-      modal.setAttribute("aria-hidden", "true");
+        const primeiroCampo = modal.querySelector("input");
+        if (primeiroCampo) {
+            setTimeout(function () {
+                primeiroCampo.focus();
+            }, 100);
+        }
+    }
+
+    function fecharModal(modal) {
+        if (!modal) return;
+
+        modal.classList.remove("aberto");
+        modal.setAttribute("aria-hidden", "true");
+
+        if (!document.querySelector(".modal.aberto")) {
+            document.body.classList.remove("modal-aberto");
+        }
+    }
+
+    function fecharTodosModais() {
+        document.querySelectorAll(".modal").forEach(function (modal) {
+            modal.classList.remove("aberto");
+            modal.setAttribute("aria-hidden", "true");
+        });
+
+        document.body.classList.remove("modal-aberto");
+    }
+
+    function mostrarMensagem(elemento, mensagem, tipo) {
+        if (!elemento) return;
+
+        elemento.textContent = mensagem;
+        elemento.className = "mensagem-form " + tipo;
+    }
+
+    // Abrir login
+    document.getElementById("abrirLogin")?.addEventListener("click", function () {
+        abrirModal(modalLogin);
     });
 
-    document.body.classList.remove("modal-aberto");
-  }
-
-  function abrirModal(id) {
-    const modal = document.getElementById(id);
-
-    if (!modal) return;
-
-    fecharModais();
-
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("modal-aberto");
-
-    const primeiroCampo = modal.querySelector("input");
-
-    if (primeiroCampo) {
-      setTimeout(function () {
-        primeiroCampo.focus();
-      }, 100);
-    }
-
-    // Fecha o menu de celular após escolher uma opção.
-    if (navegacao) {
-      navegacao.classList.remove("aberto");
-    }
-
-    if (menuMobile) {
-      menuMobile.setAttribute("aria-expanded", "false");
-      menuMobile.textContent = "☰";
-    }
-  }
-
-  document.querySelectorAll("[data-abrir]").forEach(function (botao) {
-    botao.addEventListener("click", function () {
-      abrirModal(botao.dataset.abrir);
-    });
-  });
-
-  document.querySelectorAll("[data-fechar]").forEach(function (botao) {
-    botao.addEventListener("click", fecharModais);
-  });
-
-  document.querySelectorAll("[data-trocar]").forEach(function (botao) {
-    botao.addEventListener("click", function () {
-      abrirModal(botao.dataset.trocar);
-    });
-  });
-
-  document.addEventListener("keydown", function (evento) {
-    if (evento.key === "Escape") {
-      fecharModais();
-    }
-  });
-
-  // MENU PARA CELULAR
-
-  if (menuMobile && navegacao) {
-    menuMobile.addEventListener("click", function () {
-      const aberto = navegacao.classList.toggle("aberto");
-
-      menuMobile.setAttribute("aria-expanded", String(aberto));
-      menuMobile.textContent = aberto ? "×" : "☰";
+    // Abrir cadastro pelos botões da página
+    ["abrirCadastro", "heroCadastro", "chamadaCadastro"].forEach(function (id) {
+        document.getElementById(id)?.addEventListener("click", function () {
+            abrirModal(modalCadastro);
+        });
     });
 
-    navegacao.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        navegacao.classList.remove("aberto");
-        menuMobile.setAttribute("aria-expanded", "false");
-        menuMobile.textContent = "☰";
-      });
+    // Alternar entre login e cadastro
+    document.getElementById("trocarParaCadastro")?.addEventListener("click", function () {
+        abrirModal(modalCadastro);
     });
-  }
 
-  // MENSAGENS
+    document.getElementById("trocarParaLogin")?.addEventListener("click", function () {
+        abrirModal(modalLogin);
+    });
 
-  function mostrarMensagem(id, texto, erro) {
-    const elemento = document.getElementById(id);
+    // Fechar pelas áreas e botões de fechar
+    document.querySelectorAll("[data-fechar]").forEach(function (botao) {
+        botao.addEventListener("click", function () {
+            const nomeModal = botao.getAttribute("data-fechar");
 
-    elemento.textContent = texto;
-    elemento.classList.toggle("erro", Boolean(erro));
-  }
+            if (nomeModal === "login") {
+                fecharModal(modalLogin);
+            } else if (nomeModal === "cadastro") {
+                fecharModal(modalCadastro);
+            }
+        });
+    });
 
-  // LOGIN VISUAL
+    // Fechar com a tecla Escape
+    document.addEventListener("keydown", function (evento) {
+        if (evento.key === "Escape") {
+            fecharTodosModais();
+        }
+    });
 
-  const loginForm = document.getElementById("loginForm");
+    // Menu para celular
+    menuMobile?.addEventListener("click", function () {
+        const aberto = navegacao.classList.toggle("aberto");
+        menuMobile.setAttribute("aria-expanded", String(aberto));
+        menuMobile.textContent = aberto ? "×" : "☰";
+    });
 
-  loginForm.addEventListener("submit", function (evento) {
-    evento.preventDefault();
+    // Fechar menu ao escolher uma seção
+    navegacao?.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+            navegacao.classList.remove("aberto");
 
-    mostrarMensagem(
-      "loginFeedback",
-      "A tela está funcionando. Para validar o usuário e a senha, é necessário conectar o sistema ao servidor PHP e ao banco de dados.",
-      false
-    );
-  });
+            if (menuMobile) {
+                menuMobile.textContent = "☰";
+                menuMobile.setAttribute("aria-expanded", "false");
+            }
+        });
+    });
 
-  // CADASTRO E VALIDAÇÃO
+    // Formatar CEP no padrão 00000-000
+    const campoCep = document.getElementById("cep");
 
-  const registerForm = document.getElementById("registerForm");
+    campoCep?.addEventListener("input", function () {
+        let numeros = campoCep.value.replace(/\D/g, "").slice(0, 8);
 
-  registerForm.addEventListener("submit", function (evento) {
-    evento.preventDefault();
+        if (numeros.length > 5) {
+            numeros = numeros.slice(0, 5) + "-" + numeros.slice(5);
+        }
 
-    const senha =
-      document.getElementById("registerPassword").value;
+        campoCep.value = numeros;
+    });
 
-    const confirmacao =
-      document.getElementById("confirmPassword").value;
+    // Validar login
+    const formLogin = document.getElementById("formLogin");
 
-    const area =
-      Number(document.getElementById("farmArea").value);
+    formLogin?.addEventListener("submit", function (evento) {
+        evento.preventDefault();
 
-    if (senha.length < 8) {
-      mostrarMensagem(
-        "registerFeedback",
-        "A senha deve ter pelo menos 8 caracteres.",
-        true
-      );
-      return;
-    }
+        const email = document.getElementById("loginEmail").value.trim();
+        const senha = document.getElementById("loginSenha").value;
+        const mensagem = document.getElementById("mensagemLogin");
 
-    if (senha !== confirmacao) {
-      mostrarMensagem(
-        "registerFeedback",
-        "As senhas não correspondem. Confira os dois campos.",
-        true
-      );
-      return;
-    }
+        if (!email || !senha) {
+            mostrarMensagem(
+                mensagem,
+                "Preencha o e-mail e a senha.",
+                "erro"
+            );
+            return;
+        }
 
-    if (!Number.isFinite(area) || area <= 0) {
-      mostrarMensagem(
-        "registerFeedback",
-        "Informe uma área válida, maior que zero.",
-        true
-      );
-      return;
-    }
+        mostrarMensagem(
+            mensagem,
+            "O formulário foi preenchido. Para validar o acesso, ele precisa estar conectado ao sistema de login do AgroMap.",
+            "erro"
+        );
+    });
 
-    mostrarMensagem(
-      "registerFeedback",
-      "Os campos foram validados! O salvamento definitivo do cadastro precisa estar conectado ao servidor PHP e ao banco de dados.",
-      false
-    );
-  });
+    // Validar cadastro
+    const formCadastro = document.getElementById("formCadastro");
 
-  // SOLICITAR LOCALIZAÇÃO
+    formCadastro?.addEventListener("submit", function (evento) {
+        evento.preventDefault();
 
-  const locationButton =
-    document.getElementById("locationButton");
+        const mensagem = document.getElementById("mensagemCadastro");
+        const senha = document.getElementById("senha").value;
+        const confirmarSenha = document.getElementById("confirmarSenha").value;
+        const cep = document.getElementById("cep").value.replace(/\D/g, "");
+        const area = Number(document.getElementById("area").value);
 
-  locationButton.addEventListener("click", function () {
-    const status =
-      document.getElementById("locationStatus");
+        if (senha.length < 6) {
+            mostrarMensagem(
+                mensagem,
+                "A senha precisa ter pelo menos 6 caracteres.",
+                "erro"
+            );
+            document.getElementById("senha").focus();
+            return;
+        }
 
-    if (!navigator.geolocation) {
-      status.textContent =
-        "Seu navegador não oferece suporte à localização.";
-      return;
-    }
+        if (senha !== confirmarSenha) {
+            mostrarMensagem(
+                mensagem,
+                "As senhas não são iguais. Confira os dois campos.",
+                "erro"
+            );
+            document.getElementById("confirmarSenha").focus();
+            return;
+        }
 
-    status.textContent =
-      "Aguardando autorização do navegador...";
+        if (cep.length !== 8) {
+            mostrarMensagem(
+                mensagem,
+                "Digite um CEP válido com 8 números.",
+                "erro"
+            );
+            document.getElementById("cep").focus();
+            return;
+        }
 
-    locationButton.disabled = true;
-    locationButton.textContent = "Aguardando...";
+        if (!Number.isFinite(area) || area <= 0) {
+            mostrarMensagem(
+                mensagem,
+                "Informe uma área válida para a propriedade.",
+                "erro"
+            );
+            document.getElementById("area").focus();
+            return;
+        }
 
-    navigator.geolocation.getCurrentPosition(
-      function (posicao) {
-        document.getElementById("latitude").value =
-          posicao.coords.latitude;
-
-        document.getElementById("longitude").value =
-          posicao.coords.longitude;
-
-        status.textContent =
-          "Localização autorizada neste navegador.";
-
-        locationButton.textContent =
-          "Localização permitida";
-
-        locationButton.disabled = false;
-      },
-
-      function (erro) {
-        const mensagens = {
-          1: "Permissão negada. Autorize a localização nas configurações do navegador, se desejar.",
-          2: "Não foi possível obter a localização. Tente novamente.",
-          3: "A solicitação demorou demais. Tente novamente."
-        };
-
-        status.textContent =
-          mensagens[erro.code] ||
-          "Não foi possível obter a localização.";
-
-        locationButton.textContent = "Tentar novamente";
-        locationButton.disabled = false;
-      },
-
-      {
-        enableHighAccuracy: true,
-        timeout: 15000,
-        maximumAge: 0
-      }
-    );
-  });
+        mostrarMensagem(
+            mensagem,
+            "Os campos foram validados. Para criar e salvar a conta de verdade, os dados precisam ser enviados ao backend PHP e ao banco de dados do AgroMap.",
+            "sucesso"
+        );
+    });
 });
