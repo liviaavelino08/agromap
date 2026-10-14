@@ -62,11 +62,15 @@ abaLogin.addEventListener("click", () => mostrarFormulario("login"));
 abaCadastro.addEventListener("click", () => mostrarFormulario("cadastro"));
 
 modal.addEventListener("click", (evento) => {
-  if (evento.target === modal) fecharModal();
+  if (evento.target === modal) {
+    fecharModal();
+  }
 });
 
 document.addEventListener("keydown", (evento) => {
-  if (evento.key === "Escape") fecharModal();
+  if (evento.key === "Escape") {
+    fecharModal();
+  }
 });
 
 // Menu para celular
@@ -85,7 +89,7 @@ document.querySelectorAll("#menu a").forEach((link) => {
   });
 });
 
-// Validação dos dados do cadastro
+// Validação do cadastro
 formCadastro.addEventListener("submit", (evento) => {
   evento.preventDefault();
 
@@ -93,48 +97,63 @@ formCadastro.addEventListener("submit", (evento) => {
   const senha = document.getElementById("cadSenha").value;
   const confirmar = document.getElementById("cadConfirmar").value;
 
-  const latitude = Number(document.getElementById("cadLatitude").value);
-  const longitude = Number(document.getElementById("cadLongitude").value);
+  const campoLatitude = document.getElementById("cadLatitude");
+  const campoLongitude = document.getElementById("cadLongitude");
+
+  const latitude = campoLatitude.value.trim();
+  const longitude = campoLongitude.value.trim();
 
   mensagem.classList.remove("sucesso");
   mensagem.textContent = "";
 
   if (senha.length < 8) {
-    mensagem.textContent = "A senha precisa ter pelo menos 8 caracteres.";
+    mensagem.textContent =
+      "A senha precisa ter pelo menos 8 caracteres.";
     return;
   }
 
   if (senha !== confirmar) {
     mensagem.textContent = "As senhas não são iguais.";
+    document.getElementById("cadConfirmar").focus();
     return;
   }
 
-  if (!Number.isFinite(latitude) || latitude < -90 || latitude > 90) {
-    mensagem.textContent = "Informe uma latitude válida, entre -90 e 90.";
-    document.getElementById("cadLatitude").focus();
+  if (latitude === "" || longitude === "") {
+    mensagem.textContent =
+      "Informe a latitude e a longitude da propriedade.";
     return;
   }
 
-  if (!Number.isFinite(longitude) || longitude < -180 || longitude > 180) {
-    mensagem.textContent = "Informe uma longitude válida, entre -180 e 180.";
-    document.getElementById("cadLongitude").focus();
+  const lat = Number(latitude);
+  const lon = Number(longitude);
+
+  if (!Number.isFinite(lat) || lat < -90 || lat > 90) {
+    mensagem.textContent =
+      "Latitude inválida. Use um valor entre -90 e 90.";
+    campoLatitude.focus();
+    return;
+  }
+
+  if (!Number.isFinite(lon) || lon < -180 || lon > 180) {
+    mensagem.textContent =
+      "Longitude inválida. Use um valor entre -180 e 180.";
+    campoLongitude.focus();
     return;
   }
 
   mensagem.textContent =
-    "Os dados foram validados no navegador, mas ainda não foram salvos. " +
-    "Para concluir o cadastro, precisamos conectar o AgroMap a um backend.";
-
-  mensagem.classList.remove("sucesso");
+    "Os campos foram validados! O cadastro ainda precisa ser conectado " +
+    "ao banco de dados para salvar as informações permanentemente.";
 });
 
-// O login também precisa de um backend para verificar as credenciais.
+// O login ainda não está ligado a um servidor
 formLogin.addEventListener("submit", (evento) => {
   evento.preventDefault();
 
   const mensagem = document.getElementById("mensagemLogin");
+
   mensagem.classList.remove("sucesso");
   mensagem.textContent =
-    "O login ainda não está conectado a um servidor. " +
-    "Precisamos configurar a autenticação para permitir a entrada na conta.";
+    "O login ainda não está conectado ao servidor. " +
+    "Precisamos configurar a autenticação para permitir a entrada.";
 });
