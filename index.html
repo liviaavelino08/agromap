@@ -1,281 +1,464 @@
-
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AgroMap | Tecnologia para o campo</title>
-  <meta name="description" content="AgroMap: tecnologia e dados climáticos para auxiliar o planejamento da produção rural.">
+  <meta name="description" content="AgroMap: tecnologia, dados climáticos e planejamento para a produção rural.">
+  <title>AgroMap | Tecnologia Rural</title>
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
+
 <body>
 
-<header class="topo">
-  <a href="#inicio" class="marca">
-    <span class="marca-simbolo">A</span>
-    <span>Agro<span class="marca-verde">Map</span>
-      <small>TECNOLOGIA RURAL</small>
-    </span>
-  </a>
+  <!-- CABEÇALHO -->
+  <header class="topo topo-sobre-foto">
+    <a href="#inicio" class="marca">
+      <span class="marca-simbolo">A</span>
+      <span class="marca-nome">
+        Agro<span class="marca-verde">Map</span>
+        <small>TECNOLOGIA RURAL</small>
+      </span>
+    </a>
 
-  <nav class="navegacao" id="navegacao">
-    <a href="#inicio">Início</a>
-    <a href="#sobre">Sobre o AgroMap</a>
-    <a href="#recursos">Recursos</a>
-    <button type="button" class="botao botao-contorno" data-abrir="loginModal">
-      Entrar
-    </button>
-    <button type="button" class="botao botao-verde" data-abrir="registerModal">
-      Criar minha conta
-    </button>
-  </nav>
+    <nav class="navegacao" id="navegacao">
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sobre o AgroMap</a>
+      <a href="#recursos">Recursos</a>
 
-  <button class="menu-mobile" id="menuMobile" type="button"
-    aria-label="Abrir menu" aria-expanded="false">☰</button>
-</header>
-
-<main>
-  <section class="hero" id="inicio">
-    <div class="hero-conteudo">
-      <span class="etiqueta">TECNOLOGIA A FAVOR DO CAMPO</span>
-      <h1>O futuro da sua produção começa com <span>informação.</span></h1>
-      <p>
-        Use dados climáticos para planejar o cultivo, acompanhar sua
-        propriedade e tomar decisões mais conscientes na produção rural.
-      </p>
-
-      <div class="hero-botoes">
-        <button type="button" class="botao botao-amarelo"
-          data-abrir="registerModal">Começar agora <span>→</span></button>
-        <a href="#sobre" class="botao botao-claro">Conheça o projeto</a>
-      </div>
-
-      <div class="hero-nota">
-        <span class="ponto"></span>
-        Planejamento rural com apoio de dados
-      </div>
-    </div>
-
-    <div class="hero-cartao">
-      <div class="cartao-cabecalho">
-        <div>
-          <span class="texto-pequeno">SEU CAMPO, MAIS CONECTADO</span>
-          <h2>Visão da propriedade</h2>
-        </div>
-        <span class="icone-folha">✳</span>
-      </div>
-
-      <img src="mapa-propriedade.png"
-        alt="Mapa ilustrativo da propriedade rural"
-        class="mapa-propriedade"
-        onerror="this.style.display='none'; document.getElementById('mapaAviso').style.display='flex';">
-
-      <div class="mapa-aviso" id="mapaAviso">
-        <span>🌱</span>
-        <strong>Área da propriedade</strong>
-        <small>Adicione mapa-propriedade.png ao repositório para exibir sua imagem.</small>
-      </div>
-
-      <div class="cartao-rodape">
-        <span class="status-ponto"></span>
-        <span>Informação para melhores decisões</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="faixa">
-    <div><strong>Clima</strong><span>Observe as condições climáticas</span></div>
-    <div><strong>Planejamento</strong><span>Organize as etapas do cultivo</span></div>
-    <div><strong>Produção</strong><span>Acompanhe os dados da propriedade</span></div>
-  </section>
-
-  <section class="secao sobre" id="sobre">
-    <div class="sobre-imagem">
-      <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1100&q=85"
-        alt="Plantação em uma propriedade rural">
-      <div class="selo-imagem">
-        <strong>AgroMap</strong>
-        <span>Tecnologia para o campo</span>
-      </div>
-    </div>
-
-    <div class="sobre-texto">
-      <span class="etiqueta etiqueta-verde">CONHEÇA O PROJETO</span>
-      <h2>Entender o clima também é cuidar da <span>produção.</span></h2>
-      <p>
-        A produção agrícola depende de fatores como chuva, temperatura
-        e umidade. O AgroMap é um projeto que busca relacionar essas
-        informações com o planejamento da atividade rural.
-      </p>
-      <p>
-        A proposta é auxiliar o produtor a visualizar informações,
-        analisar possíveis riscos e planejar melhor suas decisões.
-      </p>
-      <button type="button" class="link-botao" data-abrir="registerModal">
-        Faça parte do AgroMap <span>→</span>
+      <button type="button" class="botao botao-contorno"
+        data-abrir="loginModal">
+        Entrar
       </button>
-    </div>
-  </section>
 
-  <section class="secao recursos" id="recursos">
-    <div class="titulo-secao">
-      <span class="etiqueta etiqueta-verde">RECURSOS DO PROJETO</span>
-      <h2>Mais informações para <span>planejar melhor.</span></h2>
-      <p>Uma proposta de organização e análise de informações para o meio rural.</p>
-    </div>
+      <button type="button" class="botao botao-amarelo"
+        data-abrir="registerModal">
+        Criar minha conta
+      </button>
+    </nav>
 
-    <div class="recursos-grade">
-      <article class="recurso">
-        <span class="recurso-numero">01</span>
-        <div class="recurso-icone">☀</div>
-        <h3>Dados climáticos</h3>
-        <p>Organize informações como temperatura, precipitação e umidade.</p>
-      </article>
+    <button class="menu-mobile" id="menuMobile"
+      type="button" aria-label="Abrir menu" aria-expanded="false">
+      ☰
+    </button>
+  </header>
 
-      <article class="recurso">
-        <span class="recurso-numero">02</span>
-        <div class="recurso-icone">⌁</div>
-        <h3>Previsão de produção</h3>
-        <p>Prepare estimativas de produção com base nos dados disponíveis.</p>
-      </article>
+  <main>
 
-      <article class="recurso">
-        <span class="recurso-numero">03</span>
-        <div class="recurso-icone">↗</div>
-        <h3>Planejamento rural</h3>
-        <p>Reúna informações úteis para acompanhar o cultivo e a propriedade.</p>
-      </article>
-    </div>
-  </section>
+    <!-- INÍCIO -->
+    <section class="hero" id="inicio">
 
-  <section class="chamada">
-    <div>
-      <span class="etiqueta">AGROMAP</span>
-      <h2>Planeje hoje. Cultive o amanhã.</h2>
-      <p>Conheça a proposta de tecnologia e informação para a produção rural.</p>
-    </div>
-    <button type="button" class="botao botao-amarelo"
-      data-abrir="registerModal">Criar minha conta →</button>
-  </section>
-</main>
+      <div class="hero-conteudo">
+        <span class="etiqueta">TECNOLOGIA A FAVOR DO CAMPO</span>
 
-<footer class="rodape">
-  <a href="#inicio" class="marca marca-rodape">
-    <span class="marca-simbolo">A</span>
-    <span>Agro<span class="marca-verde">Map</span>
-      <small>TECNOLOGIA RURAL</small>
-    </span>
-  </a>
-  <p>Projeto de tecnologia aplicada à produção rural.</p>
-  <span>© <span id="ano"></span> AgroMap</span>
-</footer>
+        <h1>
+          O futuro da sua produção começa com
+          <span>informação.</span>
+        </h1>
 
-<!-- JANELA DE LOGIN -->
-<div class="modal" id="loginModal" aria-hidden="true">
-  <div class="modal-fundo" data-fechar></div>
-  <section class="modal-conteudo" role="dialog" aria-modal="true"
-    aria-labelledby="tituloLogin">
-    <button type="button" class="modal-fechar" data-fechar aria-label="Fechar">×</button>
-    <span class="etiqueta etiqueta-verde">BEM-VINDO DE VOLTA</span>
-    <h2 id="tituloLogin">Entre na sua conta</h2>
-    <p class="modal-descricao">Acesse sua área do AgroMap.</p>
+        <p>
+          Use dados climáticos para planejar o cultivo, acompanhar sua
+          propriedade e tomar decisões mais conscientes na produção rural.
+        </p>
 
-    <form id="loginForm">
-      <label for="loginEmail">E-mail</label>
-      <input type="email" id="loginEmail" placeholder="seuemail@exemplo.com" required>
+        <div class="hero-botoes">
+          <button type="button" class="botao botao-amarelo"
+            data-abrir="registerModal">
+            Começar agora <span>→</span>
+          </button>
 
-      <label for="loginPassword">Senha</label>
-      <input type="password" id="loginPassword" placeholder="Digite sua senha" required>
-
-      <button type="submit" class="botao botao-verde botao-largo">Entrar</button>
-      <p class="mensagem" id="loginFeedback" role="status"></p>
-    </form>
-
-    <p class="troca-modal">Ainda não tem conta?
-      <button type="button" class="link-botao" data-trocar="registerModal">Cadastre-se</button>
-    </p>
-  </section>
-</div>
-
-<!-- JANELA DE CADASTRO -->
-<div class="modal" id="registerModal" aria-hidden="true">
-  <div class="modal-fundo" data-fechar></div>
-  <section class="modal-conteudo modal-grande" role="dialog" aria-modal="true"
-    aria-labelledby="tituloCadastro">
-    <button type="button" class="modal-fechar" data-fechar aria-label="Fechar">×</button>
-    <span class="etiqueta etiqueta-verde">VAMOS COMEÇAR</span>
-    <h2 id="tituloCadastro">Crie sua conta</h2>
-    <p class="modal-descricao">Preencha os dados para começar seu cadastro no AgroMap.</p>
-
-    <form id="registerForm">
-      <div class="form-grade">
-        <div class="campo">
-          <label for="registerName">Seu nome</label>
-          <input id="registerName" type="text" placeholder="Nome completo" required>
+          <a href="#sobre" class="botao botao-claro">
+            Conheça o projeto
+          </a>
         </div>
-        <div class="campo">
-          <label for="registerEmail">E-mail</label>
-          <input id="registerEmail" type="email" placeholder="seuemail@exemplo.com" required>
-        </div>
-        <div class="campo">
-          <label for="registerPassword">Criar senha</label>
-          <input id="registerPassword" type="password" minlength="8"
-            placeholder="Mínimo de 8 caracteres" required>
-        </div>
-        <div class="campo">
-          <label for="confirmPassword">Confirmar senha</label>
-          <input id="confirmPassword" type="password" minlength="8"
-            placeholder="Digite a senha novamente" required>
-        </div>
-        <div class="campo">
-          <label for="farmName">Nome da propriedade</label>
-          <input id="farmName" type="text" placeholder="Nome da fazenda ou sítio" required>
-        </div>
-        <div class="campo">
-          <label for="municipality">Município</label>
-          <input id="municipality" type="text" placeholder="Cidade da propriedade" required>
-        </div>
-        <div class="campo">
-          <label for="farmArea">Área em hectares</label>
-          <input id="farmArea" type="number" min="0.01" step="any"
-            placeholder="Ex.: 25" required>
-        </div>
-        <div class="campo">
-          <label for="mainCrop">Principal cultivo</label>
-          <input id="mainCrop" type="text" placeholder="Ex.: soja, milho, café" required>
-        </div>
-        <div class="campo campo-completo">
-          <label for="plantingDate">Data de plantio (opcional)</label>
-          <input id="plantingDate" type="date">
+
+        <div class="hero-nota">
+          <span class="ponto"></span>
+          Planejamento rural com apoio de dados
         </div>
       </div>
 
-      <div class="localizacao-box">
-        <div>
-          <strong>Localização da propriedade</strong>
-          <p>Você pode autorizar o navegador a obter as coordenadas da propriedade.</p>
-          <p class="localizacao-status" id="locationStatus">A localização ainda não foi informada.</p>
+      <!-- CARTÃO DO MAPA -->
+      <div class="hero-cartao">
+        <div class="cartao-cabecalho">
+          <div>
+            <span class="texto-pequeno">SEU CAMPO, MAIS CONECTADO</span>
+            <h2>Visão da propriedade</h2>
+          </div>
+
+          <span class="icone-folha">✳</span>
         </div>
-        <button type="button" class="botao botao-contorno" id="locationButton">
-          Permitir localização
+
+        <img
+          src="mapa-propriedade.png"
+          alt="Mapa da propriedade rural"
+          class="mapa-propriedade"
+          onerror="this.style.display='none'; document.getElementById('mapaAviso').style.display='flex';"
+        >
+
+        <div class="mapa-aviso" id="mapaAviso">
+          <span>🌱</span>
+          <strong>Área da propriedade</strong>
+          <small>Visualização da propriedade rural.</small>
+        </div>
+
+        <div class="cartao-rodape">
+          <span class="status-ponto"></span>
+          Informação para melhores decisões
+        </div>
+      </div>
+
+    </section>
+
+    <!-- FAIXA DE DESTAQUES -->
+    <section class="faixa">
+      <div>
+        <strong>Clima</strong>
+        <span>Observe as condições climáticas</span>
+      </div>
+
+      <div>
+        <strong>Planejamento</strong>
+        <span>Organize as etapas do cultivo</span>
+      </div>
+
+      <div>
+        <strong>Produção</strong>
+        <span>Acompanhe os dados da propriedade</span>
+      </div>
+    </section>
+
+    <!-- SOBRE O PROJETO -->
+    <section class="secao sobre" id="sobre">
+
+      <div class="sobre-imagem">
+        <img
+          src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1100&q=85"
+          alt="Paisagem de uma plantação rural"
+        >
+
+        <div class="selo-imagem">
+          <strong>AgroMap</strong>
+          <span>Tecnologia para o campo</span>
+        </div>
+      </div>
+
+      <div class="sobre-texto">
+        <span class="etiqueta etiqueta-verde">CONHEÇA O PROJETO</span>
+
+        <h2>
+          Entender o clima também é cuidar da
+          <span>produção.</span>
+        </h2>
+
+        <p>
+          A produção agrícola depende de fatores como chuva, temperatura
+          e umidade. O AgroMap é um projeto que busca relacionar essas
+          informações com o planejamento da atividade rural.
+        </p>
+
+        <p>
+          A proposta é auxiliar o produtor a visualizar informações,
+          analisar possíveis riscos e planejar melhor suas decisões.
+        </p>
+
+        <button type="button" class="link-botao" data-abrir="registerModal">
+          Faça parte do AgroMap <span>→</span>
         </button>
       </div>
 
-      <input type="hidden" id="latitude">
-      <input type="hidden" id="longitude">
+    </section>
 
-      <button type="submit" class="botao botao-verde botao-largo">
-        Criar minha conta
+    <!-- QUATRO RECURSOS COM FOTOS -->
+    <section class="secao recursos" id="recursos">
+
+      <div class="titulo-secao">
+        <span class="etiqueta etiqueta-verde">SOLUÇÕES AGROMAP</span>
+
+        <h2>
+          Tecnologia para transformar a
+          <span>produção rural.</span>
+        </h2>
+
+        <p>
+          Informações importantes para compreender o campo e planejar
+          cada etapa da produção.
+        </p>
+      </div>
+
+      <div class="recursos-grade">
+
+        <!-- 1. PRODUÇÃO RURAL -->
+        <article class="recurso recurso-foto">
+          <img
+            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=85"
+            alt="Plantação em uma propriedade rural"
+            loading="lazy"
+          >
+
+          <div class="recurso-conteudo">
+            <span class="recurso-numero">01</span>
+            <h3>Produção Rural</h3>
+            <p>
+              Organize informações da propriedade e acompanhe os dados
+              relacionados ao cultivo.
+            </p>
+          </div>
+        </article>
+
+        <!-- 2. DADOS CLIMÁTICOS -->
+        <article class="recurso recurso-foto">
+          <img
+            src="https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=800&q=85"
+            alt="Nuvens no céu representando as condições climáticas"
+            loading="lazy"
+          >
+
+          <div class="recurso-conteudo">
+            <span class="recurso-numero">02</span>
+            <h3>Dados Climáticos</h3>
+            <p>
+              Observe informações de chuva, temperatura e umidade
+              que podem influenciar a produção.
+            </p>
+          </div>
+        </article>
+
+        <!-- 3. PLANEJAMENTO AGRÍCOLA -->
+        <article class="recurso recurso-foto">
+          <img
+            src="https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=800&q=85"
+            alt="Cultivo agrícola em área rural"
+            loading="lazy"
+          >
+
+          <div class="recurso-conteudo">
+            <span class="recurso-numero">03</span>
+            <h3>Planejamento Agrícola</h3>
+            <p>
+              Organize as etapas do plantio e tome decisões com mais
+              informações sobre a propriedade.
+            </p>
+          </div>
+        </article>
+
+        <!-- 4. PREVISÃO DE PRODUÇÃO -->
+        <article class="recurso recurso-foto">
+          <img
+            src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=800&q=85"
+            alt="Cultivo de alimentos em uma plantação"
+            loading="lazy"
+          >
+
+          <div class="recurso-conteudo">
+            <span class="recurso-numero">04</span>
+            <h3>Previsão de Produção</h3>
+            <p>
+              Explore a proposta de estimar a produção rural utilizando
+              informações climáticas e dados agrícolas.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CHAMADA FINAL -->
+    <section class="chamada">
+      <div>
+        <span class="etiqueta">AGROMAP</span>
+        <h2>Planeje hoje. Cultive o amanhã.</h2>
+        <p>
+          Conheça a proposta de tecnologia e informação para a produção rural.
+        </p>
+      </div>
+
+      <button type="button" class="botao botao-amarelo"
+        data-abrir="registerModal">
+        Criar minha conta →
       </button>
-      <p class="mensagem" id="registerFeedback" role="status"></p>
-    </form>
+    </section>
 
-    <p class="troca-modal">Já possui conta?
-      <button type="button" class="link-botao" data-trocar="loginModal">Entrar</button>
-    </p>
-  </section>
-</div>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="rodape">
+    <a href="#inicio" class="marca marca-rodape">
+      <span class="marca-simbolo">A</span>
+      <span class="marca-nome">
+        Agro<span class="marca-verde">Map</span>
+        <small>TECNOLOGIA RURAL</small>
+      </span>
+    </a>
+
+    <p>Projeto de tecnologia aplicada à produção rural.</p>
+    <span>© <span id="ano"></span> AgroMap</span>
+  </footer>
+
+  <!-- MODAL DE LOGIN -->
+  <div class="modal" id="loginModal" aria-hidden="true">
+    <div class="modal-fundo" data-fechar></div>
+
+    <section class="modal-conteudo"
+      role="dialog" aria-modal="true" aria-labelledby="tituloLogin">
+
+      <button type="button" class="modal-fechar"
+        data-fechar aria-label="Fechar">×</button>
+
+      <span class="etiqueta etiqueta-verde">BEM-VINDO DE VOLTA</span>
+      <h2 id="tituloLogin">Entre na sua conta</h2>
+      <p class="modal-descricao">Acesse sua área do AgroMap.</p>
+
+      <form id="loginForm">
+        <label for="loginEmail">E-mail</label>
+        <input
+          type="email"
+          id="loginEmail"
+          autocomplete="email"
+          placeholder="seuemail@exemplo.com"
+          required
+        >
+
+        <label for="loginPassword">Senha</label>
+        <input
+          type="password"
+          id="loginPassword"
+          autocomplete="current-password"
+          placeholder="Digite sua senha"
+          required
+        >
+
+        <button type="submit" class="botao botao-verde botao-largo">
+          Entrar
+        </button>
+
+        <p class="mensagem" id="loginFeedback" role="status"></p>
+      </form>
+
+      <p class="troca-modal">
+        Ainda não tem conta?
+        <button type="button" class="link-botao"
+          data-trocar="registerModal">Cadastre-se</button>
+      </p>
+    </section>
+  </div>
+
+  <!-- MODAL DE CADASTRO -->
+  <div class="modal" id="registerModal" aria-hidden="true">
+    <div class="modal-fundo" data-fechar></div>
+
+    <section class="modal-conteudo modal-grande"
+      role="dialog" aria-modal="true" aria-labelledby="tituloCadastro">
+
+      <button type="button" class="modal-fechar"
+        data-fechar aria-label="Fechar">×</button>
+
+      <span class="etiqueta etiqueta-verde">VAMOS COMEÇAR</span>
+      <h2 id="tituloCadastro">Crie sua conta</h2>
+      <p class="modal-descricao">
+        Preencha os dados para começar seu cadastro no AgroMap.
+      </p>
+
+      <form id="registerForm">
+
+        <div class="form-grade">
+
+          <div class="campo">
+            <label for="registerName">Seu nome</label>
+            <input id="registerName" type="text"
+              autocomplete="name" placeholder="Nome completo" required>
+          </div>
+
+          <div class="campo">
+            <label for="registerEmail">E-mail</label>
+            <input id="registerEmail" type="email"
+              autocomplete="email" placeholder="seuemail@exemplo.com" required>
+          </div>
+
+          <div class="campo">
+            <label for="registerPassword">Criar senha</label>
+            <input id="registerPassword" type="password"
+              minlength="8" autocomplete="new-password"
+              placeholder="Mínimo de 8 caracteres" required>
+          </div>
+
+          <div class="campo">
+            <label for="confirmPassword">Confirmar senha</label>
+            <input id="confirmPassword" type="password"
+              minlength="8" autocomplete="new-password"
+              placeholder="Digite a senha novamente" required>
+          </div>
+
+          <div class="campo">
+            <label for="farmName">Nome da propriedade</label>
+            <input id="farmName" type="text"
+              placeholder="Nome da fazenda ou sítio" required>
+          </div>
+
+          <div class="campo">
+            <label for="municipality">Município</label>
+            <input id="municipality" type="text"
+              placeholder="Cidade da propriedade" required>
+          </div>
+
+          <div class="campo">
+            <label for="farmArea">Área em hectares</label>
+            <input id="farmArea" type="number"
+              min="0.01" step="any" placeholder="Ex.: 25" required>
+          </div>
+
+          <div class="campo">
+            <label for="mainCrop">Principal cultivo</label>
+            <input id="mainCrop" type="text"
+              placeholder="Ex.: soja, milho, café" required>
+          </div>
+
+          <div class="campo campo-completo">
+            <label for="plantingDate">Data de plantio (opcional)</label>
+            <input id="plantingDate" type="date">
+          </div>
+
+        </div>
+
+        <!-- LOCALIZAÇÃO -->
+        <div class="localizacao-box">
+          <div>
+            <strong>Localização da propriedade</strong>
+            <p>
+              Autorize o navegador a obter as coordenadas da propriedade.
+            </p>
+            <p class="localizacao-status" id="locationStatus">
+              A localização ainda não foi informada.
+            </p>
+          </div>
+
+          <button type="button" class="botao botao-contorno"
+            id="locationButton">
+            Permitir localização
+          </button>
+        </div>
+
+        <input type="hidden" id="latitude">
+        <input type="hidden" id="longitude">
+
+        <button type="submit" class="botao botao-verde botao-largo">
+          Criar minha conta
+        </button>
+
+        <p class="mensagem" id="registerFeedback" role="status"></p>
+
+      </form>
+
+      <p class="troca-modal">
+        Já possui conta?
+        <button type="button" class="link-botao"
+          data-trocar="loginModal">Entrar</button>
+      </p>
+
+    </section>
+  </div>
 
 </body>
 </html>
+```
