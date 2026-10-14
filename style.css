@@ -1,18 +1,24 @@
+*O CSS abaixo mantém as classes do seu HTML e coloca a imagem de fundo atrás do cabeçalho.*
+
+```css
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 :root {
-    --verde: #285b36;
-    --verde-escuro: #193e28;
-    --amarelo: #efcf50;
-    --fundo: #faf9f2;
-    --texto: #26372a;
-    --suave: #617064;
-    --borda: #dce5d7;
+    --verde: #3f8050;
+    --verde-escuro: #244d32;
+    --verde-claro: #eaf2e8;
+    --texto: #203126;
+    --cinza: #68736b;
+    --fundo: #ffffff;
+    --fundo-secao: #f6f8f4;
+    --borda: #e2e9df;
+    --cartao: #ffffff;
 }
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -21,62 +27,66 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: var(--fundo);
+    font-family: 'DM Sans', sans-serif;
     color: var(--texto);
-    line-height: 1.6;
+    background: var(--fundo);
+    transition: background .3s, color .3s;
 }
 
 a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
 }
 
 button {
     font: inherit;
-    cursor: pointer;
 }
+
+/* CABEÇALHO SOBRE A IMAGEM DE FUNDO */
 
 .cabecalho {
     position: absolute;
-    z-index: 10;
     top: 0;
     left: 0;
+    z-index: 20;
     width: 100%;
-    min-height: 82px;
-    padding: 16px 7%;
+    min-height: 88px;
+    padding: 18px 7%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 24px;
-    background: linear-gradient(to bottom, #102b19a8, transparent);
-    color: white;
+    align-items: center;
+    gap: 25px;
+    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, .22);
 }
 
 .logo {
-    color: white;
+    color: #fff;
+    font-family: 'Manrope', sans-serif;
     font-size: 25px;
-    font-weight: 900;
+    font-weight: 800;
     white-space: nowrap;
 }
 
 .logo span {
-    color: var(--amarelo);
+    color: #a9d99c;
 }
 
 .cabecalho nav {
     display: flex;
-    gap: 28px;
+    align-items: center;
+    gap: 32px;
 }
 
 .cabecalho nav a {
-    color: white;
+    color: #fff;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 600;
+    transition: color .2s;
 }
 
 .cabecalho nav a:hover {
-    color: var(--amarelo);
+    color: #bce5ae;
 }
 
 .botoes-cabecalho {
@@ -88,67 +98,50 @@ button {
 .tema {
     width: 42px;
     height: 42px;
-    border: 1px solid #ffffff80;
-    border-radius: 9px;
-    background: #ffffff20;
-    color: white;
-}
-
-.botao-entrar,
-.botao-principal,
-.botao-secundario,
-.botao-chamada {
-    min-height: 45px;
-    padding: 11px 19px;
-    border-radius: 8px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-    font-size: 14px;
-    font-weight: 700;
-    transition: .2s;
+    border: 1px solid rgba(255,255,255,.45);
+    border-radius: 50%;
+    background: rgba(255,255,255,.12);
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
 }
 
 .botao-entrar {
-    color: var(--verde);
-    background: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 23px;
+    color: #244d32;
+    background: #fff;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: transform .2s, background .2s;
 }
 
-.botao-principal {
-    color: white;
-    background: var(--verde);
-    border: 1px solid var(--verde);
-}
-
-.botao-principal:hover {
-    background: var(--verde-escuro);
+.botao-entrar:hover,
+.botao-principal:hover,
+.botao-chamada:hover {
     transform: translateY(-2px);
 }
 
-.botao-secundario {
-    color: white;
-    background: #ffffff18;
-    border: 1px solid #ffffffa0;
-}
-
-.botao-secundario:hover {
-    background: #ffffff35;
-}
+/* INÍCIO: A FOTO COMEÇA NO TOPO DA PÁGINA */
 
 .inicio {
     position: relative;
     isolation: isolate;
-    min-height: 720px;
-    padding: 145px 7% 75px;
+    min-height: 740px;
+    padding: 155px 7% 75px;
     display: grid;
     grid-template-columns: 1.05fr .95fr;
     align-items: center;
-    gap: 45px;
-    color: white;
-    background-image: url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2200&q=90");
-    background-position: center;
+    gap: 55px;
+    overflow: hidden;
+
+    background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2200&q=90');
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
 }
 
@@ -156,92 +149,131 @@ button {
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: linear-gradient(90deg, #102b19ed 0%, #183b23c9 53%, #183b2361 100%);
+    background: linear-gradient(
+        90deg,
+        rgba(14, 37, 23, .88) 0%,
+        rgba(14, 37, 23, .72) 48%,
+        rgba(14, 37, 23, .40) 100%
+    );
 }
 
 .texto-inicio {
+    position: relative;
+    z-index: 1;
     max-width: 650px;
-}
-
-.etiqueta,
-.etiqueta-verde {
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: 1.6px;
+    color: #fff;
 }
 
 .etiqueta {
-    color: #d6e6b8;
-}
-
-.etiqueta-verde {
-    color: var(--verde);
+    display: inline-block;
+    margin-bottom: 22px;
+    color: #d6edce;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
 }
 
 .texto-inicio h1 {
-    margin: 18px 0;
-    font-size: clamp(40px, 5vw, 66px);
-    line-height: 1.08;
+    margin-bottom: 24px;
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(42px, 5vw, 67px);
+    font-weight: 800;
+    line-height: 1.12;
     letter-spacing: -2px;
 }
 
 .texto-inicio h1 span {
-    color: var(--amarelo);
+    color: #b6e0a5;
 }
 
 .texto-inicio > p {
-    max-width: 540px;
-    color: #f0f4ec;
+    max-width: 520px;
+    margin-bottom: 30px;
+    color: rgba(255,255,255,.87);
     font-size: 16px;
-    line-height: 1.8;
+    line-height: 1.9;
 }
 
 .botoes-inicio {
     display: flex;
     flex-wrap: wrap;
     gap: 13px;
-    margin-top: 27px;
+}
+
+.botao-principal,
+.botao-secundario,
+.botao-chamada {
+    display: inline-flex;
+    min-height: 49px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 23px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: transform .2s, background .2s;
+}
+
+.botao-principal {
+    color: #fff;
+    background: var(--verde);
+}
+
+.botao-principal:hover {
+    background: #326a41;
+}
+
+.botao-secundario {
+    color: #fff;
+    border: 1px solid rgba(255,255,255,.65);
+    background: rgba(255,255,255,.08);
+}
+
+.botao-secundario:hover {
+    background: rgba(255,255,255,.18);
 }
 
 .indicadores {
     display: flex;
     flex-wrap: wrap;
-    gap: 28px;
-    margin-top: 38px;
-    padding-top: 23px;
-    border-top: 1px solid #ffffff55;
+    gap: 32px;
+    margin-top: 47px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,.3);
 }
 
 .indicadores div {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 7px;
 }
 
 .indicadores strong {
-    font-size: 14px;
+    color: #fff;
+    font-size: 16px;
 }
 
 .indicadores small {
-    color: #e1e9dd;
-    font-size: 11px;
+    color: rgba(255,255,255,.75);
+    font-size: 12px;
 }
 
+/* CARTÃO DO MAPA */
+
 .visual-inicio {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 0;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 530px;
+    justify-self: end;
 }
 
 .cartao-propriedade {
-    width: min(100%, 440px);
-    padding: 19px;
-    background: white;
-    color: var(--texto);
-    border: 1px solid #ffffff85;
-    border-radius: 17px;
-    box-shadow: 0 25px 70px #0b1e1050;
+    padding: 20px;
+    border: 1px solid rgba(255,255,255,.65);
+    border-radius: 15px;
+    background: rgba(255,255,255,.96);
+    box-shadow: 0 25px 80px rgba(0,0,0,.24);
 }
 
 .titulo-cartao {
@@ -249,34 +281,38 @@ button {
     justify-content: space-between;
     align-items: center;
     gap: 12px;
-    margin-bottom: 14px;
+    margin-bottom: 17px;
 }
 
 .titulo-cartao small {
-    color: #718072;
+    color: #778179;
     font-size: 9px;
     font-weight: 800;
-    letter-spacing: .7px;
+    letter-spacing: 1px;
 }
 
 .titulo-cartao h3 {
-    margin-top: 3px;
-    font-size: 18px;
+    margin-top: 5px;
+    color: #243b2a;
+    font-family: 'Manrope', sans-serif;
+    font-size: 21px;
 }
 
 .status {
-    padding: 6px 10px;
+    padding: 8px 11px;
+    color: #326a41;
+    background: #e8f3e6;
     border-radius: 20px;
-    background: #eaf3e5;
-    color: var(--verde);
-    font-size: 11px;
+    font-size: 10px;
+    font-weight: 700;
 }
 
 .mapa {
-    height: 265px;
+    width: 100%;
+    height: 300px;
     overflow: hidden;
-    border-radius: 10px;
-    background: #e4ecd9;
+    border-radius: 9px;
+    background: #e7eee3;
 }
 
 .mapa img {
@@ -284,303 +320,343 @@ button {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
 }
 
 .rodape-mapa {
     display: flex;
     justify-content: space-between;
-    gap: 12px;
-    margin-top: 13px;
-    color: #657265;
+    gap: 10px;
+    padding-top: 15px;
+    color: #66736a;
     font-size: 11px;
 }
 
+/* RECURSOS */
+
 .recursos {
-    padding: 85px 7%;
-    background: white;
+    padding: 100px 7%;
+    background: var(--fundo-secao);
 }
 
 .titulo-secao {
-    max-width: 690px;
-    margin: 0 auto 38px;
+    max-width: 700px;
+    margin: 0 auto 48px;
     text-align: center;
+}
+
+.etiqueta-verde {
+    display: inline-block;
+    margin-bottom: 14px;
+    color: var(--verde);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
 }
 
 .titulo-secao h2,
 .texto-sobre h2 {
-    margin: 12px 0;
-    font-size: clamp(30px, 3.5vw, 43px);
-    line-height: 1.2;
-    letter-spacing: -1.2px;
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(29px, 3.5vw, 43px);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -1px;
 }
 
 .titulo-secao h2 span {
     color: var(--verde);
 }
 
-.titulo-secao p,
-.texto-sobre p {
-    color: var(--suave);
+.titulo-secao > p {
+    margin-top: 16px;
+    color: var(--cinza);
     font-size: 15px;
+    line-height: 1.8;
 }
 
 .grade-recursos {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 20px;
+    gap: 22px;
 }
 
 .cartao-recurso {
     overflow: hidden;
-    background: #fbfcf8;
     border: 1px solid var(--borda);
-    border-radius: 14px;
-    transition: transform .2s, box-shadow .2s;
+    border-radius: 12px;
+    background: var(--cartao);
+    transition: transform .25s, box-shadow .25s;
 }
 
 .cartao-recurso:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px #193e2818;
+    box-shadow: 0 15px 35px rgba(31, 65, 39, .1);
 }
 
 .cartao-recurso > img {
     display: block;
     width: 100%;
-    height: 190px;
+    height: 205px;
     object-fit: cover;
+    transition: transform .35s;
+}
+
+.cartao-recurso:hover > img {
+    transform: scale(1.04);
 }
 
 .conteudo-recurso {
-    padding: 19px;
+    padding: 22px 20px 25px;
 }
 
 .conteudo-recurso small {
     color: var(--verde);
     font-size: 10px;
-    font-weight: 900;
-    letter-spacing: .8px;
+    font-weight: 800;
+    letter-spacing: 1px;
 }
 
 .conteudo-recurso h3 {
-    margin: 8px 0;
+    margin: 12px 0 10px;
+    font-family: 'Manrope', sans-serif;
     font-size: 18px;
+    line-height: 1.4;
 }
 
 .conteudo-recurso p {
-    color: var(--suave);
+    color: var(--cinza);
     font-size: 13px;
-    line-height: 1.7;
+    line-height: 1.8;
 }
 
+/* SOBRE O PROJETO */
+
 .sobre {
+    padding: 105px 7%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 55px;
-    padding: 85px 7%;
-    background: #eef3e9;
+    gap: 75px;
+    background: var(--fundo);
 }
 
 .imagem-sobre {
-    height: 360px;
+    height: 440px;
     overflow: hidden;
-    border-radius: 17px;
+    border-radius: 14px;
 }
 
 .imagem-sobre img {
+    display: block;
     width: 100%;
     height: 100%;
-    display: block;
     object-fit: cover;
 }
 
-.texto-sobre .botao-principal {
-    margin-top: 22px;
+.texto-sobre h2 {
+    margin-bottom: 23px;
 }
 
+.texto-sobre > p {
+    margin-bottom: 28px;
+    color: var(--cinza);
+    font-size: 15px;
+    line-height: 1.95;
+}
+
+/* CHAMADA FINAL */
+
 .chamada {
+    margin: 0 7% 85px;
+    padding: 43px 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 30px;
-    padding: 50px 7%;
-    color: white;
-    background: var(--verde-escuro);
+    border-radius: 14px;
+    background: #244d32;
+}
+
+.chamada .etiqueta {
+    margin-bottom: 12px;
 }
 
 .chamada h2 {
     max-width: 650px;
-    margin-top: 9px;
-    font-size: clamp(26px, 3vw, 37px);
-    line-height: 1.2;
+    color: #fff;
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(23px, 3vw, 34px);
+    line-height: 1.4;
 }
 
 .botao-chamada {
     flex-shrink: 0;
-    background: white;
-    color: var(--verde-escuro);
+    color: #244d32;
+    background: #fff;
 }
 
 .botao-chamada:hover {
-    background: var(--amarelo);
+    background: #eaf2e8;
 }
 
+/* RODAPÉ */
+
 .rodape {
+    padding: 35px 7%;
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
     gap: 20px;
-    padding: 24px 7%;
-    background: white;
+    background: #172e1e;
 }
 
 .rodape .logo {
-    color: var(--verde);
+    font-size: 22px;
 }
 
 .rodape p,
 .rodape small {
-    color: var(--suave);
+    color: #d1ddd2;
     font-size: 12px;
 }
 
-/* Tema escuro */
+/* TEMA ESCURO */
+
 body.tema-escuro {
-    --fundo: #17241b;
-    --texto: #edf3eb;
-    --suave: #c4d0c4;
-    --borda: #405344;
-    background: #17241b;
-    color: #edf3eb;
+    --texto: #e8eee8;
+    --cinza: #b3beb5;
+    --fundo: #17231a;
+    --fundo-secao: #1d2b20;
+    --borda: #35483a;
+    --cartao: #233328;
 }
 
-.tema-escuro .recursos,
-.tema-escuro .rodape {
-    background: #202f24;
-    color: #edf3eb;
+body.tema-escuro .titulo-secao h2,
+body.tema-escuro .texto-sobre h2,
+body.tema-escuro .conteudo-recurso h3 {
+    color: #edf4ed;
 }
 
-.tema-escuro .cartao-recurso {
-    background: #26382b;
-    border-color: #405344;
+body.tema-escuro .cartao-recurso {
+    box-shadow: none;
 }
 
-.tema-escuro .conteudo-recurso h3 {
-    color: #edf3eb;
-}
+/* RESPONSIVIDADE */
 
-.tema-escuro .sobre {
-    background: #202f24;
-}
-
-.tema-escuro .rodape .logo {
-    color: #edf3eb;
-}
-
-@media (max-width: 950px) {
-    .cabecalho {
-        padding-left: 5%;
-        padding-right: 5%;
-    }
-
+@media (max-width: 1100px) {
     .inicio {
+        grid-template-columns: 1fr 0.9fr;
+        gap: 30px;
         padding-left: 5%;
         padding-right: 5%;
-        gap: 25px;
     }
 
     .grade-recursos {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .recursos,
     .sobre {
-        padding-left: 5%;
-        padding-right: 5%;
+        gap: 40px;
     }
 }
 
-@media (max-width: 680px) {
+@media (max-width: 760px) {
     .cabecalho {
+        min-height: 76px;
+        padding: 16px 5%;
         flex-wrap: wrap;
-        gap: 12px;
-        padding: 13px 5%;
+        gap: 14px;
     }
 
     .logo {
         font-size: 22px;
     }
 
-    .botoes-cabecalho {
-        margin-left: auto;
-    }
-
     .cabecalho nav {
         order: 3;
         width: 100%;
         justify-content: center;
-        gap: 22px;
+        gap: 25px;
+    }
+
+    .cabecalho nav a {
+        font-size: 13px;
+    }
+
+    .botoes-cabecalho {
+        margin-left: auto;
     }
 
     .inicio {
+        min-height: auto;
+        padding: 175px 6% 55px;
         grid-template-columns: 1fr;
-        padding: 165px 6% 55px;
+        gap: 40px;
+        background-position: center;
     }
 
     .texto-inicio h1 {
-        font-size: 43px;
+        font-size: clamp(39px, 10vw, 56px);
+        letter-spacing: -1.5px;
     }
 
-    .visual-inicio {
-        margin-top: 12px;
-    }
-
-    .mapa {
-        height: 230px;
+    .texto-inicio > p {
+        font-size: 14px;
     }
 
     .indicadores {
-        gap: 17px;
+        gap: 20px;
     }
 
-    .indicadores strong {
-        font-size: 12px;
+    .visual-inicio {
+        max-width: 100%;
+        justify-self: stretch;
+    }
+
+    .mapa {
+        height: 260px;
     }
 
     .recursos,
     .sobre {
-        padding: 60px 6%;
+        padding: 70px 6%;
     }
 
     .grade-recursos {
-        gap: 13px;
+        gap: 15px;
     }
 
     .cartao-recurso > img {
-        height: 135px;
+        height: 160px;
     }
 
     .conteudo-recurso {
-        padding: 13px;
+        padding: 17px 14px 20px;
     }
 
     .conteudo-recurso h3 {
         font-size: 16px;
     }
 
+    .conteudo-recurso p {
+        font-size: 12px;
+    }
+
     .sobre {
         grid-template-columns: 1fr;
-        gap: 25px;
+        gap: 30px;
     }
 
     .imagem-sobre {
-        height: 240px;
+        height: 300px;
     }
 
     .chamada {
+        margin: 0 6% 60px;
+        padding: 30px 24px;
         align-items: flex-start;
         flex-direction: column;
-        padding: 40px 6%;
     }
 
     .rodape {
@@ -589,16 +665,32 @@ body.tema-escuro {
     }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 420px) {
+    .botao-entrar {
+        min-height: 38px;
+        padding: 0 15px;
+    }
+
+    .tema {
+        width: 38px;
+        height: 38px;
+    }
+
     .grade-recursos {
         grid-template-columns: 1fr;
     }
 
     .cartao-recurso > img {
-        height: 190px;
+        height: 210px;
     }
 
-    .texto-inicio h1 {
-        font-size: 37px;
+    .botoes-inicio {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .indicadores {
+        gap: 16px;
     }
 }
+```
