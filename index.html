@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#123d2b">
-  <meta name="description" content="AgroMap: tecnologia para gestão e planejamento da produção rural.">
+  <meta name="description" content="AgroMap: tecnologia para gestão e planejamento rural.">
   <title>AgroMap | Tecnologia para o campo</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
@@ -34,7 +34,6 @@
     <div class="hero-conteudo">
       <span class="etiqueta">TECNOLOGIA NO CAMPO</span>
       <h1>O futuro do<br>agronegócio é <span>inteligente.</span></h1>
-
       <p>
         Gerencie sua propriedade, acompanhe o clima e organize
         sua produção agrícola em um só lugar.
@@ -93,7 +92,7 @@
     <div class="cards">
       <article class="card">
         <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=85"
-          alt="Paisagem rural" loading="lazy">
+          alt="Paisagem de uma propriedade rural" loading="lazy">
         <div class="card-conteudo">
           <span class="numero">01 / GESTÃO</span>
           <h3>Propriedade rural</h3>
@@ -113,7 +112,7 @@
 
       <article class="card">
         <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=85"
-          alt="Máquina agrícola na plantação" loading="lazy">
+          alt="Máquina agrícola trabalhando na plantação" loading="lazy">
         <div class="card-conteudo">
           <span class="numero">03 / CULTIVO</span>
           <h3>Produção agrícola</h3>
@@ -123,7 +122,7 @@
 
       <article class="card">
         <img src="https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=800&q=85"
-          alt="Cultivo em área rural" loading="lazy">
+          alt="Cultivo agrícola em área rural" loading="lazy">
         <div class="card-conteudo">
           <span class="numero">04 / ORGANIZAÇÃO</span>
           <h3>Planejamento agrícola</h3>
@@ -167,7 +166,6 @@
       aria-label="Fechar janela">×</button>
 
     <a href="#inicio" class="logo modal-logo">AgroMap<span>.</span></a>
-
     <h2 id="modalTitulo">Bem-vindo de volta!</h2>
     <p id="modalDescricao">Entre na sua conta para continuar.</p>
 
@@ -186,7 +184,6 @@
         placeholder="Digite sua senha" autocomplete="current-password" required>
 
       <p class="mensagem" id="mensagemLogin" role="status"></p>
-
       <button class="btn btn-verde btn-formulario" type="submit">
         Entrar na conta
       </button>
@@ -214,7 +211,6 @@
         autocomplete="new-password" required>
 
       <div class="divisor-cadastro"></div>
-
       <h3 class="titulo-dados-propriedade">Dados da propriedade rural</h3>
       <p class="descricao-cadastro">
         Informe os dados da propriedade que deseja acompanhar no AgroMap.
@@ -251,8 +247,8 @@
       <div class="localizacao-cadastro">
         <h4>Coordenadas da propriedade</h4>
         <p>
-          Peça ao produtor as coordenadas geográficas da propriedade.
-          Informe a latitude e a longitude em graus decimais.
+          Solicite ao produtor as coordenadas geográficas da propriedade.
+          Informe latitude e longitude em graus decimais.
         </p>
 
         <label for="cadLatitude">Latitude</label>
@@ -267,23 +263,20 @@
 
         <p class="dica-coordenadas">
           A latitude varia de -90 a 90 e a longitude de -180 a 180.
-          No Brasil, as coordenadas geralmente são negativas.
+          No Brasil, geralmente as coordenadas são negativas.
         </p>
       </div>
 
       <p class="mensagem" id="mensagemCadastro" role="status"></p>
-
       <button class="btn btn-verde btn-formulario" type="submit">
         Criar minha conta
       </button>
     </form>
 
-    <p class="aviso-seguranca">
-      AgroMap — tecnologia a favor do campo.
-    </p>
+    <p class="aviso-seguranca">AgroMap — tecnologia a favor do campo.</p>
   </div>
 </div>
 
-<script src="script.js"></script>
+<script src="./script.js" defer></script>
 </body>
 </html>
