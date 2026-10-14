@@ -4,74 +4,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroMap | Gestão Inteligente Rural</title>
+    <title>AgroMap | Gestão Rural Inteligente</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="header">
+
+    <header class="cabecalho">
         <a href="index.html" class="logo">🌱 Agro<span>Map</span></a>
 
-        <nav class="navigation">
+        <nav>
             <a href="#inicio">Início</a>
             <a href="#recursos">Recursos</a>
             <a href="#sobre">Sobre</a>
         </nav>
 
-        <div class="header-actions">
-            <button id="themeButton" class="theme-button" type="button"
-                aria-label="Alternar tema">🌙</button>
-            <a href="login.html" class="login-button">Entrar</a>
+        <div class="botoes-cabecalho">
+            <button id="themeButton" class="tema" type="button" aria-label="Trocar tema">🌙</button>
+            <a href="login.html" class="botao-entrar">Entrar</a>
         </div>
     </header>
 
     <main>
-        <section class="hero" id="inicio">
-            <div class="hero-overlay"></div>
+        <section class="inicio" id="inicio">
+            <div class="fundo-escuro"></div>
 
-            <div class="hero-content">
-                <span class="eyebrow">TECNOLOGIA PARA O AGRONEGÓCIO</span>
+            <div class="texto-inicio">
+                <span class="etiqueta">TECNOLOGIA PARA O AGRONEGÓCIO</span>
 
                 <h1>Sua propriedade.<br>
                     <span>Mais inteligente.</span>
                 </h1>
 
                 <p>
-                    Transforme dados climáticos e informações da sua propriedade
-                    em decisões mais inteligentes para o campo.
+                    O AgroMap reúne dados climáticos e informações da propriedade
+                    rural para auxiliar o planejamento e a previsão da produção.
                 </p>
 
-                <div class="hero-buttons">
-                    <a href="cadastro.html" class="main-button">
-                        Começar agora <span>→</span>
+                <div class="botoes-inicio">
+                    <a href="cadastro.html" class="botao-principal">
+                        Começar agora →
                     </a>
-                    <a href="#recursos" class="secondary-button">
+                    <a href="#recursos" class="botao-secundario">
                         Conhecer recursos
                     </a>
                 </div>
 
-                <div class="hero-stats">
-                    <div><strong>AgroMap IA</strong><small>Previsão de produção</small></div>
-                    <div><strong>Dados climáticos</strong><small>Análise da propriedade</small></div>
-                    <div><strong>Gestão rural</strong><small>Informações organizadas</small></div>
+                <div class="indicadores">
+                    <div>
+                        <strong>AgroMap IA</strong>
+                        <small>Previsão de produção</small>
+                    </div>
+                    <div>
+                        <strong>Clima</strong>
+                        <small>Dados climáticos</small>
+                    </div>
+                    <div>
+                        <strong>Gestão</strong>
+                        <small>Planejamento rural</small>
+                    </div>
                 </div>
             </div>
 
-            <div class="hero-visual">
-                <div class="property-card">
-                    <div class="property-heading">
+            <div class="visual-inicio">
+                <div class="cartao-propriedade">
+                    <div class="titulo-cartao">
                         <div>
                             <small>VISUALIZAÇÃO DA PROPRIEDADE</small>
                             <h3>Mapa rural</h3>
                         </div>
-                        <span class="active-label">Área rural</span>
+                        <span class="status">Propriedade</span>
                     </div>
 
-                    <div class="property-map">
-                        <img src="mapa-propriedade.png"
-                            alt="Mapa ilustrativo da propriedade rural">
+                    <div class="mapa">
+                        <img src="mapa-propriedade.png" alt="Mapa da propriedade rural">
                     </div>
 
-                    <div class="property-caption">
+                    <div class="rodape-mapa">
                         <span>Organização dos talhões</span>
                         <span>AgroMap</span>
                     </div>
@@ -79,85 +87,85 @@
             </div>
         </section>
 
-        <section class="resources section" id="recursos">
-            <div class="section-heading">
-                <span class="eyebrow">CONHEÇA A PLATAFORMA</span>
+        <section class="recursos" id="recursos">
+            <div class="titulo-secao">
+                <span class="etiqueta-verde">CONHEÇA A PLATAFORMA</span>
                 <h2>Tudo para acompanhar sua <span>produção rural.</span></h2>
-                <p>Ferramentas pensadas para auxiliar a rotina e o planejamento agrícola.</p>
+                <p>Informações e ferramentas para ajudar na rotina da propriedade.</p>
             </div>
 
-            <div class="resource-grid">
-                <article class="resource-card">
-                    <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1000&q=85"
-                        alt="Cultivo agrícola em uma propriedade rural" loading="lazy">
-                    <div class="resource-content">
-                        <span class="resource-number">01 / PROPRIEDADE</span>
+            <div class="grade-recursos">
+                <article class="cartao-recurso">
+                    <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=900&q=85"
+                         alt="Plantação agrícola" loading="lazy">
+                    <div class="conteudo-recurso">
+                        <small>01 · PROPRIEDADE</small>
                         <h3>Gestão da propriedade</h3>
-                        <p>Organize informações sobre a área rural e os talhões.</p>
+                        <p>Organize informações sobre áreas, cultivos e talhões.</p>
                     </div>
                 </article>
 
-                <article class="resource-card">
-                    <img src="https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=1000&q=85"
-                        alt="Céu com nuvens para representar o clima" loading="lazy">
-                    <div class="resource-content">
-                        <span class="resource-number">02 / CLIMA</span>
+                <article class="cartao-recurso">
+                    <img src="https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=900&q=85"
+                         alt="Céu com nuvens" loading="lazy">
+                    <div class="conteudo-recurso">
+                        <small>02 · CLIMA</small>
                         <h3>Dados climáticos</h3>
                         <p>Acompanhe dados importantes para o desenvolvimento das culturas.</p>
                     </div>
                 </article>
 
-                <article class="resource-card">
-                    <img src="https://images.unsplash.com/photo-1592982537447-6f2a6a0b2d3b?auto=format&fit=crop&w=1000&q=85"
-                        alt="Atividade de colheita agrícola" loading="lazy">
-                    <div class="resource-content">
-                        <span class="resource-number">03 / PRODUÇÃO</span>
+                <article class="cartao-recurso">
+                    <img src="https://images.unsplash.com/photo-1592982537447-6f2a6a0b2d3b?auto=format&fit=crop&w=900&q=85"
+                         alt="Colheita agrícola" loading="lazy">
+                    <div class="conteudo-recurso">
+                        <small>03 · PRODUÇÃO</small>
                         <h3>Previsão de produção</h3>
-                        <p>Use informações da produção para apoiar o planejamento da safra.</p>
+                        <p>Utilize informações para apoiar o planejamento da safra.</p>
                     </div>
                 </article>
 
-                <article class="resource-card">
-                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=85"
-                        alt="Paisagem verde de uma área agrícola" loading="lazy">
-                    <div class="resource-content">
-                        <span class="resource-number">04 / PLANEJAMENTO</span>
+                <article class="cartao-recurso">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=85"
+                         alt="Paisagem rural" loading="lazy">
+                    <div class="conteudo-recurso">
+                        <small>04 · PLANEJAMENTO</small>
                         <h3>Planejamento agrícola</h3>
-                        <p>Reúna informações úteis para acompanhar os resultados da propriedade.</p>
+                        <p>Reúna informações para acompanhar os resultados da propriedade.</p>
                     </div>
                 </article>
             </div>
         </section>
 
-        <section class="about section" id="sobre">
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1499529112087-3cb3b73 nə?auto=format&fit=crop&w=1000&q=85"
-                    alt="Paisagem rural e área de cultivo" loading="lazy"
-                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=85';">
+        <section class="sobre" id="sobre">
+            <div class="imagem-sobre">
+                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=85"
+                     alt="Área rural e cultivo" loading="lazy">
             </div>
 
-            <div class="about-text">
-                <span class="eyebrow">SOBRE O PROJETO</span>
-                <h2>Mais informação para decisões no campo.</h2>
+            <div class="texto-sobre">
+                <span class="etiqueta-verde">SOBRE O PROJETO</span>
+                <h2>Tecnologia para tomar decisões melhores no campo.</h2>
                 <p>
-                    O AgroMap é um projeto voltado ao uso de tecnologia na gestão
-                    rural. A proposta é reunir informações da propriedade e dados
-                    climáticos para auxiliar a previsão da produção e o planejamento agrícola.
+                    O AgroMap é um projeto de tecnologia voltado à produção rural.
+                    Sua proposta é relacionar informações climáticas e agrícolas
+                    para auxiliar a previsão da produção, a identificação de possíveis
+                    perdas e o planejamento do produtor.
                 </p>
-                <a href="cadastro.html" class="main-button">Criar minha conta →</a>
+                <a href="cadastro.html" class="botao-principal">Criar minha conta →</a>
             </div>
         </section>
 
-        <section class="cta">
+        <section class="chamada">
             <div>
-                <span class="eyebrow">SEU CAMPO, SEUS DADOS</span>
+                <span class="etiqueta">SEU CAMPO, SEUS DADOS</span>
                 <h2>Comece a organizar sua propriedade com o AgroMap.</h2>
             </div>
-            <a href="cadastro.html" class="cta-button">Começar agora →</a>
+            <a href="cadastro.html" class="botao-chamada">Começar agora →</a>
         </section>
     </main>
 
-    <footer class="footer">
+    <footer class="rodape">
         <a href="index.html" class="logo">🌱 Agro<span>Map</span></a>
         <p>Tecnologia e informação para o agronegócio.</p>
         <small>© 2026 AgroMap</small>
