@@ -1,7 +1,7 @@
-
+```css
 :root {
   --verde: #285b36;
-  --verde-escuro: #1d4229;
+  --verde-escuro: #193e28;
   --verde-medio: #47784b;
   --verde-claro: #eaf1e4;
   --amarelo: #e8c84a;
@@ -34,11 +34,13 @@ body.modal-aberto {
   overflow: hidden;
 }
 
-button, input {
+button,
+input {
   font: inherit;
 }
 
-button, a {
+button,
+a {
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -51,18 +53,28 @@ button {
   cursor: pointer;
 }
 
+/* CABEÇALHO */
+
 .topo {
   width: 100%;
-  min-height: 82px;
+  min-height: 88px;
   padding: 15px 6.5%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 25px;
-  background: rgba(255, 255, 255, .97);
-  border-bottom: 1px solid rgba(40, 91, 54, .09);
   position: relative;
   z-index: 10;
+}
+
+.topo-sobre-foto {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(24, 52, 29, .28);
+  border-bottom: 1px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(5px);
 }
 
 .marca {
@@ -72,7 +84,7 @@ button {
   font-size: 25px;
   font-weight: 800;
   line-height: 1.1;
-  color: var(--verde-escuro);
+  color: white;
   flex-shrink: 0;
 }
 
@@ -88,8 +100,12 @@ button {
   font-weight: 900;
 }
 
+.marca-nome {
+  color: white;
+}
+
 .marca-verde {
-  color: var(--verde-medio);
+  color: var(--amarelo);
 }
 
 .marca small {
@@ -98,24 +114,24 @@ button {
   font-size: 9px;
   letter-spacing: 2px;
   font-weight: 700;
-  color: #7d897a;
+  color: rgba(255, 255, 255, .8);
 }
 
 .navegacao {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 22px;
 }
 
 .navegacao > a {
   font-size: 14px;
   font-weight: 600;
-  color: #4d594c;
+  color: white;
   transition: color .2s;
 }
 
 .navegacao > a:hover {
-  color: var(--verde-medio);
+  color: var(--amarelo);
 }
 
 .botao {
@@ -148,12 +164,12 @@ button {
 
 .botao-contorno {
   background: transparent;
-  color: var(--verde);
-  border-color: #bfcfbd;
+  color: white;
+  border-color: rgba(255, 255, 255, .75);
 }
 
 .botao-contorno:hover {
-  background: var(--verde-claro);
+  background: rgba(255, 255, 255, .13);
 }
 
 .botao-amarelo {
@@ -184,26 +200,32 @@ button {
   display: none;
   border: 0;
   background: transparent;
-  color: var(--verde);
+  color: white;
   font-size: 28px;
 }
+
+/* FOTO PRINCIPAL */
 
 .hero {
   position: relative;
   isolation: isolate;
-  min-height: 590px;
-  padding: 75px 8%;
+  min-height: 690px;
+  padding: 145px 8% 75px;
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(320px, .85fr);
   align-items: center;
   gap: 6%;
   overflow: hidden;
+
   background-image:
-    linear-gradient(90deg,
-      rgba(21, 48, 28, .88) 0%,
-      rgba(29, 62, 34, .76) 48%,
-      rgba(32, 64, 35, .38) 100%),
+    linear-gradient(
+      90deg,
+      rgba(18, 43, 23, .82) 0%,
+      rgba(23, 53, 29, .65) 50%,
+      rgba(24, 53, 28, .35) 100%
+    ),
     url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=85");
+
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -244,7 +266,7 @@ button {
 .hero-conteudo > p {
   max-width: 510px;
   margin: 23px 0 27px;
-  color: rgba(255, 255, 255, .88);
+  color: rgba(255, 255, 255, .9);
   font-size: 16px;
   line-height: 1.85;
 }
@@ -264,13 +286,16 @@ button {
   gap: 9px;
 }
 
-.ponto, .status-ponto {
+.ponto,
+.status-ponto {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: var(--amarelo);
   display: inline-block;
 }
+
+/* CARTÃO DO MAPA */
 
 .hero-cartao {
   width: 100%;
@@ -360,6 +385,8 @@ button {
   background: #75a96b;
 }
 
+/* FAIXA DE DESTAQUES */
+
 .faixa {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -393,6 +420,8 @@ button {
   color: var(--texto-suave);
   font-size: 12px;
 }
+
+/* SOBRE */
 
 .secao {
   padding: 100px 8%;
@@ -439,7 +468,8 @@ button {
   font-size: 11px;
 }
 
-.sobre-texto h2, .titulo-secao h2 {
+.sobre-texto h2,
+.titulo-secao h2 {
   margin: 0 0 20px;
   color: var(--verde-escuro);
   font-size: clamp(30px, 3.2vw, 43px);
@@ -447,7 +477,8 @@ button {
   letter-spacing: -.8px;
 }
 
-.sobre-texto h2 span, .titulo-secao h2 span {
+.sobre-texto h2 span,
+.titulo-secao h2 span {
   color: var(--verde-medio);
 }
 
@@ -473,6 +504,8 @@ button {
 .link-botao:hover {
   color: var(--verde-medio);
 }
+
+/* RECURSOS: QUATRO QUADRADOS COM FOTOS */
 
 .recursos {
   background: white;
@@ -500,58 +533,67 @@ button {
 
 .recursos-grade {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
 }
 
 .recurso {
   position: relative;
-  min-height: 240px;
-  padding: 30px 27px;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
   border: 1px solid var(--borda);
-  border-radius: 12px;
-  background: #fff;
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 8px 25px rgba(35, 58, 34, .07);
   transition: transform .2s, box-shadow .2s;
 }
 
 .recurso:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   box-shadow: var(--sombra);
+}
+
+.recurso-foto > img {
+  display: block;
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  transition: transform .35s ease;
+}
+
+.recurso-foto:hover > img {
+  transform: scale(1.035);
+}
+
+.recurso-conteudo {
+  position: relative;
+  padding: 23px 25px 26px;
 }
 
 .recurso-numero {
   position: absolute;
-  top: 20px;
-  right: 22px;
-  color: #c6d3c1;
+  top: 22px;
+  right: 23px;
+  color: #82977b;
   font-size: 13px;
   font-weight: 800;
 }
 
-.recurso-icone {
-  width: 48px;
-  height: 48px;
-  margin-bottom: 20px;
-  display: grid;
-  place-items: center;
-  color: var(--verde);
-  background: var(--verde-claro);
-  border-radius: 12px;
-  font-size: 27px;
-}
-
-.recurso h3 {
-  margin: 0 0 10px;
+.recurso-foto h3 {
+  margin: 0 35px 9px 0;
   color: var(--verde-escuro);
-  font-size: 19px;
+  font-size: 21px;
 }
 
-.recurso p {
+.recurso-foto p {
   margin: 0;
   color: var(--texto-suave);
   font-size: 14px;
   line-height: 1.75;
 }
+
+/* CHAMADA FINAL */
 
 .chamada {
   padding: 55px 8%;
@@ -583,6 +625,8 @@ button {
   flex-shrink: 0;
 }
 
+/* RODAPÉ */
+
 .rodape {
   padding: 28px 8%;
   display: flex;
@@ -602,12 +646,22 @@ button {
   font-size: 23px;
 }
 
-.rodape > p, .rodape > span {
+.marca-rodape .marca-nome,
+.marca-rodape .marca-verde {
+  color: var(--verde-escuro);
+}
+
+.marca-rodape .marca-nome small {
+  color: var(--texto-suave);
+}
+
+.rodape > p,
+.rodape > span {
   color: var(--texto-suave);
   font-size: 12px;
 }
 
-/* MODAIS */
+/* JANELAS DE LOGIN E CADASTRO */
 
 .modal {
   position: fixed;
@@ -649,8 +703,15 @@ button {
 }
 
 @keyframes aparecer {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .modal-fechar {
@@ -698,7 +759,7 @@ button {
   min-height: 45px;
   padding: 11px 13px;
   color: var(--texto);
-  background: #fff;
+  background: white;
   border: 1px solid #d8e1d4;
   border-radius: 7px;
   outline: none;
@@ -754,6 +815,12 @@ button {
   flex-shrink: 0;
 }
 
+.localizacao-ok {
+  background: var(--verde-claro);
+  color: var(--verde);
+  border-color: #b9d1b5;
+}
+
 .mensagem {
   margin: 12px 0 0;
   color: var(--verde);
@@ -779,6 +846,8 @@ button {
   font-size: 12px;
 }
 
+/* TABLETS */
+
 @media (max-width: 1000px) {
   .topo {
     padding-left: 5%;
@@ -786,7 +855,16 @@ button {
   }
 
   .navegacao {
-    gap: 15px;
+    gap: 12px;
+  }
+
+  .navegacao > a {
+    font-size: 12px;
+  }
+
+  .navegacao .botao {
+    padding: 10px 13px;
+    font-size: 12px;
   }
 
   .hero {
@@ -804,9 +882,16 @@ button {
   }
 }
 
+/* CELULARES */
+
 @media (max-width: 760px) {
   .topo {
-    min-height: 72px;
+    min-height: 76px;
+    padding: 12px 5%;
+  }
+
+  .marca {
+    font-size: 22px;
   }
 
   .menu-mobile {
@@ -831,18 +916,27 @@ button {
     display: flex;
   }
 
-  .navegacao > a {
+  .topo-sobre-foto .navegacao > a {
+    color: var(--verde);
     padding: 12px 0;
+    font-size: 14px;
   }
 
   .navegacao .botao {
     margin-top: 8px;
+    font-size: 14px;
+  }
+
+  .topo-sobre-foto .navegacao .botao-contorno {
+    color: var(--verde);
+    border-color: #bfcfbd;
   }
 
   .hero {
     grid-template-columns: 1fr;
     gap: 40px;
-    padding: 65px 7%;
+    padding: 130px 7% 60px;
+    min-height: 0;
     background-position: center;
   }
 
@@ -886,8 +980,12 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .recurso-foto > img {
+    height: 215px;
+  }
+
   .recurso {
-    min-height: auto;
+    min-height: 0;
   }
 
   .chamada {
@@ -905,6 +1003,8 @@ button {
     margin: 3px 0;
   }
 }
+
+/* CELULARES PEQUENOS */
 
 @media (max-width: 480px) {
   .hero-botoes {
@@ -955,3 +1055,4 @@ button {
     width: 100%;
   }
 }
+```
