@@ -1,27 +1,35 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Alterna o tema claro e escuro
-    const botaoTema = document.getElementById("themeButton");
+    const themeButton = document.getElementById("themeButton");
 
-    if (botaoTema) {
-        botaoTema.addEventListener("click", function () {
+    // Alternar entre tema claro e escuro
+    if (themeButton) {
+        themeButton.addEventListener("click", function () {
             document.body.classList.toggle("tema-escuro");
 
-            const escuro = document.body.classList.contains("tema-escuro");
+            const temaEscuroAtivo =
+                document.body.classList.contains("tema-escuro");
 
-            botaoTema.textContent = escuro ? "☀️" : "🌙";
-            botaoTema.setAttribute("aria-pressed", String(escuro));
+            themeButton.textContent = temaEscuroAtivo ? "☀️" : "🌙";
+
+            themeButton.setAttribute(
+                "aria-label",
+                temaEscuroAtivo ? "Ativar tema claro" : "Ativar tema escuro"
+            );
         });
     }
 
-    // Navegação suave entre as seções da página
+    // Rolagem suave para as seções da página
     document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-        link.addEventListener("click", function (evento) {
+        link.addEventListener("click", function (event) {
             const destino = link.getAttribute("href");
+
+            if (!destino || destino === "#") return;
+
             const secao = document.querySelector(destino);
 
             if (secao) {
-                evento.preventDefault();
+                event.preventDefault();
 
                 secao.scrollIntoView({
                     behavior: "smooth",
@@ -30,7 +38,4 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
-
-    // Os links de cadastro e login abrem as páginas correspondentes.
-    // Não interceptamos esses links para não impedir a navegação.
 });
