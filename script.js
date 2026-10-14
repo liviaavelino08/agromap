@@ -1,27 +1,28 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-    const themeButton = document.getElementById("themeButton");
+    // Alterna o tema claro e escuro
+    const botaoTema = document.getElementById("themeButton");
 
-    if (themeButton) {
-        themeButton.addEventListener("click", function () {
-            document.body.classList.toggle("dark-theme");
+    if (botaoTema) {
+        botaoTema.addEventListener("click", function () {
+            document.body.classList.toggle("tema-escuro");
 
-            const escuro = document.body.classList.contains("dark-theme");
-            themeButton.textContent = escuro ? "☀️" : "🌙";
-            themeButton.setAttribute("aria-pressed", String(escuro));
+            const escuro = document.body.classList.contains("tema-escuro");
+
+            botaoTema.textContent = escuro ? "☀️" : "🌙";
+            botaoTema.setAttribute("aria-pressed", String(escuro));
         });
     }
 
+    // Navegação suave entre as seções da página
     document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-        link.addEventListener("click", function (event) {
+        link.addEventListener("click", function (evento) {
             const destino = link.getAttribute("href");
-
-            if (!destino || destino === "#") return;
-
             const secao = document.querySelector(destino);
 
             if (secao) {
-                event.preventDefault();
+                evento.preventDefault();
+
                 secao.scrollIntoView({
                     behavior: "smooth",
                     block: "start"
@@ -29,4 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+
+    // Os links de cadastro e login abrem as páginas correspondentes.
+    // Não interceptamos esses links para não impedir a navegação.
 });
