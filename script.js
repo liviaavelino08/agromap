@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("ano").textContent =
     new Date().getFullYear();
 
-  /* ABRIR E FECHAR JANELAS */
+  // ABRIR E FECHAR JANELAS
 
   function fecharModais() {
     document.querySelectorAll(".modal").forEach(function (modal) {
@@ -35,6 +35,16 @@ document.addEventListener("DOMContentLoaded", function () {
         primeiroCampo.focus();
       }, 100);
     }
+
+    // Fecha o menu de celular após escolher uma opção.
+    if (navegacao) {
+      navegacao.classList.remove("aberto");
+    }
+
+    if (menuMobile) {
+      menuMobile.setAttribute("aria-expanded", "false");
+      menuMobile.textContent = "☰";
+    }
   }
 
   document.querySelectorAll("[data-abrir]").forEach(function (botao) {
@@ -59,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  /* MENU PARA CELULAR */
+  // MENU PARA CELULAR
 
   if (menuMobile && navegacao) {
     menuMobile.addEventListener("click", function () {
@@ -78,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  /* MENSAGENS DOS FORMULÁRIOS */
+  // MENSAGENS
 
   function mostrarMensagem(id, texto, erro) {
     const elemento = document.getElementById(id);
@@ -87,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
     elemento.classList.toggle("erro", Boolean(erro));
   }
 
-  /* LOGIN */
+  // LOGIN VISUAL
 
   const loginForm = document.getElementById("loginForm");
 
@@ -96,12 +106,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     mostrarMensagem(
       "loginFeedback",
-      "A tela está funcionando, mas o login real precisa estar conectado ao servidor PHP e ao banco de dados.",
+      "A tela está funcionando. Para validar o usuário e a senha, é necessário conectar o sistema ao servidor PHP e ao banco de dados.",
       false
     );
   });
 
-  /* CADASTRO */
+  // CADASTRO E VALIDAÇÃO
 
   const registerForm = document.getElementById("registerForm");
 
@@ -120,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (senha.length < 8) {
       mostrarMensagem(
         "registerFeedback",
-        "A senha precisa ter pelo menos 8 caracteres.",
+        "A senha deve ter pelo menos 8 caracteres.",
         true
       );
       return;
@@ -129,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (senha !== confirmacao) {
       mostrarMensagem(
         "registerFeedback",
-        "As senhas não são iguais. Confira os dois campos.",
+        "As senhas não correspondem. Confira os dois campos.",
         true
       );
       return;
@@ -146,12 +156,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     mostrarMensagem(
       "registerFeedback",
-      "Os campos foram validados! Para salvar a conta de verdade, precisamos conectar o formulário ao PHP e ao banco de dados do AgroMap.",
+      "Os campos foram validados! O salvamento definitivo do cadastro precisa estar conectado ao servidor PHP e ao banco de dados.",
       false
     );
   });
 
-  /* SOLICITAÇÃO DE LOCALIZAÇÃO */
+  // SOLICITAR LOCALIZAÇÃO
 
   const locationButton =
     document.getElementById("locationButton");
@@ -162,7 +172,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!navigator.geolocation) {
       status.textContent =
-        "Este navegador não oferece suporte à localização.";
+        "Seu navegador não oferece suporte à localização.";
       return;
     }
 
@@ -186,15 +196,14 @@ document.addEventListener("DOMContentLoaded", function () {
         locationButton.textContent =
           "Localização permitida";
 
-        locationButton.classList.add("localizacao-ok");
         locationButton.disabled = false;
       },
 
       function (erro) {
         const mensagens = {
-          1: "Permissão negada. Você pode autorizar nas configurações do navegador.",
+          1: "Permissão negada. Autorize a localização nas configurações do navegador, se desejar.",
           2: "Não foi possível obter a localização. Tente novamente.",
-          3: "A localização demorou demais. Tente novamente."
+          3: "A solicitação demorou demais. Tente novamente."
         };
 
         status.textContent =
