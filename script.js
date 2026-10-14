@@ -13,7 +13,6 @@ function abrirModal(tipo = "login") {
   modal.classList.add("aberto");
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
-
   mostrarFormulario(tipo);
 }
 
@@ -37,52 +36,40 @@ function mostrarFormulario(tipo) {
     : "Bem-vindo de volta!";
 
   modalDescricao.textContent = cadastro
-    ? "Preencha seus dados para começar."
+    ? "Preencha seus dados e os dados da propriedade."
     : "Entre na sua conta para continuar.";
 
   document.getElementById("mensagemLogin").textContent = "";
   document.getElementById("mensagemCadastro").textContent = "";
 }
 
-document.getElementById("abrirLogin").addEventListener("click", () => {
-  abrirModal("login");
-});
+document.getElementById("abrirLogin")
+  .addEventListener("click", () => abrirModal("login"));
 
-document.getElementById("abrirCadastro").addEventListener("click", () => {
-  abrirModal("cadastro");
-});
+document.getElementById("abrirCadastro")
+  .addEventListener("click", () => abrirModal("cadastro"));
 
-document.getElementById("heroCadastro").addEventListener("click", () => {
-  abrirModal("cadastro");
-});
+document.getElementById("heroCadastro")
+  .addEventListener("click", () => abrirModal("cadastro"));
 
-document.getElementById("chamadaCadastro").addEventListener("click", () => {
-  abrirModal("cadastro");
-});
+document.getElementById("chamadaCadastro")
+  .addEventListener("click", () => abrirModal("cadastro"));
 
-document.getElementById("fecharModal").addEventListener("click", fecharModal);
+document.getElementById("fecharModal")
+  .addEventListener("click", fecharModal);
 
-abaLogin.addEventListener("click", () => {
-  mostrarFormulario("login");
-});
-
-abaCadastro.addEventListener("click", () => {
-  mostrarFormulario("cadastro");
-});
+abaLogin.addEventListener("click", () => mostrarFormulario("login"));
+abaCadastro.addEventListener("click", () => mostrarFormulario("cadastro"));
 
 modal.addEventListener("click", (evento) => {
-  if (evento.target === modal) {
-    fecharModal();
-  }
+  if (evento.target === modal) fecharModal();
 });
 
 document.addEventListener("keydown", (evento) => {
-  if (evento.key === "Escape") {
-    fecharModal();
-  }
+  if (evento.key === "Escape") fecharModal();
 });
 
-// Menu para celulares
+// Menu para celular
 const menu = document.getElementById("menu");
 const botaoMenu = document.getElementById("menuMobile");
 
@@ -98,102 +85,56 @@ document.querySelectorAll("#menu a").forEach((link) => {
   });
 });
 
-// Envio para os arquivos PHP existentes
-async function enviarFormulario(url, formulario, mensagem) {
-  const botao = formulario.querySelector('button[type="submit"]');
-  const textoOriginal = botao.textContent;
-
-  mensagem.textContent = "";
-  mensagem.classList.remove("sucesso");
-
-  botao.disabled = true;
-  botao.textContent = "Aguarde...";
-
-  try {
-    const resposta = await fetch(url, {
-      method: "POST",
-      body: new FormData(formulario),
-      headers: {
-        "Accept": "application/json"
-      },
-      credentials: "same-origin"
-    });
-
-    const dados = await resposta.json();
-
-    if (!resposta.ok || !dados.sucesso) {
-      throw new Error(
-        dados.mensagem || "Não foi possível concluir a operação."
-      );
-    }
-
-    mensagem.textContent = dados.mensagem;
-    mensagem.classList.add("sucesso");
-
-    if (url === "cadastrar.php") {
-      formulario.reset();
-
-      setTimeout(() => {
-        mostrarFormulario("login");
-      }, 1200);
-    } else {
-      formulario.reset();
-
-      setTimeout(() => {
-        window.location.href = dados.redirecionar || "painel.php";
-      }, 500);
-    }
-  } catch (erro) {
-    if (erro instanceof SyntaxError) {
-      mensagem.textContent =
-        "O servidor retornou uma resposta inesperada. Verifique o PHP.";
-    } else if (erro.message === "Failed to fetch") {
-      mensagem.textContent =
-        "Não foi possível conectar ao servidor. Verifique sua conexão.";
-    } else {
-      mensagem.textContent = erro.message;
-    }
-
-    mensagem.classList.remove("sucesso");
-  } finally {
-    botao.disabled = false;
-    botao.textContent = textoOriginal;
-  }
-}
-
-formLogin.addEventListener("submit", (evento) => {
-  evento.preventDefault();
-
-  enviarFormulario(
-    "login.php",
-    formLogin,
-    document.getElementById("mensagemLogin")
-  );
-});
-
+// Validação dos dados do cadastro
 formCadastro.addEventListener("submit", (evento) => {
   evento.preventDefault();
 
+  const mensagem = document.getElementById("mensagemCadastro");
   const senha = document.getElementById("cadSenha").value;
   const confirmar = document.getElementById("cadConfirmar").value;
-  const mensagem = document.getElementById("mensagemCadastro");
+
+  const latitude = Number(document.getElementById("cadLatitude").value);
+  const longitude = Number(document.getElementById("cadLongitude").value);
+
+  mensagem.classList.remove("sucesso");
+  mensagem.textContent = "";
 
   if (senha.length < 8) {
-    mensagem.textContent =
-      "A senha precisa ter pelo menos 8 caracteres.";
-    mensagem.classList.remove("sucesso");
+    mensagem.textContent = "A senha precisa ter pelo menos 8 caracteres.";
     return;
   }
 
   if (senha !== confirmar) {
     mensagem.textContent = "As senhas não são iguais.";
-    mensagem.classList.remove("sucesso");
     return;
   }
 
-  enviarFormulario(
-    "cadastrar.php",
-    formCadastro,
-    mensagem
-  );
+  if (!Number.isFinite(latitude) || latitude < -90 || latitude > 90) {
+    mensagem.textContent = "Informe uma latitude válida, entre -90 e 90.";
+    document.getElementById("cadLatitude").focus();
+    return;
+  }
+
+  if (!Number.isFinite(longitude) || longitude < -180 || longitude > 180) {
+    mensagem.textContent = "Informe uma longitude válida, entre -180 e 180.";
+    document.getElementById("cadLongitude").focus();
+    return;
+  }
+
+  mensagem.textContent =
+    "Os dados foram validados no navegador, mas ainda não foram salvos. " +
+    "Para concluir o cadastro, precisamos conectar o AgroMap a um backend.";
+
+  mensagem.classList.remove("sucesso");
+});
+
+// O login também precisa de um backend para verificar as credenciais.
+formLogin.addEventListener("submit", (evento) => {
+  evento.preventDefault();
+
+  const mensagem = document.getElementById("mensagemLogin");
+  mensagem.classList.remove("sucesso");
+  mensagem.textContent =
+    "O login ainda não está conectado a um servidor. " +
+    "Precisamos configurar a autenticação para permitir a entrada na conta.";
 });
