@@ -1,159 +1,182 @@
 
-const modal = document.getElementById("modal");
-const formLogin = document.getElementById("formLogin");
-const formCadastro = document.getElementById("formCadastro");
+document.addEventListener("DOMContentLoaded", () => {
+  const loginModal = document.getElementById("loginModal");
+  const registerModal = document.getElementById("registerModal");
+  const mainNav = document.getElementById("mainNav");
+  const menuToggle = document.getElementById("menuToggle");
 
-const modalTitulo = document.getElementById("modalTitulo");
-const modalDescricao = document.getElementById("modalDescricao");
+  const loginForm = document.getElementById("loginForm");
+  const registerForm = document.getElementById("registerForm");
 
-const abaLogin = document.getElementById("abaLogin");
-const abaCadastro = document.getElementById("abaCadastro");
+  const loginFeedback = document.getElementById("loginFeedback");
+  const registerFeedback = document.getElementById("registerFeedback");
 
-function abrirModal(tipo = "login") {
-  modal.classList.add("aberto");
-  modal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-  mostrarFormulario(tipo);
-}
+  document.getElementById("currentYear").textContent =
+    new Date().getFullYear();
 
-function fecharModal() {
-  modal.classList.remove("aberto");
-  modal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
-}
+  function closeAllModals() {
+    [loginModal, registerModal].forEach((modal) => {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+    });
 
-function mostrarFormulario(tipo) {
-  const cadastro = tipo === "cadastro";
-
-  formLogin.hidden = cadastro;
-  formCadastro.hidden = !cadastro;
-
-  abaLogin.classList.toggle("ativa", !cadastro);
-  abaCadastro.classList.toggle("ativa", cadastro);
-
-  modalTitulo.textContent = cadastro
-    ? "Crie sua conta AgroMap"
-    : "Bem-vindo de volta!";
-
-  modalDescricao.textContent = cadastro
-    ? "Preencha seus dados e os dados da propriedade."
-    : "Entre na sua conta para continuar.";
-
-  document.getElementById("mensagemLogin").textContent = "";
-  document.getElementById("mensagemCadastro").textContent = "";
-}
-
-document.getElementById("abrirLogin")
-  .addEventListener("click", () => abrirModal("login"));
-
-document.getElementById("abrirCadastro")
-  .addEventListener("click", () => abrirModal("cadastro"));
-
-document.getElementById("heroCadastro")
-  .addEventListener("click", () => abrirModal("cadastro"));
-
-document.getElementById("chamadaCadastro")
-  .addEventListener("click", () => abrirModal("cadastro"));
-
-document.getElementById("fecharModal")
-  .addEventListener("click", fecharModal);
-
-abaLogin.addEventListener("click", () => mostrarFormulario("login"));
-abaCadastro.addEventListener("click", () => mostrarFormulario("cadastro"));
-
-modal.addEventListener("click", (evento) => {
-  if (evento.target === modal) {
-    fecharModal();
+    document.body.classList.remove("modal-open");
   }
-});
 
-document.addEventListener("keydown", (evento) => {
-  if (evento.key === "Escape") {
-    fecharModal();
+  function openModal(modal) {
+    closeAllModals();
+
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+
+    if (mainNav) {
+      mainNav.classList.remove("is-open");
+    }
+
+    if (menuToggle) {
+      menuToggle.setAttribute("aria-expanded", "false");
+    }
+
+    const firstInput = modal.querySelector("input");
+    if (firstInput) {
+      setTimeout(() => firstInput.focus(), 100);
+    }
   }
-});
 
-// Menu para celular
-const menu = document.getElementById("menu");
-const botaoMenu = document.getElementById("menuMobile");
+  function showFeedback(element, message, isError = false) {
+    element.textContent = message;
+    element.classList.toggle("error", isError);
+  }
 
-botaoMenu.addEventListener("click", () => {
-  const aberto = menu.classList.toggle("aberto");
-  botaoMenu.setAttribute("aria-expanded", String(aberto));
-});
-
-document.querySelectorAll("#menu a").forEach((link) => {
-  link.addEventListener("click", () => {
-    menu.classList.remove("aberto");
-    botaoMenu.setAttribute("aria-expanded", "false");
+  document.getElementById("openLogin").addEventListener("click", () => {
+    openModal(loginModal);
   });
-});
 
-// Validação do cadastro
-formCadastro.addEventListener("submit", (evento) => {
-  evento.preventDefault();
+  document.getElementById("openRegister").addEventListener("click", () => {
+    openModal(registerModal);
+  });
 
-  const mensagem = document.getElementById("mensagemCadastro");
-  const senha = document.getElementById("cadSenha").value;
-  const confirmar = document.getElementById("cadConfirmar").value;
+  document.getElementById("heroRegister").addEventListener("click", () => {
+    openModal(registerModal);
+  });
 
-  const campoLatitude = document.getElementById("cadLatitude");
-  const campoLongitude = document.getElementById("cadLongitude");
+  document.getElementById("bottomRegister").addEventListener("click", () => {
+    openModal(registerModal);
+  });
 
-  const latitude = campoLatitude.value.trim();
-  const longitude = campoLongitude.value.trim();
+  document.getElementById("loginToRegister").addEventListener("click", () => {
+    openModal(registerModal);
+  });
 
-  mensagem.classList.remove("sucesso");
-  mensagem.textContent = "";
+  document.getElementById("registerToLogin").addEventListener("click", () => {
+    openModal(loginModal);
+  });
 
-  if (senha.length < 8) {
-    mensagem.textContent =
-      "A senha precisa ter pelo menos 8 caracteres.";
-    return;
+  document.querySelectorAll("[data-close]").forEach((element) => {
+    element.addEventListener("click", closeAllModals);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeAllModals();
+    }
+  });
+
+  if (menuToggle && mainNav) {
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("is-open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    mainNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
   }
 
-  if (senha !== confirmar) {
-    mensagem.textContent = "As senhas não são iguais.";
-    document.getElementById("cadConfirmar").focus();
-    return;
-  }
+  // Verifica os dados antes de enviar o cadastro.
+  registerForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    showFeedback(registerFeedback, "");
 
-  if (latitude === "" || longitude === "") {
-    mensagem.textContent =
-      "Informe a latitude e a longitude da propriedade.";
-    return;
-  }
+    const password = document.getElementById("registerPassword").value;
+    const confirmPassword =
+      document.getElementById("confirmPassword").value;
 
-  const lat = Number(latitude);
-  const lon = Number(longitude);
+    const latitude = Number(document.getElementById("latitude").value);
+    const longitude = Number(document.getElementById("longitude").value);
+    const area = Number(document.getElementById("farmArea").value);
 
-  if (!Number.isFinite(lat) || lat < -90 || lat > 90) {
-    mensagem.textContent =
-      "Latitude inválida. Use um valor entre -90 e 90.";
-    campoLatitude.focus();
-    return;
-  }
+    if (password.length < 8) {
+      showFeedback(
+        registerFeedback,
+        "A senha precisa ter pelo menos 8 caracteres.",
+        true
+      );
+      return;
+    }
 
-  if (!Number.isFinite(lon) || lon < -180 || lon > 180) {
-    mensagem.textContent =
-      "Longitude inválida. Use um valor entre -180 e 180.";
-    campoLongitude.focus();
-    return;
-  }
+    if (password !== confirmPassword) {
+      showFeedback(
+        registerFeedback,
+        "As senhas digitadas não são iguais.",
+        true
+      );
+      return;
+    }
 
-  mensagem.textContent =
-    "Os campos foram validados! O cadastro ainda precisa ser conectado " +
-    "ao banco de dados para salvar as informações permanentemente.";
-});
+    if (!Number.isFinite(area) || area <= 0) {
+      showFeedback(
+        registerFeedback,
+        "Informe uma área maior que zero hectare.",
+        true
+      );
+      return;
+    }
 
-// O login ainda não está ligado a um servidor
-formLogin.addEventListener("submit", (evento) => {
-  evento.preventDefault();
+    if (
+      !Number.isFinite(latitude) ||
+      latitude < -90 ||
+      latitude > 90
+    ) {
+      showFeedback(
+        registerFeedback,
+        "Confira a latitude. Ela deve ficar entre -90 e 90.",
+        true
+      );
+      return;
+    }
 
-  const mensagem = document.getElementById("mensagemLogin");
+    if (
+      !Number.isFinite(longitude) ||
+      longitude < -180 ||
+      longitude > 180
+    ) {
+      showFeedback(
+        registerFeedback,
+        "Confira a longitude. Ela deve ficar entre -180 e 180.",
+        true
+      );
+      return;
+    }
 
-  mensagem.classList.remove("sucesso");
-  mensagem.textContent =
-    "O login ainda não está conectado ao servidor. " +
-    "Precisamos configurar a autenticação para permitir a entrada.";
+    showFeedback(
+      registerFeedback,
+      "Os dados foram validados, mas o cadastro ainda não está conectado ao servidor. Para criar uma conta real e salvar as informações, é necessário conectar o site a um backend."
+    );
+  });
+
+  // O formulário de login ainda depende de um servidor.
+  loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    showFeedback(
+      loginFeedback,
+      "O login ainda não está conectado ao servidor. É necessário configurar o backend para validar sua conta.",
+      true
+    );
+  });
 });
