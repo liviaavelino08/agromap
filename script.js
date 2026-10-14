@@ -1,211 +1,180 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const loginModal = document.getElementById("loginModal");
-    const registerModal = document.getElementById("registerModal");
-    const mainNav = document.getElementById("mainNav");
-    const menuToggle = document.getElementById("menuToggle");
 
-    const loginForm = document.getElementById("loginForm");
-    const registerForm = document.getElementById("registerForm");
+document.addEventListener("DOMContentLoaded", function () {
+  const loginModal = document.getElementById("loginModal");
+  const registerModal = document.getElementById("registerModal");
+  const menuMobile = document.getElementById("menuMobile");
+  const navegacao = document.getElementById("navegacao");
 
-    const loginFeedback = document.getElementById("loginFeedback");
-    const registerFeedback = document.getElementById("registerFeedback");
+  document.getElementById("ano").textContent = new Date().getFullYear();
 
-    const year = document.getElementById("currentYear");
-
-    if (year) {
-        year.textContent = new Date().getFullYear();
-    }
-
-    function fecharJanelas() {
-        [loginModal, registerModal].forEach((modal) => {
-            if (!modal) return;
-
-            modal.classList.remove("is-open");
-            modal.setAttribute("aria-hidden", "true");
-        });
-
-        document.body.classList.remove("modal-aberto");
-    }
-
-    function abrirJanela(modal) {
-        if (!modal) return;
-
-        fecharJanelas();
-
-        modal.classList.add("is-open");
-        modal.setAttribute("aria-hidden", "false");
-        document.body.classList.add("modal-aberto");
-
-        if (mainNav) {
-            mainNav.classList.remove("is-open");
-        }
-
-        if (menuToggle) {
-            menuToggle.setAttribute("aria-expanded", "false");
-        }
-
-        const primeiroCampo = modal.querySelector("input");
-
-        if (primeiroCampo) {
-            primeiroCampo.focus();
-        }
-    }
-
-    function ligarBotao(id, acao) {
-        const botao = document.getElementById(id);
-
-        if (!botao) return;
-
-        botao.addEventListener("click", (event) => {
-            event.preventDefault();
-            acao();
-        });
-    }
-
-    function mensagem(elemento, texto, erro = false) {
-        if (!elemento) return;
-
-        elemento.textContent = texto;
-        elemento.classList.toggle("error", erro);
-    }
-
-    ligarBotao("openLogin", () => abrirJanela(loginModal));
-    ligarBotao("openRegister", () => abrirJanela(registerModal));
-    ligarBotao("heroRegister", () => abrirJanela(registerModal));
-    ligarBotao("bottomRegister", () => abrirJanela(registerModal));
-    ligarBotao("loginToRegister", () => abrirJanela(registerModal));
-    ligarBotao("registerToLogin", () => abrirJanela(loginModal));
-
-    document.querySelectorAll("[data-close]").forEach((botao) => {
-        botao.addEventListener("click", fecharJanelas);
+  function fecharModais() {
+    document.querySelectorAll(".modal").forEach(function (modal) {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
     });
 
-    [loginModal, registerModal].forEach((modal) => {
-        if (!modal) return;
+    document.body.classList.remove("modal-aberto");
+  }
 
-        modal.addEventListener("click", (event) => {
-            if (event.target === modal) {
-                fecharJanelas();
-            }
-        });
+  function abrirModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+
+    fecharModais();
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-aberto");
+
+    const primeiroCampo = modal.querySelector("input");
+    if (primeiroCampo) {
+      setTimeout(function () {
+        primeiroCampo.focus();
+      }, 100);
+    }
+  }
+
+  document.querySelectorAll("[data-abrir]").forEach(function (botao) {
+    botao.addEventListener("click", function () {
+      abrirModal(botao.dataset.abrir);
+    });
+  });
+
+  document.querySelectorAll("[data-fechar]").forEach(function (botao) {
+    botao.addEventListener("click", fecharModais);
+  });
+
+  document.querySelectorAll("[data-trocar]").forEach(function (botao) {
+    botao.addEventListener("click", function () {
+      abrirModal(botao.dataset.trocar);
+    });
+  });
+
+  document.addEventListener("keydown", function (evento) {
+    if (evento.key === "Escape") fecharModais();
+  });
+
+  if (menuMobile && navegacao) {
+    menuMobile.addEventListener("click", function () {
+      const aberto = navegacao.classList.toggle("aberto");
+      menuMobile.setAttribute("aria-expanded", String(aberto));
+      menuMobile.textContent = aberto ? "×" : "☰";
     });
 
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-            fecharJanelas();
-        }
+    navegacao.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navegacao.classList.remove("aberto");
+        menuMobile.setAttribute("aria-expanded", "false");
+        menuMobile.textContent = "☰";
+      });
     });
+  }
 
-    if (menuToggle && mainNav) {
-        menuToggle.addEventListener("click", () => {
-            const aberto = mainNav.classList.toggle("is-open");
+  function mostrarMensagem(id, texto, erro) {
+    const elemento = document.getElementById(id);
+    elemento.textContent = texto;
+    elemento.classList.toggle("erro", Boolean(erro));
+  }
 
-            menuToggle.setAttribute(
-                "aria-expanded",
-                String(aberto)
-            );
-        });
+  const loginForm = document.getElementById("loginForm");
 
-        mainNav.querySelectorAll("a").forEach((link) => {
-            link.addEventListener("click", () => {
-                mainNav.classList.remove("is-open");
-                menuToggle.setAttribute("aria-expanded", "false");
-            });
-        });
+  loginForm.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+
+    mostrarMensagem(
+      "loginFeedback",
+      "A tela está funcionando, mas o login real precisa estar conectado ao servidor PHP e ao banco de dados.",
+      false
+    );
+  });
+
+  const registerForm = document.getElementById("registerForm");
+
+  registerForm.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+
+    const senha = document.getElementById("registerPassword").value;
+    const confirmacao = document.getElementById("confirmPassword").value;
+    const area = Number(document.getElementById("farmArea").value);
+
+    if (senha.length < 8) {
+      mostrarMensagem(
+        "registerFeedback",
+        "A senha precisa ter pelo menos 8 caracteres.",
+        true
+      );
+      return;
     }
 
-    if (registerForm) {
-        registerForm.addEventListener("submit", (event) => {
-            event.preventDefault();
-
-            mensagem(registerFeedback, "");
-
-            const senha =
-                document.getElementById("registerPassword").value;
-
-            const confirmar =
-                document.getElementById("confirmPassword").value;
-
-            const area =
-                Number(document.getElementById("farmArea").value);
-
-            const latitudeTexto =
-                document.getElementById("latitude").value.trim();
-
-            const longitudeTexto =
-                document.getElementById("longitude").value.trim();
-
-            if (senha.length < 8) {
-                mensagem(
-                    registerFeedback,
-                    "A senha precisa ter pelo menos 8 caracteres.",
-                    true
-                );
-                return;
-            }
-
-            if (senha !== confirmar) {
-                mensagem(
-                    registerFeedback,
-                    "As senhas digitadas não são iguais.",
-                    true
-                );
-                return;
-            }
-
-            if (!Number.isFinite(area) || area <= 0) {
-                mensagem(
-                    registerFeedback,
-                    "Informe uma área maior que zero hectare.",
-                    true
-                );
-                return;
-            }
-
-            if (latitudeTexto !== "") {
-                const latitude = Number(latitudeTexto);
-
-                if (!Number.isFinite(latitude) ||
-                    latitude < -90 || latitude > 90) {
-                    mensagem(
-                        registerFeedback,
-                        "A latitude deve estar entre -90 e 90.",
-                        true
-                    );
-                    return;
-                }
-            }
-
-            if (longitudeTexto !== "") {
-                const longitude = Number(longitudeTexto);
-
-                if (!Number.isFinite(longitude) ||
-                    longitude < -180 || longitude > 180) {
-                    mensagem(
-                        registerFeedback,
-                        "A longitude deve estar entre -180 e 180.",
-                        true
-                    );
-                    return;
-                }
-            }
-
-            mensagem(
-                registerFeedback,
-                "Os dados foram validados. O cadastro definitivo ainda precisa ser conectado ao servidor PHP."
-            );
-        });
+    if (senha !== confirmacao) {
+      mostrarMensagem(
+        "registerFeedback",
+        "As senhas não são iguais. Confira os dois campos.",
+        true
+      );
+      return;
     }
 
-    if (loginForm) {
-        loginForm.addEventListener("submit", (event) => {
-            event.preventDefault();
-
-            mensagem(
-                loginFeedback,
-                "A janela está funcionando, mas a autenticação precisa ser conectada ao servidor PHP.",
-                true
-            );
-        });
+    if (!Number.isFinite(area) || area <= 0) {
+      mostrarMensagem(
+        "registerFeedback",
+        "Informe uma área válida, maior que zero.",
+        true
+      );
+      return;
     }
+
+    mostrarMensagem(
+      "registerFeedback",
+      "Os campos foram validados! Para salvar a conta de verdade, precisamos conectar o formulário ao PHP e ao banco de dados do AgroMap.",
+      false
+    );
+  });
+
+  const locationButton = document.getElementById("locationButton");
+
+  locationButton.addEventListener("click", function () {
+    const status = document.getElementById("locationStatus");
+
+    if (!navigator.geolocation) {
+      status.textContent = "Este navegador não oferece suporte à localização.";
+      return;
+    }
+
+    status.textContent = "Aguardando autorização do navegador...";
+    locationButton.disabled = true;
+    locationButton.textContent = "Aguardando...";
+
+    navigator.geolocation.getCurrentPosition(
+      function (posicao) {
+        document.getElementById("latitude").value =
+          posicao.coords.latitude;
+
+        document.getElementById("longitude").value =
+          posicao.coords.longitude;
+
+        status.textContent = "Localização autorizada neste navegador.";
+        locationButton.textContent = "Localização permitida";
+        locationButton.classList.add("localizacao-ok");
+        locationButton.disabled = false;
+      },
+      function (erro) {
+        const mensagens = {
+          1: "Permissão negada. Você pode autorizar nas configurações do navegador.",
+          2: "Não foi possível obter a localização. Tente novamente.",
+          3: "A localização demorou demais. Tente novamente."
+        };
+
+        status.textContent =
+          mensagens[erro.code] || "Não foi possível obter a localização.";
+
+        locationButton.textContent = "Tentar novamente";
+        locationButton.disabled = false;
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 15000,
+        maximumAge: 0
+      }
+    );
+  });
 });
