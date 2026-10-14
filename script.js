@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
     const loginModal = document.getElementById("loginModal");
     const registerModal = document.getElementById("registerModal");
@@ -17,14 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         year.textContent = new Date().getFullYear();
     }
 
-    function showFeedback(element, message, isError = false) {
-        if (!element) return;
-
-        element.textContent = message;
-        element.classList.toggle("error", isError);
-    }
-
-    function closeAllModals() {
+    function fecharJanelas() {
         [loginModal, registerModal].forEach((modal) => {
             if (!modal) return;
 
@@ -32,17 +24,17 @@ document.addEventListener("DOMContentLoaded", () => {
             modal.setAttribute("aria-hidden", "true");
         });
 
-        document.body.classList.remove("modal-open");
+        document.body.classList.remove("modal-aberto");
     }
 
-    function openModal(modal) {
+    function abrirJanela(modal) {
         if (!modal) return;
 
-        closeAllModals();
+        fecharJanelas();
 
         modal.classList.add("is-open");
         modal.setAttribute("aria-hidden", "false");
-        document.body.classList.add("modal-open");
+        document.body.classList.add("modal-aberto");
 
         if (mainNav) {
             mainNav.classList.remove("is-open");
@@ -52,33 +44,40 @@ document.addEventListener("DOMContentLoaded", () => {
             menuToggle.setAttribute("aria-expanded", "false");
         }
 
-        const firstInput = modal.querySelector("input");
+        const primeiroCampo = modal.querySelector("input");
 
-        if (firstInput) {
-            firstInput.focus();
+        if (primeiroCampo) {
+            primeiroCampo.focus();
         }
     }
 
-    function connectButton(id, action) {
-        const button = document.getElementById(id);
+    function ligarBotao(id, acao) {
+        const botao = document.getElementById(id);
 
-        if (!button) return;
+        if (!botao) return;
 
-        button.addEventListener("click", (event) => {
+        botao.addEventListener("click", (event) => {
             event.preventDefault();
-            action();
+            acao();
         });
     }
 
-    connectButton("openLogin", () => openModal(loginModal));
-    connectButton("openRegister", () => openModal(registerModal));
-    connectButton("heroRegister", () => openModal(registerModal));
-    connectButton("bottomRegister", () => openModal(registerModal));
-    connectButton("loginToRegister", () => openModal(registerModal));
-    connectButton("registerToLogin", () => openModal(loginModal));
+    function mensagem(elemento, texto, erro = false) {
+        if (!elemento) return;
 
-    document.querySelectorAll("[data-close]").forEach((button) => {
-        button.addEventListener("click", closeAllModals);
+        elemento.textContent = texto;
+        elemento.classList.toggle("error", erro);
+    }
+
+    ligarBotao("openLogin", () => abrirJanela(loginModal));
+    ligarBotao("openRegister", () => abrirJanela(registerModal));
+    ligarBotao("heroRegister", () => abrirJanela(registerModal));
+    ligarBotao("bottomRegister", () => abrirJanela(registerModal));
+    ligarBotao("loginToRegister", () => abrirJanela(registerModal));
+    ligarBotao("registerToLogin", () => abrirJanela(loginModal));
+
+    document.querySelectorAll("[data-close]").forEach((botao) => {
+        botao.addEventListener("click", fecharJanelas);
     });
 
     [loginModal, registerModal].forEach((modal) => {
@@ -86,24 +85,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
         modal.addEventListener("click", (event) => {
             if (event.target === modal) {
-                closeAllModals();
+                fecharJanelas();
             }
         });
     });
 
     document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") {
-            closeAllModals();
+            fecharJanelas();
         }
     });
 
     if (menuToggle && mainNav) {
         menuToggle.addEventListener("click", () => {
-            const isOpen = mainNav.classList.toggle("is-open");
+            const aberto = mainNav.classList.toggle("is-open");
 
             menuToggle.setAttribute(
                 "aria-expanded",
-                String(isOpen)
+                String(aberto)
             );
         });
 
@@ -119,25 +118,25 @@ document.addEventListener("DOMContentLoaded", () => {
         registerForm.addEventListener("submit", (event) => {
             event.preventDefault();
 
-            showFeedback(registerFeedback, "");
+            mensagem(registerFeedback, "");
 
-            const password =
+            const senha =
                 document.getElementById("registerPassword").value;
 
-            const confirmation =
+            const confirmar =
                 document.getElementById("confirmPassword").value;
 
             const area =
                 Number(document.getElementById("farmArea").value);
 
-            const latitudeText =
+            const latitudeTexto =
                 document.getElementById("latitude").value.trim();
 
-            const longitudeText =
+            const longitudeTexto =
                 document.getElementById("longitude").value.trim();
 
-            if (password.length < 8) {
-                showFeedback(
+            if (senha.length < 8) {
+                mensagem(
                     registerFeedback,
                     "A senha precisa ter pelo menos 8 caracteres.",
                     true
@@ -145,8 +144,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            if (password !== confirmation) {
-                showFeedback(
+            if (senha !== confirmar) {
+                mensagem(
                     registerFeedback,
                     "As senhas digitadas não são iguais.",
                     true
@@ -155,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             if (!Number.isFinite(area) || area <= 0) {
-                showFeedback(
+                mensagem(
                     registerFeedback,
                     "Informe uma área maior que zero hectare.",
                     true
@@ -163,37 +162,37 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            if (latitudeText !== "") {
-                const latitude = Number(latitudeText);
+            if (latitudeTexto !== "") {
+                const latitude = Number(latitudeTexto);
 
                 if (!Number.isFinite(latitude) ||
                     latitude < -90 || latitude > 90) {
-                    showFeedback(
+                    mensagem(
                         registerFeedback,
-                        "Confira a latitude informada.",
+                        "A latitude deve estar entre -90 e 90.",
                         true
                     );
                     return;
                 }
             }
 
-            if (longitudeText !== "") {
-                const longitude = Number(longitudeText);
+            if (longitudeTexto !== "") {
+                const longitude = Number(longitudeTexto);
 
                 if (!Number.isFinite(longitude) ||
                     longitude < -180 || longitude > 180) {
-                    showFeedback(
+                    mensagem(
                         registerFeedback,
-                        "Confira a longitude informada.",
+                        "A longitude deve estar entre -180 e 180.",
                         true
                     );
                     return;
                 }
             }
 
-            showFeedback(
+            mensagem(
                 registerFeedback,
-                "Formulário validado! Para concluir o cadastro e salvar seus dados, precisamos conectar o servidor PHP."
+                "Os dados foram validados. O cadastro definitivo ainda precisa ser conectado ao servidor PHP."
             );
         });
     }
@@ -202,9 +201,9 @@ document.addEventListener("DOMContentLoaded", () => {
         loginForm.addEventListener("submit", (event) => {
             event.preventDefault();
 
-            showFeedback(
+            mensagem(
                 loginFeedback,
-                "A janela está funcionando, mas o login precisa ser conectado ao servidor PHP para validar sua conta.",
+                "A janela está funcionando, mas a autenticação precisa ser conectada ao servidor PHP.",
                 true
             );
         });
