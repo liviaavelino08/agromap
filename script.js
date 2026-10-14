@@ -1,11 +1,12 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-  const loginModal = document.getElementById("loginModal");
-  const registerModal = document.getElementById("registerModal");
-  const menuMobile = document.getElementById("menuMobile");
   const navegacao = document.getElementById("navegacao");
+  const menuMobile = document.getElementById("menuMobile");
 
-  document.getElementById("ano").textContent = new Date().getFullYear();
+  document.getElementById("ano").textContent =
+    new Date().getFullYear();
+
+  /* ABRIR E FECHAR JANELAS */
 
   function fecharModais() {
     document.querySelectorAll(".modal").forEach(function (modal) {
@@ -18,14 +19,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function abrirModal(id) {
     const modal = document.getElementById(id);
+
     if (!modal) return;
 
     fecharModais();
+
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-aberto");
 
     const primeiroCampo = modal.querySelector("input");
+
     if (primeiroCampo) {
       setTimeout(function () {
         primeiroCampo.focus();
@@ -50,12 +54,17 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.addEventListener("keydown", function (evento) {
-    if (evento.key === "Escape") fecharModais();
+    if (evento.key === "Escape") {
+      fecharModais();
+    }
   });
+
+  /* MENU PARA CELULAR */
 
   if (menuMobile && navegacao) {
     menuMobile.addEventListener("click", function () {
       const aberto = navegacao.classList.toggle("aberto");
+
       menuMobile.setAttribute("aria-expanded", String(aberto));
       menuMobile.textContent = aberto ? "×" : "☰";
     });
@@ -69,11 +78,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  /* MENSAGENS DOS FORMULÁRIOS */
+
   function mostrarMensagem(id, texto, erro) {
     const elemento = document.getElementById(id);
+
     elemento.textContent = texto;
     elemento.classList.toggle("erro", Boolean(erro));
   }
+
+  /* LOGIN */
 
   const loginForm = document.getElementById("loginForm");
 
@@ -87,14 +101,21 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   });
 
+  /* CADASTRO */
+
   const registerForm = document.getElementById("registerForm");
 
   registerForm.addEventListener("submit", function (evento) {
     evento.preventDefault();
 
-    const senha = document.getElementById("registerPassword").value;
-    const confirmacao = document.getElementById("confirmPassword").value;
-    const area = Number(document.getElementById("farmArea").value);
+    const senha =
+      document.getElementById("registerPassword").value;
+
+    const confirmacao =
+      document.getElementById("confirmPassword").value;
+
+    const area =
+      Number(document.getElementById("farmArea").value);
 
     if (senha.length < 8) {
       mostrarMensagem(
@@ -130,17 +151,24 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   });
 
-  const locationButton = document.getElementById("locationButton");
+  /* SOLICITAÇÃO DE LOCALIZAÇÃO */
+
+  const locationButton =
+    document.getElementById("locationButton");
 
   locationButton.addEventListener("click", function () {
-    const status = document.getElementById("locationStatus");
+    const status =
+      document.getElementById("locationStatus");
 
     if (!navigator.geolocation) {
-      status.textContent = "Este navegador não oferece suporte à localização.";
+      status.textContent =
+        "Este navegador não oferece suporte à localização.";
       return;
     }
 
-    status.textContent = "Aguardando autorização do navegador...";
+    status.textContent =
+      "Aguardando autorização do navegador...";
+
     locationButton.disabled = true;
     locationButton.textContent = "Aguardando...";
 
@@ -152,11 +180,16 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("longitude").value =
           posicao.coords.longitude;
 
-        status.textContent = "Localização autorizada neste navegador.";
-        locationButton.textContent = "Localização permitida";
+        status.textContent =
+          "Localização autorizada neste navegador.";
+
+        locationButton.textContent =
+          "Localização permitida";
+
         locationButton.classList.add("localizacao-ok");
         locationButton.disabled = false;
       },
+
       function (erro) {
         const mensagens = {
           1: "Permissão negada. Você pode autorizar nas configurações do navegador.",
@@ -165,11 +198,13 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         status.textContent =
-          mensagens[erro.code] || "Não foi possível obter a localização.";
+          mensagens[erro.code] ||
+          "Não foi possível obter a localização.";
 
         locationButton.textContent = "Tentar novamente";
         locationButton.disabled = false;
       },
+
       {
         enableHighAccuracy: true,
         timeout: 15000,
