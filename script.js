@@ -1,182 +1,212 @@
 
 document.addEventListener("DOMContentLoaded", () => {
-  const loginModal = document.getElementById("loginModal");
-  const registerModal = document.getElementById("registerModal");
-  const mainNav = document.getElementById("mainNav");
-  const menuToggle = document.getElementById("menuToggle");
+    const loginModal = document.getElementById("loginModal");
+    const registerModal = document.getElementById("registerModal");
+    const mainNav = document.getElementById("mainNav");
+    const menuToggle = document.getElementById("menuToggle");
 
-  const loginForm = document.getElementById("loginForm");
-  const registerForm = document.getElementById("registerForm");
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
 
-  const loginFeedback = document.getElementById("loginFeedback");
-  const registerFeedback = document.getElementById("registerFeedback");
+    const loginFeedback = document.getElementById("loginFeedback");
+    const registerFeedback = document.getElementById("registerFeedback");
 
-  document.getElementById("currentYear").textContent =
-    new Date().getFullYear();
+    const year = document.getElementById("currentYear");
 
-  function closeAllModals() {
+    if (year) {
+        year.textContent = new Date().getFullYear();
+    }
+
+    function showFeedback(element, message, isError = false) {
+        if (!element) return;
+
+        element.textContent = message;
+        element.classList.toggle("error", isError);
+    }
+
+    function closeAllModals() {
+        [loginModal, registerModal].forEach((modal) => {
+            if (!modal) return;
+
+            modal.classList.remove("is-open");
+            modal.setAttribute("aria-hidden", "true");
+        });
+
+        document.body.classList.remove("modal-open");
+    }
+
+    function openModal(modal) {
+        if (!modal) return;
+
+        closeAllModals();
+
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+
+        if (mainNav) {
+            mainNav.classList.remove("is-open");
+        }
+
+        if (menuToggle) {
+            menuToggle.setAttribute("aria-expanded", "false");
+        }
+
+        const firstInput = modal.querySelector("input");
+
+        if (firstInput) {
+            firstInput.focus();
+        }
+    }
+
+    function connectButton(id, action) {
+        const button = document.getElementById(id);
+
+        if (!button) return;
+
+        button.addEventListener("click", (event) => {
+            event.preventDefault();
+            action();
+        });
+    }
+
+    connectButton("openLogin", () => openModal(loginModal));
+    connectButton("openRegister", () => openModal(registerModal));
+    connectButton("heroRegister", () => openModal(registerModal));
+    connectButton("bottomRegister", () => openModal(registerModal));
+    connectButton("loginToRegister", () => openModal(registerModal));
+    connectButton("registerToLogin", () => openModal(loginModal));
+
+    document.querySelectorAll("[data-close]").forEach((button) => {
+        button.addEventListener("click", closeAllModals);
+    });
+
     [loginModal, registerModal].forEach((modal) => {
-      modal.classList.remove("is-open");
-      modal.setAttribute("aria-hidden", "true");
+        if (!modal) return;
+
+        modal.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                closeAllModals();
+            }
+        });
     });
 
-    document.body.classList.remove("modal-open");
-  }
-
-  function openModal(modal) {
-    closeAllModals();
-
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("modal-open");
-
-    if (mainNav) {
-      mainNav.classList.remove("is-open");
-    }
-
-    if (menuToggle) {
-      menuToggle.setAttribute("aria-expanded", "false");
-    }
-
-    const firstInput = modal.querySelector("input");
-    if (firstInput) {
-      setTimeout(() => firstInput.focus(), 100);
-    }
-  }
-
-  function showFeedback(element, message, isError = false) {
-    element.textContent = message;
-    element.classList.toggle("error", isError);
-  }
-
-  document.getElementById("openLogin").addEventListener("click", () => {
-    openModal(loginModal);
-  });
-
-  document.getElementById("openRegister").addEventListener("click", () => {
-    openModal(registerModal);
-  });
-
-  document.getElementById("heroRegister").addEventListener("click", () => {
-    openModal(registerModal);
-  });
-
-  document.getElementById("bottomRegister").addEventListener("click", () => {
-    openModal(registerModal);
-  });
-
-  document.getElementById("loginToRegister").addEventListener("click", () => {
-    openModal(registerModal);
-  });
-
-  document.getElementById("registerToLogin").addEventListener("click", () => {
-    openModal(loginModal);
-  });
-
-  document.querySelectorAll("[data-close]").forEach((element) => {
-    element.addEventListener("click", closeAllModals);
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeAllModals();
-    }
-  });
-
-  if (menuToggle && mainNav) {
-    menuToggle.addEventListener("click", () => {
-      const isOpen = mainNav.classList.toggle("is-open");
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            closeAllModals();
+        }
     });
 
-    mainNav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mainNav.classList.remove("is-open");
-        menuToggle.setAttribute("aria-expanded", "false");
-      });
-    });
-  }
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener("click", () => {
+            const isOpen = mainNav.classList.toggle("is-open");
 
-  // Verifica os dados antes de enviar o cadastro.
-  registerForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    showFeedback(registerFeedback, "");
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+        });
 
-    const password = document.getElementById("registerPassword").value;
-    const confirmPassword =
-      document.getElementById("confirmPassword").value;
-
-    const latitude = Number(document.getElementById("latitude").value);
-    const longitude = Number(document.getElementById("longitude").value);
-    const area = Number(document.getElementById("farmArea").value);
-
-    if (password.length < 8) {
-      showFeedback(
-        registerFeedback,
-        "A senha precisa ter pelo menos 8 caracteres.",
-        true
-      );
-      return;
+        mainNav.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                mainNav.classList.remove("is-open");
+                menuToggle.setAttribute("aria-expanded", "false");
+            });
+        });
     }
 
-    if (password !== confirmPassword) {
-      showFeedback(
-        registerFeedback,
-        "As senhas digitadas não são iguais.",
-        true
-      );
-      return;
+    if (registerForm) {
+        registerForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            showFeedback(registerFeedback, "");
+
+            const password =
+                document.getElementById("registerPassword").value;
+
+            const confirmation =
+                document.getElementById("confirmPassword").value;
+
+            const area =
+                Number(document.getElementById("farmArea").value);
+
+            const latitudeText =
+                document.getElementById("latitude").value.trim();
+
+            const longitudeText =
+                document.getElementById("longitude").value.trim();
+
+            if (password.length < 8) {
+                showFeedback(
+                    registerFeedback,
+                    "A senha precisa ter pelo menos 8 caracteres.",
+                    true
+                );
+                return;
+            }
+
+            if (password !== confirmation) {
+                showFeedback(
+                    registerFeedback,
+                    "As senhas digitadas não são iguais.",
+                    true
+                );
+                return;
+            }
+
+            if (!Number.isFinite(area) || area <= 0) {
+                showFeedback(
+                    registerFeedback,
+                    "Informe uma área maior que zero hectare.",
+                    true
+                );
+                return;
+            }
+
+            if (latitudeText !== "") {
+                const latitude = Number(latitudeText);
+
+                if (!Number.isFinite(latitude) ||
+                    latitude < -90 || latitude > 90) {
+                    showFeedback(
+                        registerFeedback,
+                        "Confira a latitude informada.",
+                        true
+                    );
+                    return;
+                }
+            }
+
+            if (longitudeText !== "") {
+                const longitude = Number(longitudeText);
+
+                if (!Number.isFinite(longitude) ||
+                    longitude < -180 || longitude > 180) {
+                    showFeedback(
+                        registerFeedback,
+                        "Confira a longitude informada.",
+                        true
+                    );
+                    return;
+                }
+            }
+
+            showFeedback(
+                registerFeedback,
+                "Formulário validado! Para concluir o cadastro e salvar seus dados, precisamos conectar o servidor PHP."
+            );
+        });
     }
 
-    if (!Number.isFinite(area) || area <= 0) {
-      showFeedback(
-        registerFeedback,
-        "Informe uma área maior que zero hectare.",
-        true
-      );
-      return;
+    if (loginForm) {
+        loginForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            showFeedback(
+                loginFeedback,
+                "A janela está funcionando, mas o login precisa ser conectado ao servidor PHP para validar sua conta.",
+                true
+            );
+        });
     }
-
-    if (
-      !Number.isFinite(latitude) ||
-      latitude < -90 ||
-      latitude > 90
-    ) {
-      showFeedback(
-        registerFeedback,
-        "Confira a latitude. Ela deve ficar entre -90 e 90.",
-        true
-      );
-      return;
-    }
-
-    if (
-      !Number.isFinite(longitude) ||
-      longitude < -180 ||
-      longitude > 180
-    ) {
-      showFeedback(
-        registerFeedback,
-        "Confira a longitude. Ela deve ficar entre -180 e 180.",
-        true
-      );
-      return;
-    }
-
-    showFeedback(
-      registerFeedback,
-      "Os dados foram validados, mas o cadastro ainda não está conectado ao servidor. Para criar uma conta real e salvar as informações, é necessário conectar o site a um backend."
-    );
-  });
-
-  // O formulário de login ainda depende de um servidor.
-  loginForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    showFeedback(
-      loginFeedback,
-      "O login ainda não está conectado ao servidor. É necessário configurar o backend para validar sua conta.",
-      true
-    );
-  });
 });
