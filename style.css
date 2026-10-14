@@ -481,3 +481,188 @@ a {
     margin: 13px 0 6px;
     color: #344632;
     font-size: 12px;
+    font-weight: 700;
+}
+
+.modal-conteudo input,
+.modal-conteudo select {
+    width: 100%;
+    min-height: 43px;
+    padding: 10px 12px;
+    border: 1px solid #d4ddce;
+    border-radius: 7px;
+    outline: none;
+    color: var(--texto);
+    background: #ffffff;
+}
+
+.modal-conteudo input:focus,
+.modal-conteudo select:focus {
+    border-color: var(--verde);
+    box-shadow: 0 0 0 3px rgba(40, 91, 54, 0.10);
+}
+
+.campos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 16px;
+}
+
+.campo {
+    min-width: 0;
+}
+
+.aviso-localizacao {
+    color: var(--texto-suave);
+    font-size: 11px;
+}
+
+.botao-formulario {
+    width: 100%;
+    min-height: 46px;
+    margin-top: 18px;
+}
+
+.feedback {
+    margin: 10px 0 0;
+    color: var(--verde);
+    font-size: 12px;
+}
+
+.feedback.error {
+    color: #a52c24;
+}
+
+.alternar-modal {
+    margin: 22px 0 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--borda);
+    color: var(--texto-suave);
+    text-align: center;
+    font-size: 12px;
+}
+
+.botao-texto {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--verde);
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 900px) {
+    .cabecalho {
+        padding-inline: 4%;
+    }
+
+    .menu {
+        gap: 12px;
+    }
+
+    .hero {
+        padding: 55px 5%;
+        gap: 30px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .secao {
+        padding: 60px 6%;
+    }
+}
+
+@media (max-width: 700px) {
+    .cabecalho {
+        flex-wrap: wrap;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px 0;
+    }
+
+    .menu.is-open {
+        display: flex;
+    }
+
+    .menu > a {
+        padding: 5px 0;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 48px 6%;
+        gap: 35px;
+        background-position: center;
+    }
+
+    .hero h1 {
+        font-size: clamp(35px, 9vw, 48px);
+    }
+
+    .hero-botoes {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .cartao-mapa {
+        width: 100%;
+        max-width: 470px;
+        margin: 0 auto;
+    }
+
+    .property-image {
+        height: 240px;
+    }
+
+    .sobre {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .recursos-lista {
+        grid-template-columns: 1fr;
+    }
+
+    .chamada {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .rodape {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 450px) {
+    .campos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal {
+        padding: 10px;
+    }
+
+    .modal-conteudo {
+        max-height: calc(100vh - 20px);
+        padding: 28px 20px;
+    }
+
+    .botao-grande {
+        width: 100%;
+    }
+}
