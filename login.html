@@ -1,207 +1,26 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f5f7f1">
-
+  <meta name="theme-color" content="#234b32">
   <title>Entrar | AgroMap</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="login.css">
-
-  <style>
-    /* Ajustes de leitura e acessibilidade */
-    .auth-page {
-      font-family: "DM Sans", sans-serif;
-      font-size: 17px;
-    }
-
-    .auth-brand,
-    .mobile-brand {
-      font-size: 28px !important;
-      font-weight: 800;
-    }
-
-    .auth-eyebrow {
-      font-size: 14px !important;
-      letter-spacing: 1.5px;
-    }
-
-    .visual-content h1 {
-      font-family: "Manrope", sans-serif;
-      font-size: clamp(32px, 3vw, 46px) !important;
-      line-height: 1.2;
-    }
-
-    .visual-content p {
-      font-size: 18px !important;
-      line-height: 1.8;
-    }
-
-    .visual-caption strong {
-      font-size: 17px !important;
-    }
-
-    .visual-caption small {
-      font-size: 14px !important;
-    }
-
-    .form-heading h2 {
-      font-family: "Manrope", sans-serif;
-      font-size: clamp(30px, 3vw, 38px) !important;
-      line-height: 1.25;
-      margin-bottom: 12px;
-    }
-
-    .form-heading p {
-      font-size: 17px !important;
-      line-height: 1.6;
-    }
-
-    #loginForm label {
-      display: block;
-      margin-top: 20px;
-      margin-bottom: 9px;
-      font-size: 17px !important;
-      font-weight: 700;
-    }
-
-    #loginForm input {
-      box-sizing: border-box;
-      width: 100%;
-      min-height: 54px;
-      padding: 14px 16px;
-      font-family: "DM Sans", sans-serif;
-      font-size: 17px !important;
-      border-radius: 9px;
-    }
-
-    #loginForm input::placeholder {
-      font-size: 16px;
-    }
-
-    .forgot-password {
-      margin-top: 14px;
-      text-align: right;
-    }
-
-    .forgot-password button {
-      font-size: 15px !important;
-      padding: 5px 0;
-    }
-
-    .auth-submit {
-      width: 100%;
-      min-height: 56px;
-      margin-top: 22px;
-      padding: 14px 18px;
-      font-family: "DM Sans", sans-serif;
-      font-size: 18px !important;
-      font-weight: 700;
-      border-radius: 9px;
-    }
-
-    .auth-submit:disabled {
-      opacity: .65;
-      cursor: wait;
-    }
-
-    .form-message {
-      margin-top: 14px;
-      font-size: 16px !important;
-      line-height: 1.6;
-      overflow-wrap: anywhere;
-    }
-
-    .form-message.error {
-      color: #a32626;
-    }
-
-    .form-message.success {
-      color: #246b3b;
-    }
-
-    .auth-switch {
-      margin-top: 25px;
-      font-size: 16px !important;
-      line-height: 1.8;
-    }
-
-    .auth-switch a,
-    .back-home {
-      font-size: 16px !important;
-      font-weight: 700;
-    }
-
-    .back-home {
-      display: inline-block;
-      margin-top: 22px;
-    }
-
-    .auth-footer {
-      font-size: 14px !important;
-    }
-
-    button:focus-visible,
-    input:focus-visible,
-    a:focus-visible {
-      outline: 3px solid #e8ad38;
-      outline-offset: 3px;
-    }
-
-    @media (max-width: 600px) {
-      .auth-page {
-        font-size: 16px;
-      }
-
-      .visual-content h1 {
-        font-size: 32px !important;
-      }
-
-      .form-heading h2 {
-        font-size: 30px !important;
-      }
-
-      #loginForm label,
-      #loginForm input {
-        font-size: 16px !important;
-      }
-
-      .auth-submit {
-        font-size: 17px !important;
-      }
-    }
-  </style>
 </head>
-
-<body class="auth-page">
+<body class="auth-page login-page">
 
   <main class="auth-layout">
-
     <section class="auth-visual">
-      <a class="auth-brand" href="index.html">
-        <span class="brand-mark">✳</span> Agro<span>Map</span>
-      </a>
+      <a class="auth-brand" href="index.html">🌱 Agro<span>Map</span></a>
 
       <div class="visual-content">
         <span class="auth-eyebrow">TECNOLOGIA PARA O CAMPO</span>
-
         <h1>O futuro da sua propriedade começa com informação.</h1>
-
-        <p>
-          Organize as informações da sua propriedade rural,
-          acompanhe seus dados e planeje os próximos passos.
-        </p>
+        <p>Organize os dados da sua propriedade rural e planeje os próximos passos com o AgroMap.</p>
       </div>
 
       <div class="visual-caption">
-        <span>🌱</span>
+        <span>🌾</span>
         <div>
           <strong>Cultive novas possibilidades.</strong>
           <small>AgroMap — gestão rural inteligente.</small>
@@ -211,10 +30,7 @@
 
     <section class="auth-panel">
       <div class="auth-form-wrap">
-
-        <a class="mobile-brand" href="index.html">
-          <span class="brand-mark">✳</span> Agro<span>Map</span>
-        </a>
+        <a class="mobile-brand" href="index.html">🌱 Agro<span>Map</span></a>
 
         <div class="form-heading">
           <span class="auth-eyebrow">BEM-VINDA DE VOLTA</span>
@@ -223,39 +39,25 @@
         </div>
 
         <form id="loginForm">
-
           <label for="email">E-mail</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
+          <input id="email" name="email" type="email"
             placeholder="seuemail@exemplo.com"
-            autocomplete="email"
-            required
-          >
+            autocomplete="email" required>
 
           <label for="senha">Senha</label>
-          <input
-            type="password"
-            id="senha"
-            name="senha"
+          <input id="senha" name="senha" type="password"
             placeholder="Digite sua senha"
-            autocomplete="current-password"
-            required
-          >
+            autocomplete="current-password" required>
 
           <div class="forgot-password">
-            <button type="button" id="recuperarSenha">
-              Esqueci minha senha
-            </button>
+            <button type="button" id="recuperarSenha">Esqueci minha senha</button>
           </div>
 
           <button class="auth-submit" id="botaoLogin" type="submit">
-            Entrar na plataforma <span aria-hidden="true">→</span>
+            Entrar na plataforma →
           </button>
 
           <p id="mensagem" class="form-message" role="status" aria-live="polite"></p>
-
         </form>
 
         <div class="auth-switch">
@@ -263,25 +65,18 @@
           <a href="cadastro.html">Criar minha conta</a>
         </div>
 
-        <a href="index.html" class="back-home">
-          ← Voltar à página inicial
-        </a>
-
+        <a href="index.html" class="back-home">← Voltar à página inicial</a>
       </div>
 
-      <footer class="auth-footer">
-        © 2026 AgroMap · Projeto acadêmico
-      </footer>
+      <footer class="auth-footer">© 2026 AgroMap · Projeto acadêmico</footer>
     </section>
-
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
   <script>
     (() => {
-      const SUPABASE_URL = "https://jzjbsjplmjgtltyswyft.supabase.co";
-      const SUPABASE_KEY = "sb_publishable_lzgGRU_n1Ch3kjZy5wVezw_EwwLDANm";
+      const URL_SUPABASE = "https://jzjbsjplmjgtltyswyft.supabase.co";
+      const CHAVE_PUBLICA = "sb_publishable_lzgGRU_n1Ch3kjZy5wVezw_EwwLDANm";
 
       const formulario = document.getElementById("loginForm");
       const campoEmail = document.getElementById("email");
@@ -290,66 +85,20 @@
       const botaoLogin = document.getElementById("botaoLogin");
       const botaoRecuperar = document.getElementById("recuperarSenha");
 
-      let cliente;
-
-      function mostrarMensagem(texto, tipo = "error") {
+      function informar(texto, tipo = "error") {
         mensagem.textContent = texto;
         mensagem.className = "form-message " + tipo;
       }
 
-      function traduzirErro(erro) {
-        const texto = String(erro?.message || "").toLowerCase();
-        const codigo = String(erro?.code || "").toLowerCase();
-
-        if (!navigator.onLine) {
-          return "Você está sem conexão com a internet. Verifique sua conexão e tente novamente.";
-        }
-
-        if (
-          texto.includes("email not confirmed") ||
-          texto.includes("email_not_confirmed")
-        ) {
-          return "Seu e-mail ainda não foi confirmado. Confira sua caixa de entrada e a pasta de spam.";
-        }
-
-        if (
-          texto.includes("invalid login credentials") ||
-          texto.includes("invalid_credentials") ||
-          texto.includes("invalid email or password")
-        ) {
-          return "E-mail ou senha incorretos. Confira os dados ou use “Esqueci minha senha”.";
-        }
-
-        if (
-          texto.includes("too many requests") ||
-          codigo.includes("over_request_rate_limit")
-        ) {
-          return "Foram feitas muitas tentativas. Aguarde um pouco antes de tentar novamente.";
-        }
-
-        if (
-          texto.includes("failed to fetch") ||
-          texto.includes("fetch failed") ||
-          texto.includes("network")
-        ) {
-          return "Não foi possível conectar ao serviço de login. Verifique sua internet e tente novamente.";
-        }
-
-        return "Não foi possível entrar. Tente novamente. Se o erro continuar, confira a configuração do Supabase.";
-      }
-
       if (!window.supabase) {
-        mostrarMensagem(
-          "O serviço de login não carregou. Atualize a página e tente novamente."
-        );
+        informar("O serviço de login não carregou. Atualize a página e tente novamente.");
         botaoLogin.disabled = true;
-        botaoRecuperar.disabled = true;
         return;
       }
 
-      cliente = window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
+      const supabaseClient = window.supabase.createClient(
+        URL_SUPABASE,
+        CHAVE_PUBLICA
       );
 
       formulario.addEventListener("submit", async (evento) => {
@@ -358,45 +107,46 @@
         const email = campoEmail.value.trim();
         const senha = campoSenha.value;
 
-        if (!email || !senha) {
-          mostrarMensagem("Preencha seu e-mail e sua senha.");
-          return;
-        }
-
         botaoLogin.disabled = true;
-        botaoLogin.textContent = "Entrando...";
-        mostrarMensagem("", "");
+        botaoLogin.textContent = "Verificando acesso...";
+        informar("", "");
 
         try {
-          const { data, error } = await cliente.auth.signInWithPassword({
+          const { data, error } = await supabaseClient.auth.signInWithPassword({
             email,
             password: senha
           });
 
           if (error) {
-            console.error("Erro de login do Supabase:", error);
-            mostrarMensagem(traduzirErro(error));
+            console.error("Erro de autenticação:", error);
+            const detalhe = (error.message || "").toLowerCase();
+
+            if (detalhe.includes("email not confirmed")) {
+              informar("Seu e-mail ainda não foi confirmado. Confira sua caixa de entrada e a pasta de spam.");
+            } else if (detalhe.includes("invalid login credentials")) {
+              informar("E-mail ou senha incorretos. Confira os dados e tente novamente.");
+            } else {
+              informar("Não foi possível entrar. Verifique sua conexão e tente novamente.");
+            }
             return;
           }
 
           if (!data.session) {
-            mostrarMensagem(
-              "O login não criou uma sessão. Tente novamente."
-            );
+            informar("A sessão não foi iniciada. Tente entrar novamente.");
             return;
           }
 
-          mostrarMensagem("Login realizado! Abrindo seu painel...", "success");
+          informar("Login realizado! Abrindo seu painel...", "success");
 
-          window.location.assign("dashboard.html");
+          // Caminho relativo funciona no GitHub Pages dentro da pasta do projeto.
+          window.location.href = new URL("dashboard.html", window.location.href).href;
 
         } catch (erro) {
-          console.error("Falha ao entrar no AgroMap:", erro);
-          mostrarMensagem(traduzirErro(erro));
+          console.error(erro);
+          informar("Erro de conexão ao tentar entrar. Tente novamente.");
         } finally {
           botaoLogin.disabled = false;
-          botaoLogin.innerHTML =
-            'Entrar na plataforma <span aria-hidden="true">→</span>';
+          botaoLogin.textContent = "Entrar na plataforma →";
         }
       });
 
@@ -404,9 +154,7 @@
         const email = campoEmail.value.trim();
 
         if (!email) {
-          mostrarMensagem(
-            "Digite seu e-mail no campo acima para solicitar a recuperação."
-          );
+          informar("Digite seu e-mail antes de solicitar a recuperação.");
           campoEmail.focus();
           return;
         }
@@ -414,32 +162,23 @@
         botaoRecuperar.disabled = true;
 
         try {
-          const { error } = await cliente.auth.resetPasswordForEmail(email, {
-            redirectTo: window.location.origin +
-              window.location.pathname.replace(/[^/]*$/, "login.html")
+          const redirectUrl = new URL("login.html", window.location.href).href;
+
+          const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
+            redirectTo: redirectUrl
           });
 
-          if (error) {
-            console.error("Erro na recuperação de senha:", error);
-            mostrarMensagem(traduzirErro(error));
-            return;
-          }
+          if (error) throw error;
 
-          mostrarMensagem(
-            "Se esse e-mail estiver cadastrado, as instruções de recuperação serão enviadas. Confira também a pasta de spam.",
-            "success"
-          );
-
+          informar("Se o e-mail estiver cadastrado, você receberá as instruções. Confira também a pasta de spam.", "success");
         } catch (erro) {
-          console.error("Falha na recuperação de senha:", erro);
-          mostrarMensagem(traduzirErro(erro));
+          console.error(erro);
+          informar("Não foi possível solicitar a recuperação agora.");
         } finally {
           botaoRecuperar.disabled = false;
         }
       });
     })();
   </script>
-
 </body>
 </html>
-
