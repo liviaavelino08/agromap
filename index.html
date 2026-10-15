@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,11 +10,11 @@
 </head>
 <body>
   <header class="cabecalho">
-    <a href="index.html" class="logo">
+    <a href="index.html" class="logo" aria-label="AgroMap - início">
       <img src="agromap-logo-transparente.png" alt="Logo AgroMap">
     </a>
 
-    <nav class="navegacao">
+    <nav class="navegacao" aria-label="Navegação principal">
       <a href="#inicio">Início</a>
       <a href="#recursos">Soluções</a>
       <a href="#sobre">Sobre o projeto</a>
@@ -80,7 +81,7 @@
           <img
             class="imagem-mapa"
             src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=85"
-            alt="Vista de áreas agrícolas"
+            alt="Vista ampla de áreas agrícolas"
           >
 
           <div class="rodape-mapa">
@@ -105,6 +106,7 @@
           <span class="etiqueta-verde">SOLUÇÕES AGROMAP</span>
           <h2>Uma nova perspectiva para a <span>produção rural.</span></h2>
         </div>
+
         <p>
           Informações organizadas para compreender melhor a propriedade
           e apoiar o planejamento das atividades agrícolas.
@@ -112,73 +114,97 @@
       </div>
 
       <div class="grade-recursos">
-        <article class="cartao-recurso">
+        <button
+          class="cartao-recurso"
+          type="button"
+          data-modal="modal-propriedade"
+          aria-haspopup="dialog"
+        >
           <img
             src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=85"
-            alt="Campos agrícolas"
+            alt="Vista ampla de uma fazenda com áreas de cultivo"
             loading="lazy"
           >
-          <div class="conteudo-recurso">
+
+          <span class="conteudo-recurso">
             <span class="categoria">PROPRIEDADE</span>
-            <h3>Gestão da propriedade</h3>
-            <p>
+            <span class="titulo-recurso">Gestão da propriedade</span>
+            <span class="descricao-recurso">
               Organize dados da fazenda, áreas de cultivo, talhões e
               informações importantes da atividade rural.
-            </p>
-            <a href="cadastro.html">Cadastrar propriedade ↗</a>
-          </div>
-        </article>
+            </span>
+            <span class="link-recurso">Saiba como funciona ↗</span>
+          </span>
+        </button>
 
-        <article class="cartao-recurso">
+        <button
+          class="cartao-recurso"
+          type="button"
+          data-modal="modal-clima"
+          aria-haspopup="dialog"
+        >
           <img
             src="https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=900&q=85"
-            alt="Nuvens no céu representando o clima"
+            alt="Nuvens de chuva no céu"
             loading="lazy"
           >
-          <div class="conteudo-recurso">
+
+          <span class="conteudo-recurso">
             <span class="categoria">CLIMA</span>
-            <h3>Dados climáticos</h3>
-            <p>
+            <span class="titulo-recurso">Dados climáticos</span>
+            <span class="descricao-recurso">
               Acompanhe informações de chuva, temperatura e umidade
               para auxiliar o planejamento do cultivo.
-            </p>
-            <a href="cadastro.html">Conhecer recursos ↗</a>
-          </div>
-        </article>
+            </span>
+            <span class="link-recurso">Saiba como funciona ↗</span>
+          </span>
+        </button>
 
-        <article class="cartao-recurso">
+        <button
+          class="cartao-recurso"
+          type="button"
+          data-modal="modal-producao"
+          aria-haspopup="dialog"
+        >
           <img
             src="https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=900&q=85"
-            alt="Vegetação e área de cultivo"
+            alt="Lavoura dourada pronta para colheita"
             loading="lazy"
           >
-          <div class="conteudo-recurso">
+
+          <span class="conteudo-recurso">
             <span class="categoria">PRODUÇÃO</span>
-            <h3>Planejamento da produção</h3>
-            <p>
+            <span class="titulo-recurso">Planejamento da produção</span>
+            <span class="descricao-recurso">
               Registre culturas e áreas plantadas para organizar
               informações e apoiar estimativas agrícolas.
-            </p>
-            <a href="cadastro.html">Organizar produção ↗</a>
-          </div>
-        </article>
+            </span>
+            <span class="link-recurso">Saiba como funciona ↗</span>
+          </span>
+        </button>
 
-        <article class="cartao-recurso">
+        <button
+          class="cartao-recurso"
+          type="button"
+          data-modal="modal-decisoes"
+          aria-haspopup="dialog"
+        >
           <img
             src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=900&q=85"
-            alt="Trabalho em uma plantação"
+            alt="Cultivo agrícola com plantas verdes e fileiras de plantio"
             loading="lazy"
           >
-          <div class="conteudo-recurso">
+
+          <span class="conteudo-recurso">
             <span class="categoria">PLANEJAMENTO</span>
-            <h3>Decisões no campo</h3>
-            <p>
+            <span class="titulo-recurso">Decisões no campo</span>
+            <span class="descricao-recurso">
               Reúna dados relevantes para acompanhar atividades,
               comparar informações e planejar os próximos passos.
-            </p>
-            <a href="cadastro.html">Começar agora ↗</a>
-          </div>
-        </article>
+            </span>
+            <span class="link-recurso">Saiba como funciona ↗</span>
+          </span>
+        </button>
       </div>
 
       <p class="nota-imagens">
@@ -190,7 +216,7 @@
     <section class="sobre" id="sobre">
       <img
         src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1200&q=85"
-        alt="Paisagem rural"
+        alt="Paisagem natural rural"
         loading="lazy"
       >
 
@@ -220,9 +246,11 @@
     <section class="chamada">
       <div>
         <span class="etiqueta">SEU CAMPO. SUAS INFORMAÇÕES.</span>
+
         <h2>
           Transforme dados em novas possibilidades para sua propriedade.
         </h2>
+
         <p>
           Conheça a proposta do AgroMap e comece a organizar suas
           informações rurais.
@@ -237,10 +265,132 @@
 
   <footer class="rodape">
     <a href="index.html" class="logo">
-      <img src="agromap-logo-transparente.png" alt="AgroMap">
+      <img src="agromap-logo-transparente.png" alt="Logo AgroMap">
     </a>
+
     <p>Tecnologia e informação para o agronegócio.</p>
     <small>© 2026 AgroMap · Projeto acadêmico</small>
   </footer>
+
+  <!-- Janela com explicações dos quatro cartões -->
+  <div class="modal-fundo" id="modalFundo" hidden>
+    <section
+      class="modal-conteudo"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitulo"
+    >
+      <button
+        class="modal-fechar"
+        type="button"
+        aria-label="Fechar explicação"
+      >×</button>
+
+      <span class="etiqueta-verde" id="modalCategoria">SOLUÇÃO AGROMAP</span>
+      <h2 id="modalTitulo">Conheça o recurso</h2>
+      <p id="modalTexto"></p>
+
+      <h3>Como isso ajuda na prática?</h3>
+      <p id="modalDetalhe"></p>
+
+      <p class="modal-aviso">
+        A disponibilidade de funções automáticas depende dos recursos
+        implementados e das fontes de dados conectadas ao AgroMap.
+      </p>
+
+      <a href="cadastro.html" class="botao-principal">
+        Cadastrar minha propriedade →
+      </a>
+    </section>
+  </div>
+
+  <script>
+    const explicacoes = {
+      "modal-propriedade": {
+        categoria: "PROPRIEDADE",
+        titulo: "Gestão da propriedade",
+        texto:
+          "Este espaço é pensado para reunir as principais informações da fazenda, como nome da propriedade, localização, área total, talhões e áreas destinadas a cada atividade.",
+        detalhe:
+          "Ao organizar esses dados, o produtor pode consultar as informações da propriedade com mais facilidade e manter um registro estruturado para apoiar o planejamento."
+      },
+
+      "modal-clima": {
+        categoria: "CLIMA",
+        titulo: "Dados climáticos",
+        texto:
+          "Informações como chuva, temperatura e umidade ajudam o produtor a compreender as condições ambientais que podem influenciar o cultivo.",
+        detalhe:
+          "Com uma fonte meteorológica conectada, o sistema poderá apresentar dados e previsões para auxiliar o planejamento. Sem essa integração, as informações em tempo real não estarão disponíveis."
+      },
+
+      "modal-producao": {
+        categoria: "PRODUÇÃO",
+        titulo: "Planejamento da produção",
+        texto:
+          "O produtor poderá registrar quais culturas está plantando, em que área estão plantadas e outras informações importantes de cada safra.",
+        detalhe:
+          "Esses registros ajudam a visualizar a distribuição das culturas e organizar as informações necessárias para acompanhar o ciclo produtivo."
+      },
+
+      "modal-decisoes": {
+        categoria: "PLANEJAMENTO",
+        titulo: "Decisões no campo",
+        texto:
+          "Reunir dados da propriedade, do cultivo e do clima pode ajudar o produtor a analisar a situação antes de planejar as próximas atividades.",
+        detalhe:
+          "O AgroMap pretende centralizar informações para facilitar a consulta e o planejamento. Recomendações automáticas exigem regras de análise e fontes de dados implementadas no sistema."
+      }
+    };
+
+    const modalFundo = document.getElementById("modalFundo");
+    const modalTitulo = document.getElementById("modalTitulo");
+    const modalCategoria = document.getElementById("modalCategoria");
+    const modalTexto = document.getElementById("modalTexto");
+    const modalDetalhe = document.getElementById("modalDetalhe");
+    const fecharModal = document.querySelector(".modal-fechar");
+
+    let elementoAnterior = null;
+
+    document.querySelectorAll("[data-modal]").forEach(cartao => {
+      cartao.addEventListener("click", () => {
+        const item = explicacoes[cartao.dataset.modal];
+        if (!item) return;
+
+        elementoAnterior = cartao;
+        modalCategoria.textContent = item.categoria;
+        modalTitulo.textContent = item.titulo;
+        modalTexto.textContent = item.texto;
+        modalDetalhe.textContent = item.detalhe;
+
+        modalFundo.hidden = false;
+        document.body.classList.add("modal-aberto");
+        fecharModal.focus();
+      });
+    });
+
+    function fecharExplicacao() {
+      modalFundo.hidden = true;
+      document.body.classList.remove("modal-aberto");
+
+      if (elementoAnterior) {
+        elementoAnterior.focus();
+      }
+    }
+
+    fecharModal.addEventListener("click", fecharExplicacao);
+
+    modalFundo.addEventListener("click", event => {
+      if (event.target === modalFundo) {
+        fecharExplicacao();
+      }
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && !modalFundo.hidden) {
+        fecharExplicacao();
+      }
+    });
+  </script>
 </body>
 </html>
