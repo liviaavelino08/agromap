@@ -1,391 +1,291 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#234b32">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <title>AgroMap | Painel do Produtor</title>
 
-    <title>AgroMap | Painel</title>
-
-    <link
-        rel="stylesheet"
-        href="dashboard.css">
-
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 
 <body>
 
+    <!-- MENU LATERAL -->
+    <aside class="sidebar">
 
-<!-- MENU LATERAL -->
-
-<aside class="sidebar">
-
-    <div class="logo">
-        🌱 Agro<span>Map</span>
-    </div>
-
-
-    <nav>
-
-        <button class="menu active">
-            🏠
-            <span>Visão geral</span>
-        </button>
-
-        <button class="menu">
-            🗺️
-            <span>Propriedade</span>
-        </button>
-
-        <button class="menu">
-            🌦️
-            <span>Clima</span>
-        </button>
-
-        <button class="menu">
-            📊
-            <span>Produção</span>
-        </button>
-
-        <button class="menu">
-            💰
-            <span>Financeiro</span>
-        </button>
-
-    </nav>
-
-
-    <button id="logout" class="logout">
-        ↪ Sair da conta
-    </button>
-
-</aside>
-
-
-<!-- CONTEÚDO -->
-
-<main class="dashboard">
-
-    <header class="topbar">
-
-        <div>
-
-            <small>
-                PAINEL DO PRODUTOR
-            </small>
-
-            <h1>
-                Olá, <span id="nomeUsuario">
-                    Produtor
-                </span> 👋
-            </h1>
-
+        <div class="logo">
+            🌱 Agro<span>Map</span>
         </div>
 
+        <nav>
+            <button class="menu active" type="button" data-section="inicio">
+                🏠 <span>Visão geral</span>
+            </button>
 
-        <div class="profile">
+            <button class="menu" type="button" data-section="propriedade">
+                🗺️ <span>Propriedade</span>
+            </button>
 
-            <div class="avatar">
-                🌱
-            </div>
+            <button class="menu" type="button" data-section="clima">
+                🌦️ <span>Clima</span>
+            </button>
+
+            <button class="menu" type="button" data-section="producao">
+                📊 <span>Produção</span>
+            </button>
+
+            <button class="menu" type="button" data-section="financeiro">
+                💰 <span>Financeiro</span>
+            </button>
+        </nav>
+
+        <button id="logout" class="logout" type="button">
+            ↪ Sair da conta
+        </button>
+
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="dashboard" id="inicio">
+
+        <!-- CABEÇALHO -->
+        <header class="topbar">
 
             <div>
+                <small>PAINEL DO PRODUTOR</small>
 
-                <strong id="propriedadeUsuario">
-                    Minha propriedade
-                </strong>
+                <h1>
+                    Olá, <span id="nomeUsuario">Produtor</span> 👋
+                </h1>
 
-                <small>
-                    Produtor
+                <p id="mensagemPainel">
+                    Bem-vindo ao seu painel AgroMap.
+                </p>
+            </div>
+
+            <div class="profile">
+
+                <div class="avatar">🌱</div>
+
+                <div>
+                    <strong id="propriedadeUsuario">
+                        Minha propriedade
+                    </strong>
+
+                    <small id="emailUsuario">
+                        Produtor rural
+                    </small>
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- INFORMAÇÕES REAIS DO CADASTRO -->
+        <section class="cards">
+
+            <article class="card">
+                <div class="card-icon">🌾</div>
+
+                <span>ÁREA TOTAL</span>
+
+                <strong id="areaTotal">—</strong>
+
+                <small>Área cadastrada</small>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">🌱</div>
+
+                <span>ÁREA PLANTADA</span>
+
+                <strong id="areaPlantada">—</strong>
+
+                <small>Hectares informados</small>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">🌿</div>
+
+                <span>CULTURA PRINCIPAL</span>
+
+                <strong id="culturaPrincipal">—</strong>
+
+                <small>Cultura cadastrada</small>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">📍</div>
+
+                <span>LOCALIZAÇÃO</span>
+
+                <strong id="localizacaoUsuario">—</strong>
+
+                <small id="estadoUsuario">
+                    Cidade e estado da propriedade
                 </small>
+            </article>
 
-            </div>
+        </section>
 
-        </div>
+        <!-- PROPRIEDADE -->
+        <section class="main-grid">
 
-    </header>
+            <article class="panel map-panel" id="propriedade">
 
+                <div class="panel-title">
+                    <div>
+                        <small>PROPRIEDADE RURAL</small>
+                        <h2>Minha propriedade</h2>
+                    </div>
+                </div>
 
-    <!-- CARDS -->
+                <div class="big-map">
 
-    <section class="cards">
+                    <div class="big-field field1">
+                        <span>Área rural</span>
+                    </div>
 
-        <article class="card">
+                    <div class="big-field field2">
+                        <span>Plantio</span>
+                    </div>
 
-            <div class="card-icon">
-                🌾
-            </div>
+                    <div class="big-field field3">
+                        <span>Área verde</span>
+                    </div>
 
-            <span>ÁREA TOTAL</span>
+                    <div class="big-field field4">
+                        <span>Talhão</span>
+                    </div>
 
-            <strong>
-                248 ha
-            </strong>
-
-            <small>
-                +2,4% este ano
-            </small>
-
-        </article>
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                📈
-            </div>
-
-            <span>PRODUÇÃO</span>
-
-            <strong>
-                1.840 t
-            </strong>
-
-            <small>
-                +8,4% comparado ao ano anterior
-            </small>
-
-        </article>
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                ☀️
-            </div>
-
-            <span>TEMPERATURA</span>
-
-            <strong>
-                29°C
-            </strong>
-
-            <small>
-                Condições favoráveis
-            </small>
-
-        </article>
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                💰
-            </div>
-
-            <span>RECEITA</span>
-
-            <strong>
-                R$ 428 mil
-            </strong>
-
-            <small>
-                +12,8% este período
-            </small>
-
-        </article>
-
-    </section>
-
-
-    <!-- ÁREA PRINCIPAL -->
-
-    <section class="main-grid">
-
-
-        <!-- MAPA -->
-
-        <article class="panel map-panel">
-
-            <div class="panel-title">
-
-                <div>
-
-                    <small>
-                        PROPRIEDADE
-                    </small>
-
-                    <h2>
-                        Mapa dos talhões
-                    </h2>
+                    <div class="map-road"></div>
 
                 </div>
 
-                <button>
-                    Ver detalhes
-                </button>
+                <div class="property-details">
+                    <h3>Detalhes cadastrados</h3>
 
-            </div>
+                    <p id="detalhesPropriedade">
+                        Os dados da propriedade serão exibidos aqui.
+                    </p>
 
-
-            <div class="big-map">
-
-                <div class="big-field field1">
-                    <span>Talhão 01</span>
+                    <p>
+                        <small>
+                            A ilustração acima é representativa e não corresponde
+                            a um mapa geográfico real.
+                        </small>
+                    </p>
                 </div>
 
-                <div class="big-field field2">
-                    <span>Talhão 02</span>
+            </article>
+
+            <!-- CLIMA SEM VALORES INVENTADOS -->
+            <article class="panel weather-panel" id="clima">
+
+                <div class="panel-title">
+                    <div>
+                        <small>MONITORAMENTO</small>
+                        <h2>Clima</h2>
+                    </div>
                 </div>
 
-                <div class="big-field field3">
-                    <span>Talhão 03</span>
+                <div class="weather-main">
+                    <span>🌦️</span>
+
+                    <strong>—</strong>
+
+                    <p>
+                        Dados meteorológicos indisponíveis
+                    </p>
                 </div>
 
-                <div class="big-field field4">
-                    <span>Talhão 04</span>
-                </div>
+                <div class="weather-data">
 
-                <div class="map-road"></div>
+                    <div>
+                        <span>Umidade</span>
+                        <strong>—</strong>
+                    </div>
 
-            </div>
+                    <div>
+                        <span>Vento</span>
+                        <strong>—</strong>
+                    </div>
 
-        </article>
-
-
-        <!-- CLIMA -->
-
-        <article class="panel weather-panel">
-
-            <div class="panel-title">
-
-                <div>
-
-                    <small>
-                        MONITORAMENTO
-                    </small>
-
-                    <h2>
-                        Clima
-                    </h2>
+                    <div>
+                        <span>Chuva</span>
+                        <strong>—</strong>
+                    </div>
 
                 </div>
-
-            </div>
-
-
-            <div class="weather-main">
-
-                <span>
-                    ☀️
-                </span>
-
-                <strong>
-                    29°
-                </strong>
 
                 <p>
-                    Ensolarado
+                    <small>
+                        As condições climáticas serão exibidas quando uma fonte
+                        de dados meteorológicos estiver conectada.
+                    </small>
                 </p>
 
-            </div>
+            </article>
 
+        </section>
 
-            <div class="weather-data">
+        <!-- PRODUÇÃO SEM NÚMEROS FICTÍCIOS -->
+        <section class="panel production-panel" id="producao">
 
+            <div class="panel-title">
                 <div>
-                    <span>Umidade</span>
-                    <strong>62%</strong>
+                    <small>DESEMPENHO</small>
+                    <h2>Produção da propriedade</h2>
                 </div>
+            </div>
 
+            <div class="empty-state">
+                <div class="card-icon">📊</div>
+
+                <h3>Sem dados de produção</h3>
+
+                <p id="mensagemProducao">
+                    Ainda não existem registros de produção disponíveis.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- FINANCEIRO SEM VALORES FICTÍCIOS -->
+        <section class="panel" id="financeiro">
+
+            <div class="panel-title">
                 <div>
-                    <span>Vento</span>
-                    <strong>12 km/h</strong>
+                    <small>CONTROLE FINANCEIRO</small>
+                    <h2>Financeiro</h2>
                 </div>
-
-                <div>
-                    <span>Chuva</span>
-                    <strong>10%</strong>
-                </div>
-
             </div>
 
-        </article>
+            <div class="empty-state">
+                <div class="card-icon">💰</div>
 
-    </section>
+                <h3>Sem dados financeiros</h3>
 
-
-    <!-- PRODUÇÃO -->
-
-    <section class="panel production-panel">
-
-        <div class="panel-title">
-
-            <div>
-
-                <small>
-                    DESEMPENHO
-                </small>
-
-                <h2>
-                    Produção da propriedade
-                </h2>
-
+                <p>
+                    As informações financeiras serão exibidas quando houver
+                    registros reais disponíveis.
+                </p>
             </div>
 
-            <select>
+        </section>
 
-                <option>
-                    2026
-                </option>
+        <!-- MENSAGENS DO SISTEMA -->
+        <p id="mensagemErro" role="status" aria-live="polite"></p>
 
-                <option>
-                    2025
-                </option>
+    </main>
 
-            </select>
-
-        </div>
-
-
-        <div class="chart">
-
-            <div class="bar" style="height:45%">
-                <span>Jan</span>
-            </div>
-
-            <div class="bar" style="height:60%">
-                <span>Fev</span>
-            </div>
-
-            <div class="bar" style="height:50%">
-                <span>Mar</span>
-            </div>
-
-            <div class="bar" style="height:75%">
-                <span>Abr</span>
-            </div>
-
-            <div class="bar" style="height:65%">
-                <span>Mai</span>
-            </div>
-
-            <div class="bar" style="height:90%">
-                <span>Jun</span>
-            </div>
-
-            <div class="bar" style="height:80%">
-                <span>Jul</span>
-            </div>
-
-            <div class="bar" style="height:95%">
-                <span>Ago</span>
-            </div>
-
-        </div>
-
-    </section>
-
-
-</main>
-
-
-<script src="dashboard.js"></script>
+    <!-- SUPABASE E SCRIPT DO PAINEL -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="dashboard.js"></script>
 
 </body>
-
 </html>
+```
