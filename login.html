@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -11,18 +11,112 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="login.css">
 
   <style>
+    /* Ajustes de leitura e acessibilidade */
+    .auth-page {
+      font-family: "DM Sans", sans-serif;
+      font-size: 17px;
+    }
+
+    .auth-brand,
+    .mobile-brand {
+      font-size: 28px !important;
+      font-weight: 800;
+    }
+
+    .auth-eyebrow {
+      font-size: 14px !important;
+      letter-spacing: 1.5px;
+    }
+
+    .visual-content h1 {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(32px, 3vw, 46px) !important;
+      line-height: 1.2;
+    }
+
+    .visual-content p {
+      font-size: 18px !important;
+      line-height: 1.8;
+    }
+
+    .visual-caption strong {
+      font-size: 17px !important;
+    }
+
+    .visual-caption small {
+      font-size: 14px !important;
+    }
+
+    .form-heading h2 {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(30px, 3vw, 38px) !important;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .form-heading p {
+      font-size: 17px !important;
+      line-height: 1.6;
+    }
+
+    #loginForm label {
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 9px;
+      font-size: 17px !important;
+      font-weight: 700;
+    }
+
+    #loginForm input {
+      box-sizing: border-box;
+      width: 100%;
+      min-height: 54px;
+      padding: 14px 16px;
+      font-family: "DM Sans", sans-serif;
+      font-size: 17px !important;
+      border-radius: 9px;
+    }
+
+    #loginForm input::placeholder {
+      font-size: 16px;
+    }
+
+    .forgot-password {
+      margin-top: 14px;
+      text-align: right;
+    }
+
+    .forgot-password button {
+      font-size: 15px !important;
+      padding: 5px 0;
+    }
+
+    .auth-submit {
+      width: 100%;
+      min-height: 56px;
+      margin-top: 22px;
+      padding: 14px 18px;
+      font-family: "DM Sans", sans-serif;
+      font-size: 18px !important;
+      font-weight: 700;
+      border-radius: 9px;
+    }
+
+    .auth-submit:disabled {
+      opacity: .65;
+      cursor: wait;
+    }
+
     .form-message {
       margin-top: 14px;
-      font-size: 14px;
+      font-size: 16px !important;
       line-height: 1.6;
+      overflow-wrap: anywhere;
     }
 
     .form-message.error {
@@ -33,26 +127,55 @@
       color: #246b3b;
     }
 
-    .auth-submit:disabled {
-      opacity: .65;
-      cursor: wait;
+    .auth-switch {
+      margin-top: 25px;
+      font-size: 16px !important;
+      line-height: 1.8;
     }
 
-    .forgot-password {
-      display: block;
-      margin-top: 10px;
-      text-align: right;
-      font-size: 13px;
+    .auth-switch a,
+    .back-home {
+      font-size: 16px !important;
+      font-weight: 700;
     }
 
-    .forgot-password button {
-      border: 0;
-      padding: 0;
-      background: none;
-      color: #397348;
-      font: inherit;
-      cursor: pointer;
-      text-decoration: underline;
+    .back-home {
+      display: inline-block;
+      margin-top: 22px;
+    }
+
+    .auth-footer {
+      font-size: 14px !important;
+    }
+
+    button:focus-visible,
+    input:focus-visible,
+    a:focus-visible {
+      outline: 3px solid #e8ad38;
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 600px) {
+      .auth-page {
+        font-size: 16px;
+      }
+
+      .visual-content h1 {
+        font-size: 32px !important;
+      }
+
+      .form-heading h2 {
+        font-size: 30px !important;
+      }
+
+      #loginForm label,
+      #loginForm input {
+        font-size: 16px !important;
+      }
+
+      .auth-submit {
+        font-size: 17px !important;
+      }
     }
   </style>
 </head>
@@ -72,8 +195,8 @@
         <h1>O futuro da sua propriedade começa com informação.</h1>
 
         <p>
-          Uma forma mais organizada de acompanhar a gestão
-          rural e planejar os próximos passos.
+          Organize as informações da sua propriedade rural,
+          acompanhe seus dados e planeje os próximos passos.
         </p>
       </div>
 
@@ -96,7 +219,7 @@
         <div class="form-heading">
           <span class="auth-eyebrow">BEM-VINDA DE VOLTA</span>
           <h2>Entrar na conta</h2>
-          <p>Informe seus dados para continuar.</p>
+          <p>Informe seu e-mail e sua senha para continuar.</p>
         </div>
 
         <form id="loginForm">
@@ -127,16 +250,11 @@
             </button>
           </div>
 
-          <button class="auth-submit" type="submit">
+          <button class="auth-submit" id="botaoLogin" type="submit">
             Entrar na plataforma <span aria-hidden="true">→</span>
           </button>
 
-          <p
-            id="mensagem"
-            class="form-message"
-            role="status"
-            aria-live="polite"
-          ></p>
+          <p id="mensagem" class="form-message" role="status" aria-live="polite"></p>
 
         </form>
 
@@ -161,139 +279,167 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script>
-    const SUPABASE_URL =
-      "https://jzjbsjplmjgtltyswyft.supabase.co";
+    (() => {
+      const SUPABASE_URL = "https://jzjbsjplmjgtltyswyft.supabase.co";
+      const SUPABASE_KEY = "sb_publishable_lzgGRU_n1Ch3kjZy5wVezw_EwwLDANm";
 
-    const SUPABASE_KEY =
-      "sb_publishable_lzgGRU_n1Ch3kjZy5wVezw_EwwLDANm";
+      const formulario = document.getElementById("loginForm");
+      const campoEmail = document.getElementById("email");
+      const campoSenha = document.getElementById("senha");
+      const mensagem = document.getElementById("mensagem");
+      const botaoLogin = document.getElementById("botaoLogin");
+      const botaoRecuperar = document.getElementById("recuperarSenha");
 
-    const supabaseClient = window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
+      let cliente;
 
-    const loginForm = document.getElementById("loginForm");
-    const mensagem = document.getElementById("mensagem");
-    const botaoLogin =
-      loginForm.querySelector("button[type='submit']");
-
-    function mostrarMensagem(texto, tipo = "") {
-      mensagem.textContent = texto;
-      mensagem.className = "form-message " + tipo;
-    }
-
-    loginForm.addEventListener("submit", async function(event) {
-      event.preventDefault();
-
-      const email =
-        document.getElementById("email").value.trim();
-
-      const senha =
-        document.getElementById("senha").value;
-
-      mostrarMensagem();
-
-      botaoLogin.disabled = true;
-      botaoLogin.textContent = "Entrando...";
-
-      try {
-        const { data, error } =
-          await supabaseClient.auth.signInWithPassword({
-            email: email,
-            password: senha
-          });
-
-        if (error) {
-          if (
-            error.message.toLowerCase().includes("email not confirmed")
-          ) {
-            throw new Error(
-              "Seu e-mail ainda não foi confirmado. Verifique sua caixa de entrada."
-            );
-          }
-
-          throw new Error(
-            "Não foi possível entrar. Confira seu e-mail e sua senha."
-          );
-        }
-
-        if (!data.session) {
-          throw new Error(
-            "Não foi possível iniciar sua sessão. Tente novamente."
-          );
-        }
-
-        mostrarMensagem(
-          "Login realizado! Abrindo seu painel...",
-          "success"
-        );
-
-        setTimeout(function() {
-          window.location.href = "dashboard.html";
-        }, 700);
-
-      } catch (erro) {
-        mostrarMensagem(
-          erro.message || "Ocorreu um erro ao entrar. Tente novamente.",
-          "error"
-        );
-
-      } finally {
-        botaoLogin.disabled = false;
-        botaoLogin.innerHTML =
-          'Entrar na plataforma <span aria-hidden="true">→</span>';
+      function mostrarMensagem(texto, tipo = "error") {
+        mensagem.textContent = texto;
+        mensagem.className = "form-message " + tipo;
       }
-    });
 
-    document
-      .getElementById("recuperarSenha")
-      .addEventListener("click", async function() {
-        const email =
-          document.getElementById("email").value.trim();
+      function traduzirErro(erro) {
+        const texto = String(erro?.message || "").toLowerCase();
+        const codigo = String(erro?.code || "").toLowerCase();
 
-        if (!email) {
-          mostrarMensagem(
-            "Digite seu e-mail no campo acima antes de solicitar a recuperação.",
-            "error"
-          );
-          document.getElementById("email").focus();
+        if (!navigator.onLine) {
+          return "Você está sem conexão com a internet. Verifique sua conexão e tente novamente.";
+        }
+
+        if (
+          texto.includes("email not confirmed") ||
+          texto.includes("email_not_confirmed")
+        ) {
+          return "Seu e-mail ainda não foi confirmado. Confira sua caixa de entrada e a pasta de spam.";
+        }
+
+        if (
+          texto.includes("invalid login credentials") ||
+          texto.includes("invalid_credentials") ||
+          texto.includes("invalid email or password")
+        ) {
+          return "E-mail ou senha incorretos. Confira os dados ou use “Esqueci minha senha”.";
+        }
+
+        if (
+          texto.includes("too many requests") ||
+          codigo.includes("over_request_rate_limit")
+        ) {
+          return "Foram feitas muitas tentativas. Aguarde um pouco antes de tentar novamente.";
+        }
+
+        if (
+          texto.includes("failed to fetch") ||
+          texto.includes("fetch failed") ||
+          texto.includes("network")
+        ) {
+          return "Não foi possível conectar ao serviço de login. Verifique sua internet e tente novamente.";
+        }
+
+        return "Não foi possível entrar. Tente novamente. Se o erro continuar, confira a configuração do Supabase.";
+      }
+
+      if (!window.supabase) {
+        mostrarMensagem(
+          "O serviço de login não carregou. Atualize a página e tente novamente."
+        );
+        botaoLogin.disabled = true;
+        botaoRecuperar.disabled = true;
+        return;
+      }
+
+      cliente = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
+
+      formulario.addEventListener("submit", async (evento) => {
+        evento.preventDefault();
+
+        const email = campoEmail.value.trim();
+        const senha = campoSenha.value;
+
+        if (!email || !senha) {
+          mostrarMensagem("Preencha seu e-mail e sua senha.");
           return;
         }
 
-        const botaoRecuperar = this;
+        botaoLogin.disabled = true;
+        botaoLogin.textContent = "Entrando...";
+        mostrarMensagem("", "");
+
+        try {
+          const { data, error } = await cliente.auth.signInWithPassword({
+            email,
+            password: senha
+          });
+
+          if (error) {
+            console.error("Erro de login do Supabase:", error);
+            mostrarMensagem(traduzirErro(error));
+            return;
+          }
+
+          if (!data.session) {
+            mostrarMensagem(
+              "O login não criou uma sessão. Tente novamente."
+            );
+            return;
+          }
+
+          mostrarMensagem("Login realizado! Abrindo seu painel...", "success");
+
+          window.location.assign("dashboard.html");
+
+        } catch (erro) {
+          console.error("Falha ao entrar no AgroMap:", erro);
+          mostrarMensagem(traduzirErro(erro));
+        } finally {
+          botaoLogin.disabled = false;
+          botaoLogin.innerHTML =
+            'Entrar na plataforma <span aria-hidden="true">→</span>';
+        }
+      });
+
+      botaoRecuperar.addEventListener("click", async () => {
+        const email = campoEmail.value.trim();
+
+        if (!email) {
+          mostrarMensagem(
+            "Digite seu e-mail no campo acima para solicitar a recuperação."
+          );
+          campoEmail.focus();
+          return;
+        }
+
         botaoRecuperar.disabled = true;
 
         try {
-          const { error } =
-            await supabaseClient.auth.resetPasswordForEmail(email, {
-              redirectTo: window.location.origin +
-                window.location.pathname.replace(
-                  /[^/]*$/,
-                  "login.html"
-                )
-            });
+          const { error } = await cliente.auth.resetPasswordForEmail(email, {
+            redirectTo: window.location.origin +
+              window.location.pathname.replace(/[^/]*$/, "login.html")
+          });
 
           if (error) {
-            throw error;
+            console.error("Erro na recuperação de senha:", error);
+            mostrarMensagem(traduzirErro(error));
+            return;
           }
 
           mostrarMensagem(
-            "Se o e-mail estiver cadastrado, você receberá as instruções de recuperação. Verifique também a caixa de spam.",
+            "Se esse e-mail estiver cadastrado, as instruções de recuperação serão enviadas. Confira também a pasta de spam.",
             "success"
           );
 
         } catch (erro) {
-          mostrarMensagem(
-            erro.message ||
-              "Não foi possível solicitar a recuperação agora.",
-            "error"
-          );
-
+          console.error("Falha na recuperação de senha:", erro);
+          mostrarMensagem(traduzirErro(erro));
         } finally {
           botaoRecuperar.disabled = false;
         }
       });
+    })();
   </script>
 
 </body>
 </html>
+```
