@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#234b32">
-  <meta name="description" content="AgroMap: dados climáticos e planejamento para a produção rural.">
+  <meta name="description" content="AgroMap: tecnologia, dados climáticos e planejamento para a produção rural.">
   <title>AgroMap | Gestão Rural Inteligente</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,16 +18,16 @@
 
   <header class="site-header">
     <div class="header-inner">
-
-      <a class="brand" href="index.html">
+      <a class="brand" href="index.html" aria-label="AgroMap - Início">
         <span class="brand-mark">✳</span>
-        <span>
+        <span class="brand-text">
           <strong>AgroMap</strong>
           <small>Dados que cultivam o futuro</small>
         </span>
       </a>
 
-      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+      <button class="menu-toggle" type="button"
+        aria-label="Abrir menu" aria-expanded="false">
         ☰
       </button>
 
@@ -45,12 +45,10 @@
           Entrar
         </a>
       </div>
-
     </div>
   </header>
 
   <main>
-
     <section class="hero" id="inicio">
       <div class="hero-shade"></div>
 
@@ -73,7 +71,6 @@
           <a class="button button-green button-large" href="cadastro.html">
             Criar minha conta <span>→</span>
           </a>
-
           <a class="button button-glass button-large" href="login.html">
             Já tenho uma conta
           </a>
@@ -85,9 +82,7 @@
         </div>
       </div>
 
-      <div class="hero-bottom-label">
-        AGROMAP · GESTÃO RURAL
-      </div>
+      <div class="hero-bottom-label">AGROMAP · GESTÃO RURAL</div>
     </section>
 
     <section class="features section-wrap" id="recursos">
@@ -96,7 +91,6 @@
           <span class="eyebrow">RECURSOS PARA SUA PROPRIEDADE</span>
           <h2>O campo muda. <span>Suas decisões evoluem.</span></h2>
         </div>
-
         <p>
           Ferramentas para reunir informações importantes e transformar
           dados em planejamento.
@@ -104,31 +98,32 @@
       </div>
 
       <div class="feature-grid">
-
         <article class="feature-card">
-          <img
-            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=85"
-            alt="Paisagem agrícola verde"
-            loading="lazy">
-
+          <div class="feature-image">
+            <img
+              src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=85"
+              alt="Vista ampla de campos agrícolas verdes"
+              loading="lazy">
+          </div>
           <div class="feature-body">
-            <span class="feature-number">01</span>
+            <span class="feature-number">01 / CLIMA</span>
             <h3>Dados climáticos</h3>
             <p>
-              Acompanhe as condições do tempo e use as informações
+              Acompanhe as condições climáticas e use as informações
               disponíveis para planejar as atividades rurais.
             </p>
           </div>
         </article>
 
         <article class="feature-card">
-          <img
-            src="https://images.unsplash.com/photo-1499529112087-3cb3b73feedb?auto=format&fit=crop&w=900&q=85"
-            alt="Plantação verde em crescimento"
-            loading="lazy">
-
+          <div class="feature-image">
+            <img
+              src="https://images.unsplash.com/photo-1499529112087-3cb3b73feedb?auto=format&fit=crop&w=1000&q=85"
+              alt="Vegetação agrícola em uma plantação"
+              loading="lazy">
+          </div>
           <div class="feature-body">
-            <span class="feature-number">02</span>
+            <span class="feature-number">02 / CULTIVO</span>
             <h3>Produção agrícola</h3>
             <p>
               Organize o planejamento da produção e acompanhe
@@ -138,29 +133,31 @@
         </article>
 
         <article class="feature-card">
-          <img
-            src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=900&q=85"
-            alt="Vista aérea de áreas rurais"
-            loading="lazy">
-
+          <div class="feature-image">
+            <img
+              src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=1000&q=85"
+              alt="Paisagem de propriedade rural e áreas de cultivo"
+              loading="lazy">
+          </div>
           <div class="feature-body">
-            <span class="feature-number">03</span>
+            <span class="feature-number">03 / PROPRIEDADE</span>
             <h3>Mapa rural</h3>
             <p>
-              Visualize informações da propriedade e tenha uma visão
-              mais organizada da área rural.
+              Organize as informações da propriedade e tenha uma visão
+              mais clara da sua área rural.
             </p>
           </div>
         </article>
 
         <article class="feature-card">
-          <img
-            src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=900&q=85"
-            alt="Cultivo agrícola em campo"
-            loading="lazy">
-
+          <div class="feature-image">
+            <img
+              src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1000&q=85"
+              alt="Cultivo agrícola em uma área rural"
+              loading="lazy">
+          </div>
           <div class="feature-body">
-            <span class="feature-number">04</span>
+            <span class="feature-number">04 / PLANEJAMENTO</span>
             <h3>Mercado e planejamento</h3>
             <p>
               Reúna dados úteis para acompanhar sua produção e apoiar
@@ -168,16 +165,26 @@
             </p>
           </div>
         </article>
-
       </div>
     </section>
 
     <section class="about-section" id="sobre">
-      <div class="about-image" role="img" aria-label="Plantação agrícola"></div>
+      <div class="about-image">
+        <img
+          src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1400&q=85"
+          alt="Paisagem natural com vegetação e luz do sol"
+          loading="lazy">
+        <div class="image-caption">
+          <span class="caption-mark">✳</span>
+          <span>
+            <strong>Tecnologia no campo</strong>
+            <small>Informação para planejar melhor</small>
+          </span>
+        </div>
+      </div>
 
       <div class="about-copy">
         <span class="eyebrow">SOBRE O AGROMAP</span>
-
         <h2>
           Informação que ajuda a cultivar
           <span>o amanhã.</span>
@@ -197,7 +204,6 @@
               <small>Informações reunidas em um só lugar.</small>
             </span>
           </div>
-
           <div>
             <span class="check">✓</span>
             <span>
@@ -214,28 +220,25 @@
     </section>
 
     <section class="cta-section">
-      <div>
+      <div class="cta-content">
         <span class="eyebrow eyebrow-light">SEU PRÓXIMO PASSO COMEÇA AQUI</span>
         <h2>Vamos cultivar um futuro mais inteligente?</h2>
         <p>Crie sua conta e conheça a proposta do AgroMap.</p>
       </div>
-
       <a class="button button-light button-large" href="cadastro.html">
         Criar minha conta <span>→</span>
       </a>
     </section>
-
   </main>
 
   <footer class="site-footer">
     <a class="brand brand-footer" href="index.html">
       <span class="brand-mark">✳</span>
-      <span>
+      <span class="brand-text">
         <strong>AgroMap</strong>
         <small>Dados que cultivam o futuro</small>
       </span>
     </a>
-
     <p>© 2026 AgroMap · Tecnologia e planejamento para o campo.</p>
   </footer>
 
@@ -246,9 +249,20 @@
     toggle.addEventListener("click", () => {
       const opened = nav.classList.toggle("nav-open");
       toggle.setAttribute("aria-expanded", String(opened));
+      toggle.setAttribute(
+        "aria-label",
+        opened ? "Fechar menu" : "Abrir menu"
+      );
+    });
+
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("nav-open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-label", "Abrir menu");
+      });
     });
   </script>
 
 </body>
 </html>
-
