@@ -47,12 +47,14 @@
 
     .form-field {
       min-width: 0;
+      margin-bottom: 14px;
     }
 
     .form-field input,
     .form-field select,
     .form-field textarea {
       width: 100%;
+      box-sizing: border-box;
     }
 
     .campo-largo {
@@ -90,6 +92,8 @@
 
     .form-message {
       margin: 12px 0;
+      font-size: 14px;
+      line-height: 1.5;
     }
 
     .form-message.error {
@@ -173,7 +177,7 @@
           </p>
         </div>
 
-        <form id="cadastroForm" class="cadastro-form">
+        <form id="cadastroForm">
 
           <div class="grupo-cadastro">
             <h3>1. Dados do produtor</h3>
@@ -384,20 +388,20 @@
               <label for="culturaPrincipal">Cultura principal</label>
               <select id="culturaPrincipal" name="culturaPrincipal">
                 <option value="">Selecione</option>
-                <option>Soja</option>
-                <option>Milho</option>
-                <option>Cana-de-açúcar</option>
-                <option>Café</option>
-                <option>Trigo</option>
-                <option>Feijão</option>
-                <option>Arroz</option>
-                <option>Algodão</option>
-                <option>Mandioca</option>
-                <option>Hortaliças</option>
-                <option>Fruticultura</option>
-                <option>Pecuária</option>
-                <option>Outra</option>
-                <option>Mais de uma cultura</option>
+                <option value="Soja">Soja</option>
+                <option value="Milho">Milho</option>
+                <option value="Cana-de-açúcar">Cana-de-açúcar</option>
+                <option value="Café">Café</option>
+                <option value="Trigo">Trigo</option>
+                <option value="Feijão">Feijão</option>
+                <option value="Arroz">Arroz</option>
+                <option value="Algodão">Algodão</option>
+                <option value="Mandioca">Mandioca</option>
+                <option value="Hortaliças">Hortaliças</option>
+                <option value="Fruticultura">Fruticultura</option>
+                <option value="Pecuária">Pecuária</option>
+                <option value="Outra">Outra</option>
+                <option value="Mais de uma cultura">Mais de uma cultura</option>
               </select>
             </div>
 
@@ -425,12 +429,12 @@
               <label for="irrigacao">Tipo de irrigação</label>
               <select id="irrigacao" name="irrigacao">
                 <option value="">Selecione</option>
-                <option>Não possui</option>
-                <option>Sequeiro (dependente de chuva)</option>
-                <option>Gotejamento</option>
-                <option>Aspersão</option>
-                <option>Pivô central</option>
-                <option>Outro</option>
+                <option value="Não possui">Não possui</option>
+                <option value="Sequeiro (dependente de chuva)">Sequeiro (dependente de chuva)</option>
+                <option value="Gotejamento">Gotejamento</option>
+                <option value="Aspersão">Aspersão</option>
+                <option value="Pivô central">Pivô central</option>
+                <option value="Outro">Outro</option>
               </select>
             </div>
 
@@ -473,82 +477,223 @@
     </section>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
+    const SUPABASE_URL = "https://jzjbsjplmjgtltyswyft.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_lzgGRU_n1Ch3kjZy5wVezw_EwwLDANm";
+
+    const supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
     const cadastroForm = document.getElementById("cadastroForm");
     const formMessage = document.getElementById("formMessage");
+    const botao = cadastroForm.querySelector("button[type='submit']");
+
+    function mostrarMensagem(texto, tipo = "") {
+      formMessage.textContent = texto;
+      formMessage.className = "form-message " + tipo;
+    }
+
+    function obterValor(id) {
+      const campo = document.getElementById(id);
+      const valor = campo.value.trim();
+      return valor === "" ? null : valor;
+    }
+
+    function obterNumero(id) {
+      const valor = obterValor(id);
+      if (valor === null) return null;
+
+      const numero = Number(valor);
+      return Number.isFinite(numero) ? numero : null;
+    }
 
     cadastroForm.addEventListener("submit", async function (event) {
       event.preventDefault();
-
-      formMessage.textContent = "";
-      formMessage.className = "form-message";
+      mostrarMensagem();
 
       const senha = document.getElementById("senha").value;
-      const confirmarSenha = document.getElementById("confirmarSenha").value;
+      const confirmarSenha =
+        document.getElementById("confirmarSenha").value;
 
       if (senha !== confirmarSenha) {
-        formMessage.textContent =
-          "As senhas não coincidem. Confira os dois campos.";
-
-        formMessage.classList.add("error");
+        mostrarMensagem(
+          "As senhas não coincidem. Confira os dois campos.",
+          "error"
+        );
         document.getElementById("confirmarSenha").focus();
         return;
       }
 
-      const botao = cadastroForm.querySelector("button[type='submit']");
-      const dadosCadastro = Object.fromEntries(
-        new FormData(cadastroForm).entries()
-      );
+      if (senha.length < 8) {
+        mostrarMensagem(
+          "A senha precisa ter pelo menos 8 caracteres.",
+          "error"
+        );
+        return;
+      }
 
-      delete dadosCadastro.confirmarSenha;
+      const nome = obterValor("nome");
+      const email = obterValor("email");
+      const telefone = obterValor("telefone");
+
+      const nomeFazenda = obterValor("nomeFazenda");
+      const cidade = obterValor("cidade");
+      const estado = obterValor("estado");
+      const endereco = obterValor("enderecoRural");
+
+      const latitude = obterNumero("latitude");
+      const longitude = obterNumero("longitude");
+      const areaTotal = obterNumero("hectaresTotal");
+      const hectaresPlantados = obterNumero("hectaresPlantados");
+
+      if (latitude !== null && (latitude < -90 || latitude > 90)) {
+        mostrarMensagem(
+          "A latitude deve estar entre -90 e 90.",
+          "error"
+        );
+        return;
+      }
+
+      if (longitude !== null && (longitude < -180 || longitude > 180)) {
+        mostrarMensagem(
+          "A longitude deve estar entre -180 e 180.",
+          "error"
+        );
+        return;
+      }
+
+      if (areaTotal !== null && areaTotal < 0) {
+        mostrarMensagem(
+          "A área total não pode ser negativa.",
+          "error"
+        );
+        return;
+      }
+
+      if (hectaresPlantados !== null && hectaresPlantados < 0) {
+        mostrarMensagem(
+          "A área plantada não pode ser negativa.",
+          "error"
+        );
+        return;
+      }
+
+      if (
+        areaTotal !== null &&
+        hectaresPlantados !== null &&
+        hectaresPlantados > areaTotal
+      ) {
+        mostrarMensagem(
+          "A área plantada não pode ser maior que a área total.",
+          "error"
+        );
+        return;
+      }
+
+      const localizacao = [cidade, estado]
+        .filter(Boolean)
+        .join(", ") || null;
+
+      const metadados = {
+        nome: nome,
+        telefone: telefone,
+        nome_fazenda: nomeFazenda,
+        cidade: cidade,
+        estado: estado,
+        endereco: endereco,
+        localizacao: localizacao,
+        latitude: latitude === null ? null : String(latitude),
+        longitude: longitude === null ? null : String(longitude),
+        area_total: areaTotal === null ? null : String(areaTotal),
+        hectares_plantados:
+          hectaresPlantados === null
+            ? null
+            : String(hectaresPlantados),
+        cultura_principal: obterValor("culturaPrincipal"),
+        outras_culturas: obterValor("outrasCulturas"),
+        epoca_plantio: obterValor("epocaPlantio"),
+        irrigacao: obterValor("irrigacao"),
+        observacoes: obterValor("observacoes")
+      };
 
       botao.disabled = true;
-      botao.textContent = "Enviando cadastro...";
+      botao.textContent = "Criando sua conta...";
 
       try {
-        const resposta = await fetch("api.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            action: "cadastro",
-            ...dadosCadastro
-          })
+        const { data, error } = await supabaseClient.auth.signUp({
+          email: email,
+          password: senha,
+          options: {
+            data: metadados
+          }
         });
 
-        let dados;
+        if (error) {
+          throw error;
+        }
 
-        try {
-          dados = await resposta.json();
-        } catch {
+        if (!data.user) {
           throw new Error(
-            "O servidor não retornou uma resposta válida. Verifique a configuração da API."
+            "Não foi possível confirmar a criação da conta. Tente novamente."
           );
         }
 
-        if (!resposta.ok || !dados.success) {
-          throw new Error(
-            dados.message || "Não foi possível criar a conta."
+        if (data.session) {
+          mostrarMensagem(
+            "Conta criada com sucesso! Vamos abrir seu painel.",
+            "success"
           );
+
+          cadastroForm.reset();
+
+          setTimeout(function () {
+            window.location.href = "dashboard.html";
+          }, 1800);
+        } else {
+          mostrarMensagem(
+            "Seu cadastro foi recebido! Verifique seu e-mail para confirmar a conta. Depois, entre pela página de login.",
+            "success"
+          );
+
+          cadastroForm.reset();
         }
-
-        formMessage.textContent =
-          dados.message || "Conta criada com sucesso!";
-
-        formMessage.classList.add("success");
-        cadastroForm.reset();
-
-        setTimeout(() => {
-          window.location.href = "login.html";
-        }, 1200);
 
       } catch (erro) {
-        formMessage.textContent =
-          erro.message ||
-          "Não foi possível conectar ao servidor. Nenhum cadastro foi confirmado.";
+        console.error("Erro no cadastro AgroMap:", erro);
 
-        formMessage.classList.add("error");
+        let mensagem = erro.message ||
+          "Não foi possível criar a conta. Tente novamente.";
+
+        const mensagemMin = mensagem.toLowerCase();
+
+        if (
+          mensagemMin.includes("already registered") ||
+          mensagemMin.includes("already exists") ||
+          mensagemMin.includes("user already registered")
+        ) {
+          mensagem =
+            "Este e-mail já possui cadastro. Tente entrar pela página de login.";
+        } else if (
+          mensagemMin.includes("password") &&
+          (
+            mensagemMin.includes("weak") ||
+            mensagemMin.includes("short")
+          )
+        ) {
+          mensagem =
+            "A senha não atende aos requisitos do Supabase. Escolha outra senha.";
+        } else if (
+          mensagemMin.includes("fetch") ||
+          mensagemMin.includes("network")
+        ) {
+          mensagem =
+            "Não foi possível conectar ao Supabase. Verifique sua conexão com a internet.";
+        }
+
+        mostrarMensagem(mensagem, "error");
 
       } finally {
         botao.disabled = false;
