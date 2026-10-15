@@ -4,11 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="AgroMap: dados climáticos e planejamento para a produção rural.">
+  <meta name="theme-color" content="#234b32">
+  <meta name="description" content="AgroMap: tecnologia, dados climáticos e planejamento para a produção rural.">
   <title>AgroMap | Gestão Rural Inteligente</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <header class="cabecalho">
     <a href="index.html" class="logo" aria-label="AgroMap - início">
       <img src="agromap-logo-transparente.png" alt="Logo AgroMap">
@@ -22,11 +24,12 @@
 
     <div class="botoes-cabecalho">
       <a href="cadastro.html" class="botao-cadastro">Criar minha conta</a>
-      <a href="login.html" class="botao-entrar">Entrar ↗</a>
+      <a href="login.html" class="botao-entrar">Entrar <span aria-hidden="true">↗</span></a>
     </div>
   </header>
 
   <main>
+    <!-- INÍCIO -->
     <section class="inicio" id="inicio">
       <div class="fundo-escuro"></div>
 
@@ -45,7 +48,7 @@
 
         <div class="botoes-inicio">
           <a href="cadastro.html" class="botao-principal">
-            Conheça o AgroMap →
+            Conheça o AgroMap <span aria-hidden="true">→</span>
           </a>
           <a href="#recursos" class="botao-secundario">
             Explorar soluções
@@ -53,17 +56,28 @@
         </div>
 
         <div class="indicadores">
-          <div>
-            <strong>Clima</strong>
-            <small>Condições ambientais</small>
+          <div class="indicador">
+            <span class="icone-indicador" aria-hidden="true">☁</span>
+            <div>
+              <strong>Clima</strong>
+              <small>Condições ambientais</small>
+            </div>
           </div>
-          <div>
-            <strong>Produção</strong>
-            <small>Informações agrícolas</small>
+
+          <div class="indicador">
+            <span class="icone-indicador" aria-hidden="true">❋</span>
+            <div>
+              <strong>Produção</strong>
+              <small>Informações agrícolas</small>
+            </div>
           </div>
-          <div>
-            <strong>Gestão</strong>
-            <small>Organização rural</small>
+
+          <div class="indicador">
+            <span class="icone-indicador" aria-hidden="true">⚙</span>
+            <div>
+              <strong>Gestão</strong>
+              <small>Organização rural</small>
+            </div>
           </div>
         </div>
       </div>
@@ -73,7 +87,7 @@
           <div class="titulo-cartao">
             <div>
               <small>VISÃO DA PROPRIEDADE</small>
-              <h2>Mapa rural</h2>
+              <h2>Sua propriedade</h2>
             </div>
             <span class="status">AgroMap</span>
           </div>
@@ -81,17 +95,17 @@
           <img
             class="imagem-mapa"
             src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=85"
-            alt="Vista ampla de áreas agrícolas"
+            alt="Vista panorâmica de campos agrícolas"
           >
 
           <div class="rodape-mapa">
-            <span>Organização da propriedade</span>
-            <span>Visualização rural</span>
+            <span>✓ Organização da propriedade</span>
+            <span>⌖ Visualização rural</span>
           </div>
         </div>
 
         <div class="etiqueta-flutuante">
-          <span>✳</span>
+          <span class="simbolo-agro" aria-hidden="true">✳</span>
           <div>
             <strong>AgroMap</strong>
             <small>Informação para o campo</small>
@@ -100,9 +114,10 @@
       </div>
     </section>
 
+    <!-- SOLUÇÕES -->
     <section class="recursos" id="recursos">
       <div class="cabecalho-secao">
-        <div>
+        <div class="titulo-secao">
           <span class="etiqueta-verde">SOLUÇÕES AGROMAP</span>
           <h2>Uma nova perspectiva para a <span>produção rural.</span></h2>
         </div>
@@ -114,93 +129,81 @@
       </div>
 
       <div class="grade-recursos">
-        <button
-          class="cartao-recurso"
-          type="button"
-          data-modal="modal-propriedade"
-          aria-haspopup="dialog"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=85"
-            alt="Vista ampla de uma fazenda com áreas de cultivo"
-            loading="lazy"
-          >
-
+        <button class="cartao-recurso" type="button"
+          data-modal="modal-propriedade" aria-haspopup="dialog">
+          <div class="imagem-recurso">
+            <img
+              src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=85"
+              alt="Paisagem de uma propriedade rural"
+              loading="lazy">
+            <span class="icone-cartao" aria-hidden="true">⌂</span>
+          </div>
           <span class="conteudo-recurso">
             <span class="categoria">PROPRIEDADE</span>
             <span class="titulo-recurso">Gestão da propriedade</span>
             <span class="descricao-recurso">
-              Organize dados da fazenda, áreas de cultivo, talhões e
-              informações importantes da atividade rural.
+              Organize dados da fazenda, áreas de cultivo e informações
+              importantes da atividade rural.
             </span>
             <span class="link-recurso">Saiba como funciona ↗</span>
           </span>
         </button>
 
-        <button
-          class="cartao-recurso"
-          type="button"
-          data-modal="modal-clima"
-          aria-haspopup="dialog"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=900&q=85"
-            alt="Nuvens de chuva no céu"
-            loading="lazy"
-          >
-
+        <button class="cartao-recurso" type="button"
+          data-modal="modal-clima" aria-haspopup="dialog">
+          <div class="imagem-recurso">
+            <img
+              src="https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=900&q=85"
+              alt="Nuvens carregadas no céu antes da chuva"
+              loading="lazy">
+            <span class="icone-cartao" aria-hidden="true">☁</span>
+          </div>
           <span class="conteudo-recurso">
             <span class="categoria">CLIMA</span>
             <span class="titulo-recurso">Dados climáticos</span>
             <span class="descricao-recurso">
-              Acompanhe informações de chuva, temperatura e umidade
-              para auxiliar o planejamento do cultivo.
+              Consulte informações de chuva, temperatura e umidade para
+              auxiliar o planejamento do cultivo.
             </span>
             <span class="link-recurso">Saiba como funciona ↗</span>
           </span>
         </button>
 
-        <button
-          class="cartao-recurso"
-          type="button"
-          data-modal="modal-producao"
-          aria-haspopup="dialog"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=900&q=85"
-            alt="Lavoura dourada pronta para colheita"
-            loading="lazy"
-          >
-
+        <button class="cartao-recurso" type="button"
+          data-modal="modal-producao" aria-haspopup="dialog">
+          <div class="imagem-recurso">
+            <img
+              src="https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=900&q=85"
+              alt="Plantação agrícola em período de colheita"
+              loading="lazy">
+            <span class="icone-cartao" aria-hidden="true">❋</span>
+          </div>
           <span class="conteudo-recurso">
             <span class="categoria">PRODUÇÃO</span>
             <span class="titulo-recurso">Planejamento da produção</span>
             <span class="descricao-recurso">
               Registre culturas e áreas plantadas para organizar
-              informações e apoiar estimativas agrícolas.
+              informações e acompanhar o cultivo.
             </span>
             <span class="link-recurso">Saiba como funciona ↗</span>
           </span>
         </button>
 
-        <button
-          class="cartao-recurso"
-          type="button"
-          data-modal="modal-decisoes"
-          aria-haspopup="dialog"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=900&q=85"
-            alt="Cultivo agrícola com plantas verdes e fileiras de plantio"
-            loading="lazy"
-          >
-
+        <button class="cartao-recurso" type="button"
+          data-modal="modal-decisoes" aria-haspopup="dialog">
+          <div class="imagem-recurso">
+            <img
+              src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=900&q=85"
+              alt="Fileiras de plantas em uma lavoura verde"
+              loading="lazy">
+            <span class="icone-cartao" aria-hidden="true">↗</span>
+          </div>
           <span class="conteudo-recurso">
             <span class="categoria">PLANEJAMENTO</span>
             <span class="titulo-recurso">Decisões no campo</span>
             <span class="descricao-recurso">
-              Reúna dados relevantes para acompanhar atividades,
-              comparar informações e planejar os próximos passos.
+              Reúna dados relevantes para acompanhar atividades e
+              planejar os próximos passos.
             </span>
             <span class="link-recurso">Saiba como funciona ↗</span>
           </span>
@@ -208,27 +211,33 @@
       </div>
 
       <p class="nota-imagens">
-        As imagens ilustram os temas das soluções. Para exibir previsões
-        e dados climáticos em tempo real, será necessário conectar fontes de dados.
+        <span aria-hidden="true">ⓘ</span>
+        As imagens ilustram os temas das soluções. Previsões e dados
+        climáticos em tempo real dependem da conexão com fontes de dados.
       </p>
     </section>
 
+    <!-- SOBRE O PROJETO -->
     <section class="sobre" id="sobre">
-      <img
-        src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1200&q=85"
-        alt="Paisagem natural rural"
-        loading="lazy"
-      >
+      <div class="imagem-sobre">
+        <img
+          src="https://images.unsplash.com/photo-1655048424318-2d56ccf9a51a?auto=format&fit=crop&w=1400&q=85"
+          alt="Trator trabalhando em uma área agrícola"
+          loading="lazy">
+        <div class="legenda-imagem">
+          <span>AgroMap</span>
+          <small>Tecnologia e informação para o campo</small>
+        </div>
+      </div>
 
-      <div>
+      <div class="texto-sobre">
         <span class="etiqueta-verde">NOSSO PROJETO</span>
         <h2>Tecnologia e agricultura caminhando juntas.</h2>
 
         <p>
           O AgroMap é um projeto que busca aproximar a tecnologia da
           realidade do produtor rural. A proposta é relacionar informações
-          climáticas e agrícolas para auxiliar na previsão da produção,
-          na análise de possíveis perdas e no planejamento do cultivo.
+          climáticas e agrícolas para auxiliar no planejamento do cultivo.
         </p>
 
         <p>
@@ -238,19 +247,19 @@
         </p>
 
         <a class="botao-principal" href="cadastro.html">
-          Faça parte do AgroMap →
+          Faça parte do AgroMap <span aria-hidden="true">→</span>
         </a>
       </div>
     </section>
 
+    <!-- CHAMADA PARA CADASTRO -->
     <section class="chamada">
-      <div>
+      <div class="texto-chamada">
         <span class="etiqueta">SEU CAMPO. SUAS INFORMAÇÕES.</span>
-
         <h2>
-          Transforme dados em novas possibilidades para sua propriedade.
+          Transforme dados em novas possibilidades para sua
+          <span>propriedade.</span>
         </h2>
-
         <p>
           Conheça a proposta do AgroMap e comece a organizar suas
           informações rurais.
@@ -258,33 +267,26 @@
       </div>
 
       <a href="cadastro.html" class="botao-chamada">
-        Criar minha conta →
+        Criar minha conta <span aria-hidden="true">→</span>
       </a>
     </section>
   </main>
 
+  <!-- RODAPÉ -->
   <footer class="rodape">
-    <a href="index.html" class="logo">
+    <a href="index.html" class="logo logo-rodape" aria-label="AgroMap - início">
       <img src="agromap-logo-transparente.png" alt="Logo AgroMap">
     </a>
-
     <p>Tecnologia e informação para o agronegócio.</p>
     <small>© 2026 AgroMap · Projeto acadêmico</small>
   </footer>
 
-  <!-- Janela com explicações dos quatro cartões -->
+  <!-- JANELA EXPLICATIVA DOS RECURSOS -->
   <div class="modal-fundo" id="modalFundo" hidden>
-    <section
-      class="modal-conteudo"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="modalTitulo"
-    >
-      <button
-        class="modal-fechar"
-        type="button"
-        aria-label="Fechar explicação"
-      >×</button>
+    <section class="modal-conteudo" role="dialog" aria-modal="true"
+      aria-labelledby="modalTitulo">
+      <button class="modal-fechar" type="button"
+        aria-label="Fechar explicação">×</button>
 
       <span class="etiqueta-verde" id="modalCategoria">SOLUÇÃO AGROMAP</span>
       <h2 id="modalTitulo">Conheça o recurso</h2>
@@ -309,37 +311,26 @@
       "modal-propriedade": {
         categoria: "PROPRIEDADE",
         titulo: "Gestão da propriedade",
-        texto:
-          "Este espaço é pensado para reunir as principais informações da fazenda, como nome da propriedade, localização, área total, talhões e áreas destinadas a cada atividade.",
-        detalhe:
-          "Ao organizar esses dados, o produtor pode consultar as informações da propriedade com mais facilidade e manter um registro estruturado para apoiar o planejamento."
+        texto: "Este espaço foi pensado para reunir informações da fazenda, como nome da propriedade, localização, área total e dados das atividades rurais.",
+        detalhe: "Ao organizar esses dados, o produtor pode consultar as informações da propriedade com mais facilidade e manter um registro estruturado para apoiar o planejamento."
       },
-
       "modal-clima": {
         categoria: "CLIMA",
         titulo: "Dados climáticos",
-        texto:
-          "Informações como chuva, temperatura e umidade ajudam o produtor a compreender as condições ambientais que podem influenciar o cultivo.",
-        detalhe:
-          "Com uma fonte meteorológica conectada, o sistema poderá apresentar dados e previsões para auxiliar o planejamento. Sem essa integração, as informações em tempo real não estarão disponíveis."
+        texto: "Informações como chuva, temperatura e umidade ajudam o produtor a compreender as condições ambientais que podem influenciar o cultivo.",
+        detalhe: "Com uma fonte meteorológica conectada, o sistema poderá apresentar dados e previsões para auxiliar o planejamento. Sem essa integração, as informações em tempo real não estarão disponíveis."
       },
-
       "modal-producao": {
         categoria: "PRODUÇÃO",
         titulo: "Planejamento da produção",
-        texto:
-          "O produtor poderá registrar quais culturas está plantando, em que área estão plantadas e outras informações importantes de cada safra.",
-        detalhe:
-          "Esses registros ajudam a visualizar a distribuição das culturas e organizar as informações necessárias para acompanhar o ciclo produtivo."
+        texto: "O produtor poderá registrar quais culturas está plantando, em que área estão plantadas e outras informações importantes de cada safra.",
+        detalhe: "Esses registros ajudam a visualizar a distribuição das culturas e organizar as informações necessárias para acompanhar o ciclo produtivo."
       },
-
       "modal-decisoes": {
         categoria: "PLANEJAMENTO",
         titulo: "Decisões no campo",
-        texto:
-          "Reunir dados da propriedade, do cultivo e do clima pode ajudar o produtor a analisar a situação antes de planejar as próximas atividades.",
-        detalhe:
-          "O AgroMap pretende centralizar informações para facilitar a consulta e o planejamento. Recomendações automáticas exigem regras de análise e fontes de dados implementadas no sistema."
+        texto: "Reunir dados da propriedade, do cultivo e do clima pode ajudar o produtor a analisar a situação antes de planejar as próximas atividades.",
+        detalhe: "O AgroMap pretende centralizar informações para facilitar a consulta e o planejamento. Recomendações automáticas exigem regras de análise e fontes de dados implementadas no sistema."
       }
     };
 
@@ -349,7 +340,6 @@
     const modalTexto = document.getElementById("modalTexto");
     const modalDetalhe = document.getElementById("modalDetalhe");
     const fecharModal = document.querySelector(".modal-fechar");
-
     let elementoAnterior = null;
 
     document.querySelectorAll("[data-modal]").forEach(cartao => {
@@ -372,18 +362,13 @@
     function fecharExplicacao() {
       modalFundo.hidden = true;
       document.body.classList.remove("modal-aberto");
-
-      if (elementoAnterior) {
-        elementoAnterior.focus();
-      }
+      if (elementoAnterior) elementoAnterior.focus();
     }
 
     fecharModal.addEventListener("click", fecharExplicacao);
 
     modalFundo.addEventListener("click", event => {
-      if (event.target === modalFundo) {
-        fecharExplicacao();
-      }
+      if (event.target === modalFundo) fecharExplicacao();
     });
 
     document.addEventListener("keydown", event => {
