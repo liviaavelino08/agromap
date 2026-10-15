@@ -3,704 +3,304 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f6f7ef">
+  <meta name="theme-color" content="#234b32">
   <title>Criar conta | AgroMap</title>
   <link rel="stylesheet" href="login.css">
-
-  <style>
-    .auth-form-wrap {
-      max-width: 650px;
-    }
-
-    .auth-panel {
-      overflow-y: auto;
-    }
-
-    .cadastro-form {
-      width: 100%;
-    }
-
-    .grupo-cadastro {
-      margin: 25px 0 15px;
-      padding-top: 18px;
-      border-top: 1px solid #e2e9df;
-    }
-
-    .grupo-cadastro h3 {
-      color: #123b2d;
-      font-size: 17px;
-      margin-bottom: 5px;
-    }
-
-    .grupo-cadastro p {
-      color: #68736b;
-      font-size: 13px;
-      line-height: 1.5;
-      margin-bottom: 14px;
-    }
-
-    .campos-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0 14px;
-    }
-
-    .form-field {
-      min-width: 0;
-      margin-bottom: 14px;
-    }
-
-    .form-field input,
-    .form-field select,
-    .form-field textarea {
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    .campo-largo {
-      grid-column: 1 / -1;
-    }
-
-    .form-field select,
-    .form-field textarea {
-      border: 1px solid #dbe4d9;
-      border-radius: 8px;
-      padding: 12px 13px;
-      color: #203126;
-      background: white;
-      font: inherit;
-      min-height: 46px;
-    }
-
-    .form-field textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-
-    .form-field label {
-      display: block;
-      margin-bottom: 7px;
-    }
-
-    .field-hint {
-      display: block;
-      margin-top: 5px;
-      color: #68736b;
-      font-size: 12px;
-      line-height: 1.4;
-    }
-
-    .form-message {
-      margin: 12px 0;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .form-message.error {
-      color: #a32626;
-    }
-
-    .form-message.success {
-      color: #246b3b;
-    }
-
-    .auth-submit:disabled {
-      opacity: .65;
-      cursor: wait;
-    }
-
-    @media (max-width: 640px) {
-      .campos-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .campo-largo {
-        grid-column: auto;
-      }
-
-      .auth-form-wrap {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-    }
-  </style>
 </head>
+<body class="auth-page cadastro-page">
 
-<body class="auth-page">
   <main class="auth-layout">
-
     <section class="auth-visual">
-      <a class="auth-brand" href="index.html">
-        <img
-          src="agromap-logo-transparente.png"
-          alt="AgroMap"
-          style="width:165px;max-height:58px;object-fit:contain;"
-        >
-      </a>
+      <a class="auth-brand" href="index.html">🌱 Agro<span>Map</span></a>
 
       <div class="visual-content">
-        <span class="auth-eyebrow">O campo mais conectado</span>
-
-        <h1>O futuro do campo começa com você.</h1>
-
-        <p>
-          Crie sua conta e organize as informações do produtor
-          e da sua propriedade rural em um só lugar.
-        </p>
-
-        <div class="visual-caption">
-          <span class="caption-dot"></span>
-          <span>Tecnologia que aproxima você do campo.</span>
-        </div>
+        <span class="auth-eyebrow">SUA PROPRIEDADE, MAIS CONECTADA</span>
+        <h1>Comece a organizar a gestão da sua propriedade.</h1>
+        <p>Cadastre seus dados e tenha suas informações rurais organizadas em um só lugar.</p>
       </div>
 
-      <div class="visual-decoration decoration-one"></div>
-      <div class="visual-decoration decoration-two"></div>
+      <div class="visual-caption">
+        <span>🌾</span>
+        <div>
+          <strong>Planeje. Acompanhe. Cultive.</strong>
+          <small>AgroMap — gestão rural inteligente.</small>
+        </div>
+      </div>
     </section>
 
     <section class="auth-panel">
       <div class="auth-form-wrap">
-
-        <a class="back-home" href="index.html">
-          <span aria-hidden="true">←</span>
-          Voltar ao início
-        </a>
-
-        <a class="mobile-brand" href="index.html">AgroMap</a>
+        <a class="mobile-brand" href="index.html">🌱 Agro<span>Map</span></a>
 
         <div class="form-heading">
-          <span class="auth-eyebrow">Junte-se ao AgroMap</span>
-          <h2>Crie sua conta</h2>
-          <p>
-            Preencha seus dados e, se desejar, informe também
-            os dados da fazenda.
-          </p>
+          <span class="auth-eyebrow">CADASTRO DO PRODUTOR</span>
+          <h2>Criar minha conta</h2>
+          <p>Preencha os campos para começar.</p>
         </div>
 
         <form id="cadastroForm">
+          <h3 class="form-section-title">Seus dados</h3>
 
-          <div class="grupo-cadastro">
-            <h3>1. Dados do produtor</h3>
-            <p>Informações para identificar e entrar em contato com você.</p>
-          </div>
+          <label for="nome">Nome completo *</label>
+          <input id="nome" name="nome" type="text" autocomplete="name"
+            placeholder="Seu nome completo" required>
 
-          <div class="campos-grid">
+          <label for="email">E-mail *</label>
+          <input id="email" name="email" type="email" autocomplete="email"
+            placeholder="seuemail@exemplo.com" required>
 
-            <div class="form-field campo-largo">
-              <label for="nome">Nome completo *</label>
-              <input
-                type="text"
-                id="nome"
-                name="nome"
-                placeholder="Digite seu nome completo"
-                autocomplete="name"
-                required
-              >
-            </div>
+          <label for="telefone">Telefone</label>
+          <input id="telefone" name="telefone" type="tel" autocomplete="tel"
+            placeholder="(00) 00000-0000">
 
-            <div class="form-field">
-              <label for="email">E-mail *</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="voce@exemplo.com"
-                autocomplete="email"
-                required
-              >
-            </div>
+          <label for="senha">Crie uma senha *</label>
+          <input id="senha" name="senha" type="password" minlength="6"
+            autocomplete="new-password" placeholder="Mínimo de 6 caracteres" required>
 
-            <div class="form-field">
-              <label for="telefone">Telefone / WhatsApp</label>
-              <input
-                type="tel"
-                id="telefone"
-                name="telefone"
-                placeholder="(00) 00000-0000"
-                autocomplete="tel"
-              >
-            </div>
+          <label for="confirmarSenha">Confirme a senha *</label>
+          <input id="confirmarSenha" name="confirmarSenha" type="password"
+            minlength="6" autocomplete="new-password"
+            placeholder="Digite a senha novamente" required>
 
-            <div class="form-field">
-              <label for="senha">Senha *</label>
-              <input
-                type="password"
-                id="senha"
-                name="senha"
-                placeholder="Crie uma senha"
-                autocomplete="new-password"
-                minlength="8"
-                required
-              >
-              <span class="field-hint">Use pelo menos 8 caracteres.</span>
-            </div>
+          <h3 class="form-section-title">Dados da propriedade</h3>
+          <p class="form-help">Os campos desta seção são opcionais. Você poderá preencher o que souber agora.</p>
 
-            <div class="form-field">
-              <label for="confirmarSenha">Confirmar senha *</label>
-              <input
-                type="password"
-                id="confirmarSenha"
-                name="confirmarSenha"
-                placeholder="Digite a senha novamente"
-                autocomplete="new-password"
-                minlength="8"
-                required
-              >
-            </div>
+          <label for="nomeFazenda">Nome da propriedade</label>
+          <input id="nomeFazenda" name="nomeFazenda" type="text"
+            placeholder="Nome da fazenda ou sítio">
 
-          </div>
+          <label for="enderecoRural">Endereço ou localização</label>
+          <input id="enderecoRural" name="enderecoRural" type="text"
+            placeholder="Estrada, bairro ou referência">
 
-          <div class="grupo-cadastro">
-            <h3>2. Dados da propriedade</h3>
-            <p>
-              Esses campos ajudam a registrar as características
-              da fazenda. Você pode preencher o que já souber.
-            </p>
-          </div>
+          <label for="cidade">Cidade</label>
+          <input id="cidade" name="cidade" type="text" autocomplete="address-level2"
+            placeholder="Cidade onde fica a propriedade">
 
-          <div class="campos-grid">
+          <label for="estado">Estado</label>
+          <select id="estado" name="estado">
+            <option value="">Selecione o estado</option>
+            <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option>
+            <option value="AM">Amazonas</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="RN">Rio Grande do Norte</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="SP">São Paulo</option>
+            <option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option>
+          </select>
 
-            <div class="form-field campo-largo">
-              <label for="nomeFazenda">Nome da fazenda / propriedade</label>
-              <input
-                type="text"
-                id="nomeFazenda"
-                name="nomeFazenda"
-                placeholder="Ex.: Fazenda Santa Maria"
-              >
-            </div>
+          <label for="hectaresTotal">Área total (hectares)</label>
+          <input id="hectaresTotal" name="hectaresTotal" type="number"
+            min="0" step="0.01" placeholder="Ex.: 25">
 
-            <div class="form-field">
-              <label for="cidade">Cidade</label>
-              <input
-                type="text"
-                id="cidade"
-                name="cidade"
-                placeholder="Nome da cidade"
-                autocomplete="address-level2"
-              >
-            </div>
+          <label for="hectaresPlantados">Área plantada (hectares)</label>
+          <input id="hectaresPlantados" name="hectaresPlantados" type="number"
+            min="0" step="0.01" placeholder="Ex.: 15">
 
-            <div class="form-field">
-              <label for="estado">Estado (UF)</label>
-              <select id="estado" name="estado">
-                <option value="">Selecione</option>
-                <option value="AC">Acre (AC)</option>
-                <option value="AL">Alagoas (AL)</option>
-                <option value="AP">Amapá (AP)</option>
-                <option value="AM">Amazonas (AM)</option>
-                <option value="BA">Bahia (BA)</option>
-                <option value="CE">Ceará (CE)</option>
-                <option value="DF">Distrito Federal (DF)</option>
-                <option value="ES">Espírito Santo (ES)</option>
-                <option value="GO">Goiás (GO)</option>
-                <option value="MA">Maranhão (MA)</option>
-                <option value="MT">Mato Grosso (MT)</option>
-                <option value="MS">Mato Grosso do Sul (MS)</option>
-                <option value="MG">Minas Gerais (MG)</option>
-                <option value="PA">Pará (PA)</option>
-                <option value="PB">Paraíba (PB)</option>
-                <option value="PR">Paraná (PR)</option>
-                <option value="PE">Pernambuco (PE)</option>
-                <option value="PI">Piauí (PI)</option>
-                <option value="RJ">Rio de Janeiro (RJ)</option>
-                <option value="RN">Rio Grande do Norte (RN)</option>
-                <option value="RS">Rio Grande do Sul (RS)</option>
-                <option value="RO">Rondônia (RO)</option>
-                <option value="RR">Roraima (RR)</option>
-                <option value="SC">Santa Catarina (SC)</option>
-                <option value="SP">São Paulo (SP)</option>
-                <option value="SE">Sergipe (SE)</option>
-                <option value="TO">Tocantins (TO)</option>
-              </select>
-            </div>
+          <label for="culturaPrincipal">Cultura principal</label>
+          <input id="culturaPrincipal" name="culturaPrincipal" type="text"
+            placeholder="Ex.: soja, milho, café">
 
-            <div class="form-field campo-largo">
-              <label for="enderecoRural">Endereço / referência de acesso</label>
-              <input
-                type="text"
-                id="enderecoRural"
-                name="enderecoRural"
-                placeholder="Estrada, bairro rural ou ponto de referência"
-              >
-            </div>
+          <label for="outrasCulturas">Outras culturas</label>
+          <textarea id="outrasCulturas" name="outrasCulturas" rows="2"
+            placeholder="Outras culturas cultivadas"></textarea>
 
-            <div class="form-field">
-              <label for="latitude">Latitude</label>
-              <input
-                type="number"
-                id="latitude"
-                name="latitude"
-                step="any"
-                min="-90"
-                max="90"
-                placeholder="Ex.: -22.9797"
-              >
-            </div>
+          <label for="epocaPlantio">Época de plantio</label>
+          <input id="epocaPlantio" name="epocaPlantio" type="text"
+            placeholder="Ex.: outubro a dezembro">
 
-            <div class="form-field">
-              <label for="longitude">Longitude</label>
-              <input
-                type="number"
-                id="longitude"
-                name="longitude"
-                step="any"
-                min="-180"
-                max="180"
-                placeholder="Ex.: -49.8701"
-              >
-            </div>
+          <label for="irrigacao">Irrigação</label>
+          <select id="irrigacao" name="irrigacao">
+            <option value="">Selecione uma opção</option>
+            <option value="Não possui">Não possui</option>
+            <option value="Gotejamento">Gotejamento</option>
+            <option value="Aspersão">Aspersão</option>
+            <option value="Pivô central">Pivô central</option>
+            <option value="Outro">Outro</option>
+          </select>
 
-            <div class="form-field">
-              <label for="hectaresTotal">Área total (hectares)</label>
-              <input
-                type="number"
-                id="hectaresTotal"
-                name="hectaresTotal"
-                min="0"
-                step="any"
-                placeholder="Ex.: 120"
-              >
-            </div>
+          <label for="observacoes">Observações</label>
+          <textarea id="observacoes" name="observacoes" rows="3"
+            placeholder="Informações adicionais sobre a propriedade"></textarea>
 
-            <div class="form-field">
-              <label for="hectaresPlantados">Área plantada (hectares)</label>
-              <input
-                type="number"
-                id="hectaresPlantados"
-                name="hectaresPlantados"
-                min="0"
-                step="any"
-                placeholder="Ex.: 75"
-              >
-            </div>
-
-          </div>
-
-          <div class="grupo-cadastro">
-            <h3>3. Informações do cultivo</h3>
-            <p>Conte um pouco sobre o que é cultivado na propriedade.</p>
-          </div>
-
-          <div class="campos-grid">
-
-            <div class="form-field">
-              <label for="culturaPrincipal">Cultura principal</label>
-              <select id="culturaPrincipal" name="culturaPrincipal">
-                <option value="">Selecione</option>
-                <option value="Soja">Soja</option>
-                <option value="Milho">Milho</option>
-                <option value="Cana-de-açúcar">Cana-de-açúcar</option>
-                <option value="Café">Café</option>
-                <option value="Trigo">Trigo</option>
-                <option value="Feijão">Feijão</option>
-                <option value="Arroz">Arroz</option>
-                <option value="Algodão">Algodão</option>
-                <option value="Mandioca">Mandioca</option>
-                <option value="Hortaliças">Hortaliças</option>
-                <option value="Fruticultura">Fruticultura</option>
-                <option value="Pecuária">Pecuária</option>
-                <option value="Outra">Outra</option>
-                <option value="Mais de uma cultura">Mais de uma cultura</option>
-              </select>
-            </div>
-
-            <div class="form-field">
-              <label for="outrasCulturas">Outras culturas</label>
-              <input
-                type="text"
-                id="outrasCulturas"
-                name="outrasCulturas"
-                placeholder="Ex.: milho, feijão"
-              >
-            </div>
-
-            <div class="form-field">
-              <label for="epocaPlantio">Época / safra de plantio</label>
-              <input
-                type="text"
-                id="epocaPlantio"
-                name="epocaPlantio"
-                placeholder="Ex.: outubro a dezembro"
-              >
-            </div>
-
-            <div class="form-field">
-              <label for="irrigacao">Tipo de irrigação</label>
-              <select id="irrigacao" name="irrigacao">
-                <option value="">Selecione</option>
-                <option value="Não possui">Não possui</option>
-                <option value="Sequeiro (dependente de chuva)">Sequeiro (dependente de chuva)</option>
-                <option value="Gotejamento">Gotejamento</option>
-                <option value="Aspersão">Aspersão</option>
-                <option value="Pivô central">Pivô central</option>
-                <option value="Outro">Outro</option>
-              </select>
-            </div>
-
-            <div class="form-field campo-largo">
-              <label for="observacoes">Observações sobre a propriedade</label>
-              <textarea
-                id="observacoes"
-                name="observacoes"
-                placeholder="Se quiser, informe outros detalhes importantes."
-              ></textarea>
-            </div>
-
-          </div>
-
-          <p class="field-hint">
-            Os campos marcados com * são obrigatórios.
-            Os dados da fazenda são opcionais neste primeiro momento.
-          </p>
-
-          <div
-            id="formMessage"
-            class="form-message"
-            role="status"
-            aria-live="polite"
-          ></div>
-
-          <button type="submit" class="auth-submit">
-            Criar minha conta <span aria-hidden="true">→</span>
+          <button class="auth-submit" id="botaoCadastro" type="submit">
+            Criar minha conta →
           </button>
 
+          <p id="mensagem" class="form-message" role="status" aria-live="polite"></p>
         </form>
 
-        <p class="auth-switch">
-          Já tem uma conta?
+        <div class="auth-switch">
+          Já possui uma conta?
           <a href="login.html">Entrar</a>
-        </p>
+        </div>
 
-        <p class="auth-footer">AgroMap · Tecnologia para o campo</p>
+        <a href="index.html" class="back-home">← Voltar à página inicial</a>
       </div>
+
+      <footer class="auth-footer">© 2026 AgroMap · Projeto acadêmico</footer>
     </section>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
-    const SUPABASE_URL = "https://jzjbsjplmjgtltyswyft.supabase.co";
-    const SUPABASE_KEY = "sb_publishable_lzgGRU_n1Ch3kjZy5wVezw_EwwLDANm";
+    (() => {
+      const URL_SUPABASE = "https://jzjbsjplmjgtltyswyft.supabase.co";
+      const CHAVE_PUBLICA = "sb_publishable_lzgGRU_n1Ch3kjZy5wVezw_EwwLDANm";
 
-    const supabaseClient = window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
+      const formulario = document.getElementById("cadastroForm");
+      const mensagem = document.getElementById("mensagem");
+      const botao = document.getElementById("botaoCadastro");
 
-    const cadastroForm = document.getElementById("cadastroForm");
-    const formMessage = document.getElementById("formMessage");
-    const botao = cadastroForm.querySelector("button[type='submit']");
+      function informar(texto, tipo = "error") {
+        mensagem.textContent = texto;
+        mensagem.className = "form-message " + tipo;
+      }
 
-    function mostrarMensagem(texto, tipo = "") {
-      formMessage.textContent = texto;
-      formMessage.className = "form-message " + tipo;
-    }
-
-    function obterValor(id) {
-      const campo = document.getElementById(id);
-      const valor = campo.value.trim();
-      return valor === "" ? null : valor;
-    }
-
-    function obterNumero(id) {
-      const valor = obterValor(id);
-      if (valor === null) return null;
-
-      const numero = Number(valor);
-      return Number.isFinite(numero) ? numero : null;
-    }
-
-    cadastroForm.addEventListener("submit", async function (event) {
-      event.preventDefault();
-      mostrarMensagem();
-
-      const senha = document.getElementById("senha").value;
-      const confirmarSenha =
-        document.getElementById("confirmarSenha").value;
-
-      if (senha !== confirmarSenha) {
-        mostrarMensagem(
-          "As senhas não coincidem. Confira os dois campos.",
-          "error"
-        );
-        document.getElementById("confirmarSenha").focus();
+      if (!window.supabase) {
+        informar("O serviço de cadastro não carregou. Atualize a página.");
+        botao.disabled = true;
         return;
       }
 
-      if (senha.length < 8) {
-        mostrarMensagem(
-          "A senha precisa ter pelo menos 8 caracteres.",
-          "error"
-        );
-        return;
-      }
+      const supabaseClient = window.supabase.createClient(
+        URL_SUPABASE,
+        CHAVE_PUBLICA
+      );
 
-      const nome = obterValor("nome");
-      const email = obterValor("email");
-      const telefone = obterValor("telefone");
+      formulario.addEventListener("submit", async (evento) => {
+        evento.preventDefault();
 
-      const nomeFazenda = obterValor("nomeFazenda");
-      const cidade = obterValor("cidade");
-      const estado = obterValor("estado");
-      const endereco = obterValor("enderecoRural");
+        const valor = (id) => document.getElementById(id).value.trim();
+        const senha = document.getElementById("senha").value;
+        const confirmar = document.getElementById("confirmarSenha").value;
 
-      const latitude = obterNumero("latitude");
-      const longitude = obterNumero("longitude");
-      const areaTotal = obterNumero("hectaresTotal");
-      const hectaresPlantados = obterNumero("hectaresPlantados");
-
-      if (latitude !== null && (latitude < -90 || latitude > 90)) {
-        mostrarMensagem(
-          "A latitude deve estar entre -90 e 90.",
-          "error"
-        );
-        return;
-      }
-
-      if (longitude !== null && (longitude < -180 || longitude > 180)) {
-        mostrarMensagem(
-          "A longitude deve estar entre -180 e 180.",
-          "error"
-        );
-        return;
-      }
-
-      if (areaTotal !== null && areaTotal < 0) {
-        mostrarMensagem(
-          "A área total não pode ser negativa.",
-          "error"
-        );
-        return;
-      }
-
-      if (hectaresPlantados !== null && hectaresPlantados < 0) {
-        mostrarMensagem(
-          "A área plantada não pode ser negativa.",
-          "error"
-        );
-        return;
-      }
-
-      if (
-        areaTotal !== null &&
-        hectaresPlantados !== null &&
-        hectaresPlantados > areaTotal
-      ) {
-        mostrarMensagem(
-          "A área plantada não pode ser maior que a área total.",
-          "error"
-        );
-        return;
-      }
-
-      const localizacao = [cidade, estado]
-        .filter(Boolean)
-        .join(", ") || null;
-
-      const metadados = {
-        nome: nome,
-        telefone: telefone,
-        nome_fazenda: nomeFazenda,
-        cidade: cidade,
-        estado: estado,
-        endereco: endereco,
-        localizacao: localizacao,
-        latitude: latitude === null ? null : String(latitude),
-        longitude: longitude === null ? null : String(longitude),
-        area_total: areaTotal === null ? null : String(areaTotal),
-        hectares_plantados:
-          hectaresPlantados === null
-            ? null
-            : String(hectaresPlantados),
-        cultura_principal: obterValor("culturaPrincipal"),
-        outras_culturas: obterValor("outrasCulturas"),
-        epoca_plantio: obterValor("epocaPlantio"),
-        irrigacao: obterValor("irrigacao"),
-        observacoes: obterValor("observacoes")
-      };
-
-      botao.disabled = true;
-      botao.textContent = "Criando sua conta...";
-
-      try {
-        const { data, error } = await supabaseClient.auth.signUp({
-          email: email,
-          password: senha,
-          options: {
-            data: metadados
-          }
-        });
-
-        if (error) {
-          throw error;
+        if (senha.length < 6) {
+          informar("Sua senha precisa ter pelo menos 6 caracteres.");
+          return;
         }
 
-        if (!data.user) {
-          throw new Error(
-            "Não foi possível confirmar a criação da conta. Tente novamente."
-          );
+        if (senha !== confirmar) {
+          informar("As senhas não coincidem. Confira os dois campos.");
+          return;
         }
 
-        if (data.session) {
-          mostrarMensagem(
-            "Conta criada com sucesso! Vamos abrir seu painel.",
-            "success"
-          );
+        const total = valor("hectaresTotal");
+        const plantados = valor("hectaresPlantados");
 
-          cadastroForm.reset();
-
-          setTimeout(function () {
-            window.location.href = "dashboard.html";
-          }, 1800);
-        } else {
-          mostrarMensagem(
-            "Seu cadastro foi recebido! Verifique seu e-mail para confirmar a conta. Depois, entre pela página de login.",
-            "success"
-          );
-
-          cadastroForm.reset();
+        if (total !== "" && Number(total) < 0) {
+          informar("A área total não pode ser negativa.");
+          return;
         }
 
-      } catch (erro) {
-        console.error("Erro no cadastro AgroMap:", erro);
-
-        let mensagem = erro.message ||
-          "Não foi possível criar a conta. Tente novamente.";
-
-        const mensagemMin = mensagem.toLowerCase();
+        if (plantados !== "" && Number(plantados) < 0) {
+          informar("A área plantada não pode ser negativa.");
+          return;
+        }
 
         if (
-          mensagemMin.includes("already registered") ||
-          mensagemMin.includes("already exists") ||
-          mensagemMin.includes("user already registered")
+          total !== "" && plantados !== "" &&
+          Number(plantados) > Number(total)
         ) {
-          mensagem =
-            "Este e-mail já possui cadastro. Tente entrar pela página de login.";
-        } else if (
-          mensagemMin.includes("password") &&
-          (
-            mensagemMin.includes("weak") ||
-            mensagemMin.includes("short")
-          )
-        ) {
-          mensagem =
-            "A senha não atende aos requisitos do Supabase. Escolha outra senha.";
-        } else if (
-          mensagemMin.includes("fetch") ||
-          mensagemMin.includes("network")
-        ) {
-          mensagem =
-            "Não foi possível conectar ao Supabase. Verifique sua conexão com a internet.";
+          informar("A área plantada não pode ser maior que a área total.");
+          return;
         }
 
-        mostrarMensagem(mensagem, "error");
+        const nome = valor("nome");
+        const email = valor("email").toLowerCase();
+        const telefone = valor("telefone");
+        const nomeFazenda = valor("nomeFazenda");
+        const cidade = valor("cidade");
+        const estado = valor("estado");
+        const endereco = valor("enderecoRural");
+        const culturaPrincipal = valor("culturaPrincipal");
+        const outrasCulturas = valor("outrasCulturas");
+        const epocaPlantio = valor("epocaPlantio");
+        const irrigacao = valor("irrigacao");
+        const observacoes = valor("observacoes");
 
-      } finally {
-        botao.disabled = false;
-        botao.innerHTML =
-          'Criar minha conta <span aria-hidden="true">→</span>';
-      }
-    });
+        const metadados = {
+          nome,
+          telefone: telefone || null,
+          nome_fazenda: nomeFazenda || null,
+          cidade: cidade || null,
+          estado: estado || null,
+          endereco: endereco || null,
+          localizacao: [cidade, estado].filter(Boolean).join(", ") || null,
+          area_total: total || null,
+          hectares_plantados: plantados || null,
+          cultura_principal: culturaPrincipal || null,
+          outras_culturas: outrasCulturas || null,
+          epoca_plantio: epocaPlantio || null,
+          irrigacao: irrigacao || null,
+          observacoes: observacoes || null
+        };
+
+        botao.disabled = true;
+        botao.textContent = "Criando sua conta...";
+        informar("", "");
+
+        try {
+          const { data, error } = await supabaseClient.auth.signUp({
+            email,
+            password: senha,
+            options: {
+              data: metadados,
+              emailRedirectTo: new URL("login.html", window.location.href).href
+            }
+          });
+
+          if (error) throw error;
+
+          if (data.session) {
+            informar("Conta criada! Abrindo seu painel...", "success");
+            window.location.href = new URL("dashboard.html", window.location.href).href;
+            return;
+          }
+
+          informar(
+            "Cadastro enviado! Verifique seu e-mail para confirmar a conta. Depois, volte à tela de login para entrar.",
+            "success"
+          );
+
+          formulario.reset();
+
+        } catch (erro) {
+          console.error("Erro no cadastro:", erro);
+          const detalhe = (erro.message || "").toLowerCase();
+
+          if (detalhe.includes("already registered") ||
+              detalhe.includes("already been registered")) {
+            informar("Esse e-mail já possui cadastro. Tente entrar ou recuperar a senha.");
+          } else {
+            informar("Não foi possível concluir o cadastro. Verifique sua conexão e tente novamente.");
+          }
+        } finally {
+          botao.disabled = false;
+          botao.textContent = "Criar minha conta →";
+        }
+      });
+    })();
   </script>
 </body>
 </html>
