@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -7,6 +6,120 @@
   <meta name="theme-color" content="#f6f7ef">
   <title>Criar conta | AgroMap</title>
   <link rel="stylesheet" href="login.css">
+
+  <style>
+    .auth-form-wrap {
+      max-width: 650px;
+    }
+
+    .auth-panel {
+      overflow-y: auto;
+    }
+
+    .cadastro-form {
+      width: 100%;
+    }
+
+    .grupo-cadastro {
+      margin: 25px 0 15px;
+      padding-top: 18px;
+      border-top: 1px solid #e2e9df;
+    }
+
+    .grupo-cadastro h3 {
+      color: #123b2d;
+      font-size: 17px;
+      margin-bottom: 5px;
+    }
+
+    .grupo-cadastro p {
+      color: #68736b;
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    .campos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 14px;
+    }
+
+    .form-field {
+      min-width: 0;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+    }
+
+    .campo-largo {
+      grid-column: 1 / -1;
+    }
+
+    .form-field select,
+    .form-field textarea {
+      border: 1px solid #dbe4d9;
+      border-radius: 8px;
+      padding: 12px 13px;
+      color: #203126;
+      background: white;
+      font: inherit;
+      min-height: 46px;
+    }
+
+    .form-field textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .form-field label {
+      display: block;
+      margin-bottom: 7px;
+    }
+
+    .field-hint {
+      display: block;
+      margin-top: 5px;
+      color: #68736b;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .form-message {
+      margin: 12px 0;
+    }
+
+    .form-message.error {
+      color: #a32626;
+    }
+
+    .form-message.success {
+      color: #246b3b;
+    }
+
+    .auth-submit:disabled {
+      opacity: .65;
+      cursor: wait;
+    }
+
+    @media (max-width: 640px) {
+      .campos-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .campo-largo {
+        grid-column: auto;
+      }
+
+      .auth-form-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+  </style>
 </head>
 
 <body class="auth-page">
@@ -14,16 +127,21 @@
 
     <section class="auth-visual">
       <a class="auth-brand" href="index.html">
-        <span class="brand-icon">A</span>
-        <span>Agro<span class="brand-light">Map</span></span>
+        <img
+          src="agromap-logo-transparente.png"
+          alt="AgroMap"
+          style="width:165px;max-height:58px;object-fit:contain;"
+        >
       </a>
 
       <div class="visual-content">
         <span class="auth-eyebrow">O campo mais conectado</span>
+
         <h1>O futuro do campo começa com você.</h1>
+
         <p>
-          Crie sua conta e tenha uma experiência mais simples
-          para acompanhar informações e recursos para o campo.
+          Crie sua conta e organize as informações do produtor
+          e da sua propriedade rural em um só lugar.
         </p>
 
         <div class="visual-caption">
@@ -40,7 +158,8 @@
       <div class="auth-form-wrap">
 
         <a class="back-home" href="index.html">
-          <span aria-hidden="true">←</span> Voltar ao início
+          <span aria-hidden="true">←</span>
+          Voltar ao início
         </a>
 
         <a class="mobile-brand" href="index.html">AgroMap</a>
@@ -48,53 +167,300 @@
         <div class="form-heading">
           <span class="auth-eyebrow">Junte-se ao AgroMap</span>
           <h2>Crie sua conta</h2>
-          <p>Preencha seus dados para começar.</p>
+          <p>
+            Preencha seus dados e, se desejar, informe também
+            os dados da fazenda.
+          </p>
         </div>
 
-        <form id="cadastroForm">
-          <div class="form-field">
-            <label for="nome">Nome completo</label>
-            <input
-              type="text"
-              id="nome"
-              name="nome"
-              placeholder="Digite seu nome completo"
-              autocomplete="name"
-              required
-            >
+        <form id="cadastroForm" class="cadastro-form">
+
+          <div class="grupo-cadastro">
+            <h3>1. Dados do produtor</h3>
+            <p>Informações para identificar e entrar em contato com você.</p>
           </div>
 
-          <div class="form-field">
-            <label for="email">E-mail</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="voce@exemplo.com"
-              autocomplete="email"
-              required
-            >
+          <div class="campos-grid">
+
+            <div class="form-field campo-largo">
+              <label for="nome">Nome completo *</label>
+              <input
+                type="text"
+                id="nome"
+                name="nome"
+                placeholder="Digite seu nome completo"
+                autocomplete="name"
+                required
+              >
+            </div>
+
+            <div class="form-field">
+              <label for="email">E-mail *</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="voce@exemplo.com"
+                autocomplete="email"
+                required
+              >
+            </div>
+
+            <div class="form-field">
+              <label for="telefone">Telefone / WhatsApp</label>
+              <input
+                type="tel"
+                id="telefone"
+                name="telefone"
+                placeholder="(00) 00000-0000"
+                autocomplete="tel"
+              >
+            </div>
+
+            <div class="form-field">
+              <label for="senha">Senha *</label>
+              <input
+                type="password"
+                id="senha"
+                name="senha"
+                placeholder="Crie uma senha"
+                autocomplete="new-password"
+                minlength="8"
+                required
+              >
+              <span class="field-hint">Use pelo menos 8 caracteres.</span>
+            </div>
+
+            <div class="form-field">
+              <label for="confirmarSenha">Confirmar senha *</label>
+              <input
+                type="password"
+                id="confirmarSenha"
+                name="confirmarSenha"
+                placeholder="Digite a senha novamente"
+                autocomplete="new-password"
+                minlength="8"
+                required
+              >
+            </div>
+
           </div>
 
-          <div class="form-field">
-            <label for="senha">Senha</label>
-            <input
-              type="password"
-              id="senha"
-              name="senha"
-              placeholder="Crie uma senha"
-              autocomplete="new-password"
-              minlength="6"
-              required
-            >
-            <span class="field-hint">Use pelo menos 6 caracteres.</span>
+          <div class="grupo-cadastro">
+            <h3>2. Dados da propriedade</h3>
+            <p>
+              Esses campos ajudam a registrar as características
+              da fazenda. Você pode preencher o que já souber.
+            </p>
           </div>
 
-          <div id="formMessage" class="form-message" role="status" aria-live="polite"></div>
+          <div class="campos-grid">
+
+            <div class="form-field campo-largo">
+              <label for="nomeFazenda">Nome da fazenda / propriedade</label>
+              <input
+                type="text"
+                id="nomeFazenda"
+                name="nomeFazenda"
+                placeholder="Ex.: Fazenda Santa Maria"
+              >
+            </div>
+
+            <div class="form-field">
+              <label for="cidade">Cidade</label>
+              <input
+                type="text"
+                id="cidade"
+                name="cidade"
+                placeholder="Nome da cidade"
+                autocomplete="address-level2"
+              >
+            </div>
+
+            <div class="form-field">
+              <label for="estado">Estado (UF)</label>
+              <select id="estado" name="estado">
+                <option value="">Selecione</option>
+                <option value="AC">Acre (AC)</option>
+                <option value="AL">Alagoas (AL)</option>
+                <option value="AP">Amapá (AP)</option>
+                <option value="AM">Amazonas (AM)</option>
+                <option value="BA">Bahia (BA)</option>
+                <option value="CE">Ceará (CE)</option>
+                <option value="DF">Distrito Federal (DF)</option>
+                <option value="ES">Espírito Santo (ES)</option>
+                <option value="GO">Goiás (GO)</option>
+                <option value="MA">Maranhão (MA)</option>
+                <option value="MT">Mato Grosso (MT)</option>
+                <option value="MS">Mato Grosso do Sul (MS)</option>
+                <option value="MG">Minas Gerais (MG)</option>
+                <option value="PA">Pará (PA)</option>
+                <option value="PB">Paraíba (PB)</option>
+                <option value="PR">Paraná (PR)</option>
+                <option value="PE">Pernambuco (PE)</option>
+                <option value="PI">Piauí (PI)</option>
+                <option value="RJ">Rio de Janeiro (RJ)</option>
+                <option value="RN">Rio Grande do Norte (RN)</option>
+                <option value="RS">Rio Grande do Sul (RS)</option>
+                <option value="RO">Rondônia (RO)</option>
+                <option value="RR">Roraima (RR)</option>
+                <option value="SC">Santa Catarina (SC)</option>
+                <option value="SP">São Paulo (SP)</option>
+                <option value="SE">Sergipe (SE)</option>
+                <option value="TO">Tocantins (TO)</option>
+              </select>
+            </div>
+
+            <div class="form-field campo-largo">
+              <label for="enderecoRural">Endereço / referência de acesso</label>
+              <input
+                type="text"
+                id="enderecoRural"
+                name="enderecoRural"
+                placeholder="Estrada, bairro rural ou ponto de referência"
+              >
+            </div>
+
+            <div class="form-field">
+              <label for="latitude">Latitude</label>
+              <input
+                type="number"
+                id="latitude"
+                name="latitude"
+                step="any"
+                min="-90"
+                max="90"
+                placeholder="Ex.: -22.9797"
+              >
+            </div>
+
+            <div class="form-field">
+              <label for="longitude">Longitude</label>
+              <input
+                type="number"
+                id="longitude"
+                name="longitude"
+                step="any"
+                min="-180"
+                max="180"
+                placeholder="Ex.: -49.8701"
+              >
+            </div>
+
+            <div class="form-field">
+              <label for="hectaresTotal">Área total (hectares)</label>
+              <input
+                type="number"
+                id="hectaresTotal"
+                name="hectaresTotal"
+                min="0"
+                step="any"
+                placeholder="Ex.: 120"
+              >
+            </div>
+
+            <div class="form-field">
+              <label for="hectaresPlantados">Área plantada (hectares)</label>
+              <input
+                type="number"
+                id="hectaresPlantados"
+                name="hectaresPlantados"
+                min="0"
+                step="any"
+                placeholder="Ex.: 75"
+              >
+            </div>
+
+          </div>
+
+          <div class="grupo-cadastro">
+            <h3>3. Informações do cultivo</h3>
+            <p>Conte um pouco sobre o que é cultivado na propriedade.</p>
+          </div>
+
+          <div class="campos-grid">
+
+            <div class="form-field">
+              <label for="culturaPrincipal">Cultura principal</label>
+              <select id="culturaPrincipal" name="culturaPrincipal">
+                <option value="">Selecione</option>
+                <option>Soja</option>
+                <option>Milho</option>
+                <option>Cana-de-açúcar</option>
+                <option>Café</option>
+                <option>Trigo</option>
+                <option>Feijão</option>
+                <option>Arroz</option>
+                <option>Algodão</option>
+                <option>Mandioca</option>
+                <option>Hortaliças</option>
+                <option>Fruticultura</option>
+                <option>Pecuária</option>
+                <option>Outra</option>
+                <option>Mais de uma cultura</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="outrasCulturas">Outras culturas</label>
+              <input
+                type="text"
+                id="outrasCulturas"
+                name="outrasCulturas"
+                placeholder="Ex.: milho, feijão"
+              >
+            </div>
+
+            <div class="form-field">
+              <label for="epocaPlantio">Época / safra de plantio</label>
+              <input
+                type="text"
+                id="epocaPlantio"
+                name="epocaPlantio"
+                placeholder="Ex.: outubro a dezembro"
+              >
+            </div>
+
+            <div class="form-field">
+              <label for="irrigacao">Tipo de irrigação</label>
+              <select id="irrigacao" name="irrigacao">
+                <option value="">Selecione</option>
+                <option>Não possui</option>
+                <option>Sequeiro (dependente de chuva)</option>
+                <option>Gotejamento</option>
+                <option>Aspersão</option>
+                <option>Pivô central</option>
+                <option>Outro</option>
+              </select>
+            </div>
+
+            <div class="form-field campo-largo">
+              <label for="observacoes">Observações sobre a propriedade</label>
+              <textarea
+                id="observacoes"
+                name="observacoes"
+                placeholder="Se quiser, informe outros detalhes importantes."
+              ></textarea>
+            </div>
+
+          </div>
+
+          <p class="field-hint">
+            Os campos marcados com * são obrigatórios.
+            Os dados da fazenda são opcionais neste primeiro momento.
+          </p>
+
+          <div
+            id="formMessage"
+            class="form-message"
+            role="status"
+            aria-live="polite"
+          ></div>
 
           <button type="submit" class="auth-submit">
             Criar minha conta <span aria-hidden="true">→</span>
           </button>
+
         </form>
 
         <p class="auth-switch">
@@ -105,7 +471,6 @@
         <p class="auth-footer">AgroMap · Tecnologia para o campo</p>
       </div>
     </section>
-
   </main>
 
   <script>
@@ -115,16 +480,30 @@
     cadastroForm.addEventListener("submit", async function (event) {
       event.preventDefault();
 
-      const nome = document.getElementById("nome").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const senha = document.getElementById("senha").value;
-
       formMessage.textContent = "";
       formMessage.className = "form-message";
 
+      const senha = document.getElementById("senha").value;
+      const confirmarSenha = document.getElementById("confirmarSenha").value;
+
+      if (senha !== confirmarSenha) {
+        formMessage.textContent =
+          "As senhas não coincidem. Confira os dois campos.";
+
+        formMessage.classList.add("error");
+        document.getElementById("confirmarSenha").focus();
+        return;
+      }
+
       const botao = cadastroForm.querySelector("button[type='submit']");
+      const dadosCadastro = Object.fromEntries(
+        new FormData(cadastroForm).entries()
+      );
+
+      delete dadosCadastro.confirmarSenha;
+
       botao.disabled = true;
-      botao.textContent = "Criando sua conta...";
+      botao.textContent = "Enviando cadastro...";
 
       try {
         const resposta = await fetch("api.php", {
@@ -134,38 +513,49 @@
           },
           body: JSON.stringify({
             action: "cadastro",
-            nome: nome,
-            email: email,
-            senha: senha
+            ...dadosCadastro
           })
         });
 
-        const dados = await resposta.json();
+        let dados;
 
-        if (!resposta.ok || !dados.success) {
-          throw new Error(dados.message || "Não foi possível criar sua conta.");
+        try {
+          dados = await resposta.json();
+        } catch {
+          throw new Error(
+            "O servidor não retornou uma resposta válida. Verifique a configuração da API."
+          );
         }
 
-        formMessage.textContent = dados.message || "Conta criada com sucesso!";
-        formMessage.classList.add("success");
+        if (!resposta.ok || !dados.success) {
+          throw new Error(
+            dados.message || "Não foi possível criar a conta."
+          );
+        }
 
+        formMessage.textContent =
+          dados.message || "Conta criada com sucesso!";
+
+        formMessage.classList.add("success");
         cadastroForm.reset();
 
-        setTimeout(function () {
+        setTimeout(() => {
           window.location.href = "login.html";
         }, 1200);
 
       } catch (erro) {
         formMessage.textContent =
-          erro.message || "Não foi possível conectar ao servidor. Tente novamente.";
+          erro.message ||
+          "Não foi possível conectar ao servidor. Nenhum cadastro foi confirmado.";
+
         formMessage.classList.add("error");
 
       } finally {
         botao.disabled = false;
-        botao.innerHTML = 'Criar minha conta <span aria-hidden="true">→</span>';
+        botao.innerHTML =
+          'Criar minha conta <span aria-hidden="true">→</span>';
       }
     });
   </script>
 </body>
 </html>
-```
