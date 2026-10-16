@@ -1,186 +1,74 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#234b32">
+  <meta name="theme-color" content="#315f3d">
   <title>Entrar | AgroMap</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="login.css">
 </head>
-<body class="auth-page login-page">
 
-  <main class="auth-layout">
-    <section class="auth-visual">
-      <a class="auth-brand" href="index.html">🌱 Agro<span>Map</span></a>
+<body>
+  <main class="auth-layout auth-layout-login">
+    <a class="back-link" href="index.html">← Voltar ao início</a>
 
-      <div class="visual-content">
-        <span class="auth-eyebrow">TECNOLOGIA PARA O CAMPO</span>
-        <h1>O futuro da sua propriedade começa com informação.</h1>
-        <p>Organize os dados da sua propriedade rural e planeje os próximos passos com o AgroMap.</p>
-      </div>
+    <section class="auth-card auth-card-login">
+      <a class="auth-brand" href="index.html">
+        <span class="brand-mark">A</span>
+        <span>Agro<span>Map</span></span>
+      </a>
 
-      <div class="visual-caption">
-        <span>🌾</span>
-        <div>
-          <strong>Cultive novas possibilidades.</strong>
-          <small>AgroMap — gestão rural inteligente.</small>
-        </div>
-      </div>
-    </section>
+      <h1>Bem-vindo de volta</h1>
 
-    <section class="auth-panel">
-      <div class="auth-form-wrap">
-        <a class="mobile-brand" href="index.html">🌱 Agro<span>Map</span></a>
+      <p class="intro">
+        Entre com os dados da sua conta AgroMap.
+      </p>
 
-        <div class="form-heading">
-          <span class="auth-eyebrow">BEM-VINDA DE VOLTA</span>
-          <h2>Entrar na conta</h2>
-          <p>Informe seu e-mail e sua senha para continuar.</p>
-        </div>
+      <form id="loginForm">
+        <label for="email">E-mail</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          autocomplete="email"
+          placeholder="voce@exemplo.com"
+          required
+        >
 
-        <form id="loginForm">
-          <label for="email">E-mail</label>
-          <input id="email" name="email" type="email"
-            placeholder="seuemail@exemplo.com"
-            autocomplete="email" required>
+        <label for="senha">Senha</label>
+        <input
+          type="password"
+          id="senha"
+          name="senha"
+          autocomplete="current-password"
+          placeholder="Digite sua senha"
+          required
+        >
 
-          <label for="senha">Senha</label>
-          <input id="senha" name="senha" type="password"
-            placeholder="Digite sua senha"
-            autocomplete="current-password" required>
+        <button type="submit" class="submit-button">
+          Entrar <span>→</span>
+        </button>
 
-          <div class="forgot-password">
-            <button type="button" id="recuperarSenha">Esqueci minha senha</button>
-          </div>
+        <div
+          id="mensagem"
+          class="message"
+          role="status"
+          aria-live="polite"
+        ></div>
+      </form>
 
-          <button class="auth-submit" id="botaoLogin" type="submit">
-            Entrar na plataforma →
-          </button>
-
-          <p id="mensagem" class="form-message" role="status" aria-live="polite"></p>
-        </form>
-
-        <div class="auth-switch">
-          Ainda não tem uma conta?
-          <a href="cadastro.html">Criar minha conta</a>
-        </div>
-
-        <a href="index.html" class="back-home">← Voltar à página inicial</a>
-      </div>
-
-      <footer class="auth-footer">© 2026 AgroMap · Projeto acadêmico</footer>
+      <p class="auth-switch">
+        Ainda não possui uma conta?
+        <a href="cadastro.html">Criar conta</a>
+      </p>
     </section>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script>
-    (() => {
-      const URL_SUPABASE = "https://jzjbsjplmjgtltyswyft.supabase.co";
-      const CHAVE_PUBLICA = "sb_publishable_lzgGRU_n1Ch3kjZy5wVezw_EwwLDANm";
-
-      const formulario = document.getElementById("loginForm");
-      const campoEmail = document.getElementById("email");
-      const campoSenha = document.getElementById("senha");
-      const mensagem = document.getElementById("mensagem");
-      const botaoLogin = document.getElementById("botaoLogin");
-      const botaoRecuperar = document.getElementById("recuperarSenha");
-
-      function informar(texto, tipo = "error") {
-        mensagem.textContent = texto;
-        mensagem.className = "form-message " + tipo;
-      }
-
-      if (!window.supabase) {
-        informar("O serviço de login não carregou. Atualize a página e tente novamente.");
-        botaoLogin.disabled = true;
-        return;
-      }
-
-      const supabaseClient = window.supabase.createClient(
-        URL_SUPABASE,
-        CHAVE_PUBLICA
-      );
-
-      formulario.addEventListener("submit", async (evento) => {
-        evento.preventDefault();
-
-        const email = campoEmail.value.trim();
-        const senha = campoSenha.value;
-
-        botaoLogin.disabled = true;
-        botaoLogin.textContent = "Verificando acesso...";
-        informar("", "");
-
-        try {
-          const { data, error } = await supabaseClient.auth.signInWithPassword({
-            email,
-            password: senha
-          });
-
-          if (error) {
-            console.error("Erro de autenticação:", error);
-            const detalhe = (error.message || "").toLowerCase();
-
-            if (detalhe.includes("email not confirmed")) {
-              informar("Seu e-mail ainda não foi confirmado. Confira sua caixa de entrada e a pasta de spam.");
-            } else if (detalhe.includes("invalid login credentials")) {
-              informar("E-mail ou senha incorretos. Confira os dados e tente novamente.");
-            } else {
-              informar("Não foi possível entrar. Verifique sua conexão e tente novamente.");
-            }
-            return;
-          }
-
-          if (!data.session) {
-            informar("A sessão não foi iniciada. Tente entrar novamente.");
-            return;
-          }
-
-          informar("Login realizado! Abrindo seu painel...", "success");
-
-          // Caminho relativo funciona no GitHub Pages dentro da pasta do projeto.
-          window.location.href = new URL("dashboard.html", window.location.href).href;
-
-        } catch (erro) {
-          console.error(erro);
-          informar("Erro de conexão ao tentar entrar. Tente novamente.");
-        } finally {
-          botaoLogin.disabled = false;
-          botaoLogin.textContent = "Entrar na plataforma →";
-        }
-      });
-
-      botaoRecuperar.addEventListener("click", async () => {
-        const email = campoEmail.value.trim();
-
-        if (!email) {
-          informar("Digite seu e-mail antes de solicitar a recuperação.");
-          campoEmail.focus();
-          return;
-        }
-
-        botaoRecuperar.disabled = true;
-
-        try {
-          const redirectUrl = new URL("login.html", window.location.href).href;
-
-          const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
-            redirectTo: redirectUrl
-          });
-
-          if (error) throw error;
-
-          informar("Se o e-mail estiver cadastrado, você receberá as instruções. Confira também a pasta de spam.", "success");
-        } catch (erro) {
-          console.error(erro);
-          informar("Não foi possível solicitar a recuperação agora.");
-        } finally {
-          botaoRecuperar.disabled = false;
-        }
-      });
-    })();
-  </script>
+  <script src="login.js"></script>
 </body>
 </html>
-
