@@ -1,134 +1,43 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#315f3d">
-  <title>Criar conta | AgroMap</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* AgroMap — imagem da tela Criar minha conta */
+  .auth-visual,
+  .signup-visual {
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(24, 57, 34, 0.78),
+        rgba(24, 57, 34, 0.30)
+      ),
+      url("https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=1800&q=85");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 
-  <link rel="stylesheet" href="login.css">
-</head>
+  .visual-overlay {
+    background: linear-gradient(
+      90deg,
+      rgba(24, 57, 34, 0.20),
+      rgba(24, 57, 34, 0.05)
+    );
+  }
 
-<body>
-  <main class="auth-layout auth-layout-register">
-    <a class="back-link" href="index.html">← Voltar ao início</a>
+  .auth-visual .visual-copy h1,
+  .auth-visual .visual-content h1 {
+    color: #ffffff;
+    line-height: 1.2;
+  }
 
-    <section class="auth-card auth-card-cadastro">
-      <a class="auth-brand" href="index.html">
-        <span class="brand-mark">A</span>
-        <span>Agro<span>Map</span></span>
-      </a>
+  .auth-visual .visual-copy h1 span {
+    color: #d6e8b8;
+  }
 
-      <h1>Crie sua conta</h1>
-
-      <p class="intro">
-        Comece cadastrando seus dados e as informações iniciais da propriedade.
-      </p>
-
-      <form id="cadastroForm">
-        <label for="nome">Nome completo</label>
-        <input
-          id="nome"
-          name="nome"
-          type="text"
-          autocomplete="name"
-          placeholder="Como podemos chamar você?"
-          required
-        >
-
-        <label for="email">E-mail</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          autocomplete="email"
-          placeholder="voce@exemplo.com"
-          required
-        >
-
-        <label for="senha">Criar senha</label>
-        <input
-          id="senha"
-          name="senha"
-          type="password"
-          autocomplete="new-password"
-          minlength="6"
-          placeholder="Pelo menos 6 caracteres"
-          required
-        >
-
-        <div class="form-divider"></div>
-
-        <h2 class="form-section-title">Sua propriedade</h2>
-
-        <label for="propriedade">Nome da propriedade</label>
-        <input
-          id="propriedade"
-          name="propriedade"
-          type="text"
-          placeholder="Ex.: Sítio Boa Vista"
-          required
-        >
-
-        <label for="localizacao">Cidade ou endereço da propriedade</label>
-        <input
-          id="localizacao"
-          name="localizacao"
-          type="text"
-          placeholder="Digite a cidade ou endereço"
-        >
-
-        <label for="estado">Estado (UF)</label>
-        <input
-          id="estado"
-          name="estado"
-          type="text"
-          maxlength="2"
-          autocomplete="address-level1"
-          placeholder="Ex.: SP"
-          required
-        >
-
-        <label for="cep">CEP</label>
-        <input
-          id="cep"
-          name="cep"
-          type="text"
-          inputmode="numeric"
-          autocomplete="postal-code"
-          maxlength="9"
-          placeholder="00000-000"
-          required
-        >
-
-        <p class="privacy-note">
-          Seus dados serão usados para identificar a localização
-          informada da propriedade.
-        </p>
-
-        <button type="submit" class="submit-button">
-          Criar minha conta <span>→</span>
-        </button>
-
-        <div
-          id="mensagem"
-          class="message"
-          role="status"
-          aria-live="polite"
-        ></div>
-      </form>
-
-      <p class="auth-switch">
-        Já possui uma conta?
-        <a href="login.html">Entrar</a>
-      </p>
-    </section>
-  </main>
-
-  <script src="cadastro.js"></script>
-</body>
-</html>
+  @media (max-width: 650px) {
+    .auth-visual,
+    .signup-visual {
+      min-height: 300px;
+      background-position: center;
+    }
+  }
+</style>
