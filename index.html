@@ -4,483 +4,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f5f7f1">
-  <meta name="description" content="AgroMap: tecnologia e dados climáticos para auxiliar o planejamento da produção rural.">
-  <title>AgroMap | Inteligência para o campo</title>
-
+  <meta name="theme-color" content="#234b32">
+  <title>Entrar | AgroMap</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:"DM Sans",sans-serif;background:#fbf9f2;color:#263b2d;min-height:100vh}
+    a{text-decoration:none}
+    .back{position:absolute;top:24px;left:28px;z-index:5;color:#234b32;font-weight:700;font-size:14px}
+    .layout{min-height:100vh;display:grid;grid-template-columns:1.05fr .95fr}
+    .visual{position:relative;min-height:100vh;background:url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85") center/cover no-repeat;display:flex;flex-direction:column;justify-content:space-between;padding:45px 8%;color:#fff;isolation:isolate}
+    .visual:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(19,48,29,.86),rgba(25,58,34,.48)),linear-gradient(0deg,rgba(15,40,24,.55),transparent 60%)}
+    .brand{font-family:"Manrope",sans-serif;font-size:28px;font-weight:800;color:#fff}
+    .brand span{color:#c9dfa9}
+    .visual-copy{max-width:580px;padding:60px 0}
+    .kicker{font-size:12px;letter-spacing:2px;font-weight:700;color:#d6e6c1}
+    .visual h1{font-family:"Manrope",sans-serif;font-size:clamp(38px,4.4vw,62px);line-height:1.12;margin:22px 0;letter-spacing:-1.8px}
+    .visual h1 span{color:#c9dfa9}
+    .visual-copy p{font-size:17px;line-height:1.8;max-width:480px;color:#f1f4eb}
+    .visual-foot{font-size:11px;letter-spacing:2px;color:#e1ead7}
+    .panel{display:flex;align-items:center;justify-content:center;padding:100px 9% 55px}
+    .form-wrap{width:100%;max-width:440px}
+    .mobile-brand{display:none;color:#234b32;font-family:"Manrope",sans-serif;font-size:24px;font-weight:800;margin-bottom:35px}
+    .form-kicker{font-size:11px;letter-spacing:1.8px;font-weight:800;color:#668553}
+    h2{font-family:"Manrope",sans-serif;font-size:clamp(32px,3vw,43px);line-height:1.2;margin:13px 0}
+    .intro{font-size:15px;line-height:1.8;color:#687367;margin-bottom:30px}
+    label{display:block;font-size:14px;font-weight:700;margin:17px 0 8px}
+    input{width:100%;min-height:52px;padding:13px 15px;border:1px solid #dce3d7;border-radius:8px;background:#fff;font:inherit;font-size:15px;outline:none}
+    input:focus{border-color:#397348;box-shadow:0 0 0 3px rgba(57,115,72,.12)}
+    button{width:100%;min-height:54px;margin-top:25px;border:0;border-radius:8px;background:#234b32;color:#fff;font:inherit;font-weight:700;font-size:16px;cursor:pointer;transition:background .2s}
+    button:hover{background:#397348}
+    #mensagem{margin-top:14px;font-size:14px;line-height:1.6}
+    .switch{margin-top:25px;text-align:center;color:#697568;font-size:14px;line-height:1.8}
+    .switch a{color:#397348;font-weight:800}
+    .secure{margin-top:30px;padding:14px;border-radius:8px;background:#edf2e7;color:#52654e;font-size:12px;line-height:1.7}
+    @media(max-width:800px){.layout{grid-template-columns:1fr}.visual{min-height:300px;padding:30px 7%}.visual-copy{padding:55px 0 25px}.visual h1{font-size:38px}.visual-copy p{font-size:15px}.visual-foot{font-size:9px}.panel{padding:45px 7% 55px}.back{top:18px;left:18px;color:#fff}.brand{font-size:23px}.form-wrap{max-width:500px}.mobile-brand{display:block}.intro{margin-bottom:20px}}
+  </style>
 </head>
-
 <body>
-  <header class="site-header">
-    <a href="#inicio" class="brand" aria-label="AgroMap - início">
-      <span class="brand-symbol">A</span>
-      <span class="brand-name">Agro<span>Map</span></span>
-    </a>
-
-    <button class="menu-toggle" id="menuToggle"
-      aria-label="Abrir menu" aria-expanded="false" type="button">
-      <span></span><span></span><span></span>
-    </button>
-
-    <nav class="main-nav" id="mainNav">
-      <a href="#inicio">Início</a>
-      <a href="#recursos">Recursos</a>
-      <a href="#sobre">Sobre o projeto</a>
-
-      <div class="mobile-actions">
-        <a href="login.html" class="mobile-login">Entrar</a>
-        <a href="cadastro.html" class="mobile-register">Criar conta</a>
+  <a class="back" href="index.html">← Voltar ao início</a>
+  <main class="layout">
+    <section class="visual">
+      <a class="brand" href="index.html">Agro<span>Map</span></a>
+      <div class="visual-copy">
+        <span class="kicker">TECNOLOGIA A FAVOR DO CAMPO</span>
+        <h1>O campo evolui.<br>Suas decisões também <span>podem evoluir.</span></h1>
+        <p>Acesse o AgroMap e organize suas informações para acompanhar e planejar melhor a atividade rural.</p>
       </div>
-    </nav>
-
-    <div class="header-actions">
-      <a href="login.html" class="login-link">Entrar</a>
-      <a href="cadastro.html" class="header-button">
-        Criar minha conta <span>↗</span>
-      </a>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero" id="inicio">
-      <div class="hero-shade"></div>
-
-      <div class="hero-content">
-        <div class="hero-eyebrow">
-          <span class="status-dot"></span>
-          TECNOLOGIA A FAVOR DO CAMPO
-        </div>
-
-        <h1>
-          O futuro da sua<br>
-          produção começa<br>
-          com <span>informação.</span>
-        </h1>
-
-        <p class="hero-description">
-          Transforme dados climáticos em decisões mais inteligentes.
-          Planeje seu cultivo, acompanhe as condições do clima e tenha
-          mais informações para cuidar da sua produção rural.
-        </p>
-
-        <div class="hero-buttons">
-          <a href="cadastro.html" class="button-primary">
-            Começar agora <span>↗</span>
-          </a>
-
-          <a href="#sobre" class="button-secondary">
-            Conheça o AgroMap <span>↓</span>
-          </a>
-        </div>
-
-        <div class="hero-note">
-          <span class="note-line"></span>
-          <p>Mais informação para cultivar melhores decisões.</p>
-        </div>
-      </div>
-
-      <div class="hero-bottom">
-        <span>INTELIGÊNCIA RURAL</span>
-        <span class="hero-bottom-center">DADOS · CLIMA · PRODUÇÃO</span>
-        <a href="#recursos">EXPLORE O PROJETO ↓</a>
-      </div>
+      <p class="visual-foot">DADOS QUE CULTIVAM O FUTURO</p>
     </section>
-
-    <section class="intro-strip">
-      <div class="intro-strip-inner">
-        <p>O campo está sempre mudando.</p>
-        <p class="intro-strip-highlight">
-          Sua forma de planejar também pode evoluir.
-        </p>
-      </div>
-    </section>
-
-    <section class="features section-wrap" id="recursos">
-      <div class="section-heading">
-        <div>
-          <span class="section-kicker">O QUE O AGROMAP OFERECE</span>
-          <h2>
-            Informação que ajuda<br>
-            você a <span>planejar melhor.</span>
-          </h2>
-        </div>
-
-        <p class="section-intro">
-          Uma visão mais organizada da propriedade, com recursos pensados
-          para apoiar o acompanhamento e o planejamento agrícola.
-          Clique em um cartão para saber mais.
-        </p>
-      </div>
-
-      <div class="feature-grid">
-
-        <!-- CARTÃO 1 -->
-        <article class="feature-card" data-card>
-          <div class="feature-image">
-            <img
-              src="https://images.unsplash.com/photo-1499529112087-3cb3b73feedb?auto=format&fit=crop&w=1200&q=90"
-              alt="Campos verdes de plantação em uma paisagem agrícola"
-              loading="lazy">
-            <span class="image-number">01</span>
-          </div>
-
-          <div class="feature-body">
-            <span class="feature-label">PLANEJAMENTO</span>
-            <h3>Sua propriedade em um só lugar</h3>
-
-            <p>
-              Organize as informações da propriedade e acompanhe os dados
-              importantes para o planejamento rural.
-            </p>
-
-            <details class="feature-details">
-              <summary>Como funciona esta etapa?</summary>
-
-              <div class="feature-explanation">
-                <h4>Etapa 1: cadastro da propriedade</h4>
-                <p>
-                  O produtor cria sua conta e informa os dados básicos da
-                  propriedade. Essas informações ajudam a organizar o perfil
-                  rural e servem como ponto de partida para utilizar os
-                  recursos do AgroMap.
-                </p>
-              </div>
-            </details>
-
-            <a href="login.html" class="text-link">
-              Acessar plataforma <span>↗</span>
-            </a>
-          </div>
-        </article>
-
-        <!-- CARTÃO 2 -->
-        <article class="feature-card" data-card>
-          <div class="feature-image">
-            <img
-              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=90"
-              alt="Paisagem natural para representar as condições climáticas"
-              loading="lazy">
-            <span class="image-number">02</span>
-          </div>
-
-          <div class="feature-body">
-            <span class="feature-label">DADOS CLIMÁTICOS</span>
-            <h3>Entenda as condições do clima</h3>
-
-            <p>
-              Acompanhe informações como temperatura, precipitação e umidade
-              para compreender as condições climáticas.
-            </p>
-
-            <details class="feature-details">
-              <summary>Como funciona esta etapa?</summary>
-
-              <div class="feature-explanation">
-                <h4>Etapa 2: acompanhamento do clima</h4>
-                <p>
-                  Informações como temperatura, chuva e umidade ajudam a
-                  compreender as condições que podem influenciar o cultivo.
-                  A consulta desses dados depende dos recursos e das fontes
-                  climáticas integrados à plataforma.
-                </p>
-              </div>
-            </details>
-
-            <a href="cadastro.html" class="text-link">
-              Conhecer o AgroMap <span>↗</span>
-            </a>
-          </div>
-        </article>
-
-        <!-- CARTÃO 3 -->
-        <article class="feature-card" data-card>
-          <div class="feature-image">
-            <img
-              src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=90"
-              alt="Plantação agrícola em desenvolvimento"
-              loading="lazy">
-            <span class="image-number">03</span>
-          </div>
-
-          <div class="feature-body">
-            <span class="feature-label">PREVISÃO DE PRODUÇÃO</span>
-            <h3>Planeje seu próximo cultivo</h3>
-
-            <p>
-              Use as informações disponíveis para apoiar o planejamento e as
-              decisões relacionadas ao cultivo.
-            </p>
-
-            <details class="feature-details">
-              <summary>Como funciona esta etapa?</summary>
-
-              <div class="feature-explanation">
-                <h4>Etapa 3: planejamento da produção</h4>
-                <p>
-                  As informações da propriedade e as condições climáticas
-                  podem ajudar o produtor a avaliar o planejamento do cultivo.
-                  Esses dados servem como apoio à tomada de decisão e não
-                  representam uma garantia de produtividade.
-                </p>
-              </div>
-            </details>
-
-            <a href="login.html" class="text-link">
-              Entrar na plataforma <span>↗</span>
-            </a>
-          </div>
-        </article>
-
-        <!-- CARTÃO 4 -->
-        <article class="feature-card" data-card>
-          <div class="feature-image">
-            <img
-              src="https://images.unsplash.com/photo-1523742815327-1786a92d7c3f?auto=format&fit=crop&w=1200&q=90"
-              alt="Área rural com vegetação e cultivo"
-              loading="lazy">
-            <span class="image-number">04</span>
-          </div>
-
-          <div class="feature-body">
-            <span class="feature-label">ACOMPANHAMENTO</span>
-            <h3>Mais clareza nas decisões</h3>
-
-            <p>
-              Tenha uma visão organizada das informações da produção para
-              auxiliar o acompanhamento da atividade rural.
-            </p>
-
-            <details class="feature-details">
-              <summary>Como funciona esta etapa?</summary>
-
-              <div class="feature-explanation">
-                <h4>Etapa 4: acompanhamento e decisões</h4>
-                <p>
-                  Manter as informações da propriedade e da atividade rural
-                  organizadas facilita a consulta e a comparação dos dados
-                  disponíveis. Assim, o produtor pode utilizar essas
-                  informações para refletir sobre os próximos passos
-                  do planejamento.
-                </p>
-              </div>
-            </details>
-
-            <a href="cadastro.html" class="text-link">
-              Começar agora <span>↗</span>
-            </a>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- SOBRE O PROJETO -->
-    <section class="about-section" id="sobre">
-      <div class="about-image">
-        <img
-          src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=90"
-          alt="Lavoura agrícola com campos verdes"
-          loading="lazy">
-
-        <div class="image-caption">
-          <span class="caption-line"></span>
-          <span>TECNOLOGIA CONECTADA À TERRA</span>
-        </div>
-      </div>
-
-      <div class="about-content">
-        <span class="section-kicker">SOBRE O PROJETO</span>
-
-        <h2>
-          O campo tem seus desafios.<br>
-          <span>Os dados podem ajudar.</span>
-        </h2>
-
-        <p>
-          A produção agrícola é influenciada por fatores como temperatura,
-          chuva e umidade. Acompanhar essas variáveis pode contribuir para
-          um planejamento mais consciente das atividades rurais.
-        </p>
-
-        <p>
-          O AgroMap é um projeto que propõe utilizar dados climáticos para
-          auxiliar a previsão da produção rural, identificar possíveis
-          perdas e apoiar a escolha de culturas e períodos de plantio.
-        </p>
-
-        <div class="about-points">
-          <div class="about-point">
-            <span class="point-check">✓</span>
-            <span>Dados climáticos organizados</span>
-          </div>
-
-          <div class="about-point">
-            <span class="point-check">✓</span>
-            <span>Apoio ao planejamento agrícola</span>
-          </div>
-
-          <div class="about-point">
-            <span class="point-check">✓</span>
-            <span>Informação para decisões mais conscientes</span>
-          </div>
-        </div>
-
-        <a href="cadastro.html" class="button-dark">
-          Faça parte do AgroMap <span>↗</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- CHAMADA FINAL -->
-    <section class="final-cta">
-      <div class="final-cta-overlay"></div>
-
-      <div class="final-cta-content">
-        <span class="section-kicker">AGROMAP · INTELIGÊNCIA RURAL</span>
-
-        <h2>
-          Cuide do seu cultivo<br>
-          com <span>mais informação.</span>
-        </h2>
-
-        <p>
-          Conheça uma nova maneira de organizar dados e planejar
-          a produção rural.
-        </p>
-
-        <a href="cadastro.html" class="button-light">
-          Criar minha conta <span>↗</span>
-        </a>
+    <section class="panel">
+      <div class="form-wrap">
+        <div class="mobile-brand">AgroMap</div>
+        <span class="form-kicker">BEM-VINDO DE VOLTA</span>
+        <h2>Entre na sua conta</h2>
+        <p class="intro">Informe seus dados de acesso para continuar no AgroMap.</p>
+        <form id="loginForm">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" autocomplete="email" placeholder="Digite seu e-mail" required>
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" name="senha" autocomplete="current-password" placeholder="Digite sua senha" required>
+          <button type="submit">Entrar na minha conta →</button>
+          <div id="mensagem" role="status" aria-live="polite"></div>
+        </form>
+        <p class="switch">Ainda não possui uma conta?<br><a href="cadastro.html">Criar minha conta</a></p>
+        <p class="secure">🔒 Proteja sua senha e não compartilhe seus dados de acesso.</p>
       </div>
     </section>
   </main>
-
-  <!-- RODAPÉ -->
-  <footer class="site-footer">
-    <a href="#inicio" class="brand footer-brand">
-      <span class="brand-symbol">A</span>
-      <span class="brand-name">Agro<span>Map</span></span>
-    </a>
-
-    <p>Tecnologia e informação para o planejamento rural.</p>
-
-    <div class="footer-links">
-      <a href="#inicio">Início</a>
-      <a href="#recursos">Recursos</a>
-      <a href="#sobre">Sobre</a>
-      <a href="login.html">Entrar</a>
-    </div>
-
-    <span class="footer-copy">
-      © <span id="currentYear"></span> AgroMap
-    </span>
-  </footer>
-
-  <script>
-    // Menu para celular
-    const menuToggle = document.getElementById("menuToggle");
-    const mainNav = document.getElementById("mainNav");
-
-    menuToggle.addEventListener("click", function () {
-      const aberto = mainNav.classList.toggle("is-open");
-
-      menuToggle.classList.toggle("is-active", aberto);
-      menuToggle.setAttribute("aria-expanded", String(aberto));
-      menuToggle.setAttribute(
-        "aria-label",
-        aberto ? "Fechar menu" : "Abrir menu"
-      );
-    });
-
-    mainNav.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        mainNav.classList.remove("is-open");
-        menuToggle.classList.remove("is-active");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Abrir menu");
-      });
-    });
-
-    document.getElementById("currentYear").textContent =
-      new Date().getFullYear();
-
-    // Cartões: abrir ou fechar a explicação.
-    const cards = document.querySelectorAll("[data-card]");
-
-    function fecharOutrosCartoes(cartaoAtual) {
-      cards.forEach(function (cartao) {
-        if (cartao === cartaoAtual) return;
-
-        const detalhes = cartao.querySelector(".feature-details");
-        const resumo = detalhes
-          ? detalhes.querySelector("summary")
-          : null;
-
-        if (detalhes) detalhes.open = false;
-        if (resumo) resumo.setAttribute("aria-expanded", "false");
-
-        cartao.classList.remove("is-expanded");
-      });
-    }
-
-    cards.forEach(function (cartao) {
-      const detalhes = cartao.querySelector(".feature-details");
-      const resumo = detalhes
-        ? detalhes.querySelector("summary")
-        : null;
-
-      if (!detalhes || !resumo) return;
-
-      resumo.setAttribute("aria-expanded", "false");
-
-      function alternarExplicacao() {
-        const vaiAbrir = !detalhes.open;
-
-        fecharOutrosCartoes(cartao);
-
-        detalhes.open = vaiAbrir;
-        resumo.setAttribute("aria-expanded", String(vaiAbrir));
-        cartao.classList.toggle("is-expanded", vaiAbrir);
-      }
-
-      cartao.addEventListener("click", function (evento) {
-        if (evento.target.closest("a, summary, button")) return;
-        alternarExplicacao();
-      });
-
-      resumo.addEventListener("click", function (evento) {
-        evento.preventDefault();
-        evento.stopPropagation();
-        alternarExplicacao();
-      });
-
-      resumo.addEventListener("keydown", function (evento) {
-        if (evento.key === "Enter" || evento.key === " ") {
-          evento.preventDefault();
-          resumo.click();
-        }
-      });
-
-      cartao.setAttribute("tabindex", "0");
-      cartao.setAttribute(
-        "aria-label",
-        "Cartão informativo. Clique para abrir ou fechar a explicação."
-      );
-
-      cartao.addEventListener("keydown", function (evento) {
-        if (evento.target !== cartao) return;
-
-        if (evento.key === "Enter" || evento.key === " ") {
-          evento.preventDefault();
-          alternarExplicacao();
-        }
-      });
-    });
-  </script>
+  <script src="login.js"></script>
 </body>
 </html>
