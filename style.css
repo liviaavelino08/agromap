@@ -1,4 +1,3 @@
-
 :root {
   --green: #315b3e;
   --green-dark: #203e2c;
@@ -153,7 +152,7 @@ a {
   display: none;
 }
 
-/* HERO: a imagem começa no topo e fica atrás do cabeçalho */
+/* HERO COM FOTO DE MÁQUINA AGRÍCOLA */
 
 .hero {
   min-height: 760px;
@@ -164,7 +163,7 @@ a {
   align-items: center;
   padding: 130px 10% 100px;
   color: #fff;
-  background-image: url("https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=2200&q=90");
+  background-image: url("https://images.pexels.com/photos/2332736/pexels-photo-2332736.jpeg?auto=compress&cs=tinysrgb&w=2200");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -591,7 +590,7 @@ a {
   background: var(--green);
 }
 
-/* CHAMADA FINAL COM IMAGEM */
+/* CHAMADA FINAL COM FOTO DE PLANTAÇÃO */
 
 .final-cta {
   min-height: 420px;
@@ -602,7 +601,7 @@ a {
   padding: 75px 7%;
   text-align: center;
   color: #fff;
-  background-image: url("https://images.unsplash.com/photo-1499529112087-3cb3b73feedb?auto=format&fit=crop&w=2000&q=85");
+  background-image: url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=85");
   background-size: cover;
   background-position: center 55%;
   isolation: isolate;
