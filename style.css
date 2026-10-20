@@ -1,3 +1,7 @@
+/* ==========================================
+   AGROMAP — STYLE.CSS COMPLETO
+   Foto principal ampliada até o cabeçalho
+========================================== */
 
 :root {
   --green: #2e7548;
@@ -36,16 +40,19 @@ a {
 }
 
 img {
-  max-width: 100%;
   display: block;
+  max-width: 100%;
 }
 
-/* CABEÇALHO */
+/* ==========================================
+   CABEÇALHO
+========================================== */
 
 .site-header {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 50;
   width: 100%;
   height: 82px;
   padding: 0 5.2%;
@@ -53,10 +60,9 @@ img {
   align-items: center;
   justify-content: space-between;
   gap: 26px;
-  background: rgba(16, 47, 33, .72);
-  border-bottom: 1px solid rgba(255, 255, 255, .16);
-  backdrop-filter: blur(9px);
-  z-index: 50;
+  background: rgba(250, 249, 243, .94);
+  border-bottom: 1px solid rgba(31, 65, 43, .09);
+  backdrop-filter: blur(12px);
 }
 
 .brand {
@@ -73,7 +79,7 @@ img {
   place-items: center;
   border-radius: 11px;
   background: #e3ebd0;
-  color: var(--green-dark);
+  color: var(--green);
   font-family: Manrope, sans-serif;
   font-size: 21px;
   font-weight: 800;
@@ -84,11 +90,11 @@ img {
   font-weight: 800;
   font-size: 21px;
   letter-spacing: -.8px;
-  color: #fff;
+  color: var(--green-dark);
 }
 
 .brand-name span {
-  color: #d0e3ae;
+  color: #7c9d5a;
 }
 
 .main-nav {
@@ -102,13 +108,13 @@ img {
 .login-link {
   font-size: 13px;
   font-weight: 600;
-  color: #fff;
+  color: #253b2e;
   transition: color .2s;
 }
 
 .main-nav > a:hover,
 .login-link:hover {
-  color: #d0e3ae;
+  color: var(--green-mid);
 }
 
 .header-actions {
@@ -133,24 +139,14 @@ img {
   transition: transform .2s, background .2s, border-color .2s;
 }
 
-.header-button {
-  color: var(--green-dark);
-  background: #e3ebd0;
-  border: 1px solid #e3ebd0;
-}
-
-.header-button:hover {
-  background: #fff;
-  border-color: #fff;
-  transform: translateY(-2px);
-}
-
+.header-button,
 .button-primary {
   background: var(--green-dark);
   color: #fff;
   border: 1px solid var(--green-dark);
 }
 
+.header-button:hover,
 .button-primary:hover {
   background: #28583c;
   transform: translateY(-2px);
@@ -165,7 +161,7 @@ img {
   display: none;
   border: 0;
   background: transparent;
-  color: #fff;
+  color: var(--green-dark);
   font-size: 27px;
   cursor: pointer;
 }
@@ -174,53 +170,66 @@ img {
   display: none;
 }
 
-/* DESTAQUE PRINCIPAL */
+/* ==========================================
+   DESTAQUE PRINCIPAL — FOTO GRANDE
+========================================== */
 
 .hero {
-  display: flex;
-  align-items: stretch;
   position: relative;
-  min-height: 740px;
-  padding-top: 82px;
-  background: #173f2b;
   isolation: isolate;
+  min-height: 850px;
+  padding: 145px 5.2% 65px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background: var(--green-dark);
   overflow: hidden;
 }
 
+/* A imagem ocupa toda a seção, não apenas a lateral. */
 .hero-photo {
   position: absolute;
-  z-index: -2;
   inset: 0;
+  z-index: 0;
   width: 100%;
   height: 100%;
   min-height: 100%;
-  background-image: url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2200&q=90");
+  background-image: url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2400&q=95");
   background-size: cover;
-  background-position: center 52%;
+  background-position: center 55%;
 }
 
+/* Camada escura para destacar o painel e o cabeçalho. */
 .hero-photo::after {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: linear-gradient(
     90deg,
-    rgba(12, 39, 25, .24) 0%,
-    rgba(12, 39, 25, .35) 42%,
-    rgba(12, 39, 25, .70) 100%
+    rgba(9, 35, 20, .12) 0%,
+    rgba(9, 35, 20, .20) 35%,
+    rgba(9, 35, 20, .60) 65%,
+    rgba(9, 35, 20, .72) 100%
   );
 }
 
+/* Painel de texto sobre a fotografia. */
 .hero-panel {
-  width: min(58%, 850px);
-  margin-left: auto;
-  padding: 66px clamp(30px, 5.2vw, 82px) 48px;
+  position: relative;
+  z-index: 2;
+  width: min(650px, 56%);
+  margin-top: 10px;
+  padding: 42px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-width: 0;
-  background: rgba(250, 249, 244, .96);
-  box-shadow: -20px 0 60px rgba(8, 29, 17, .12);
+  border: 1px solid rgba(255, 255, 255, .65);
+  border-radius: 16px;
+  background: rgba(250, 249, 244, .95);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .22);
+  backdrop-filter: blur(8px);
 }
 
 .section-kicker {
@@ -236,7 +245,7 @@ img {
   max-width: 760px;
   margin: 17px 0 19px;
   font-family: Manrope, sans-serif;
-  font-size: clamp(36px, 3.4vw, 55px);
+  font-size: clamp(34px, 3.25vw, 54px);
   line-height: 1.12;
   letter-spacing: -1.8px;
   color: #1c3e2d;
@@ -277,27 +286,27 @@ img {
 .hero-benefits {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 15px;
-  margin-top: 38px;
+  gap: 16px;
+  margin-top: 35px;
 }
 
 .benefit-item {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 9px;
   min-width: 0;
 }
 
 .benefit-icon {
-  flex: 0 0 43px;
-  width: 43px;
-  height: 43px;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   display: grid;
   place-items: center;
   background: #e5ebd1;
   color: var(--green-dark);
-  font-size: 23px;
+  font-size: 22px;
 }
 
 .benefit-item strong,
@@ -317,7 +326,9 @@ img {
   color: var(--muted);
 }
 
-/* FAIXA DE MENSAGEM */
+/* ==========================================
+   FAIXA DE MENSAGEM
+========================================== */
 
 .intro-strip {
   padding: 22px 7%;
@@ -339,7 +350,9 @@ img {
   color: var(--green-dark);
 }
 
-/* RECURSOS E CARTÕES */
+/* ==========================================
+   RECURSOS E CARTÕES
+========================================== */
 
 .section-wrap {
   padding: 88px 5.2%;
@@ -471,10 +484,6 @@ img {
   list-style: none;
 }
 
-.feature-card summary::-webkit-details-marker {
-  display: none;
-}
-
 .feature-card summary::after {
   content: "＋";
   float: right;
@@ -498,7 +507,9 @@ img {
   font-size: 11px;
 }
 
-/* SOBRE O PROJETO */
+/* ==========================================
+   SOBRE O PROJETO
+========================================== */
 
 .about-section {
   display: grid;
@@ -550,11 +561,9 @@ img {
   color: #405648;
 }
 
-.about-content li::first-letter {
-  color: #67904f;
-}
-
-/* CHAMADA FINAL */
+/* ==========================================
+   CHAMADA FINAL
+========================================== */
 
 .final-cta {
   padding: 65px 24px 72px;
@@ -600,7 +609,9 @@ img {
   transform: translateY(-2px);
 }
 
-/* RODAPÉ */
+/* ==========================================
+   RODAPÉ
+========================================== */
 
 .site-footer {
   display: flex;
@@ -647,16 +658,20 @@ img {
   color: #d3e5b5;
 }
 
-/* TABLETS */
+/* ==========================================
+   TABLETS E TELAS MÉDIAS
+========================================== */
 
 @media (max-width: 1100px) {
   .hero {
-    min-height: 700px;
+    min-height: 800px;
+    padding-left: 4%;
+    padding-right: 4%;
   }
 
   .hero-panel {
     width: 62%;
-    padding: 48px 35px;
+    padding: 35px;
   }
 
   .hero-benefits {
@@ -668,9 +683,9 @@ img {
   }
 
   .benefit-icon {
-    flex-basis: 36px;
-    width: 36px;
-    height: 36px;
+    flex-basis: 34px;
+    width: 34px;
+    height: 34px;
   }
 
   .feature-grid {
@@ -678,7 +693,7 @@ img {
   }
 
   .section-heading {
-    align-items: start;
+    align-items: flex-start;
     flex-direction: column;
     gap: 12px;
   }
@@ -686,12 +701,21 @@ img {
   .section-intro {
     max-width: 650px;
   }
+
+  .about-section {
+    gap: 35px;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
 }
 
-/* CELULARES E MENU RESPONSIVO */
+/* ==========================================
+   CELULARES E TABLETS PEQUENOS
+========================================== */
 
 @media (max-width: 780px) {
   .site-header {
+    position: absolute;
     height: 68px;
     padding: 0 22px;
   }
@@ -707,9 +731,10 @@ img {
     top: 68px;
     left: 0;
     right: 0;
-    background: #173f2b;
+    z-index: 60;
+    background: var(--cream);
     padding: 18px 22px 24px;
-    box-shadow: 0 12px 18px rgba(0, 0, 0, .16);
+    box-shadow: 0 12px 18px rgba(0, 0, 0, .08);
     align-items: stretch;
     gap: 0;
     flex-direction: column;
@@ -720,25 +745,48 @@ img {
   }
 
   .main-nav > a {
-    color: #fff;
     padding: 12px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, .15);
+    border-bottom: 1px solid var(--border);
   }
 
   .header-actions {
     display: none;
   }
 
-  .hero {
+  .mobile-actions {
     display: flex;
-    flex-direction: column;
-    min-height: auto;
-    padding-top: 68px;
+    gap: 12px;
+    padding-top: 16px;
+  }
+
+  .mobile-login,
+  .mobile-register {
+    padding: 10px 14px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .mobile-login {
+    border: 1px solid var(--green);
+  }
+
+  .mobile-register {
+    background: var(--green-dark);
+    color: #fff;
+  }
+
+  .hero {
+    min-height: 900px;
+    padding: 115px 18px 30px;
+    align-items: flex-end;
+    justify-content: center;
   }
 
   .hero-photo {
     position: absolute;
     inset: 0;
+    width: 100%;
     height: 100%;
     min-height: 100%;
     background-position: center;
@@ -747,18 +795,17 @@ img {
   .hero-photo::after {
     background: linear-gradient(
       180deg,
-      rgba(12, 39, 25, .28),
-      rgba(12, 39, 25, .62)
+      rgba(9, 35, 20, .12) 0%,
+      rgba(9, 35, 20, .22) 30%,
+      rgba(9, 35, 20, .68) 100%
     );
   }
 
   .hero-panel {
-    width: auto;
-    margin: 290px 18px 22px;
-    padding: 32px 24px;
-    border-radius: 14px;
-    background: rgba(250, 249, 244, .97);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, .18);
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 30px 25px;
   }
 
   .hero h1 {
@@ -767,7 +814,7 @@ img {
   }
 
   .hero-benefits {
-    margin-top: 30px;
+    margin-top: 28px;
   }
 
   .intro-strip {
@@ -800,21 +847,38 @@ img {
   }
 }
 
-/* CELULARES PEQUENOS */
+/* ==========================================
+   CELULARES
+========================================== */
 
 @media (max-width: 520px) {
+  .site-header {
+    padding: 0 16px;
+  }
+
+  .hero {
+    min-height: 880px;
+    padding: 100px 12px 18px;
+  }
+
   .hero-panel {
-    margin: 220px 12px 14px;
-    padding: 28px 20px;
+    padding: 26px 20px;
+    border-radius: 13px;
   }
 
   .hero h1 {
-    font-size: clamp(32px, 9vw, 42px);
+    font-size: 33px;
+    margin: 13px 0 15px;
+  }
+
+  .hero-panel > p {
+    font-size: 13px;
   }
 
   .hero-buttons {
     flex-direction: column;
     align-items: stretch;
+    margin-top: 20px;
   }
 
   .hero-buttons a {
@@ -823,7 +887,7 @@ img {
 
   .hero-benefits {
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 13px;
   }
 
   .benefit-item {
@@ -861,28 +925,5 @@ img {
 
   .footer-links {
     gap: 12px;
-  }
-}
-
-/* ACESSIBILIDADE */
-
-a:focus-visible,
-button:focus-visible,
-summary:focus-visible {
-  outline: 3px solid #c4d9a2;
-  outline-offset: 4px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    transition-duration: .01ms !important;
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
   }
 }
