@@ -1,7 +1,3 @@
-/* ==========================================
-   AGROMAP — STYLE.CSS COMPLETO
-   Foto principal ampliada até o cabeçalho
-========================================== */
 
 :root {
   --green: #2e7548;
@@ -40,27 +36,26 @@ a {
 }
 
 img {
-  display: block;
   max-width: 100%;
+  display: block;
 }
 
-/* ==========================================
-   CABEÇALHO
-========================================== */
+/* CABEÇALHO SOBRE A IMAGEM */
 
 .site-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 50;
-  width: 100%;
-  height: 82px;
+  min-height: 76px;
   padding: 0 5.2%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 26px;
-  background: rgba(250, 249, 243, .94);
+  background: rgba(250, 249, 243, .90);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 50;
   border-bottom: 1px solid rgba(31, 65, 43, .09);
   backdrop-filter: blur(12px);
 }
@@ -166,70 +161,66 @@ img {
   cursor: pointer;
 }
 
-.mobile-actions {
-  display: none;
-}
-
-/* ==========================================
-   DESTAQUE PRINCIPAL — FOTO GRANDE
-========================================== */
+/* DESTAQUE PRINCIPAL */
 
 .hero {
+  min-height: 760px;
   position: relative;
-  isolation: isolate;
-  min-height: 850px;
-  padding: 145px 5.2% 65px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  background: var(--green-dark);
+  padding: 150px 5.2% 70px;
   overflow: hidden;
+  isolation: isolate;
+  background: var(--green-dark);
 }
 
-/* A imagem ocupa toda a seção, não apenas a lateral. */
 .hero-photo {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: -2;
   width: 100%;
   height: 100%;
   min-height: 100%;
-  background-image: url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2400&q=95");
+  background-image: url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2400&q=90");
   background-size: cover;
-  background-position: center 55%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-/* Camada escura para destacar o painel e o cabeçalho. */
 .hero-photo::after {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    90deg,
-    rgba(9, 35, 20, .12) 0%,
-    rgba(9, 35, 20, .20) 35%,
-    rgba(9, 35, 20, .60) 65%,
-    rgba(9, 35, 20, .72) 100%
-  );
+  background:
+    linear-gradient(
+      90deg,
+      rgba(9, 35, 20, .10) 0%,
+      rgba(9, 35, 20, .25) 35%,
+      rgba(9, 35, 20, .70) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(9, 35, 20, .30),
+      transparent 45%
+    );
 }
 
-/* Painel de texto sobre a fotografia. */
+/* PAINEL DE TEXTO */
+
 .hero-panel {
   position: relative;
-  z-index: 2;
-  width: min(650px, 56%);
-  margin-top: 10px;
+  z-index: 1;
+  width: min(650px, 60%);
   padding: 42px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-width: 0;
+  background: rgba(250, 249, 244, .96);
   border: 1px solid rgba(255, 255, 255, .65);
-  border-radius: 16px;
-  background: rgba(250, 249, 244, .95);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, .22);
-  backdrop-filter: blur(8px);
+  border-radius: 18px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .20);
 }
 
 .section-kicker {
@@ -245,7 +236,7 @@ img {
   max-width: 760px;
   margin: 17px 0 19px;
   font-family: Manrope, sans-serif;
-  font-size: clamp(34px, 3.25vw, 54px);
+  font-size: clamp(34px, 3.25vw, 52px);
   line-height: 1.12;
   letter-spacing: -1.8px;
   color: #1c3e2d;
@@ -306,7 +297,7 @@ img {
   place-items: center;
   background: #e5ebd1;
   color: var(--green-dark);
-  font-size: 22px;
+  font-size: 21px;
 }
 
 .benefit-item strong,
@@ -326,9 +317,7 @@ img {
   color: var(--muted);
 }
 
-/* ==========================================
-   FAIXA DE MENSAGEM
-========================================== */
+/* FAIXA DE MENSAGEM */
 
 .intro-strip {
   padding: 22px 7%;
@@ -350,9 +339,7 @@ img {
   color: var(--green-dark);
 }
 
-/* ==========================================
-   RECURSOS E CARTÕES
-========================================== */
+/* SEÇÃO DE RECURSOS */
 
 .section-wrap {
   padding: 88px 5.2%;
@@ -405,6 +392,7 @@ img {
 
 .feature-card {
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .10);
   border-radius: var(--radius);
   background: #fbfaf5;
   color: var(--text);
@@ -419,7 +407,7 @@ img {
 
 .feature-card > img {
   width: 100%;
-  height: 205px;
+  height: 220px;
   object-fit: cover;
   background: #dfe8d7;
 }
@@ -484,6 +472,10 @@ img {
   list-style: none;
 }
 
+.feature-card summary::-webkit-details-marker {
+  display: none;
+}
+
 .feature-card summary::after {
   content: "＋";
   float: right;
@@ -507,9 +499,7 @@ img {
   font-size: 11px;
 }
 
-/* ==========================================
-   SOBRE O PROJETO
-========================================== */
+/* SOBRE O PROJETO */
 
 .about-section {
   display: grid;
@@ -531,6 +521,11 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform .5s ease;
+}
+
+.about-image:hover img {
+  transform: scale(1.04);
 }
 
 .about-content h2 {
@@ -561,9 +556,7 @@ img {
   color: #405648;
 }
 
-/* ==========================================
-   CHAMADA FINAL
-========================================== */
+/* CHAMADA FINAL */
 
 .final-cta {
   padding: 65px 24px 72px;
@@ -609,9 +602,7 @@ img {
   transform: translateY(-2px);
 }
 
-/* ==========================================
-   RODAPÉ
-========================================== */
+/* RODAPÉ */
 
 .site-footer {
   display: flex;
@@ -658,19 +649,16 @@ img {
   color: #d3e5b5;
 }
 
-/* ==========================================
-   TABLETS E TELAS MÉDIAS
-========================================== */
+/* TABLETS */
 
 @media (max-width: 1100px) {
   .hero {
-    min-height: 800px;
-    padding-left: 4%;
-    padding-right: 4%;
+    min-height: 700px;
+    padding: 135px 4% 55px;
   }
 
   .hero-panel {
-    width: 62%;
+    width: min(650px, 70%);
     padding: 35px;
   }
 
@@ -683,9 +671,9 @@ img {
   }
 
   .benefit-icon {
-    flex-basis: 34px;
-    width: 34px;
-    height: 34px;
+    flex-basis: 36px;
+    width: 36px;
+    height: 36px;
   }
 
   .feature-grid {
@@ -693,7 +681,7 @@ img {
   }
 
   .section-heading {
-    align-items: flex-start;
+    align-items: start;
     flex-direction: column;
     gap: 12px;
   }
@@ -704,19 +692,18 @@ img {
 
   .about-section {
     gap: 35px;
-    padding-left: 5%;
-    padding-right: 5%;
+  }
+
+  .about-image {
+    height: 400px;
   }
 }
 
-/* ==========================================
-   CELULARES E TABLETS PEQUENOS
-========================================== */
+/* CELULARES */
 
 @media (max-width: 780px) {
   .site-header {
-    position: absolute;
-    height: 68px;
+    min-height: 68px;
     padding: 0 22px;
   }
 
@@ -731,7 +718,6 @@ img {
     top: 68px;
     left: 0;
     right: 0;
-    z-index: 60;
     background: var(--cream);
     padding: 18px 22px 24px;
     box-shadow: 0 12px 18px rgba(0, 0, 0, .08);
@@ -753,59 +739,35 @@ img {
     display: none;
   }
 
-  .mobile-actions {
-    display: flex;
-    gap: 12px;
-    padding-top: 16px;
-  }
-
-  .mobile-login,
-  .mobile-register {
-    padding: 10px 14px;
-    border-radius: 7px;
-    font-size: 12px;
-    font-weight: 700;
-  }
-
-  .mobile-login {
-    border: 1px solid var(--green);
-  }
-
-  .mobile-register {
-    background: var(--green-dark);
-    color: #fff;
-  }
-
   .hero {
-    min-height: 900px;
-    padding: 115px 18px 30px;
-    align-items: flex-end;
+    min-height: auto;
+    padding: 120px 20px 45px;
     justify-content: center;
+    align-items: center;
   }
 
   .hero-photo {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    min-height: 100%;
     background-position: center;
   }
 
   .hero-photo::after {
-    background: linear-gradient(
-      180deg,
-      rgba(9, 35, 20, .12) 0%,
-      rgba(9, 35, 20, .22) 30%,
-      rgba(9, 35, 20, .68) 100%
-    );
+    background:
+      linear-gradient(
+        90deg,
+        rgba(9, 35, 20, .45),
+        rgba(9, 35, 20, .60)
+      ),
+      linear-gradient(
+        0deg,
+        rgba(9, 35, 20, .30),
+        rgba(9, 35, 20, .15)
+      );
   }
 
   .hero-panel {
     width: 100%;
-    max-width: 620px;
-    margin: 0 auto;
-    padding: 30px 25px;
+    max-width: 600px;
+    padding: 32px 25px;
   }
 
   .hero h1 {
@@ -814,7 +776,7 @@ img {
   }
 
   .hero-benefits {
-    margin-top: 28px;
+    margin-top: 30px;
   }
 
   .intro-strip {
@@ -847,28 +809,23 @@ img {
   }
 }
 
-/* ==========================================
-   CELULARES
-========================================== */
-
 @media (max-width: 520px) {
   .site-header {
     padding: 0 16px;
   }
 
   .hero {
-    min-height: 880px;
-    padding: 100px 12px 18px;
+    padding: 105px 14px 28px;
   }
 
   .hero-panel {
-    padding: 26px 20px;
-    border-radius: 13px;
+    padding: 28px 20px;
+    border-radius: 14px;
   }
 
   .hero h1 {
-    font-size: 33px;
-    margin: 13px 0 15px;
+    font-size: clamp(30px, 9vw, 39px);
+    margin: 14px 0;
   }
 
   .hero-panel > p {
@@ -878,7 +835,6 @@ img {
   .hero-buttons {
     flex-direction: column;
     align-items: stretch;
-    margin-top: 20px;
   }
 
   .hero-buttons a {
@@ -887,7 +843,7 @@ img {
 
   .hero-benefits {
     grid-template-columns: 1fr;
-    gap: 13px;
+    gap: 15px;
   }
 
   .benefit-item {
@@ -925,5 +881,21 @@ img {
 
   .footer-links {
     gap: 12px;
+  }
+}
+
+/* ACESSIBILIDADE */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
