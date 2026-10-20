@@ -1,13 +1,8 @@
-
 (() => {
   "use strict";
 
-  // Configuração do projeto Supabase
-  const SUPABASE_URL =
-    "https://jzjbsjplmjgtltyswyft.supabase.co";
-
-  const SUPABASE_PUBLIC_KEY =
-    "sb_publishable_lzgGRU_n1Ch3kjZy5wVezw_EwwLDANm";
+  const SUPABASE_URL = "https://jzjbsjplmjgtltyswyft.supabase.co";
+  const SUPABASE_PUBLIC_KEY = "sb_publishable_lzgGRU_n1Ch3kjZy5wVezw_EwwLDANm";
 
   const formulario = document.getElementById("cadastroForm");
   const mensagem = document.getElementById("mensagem");
@@ -24,6 +19,7 @@
     informar(
       "Não foi possível carregar o serviço de cadastro. Atualize a página e tente novamente."
     );
+
     botao.disabled = true;
     return;
   }
@@ -44,6 +40,9 @@
     const confirmarSenha =
       document.getElementById("confirmarSenha").value;
 
+    const totalTexto = valor("hectaresTotal");
+    const plantadosTexto = valor("hectaresPlantados");
+
     if (senha.length < 6) {
       informar("Sua senha precisa ter pelo menos 6 caracteres.");
       document.getElementById("senha").focus();
@@ -56,17 +55,19 @@
       return;
     }
 
-    const totalTexto = valor("hectaresTotal");
-    const plantadosTexto = valor("hectaresPlantados");
-
     const total =
       totalTexto === "" ? null : Number(totalTexto);
 
     const plantados =
       plantadosTexto === "" ? null : Number(plantadosTexto);
 
-    if (total !== null && (!Number.isFinite(total) || total < 0)) {
-      informar("A área total deve ser igual ou maior que zero.");
+    if (
+      total !== null &&
+      (!Number.isFinite(total) || total < 0)
+    ) {
+      informar(
+        "A área total deve ser um número igual ou maior que zero."
+      );
       return;
     }
 
@@ -74,7 +75,9 @@
       plantados !== null &&
       (!Number.isFinite(plantados) || plantados < 0)
     ) {
-      informar("A área plantada deve ser igual ou maior que zero.");
+      informar(
+        "A área plantada deve ser um número igual ou maior que zero."
+      );
       return;
     }
 
@@ -83,54 +86,74 @@
       plantados !== null &&
       plantados > total
     ) {
-      informar("A área plantada não pode superar a área total.");
+      informar(
+        "A área plantada não pode ser maior que a área total."
+      );
       return;
     }
 
     const nome = valor("nome");
     const email = valor("email").toLowerCase();
+    const telefone = valor("telefone");
+
+    const nomeFazenda = valor("nomeFazenda");
+    const endereco = valor("enderecoRural");
+    const cidade = valor("cidade");
+    const estado = valor("estado");
+
+    const culturaPrincipal = valor("culturaPrincipal");
+    const outrasCulturas = valor("outrasCulturas");
+    const epocaPlantio = valor("epocaPlantio");
+    const irrigacao = valor("irrigacao");
+    const observacoes = valor("observacoes");
 
     const metadados = {
       nome,
-      telefone: valor("telefone") || null,
-      nome_fazenda: valor("nomeFazenda") || null,
-      endereco: valor("enderecoRural") || null,
-      cidade: valor("cidade") || null,
-      estado: valor("estado") || null,
+      telefone: telefone || null,
+
+      nome_fazenda: nomeFazenda || null,
+      endereco: endereco || null,
+      cidade: cidade || null,
+      estado: estado || null,
 
       localizacao:
-        [valor("cidade"), valor("estado")]
-          .filter(Boolean)
-          .join(", ") ||
-        valor("enderecoRural") ||
+        [cidade, estado].filter(Boolean).join(", ") ||
+        endereco ||
         null,
 
       area_total: total,
       hectares_plantados: plantados,
-      cultura_principal: valor("culturaPrincipal") || null,
-      outras_culturas: valor("outrasCulturas") || null,
-      epoca_plantio: valor("epocaPlantio") || null,
-      irrigacao: valor("irrigacao") || null,
-      observacoes: valor("observacoes") || null
+
+      cultura_principal: culturaPrincipal || null,
+      outras_culturas: outrasCulturas || null,
+      epoca_plantio: epocaPlantio || null,
+      irrigacao: irrigacao || null,
+      observacoes: observacoes || null
     };
 
     botao.disabled = true;
     botao.innerHTML = 'Criando sua conta <span>…</span>';
 
     try {
-      const { data, error } = await supabaseClient.auth.signUp({
-        email,
-        password: senha,
-        options: {
-          data: metadados,
-          emailRedirectTo: new URL(
-            "login.html",
-            window.location.href
-          ).href
-        }
-      });
+      const { data, error } =
+        await supabaseClient.auth.signUp({
+          email,
+          password: senha,
 
-      if (error) throw error;
+          options: {
+            data: metadados,
+
+            emailRedirectTo:
+              new URL(
+                "login.html",
+                window.location.href
+              ).href
+          }
+        });
+
+      if (error) {
+        throw error;
+      }
 
       if (data?.session) {
         informar(
@@ -139,10 +162,11 @@
         );
 
         window.setTimeout(() => {
-          window.location.href = new URL(
-            "dashboard.html",
-            window.location.href
-          ).href;
+          window.location.href =
+            new URL(
+              "dashboard.html",
+              window.location.href
+            ).href;
         }, 900);
       } else {
         informar(
@@ -152,12 +176,12 @@
 
         formulario.reset();
       }
+
     } catch (erro) {
       console.error("Erro no cadastro:", erro);
 
-      const detalhe = String(
-        erro?.message || ""
-      ).toLowerCase();
+      const detalhe =
+        String(erro?.message || "").toLowerCase();
 
       if (
         detalhe.includes("already registered") ||
@@ -166,19 +190,24 @@
         informar(
           "Este e-mail já possui cadastro. Tente entrar ou recuperar sua senha."
         );
+
       } else if (
         detalhe.includes("password") &&
         detalhe.includes("weak")
       ) {
-        informar("Escolha uma senha mais forte e tente novamente.");
+        informar(
+          "Escolha uma senha mais forte e tente novamente."
+        );
+
       } else {
         informar(
           "Não foi possível concluir o cadastro. Confira sua conexão e as configurações de autenticação do Supabase."
         );
       }
+
     } finally {
       botao.disabled = false;
       botao.innerHTML = 'Criar minha conta <span>→</span>';
     }
   });
-})();
+})();+-
