@@ -1,7 +1,3 @@
-/* =========================================
-   AGROMAP — ESTILO COMPLETO
-   Arquivo: style.css
-========================================= */
 
 :root {
   --green: #2e7548;
@@ -15,8 +11,6 @@
   --shadow: 0 14px 38px rgba(18, 53, 34, .11);
   --radius: 15px;
 }
-
-/* RESET */
 
 * {
   box-sizing: border-box;
@@ -46,16 +40,7 @@ img {
   display: block;
 }
 
-button,
-input,
-textarea,
-select {
-  font: inherit;
-}
-
-/* =========================================
-   CABEÇALHO
-========================================= */
+/* CABEÇALHO */
 
 .site-header {
   min-height: 76px;
@@ -143,10 +128,7 @@ select {
   border-radius: 7px;
   font-size: 13px;
   font-weight: 700;
-  transition:
-    transform .2s,
-    background .2s,
-    border-color .2s;
+  transition: transform .2s, background .2s, border-color .2s;
 }
 
 .header-button,
@@ -163,7 +145,9 @@ select {
 }
 
 .header-button span,
-.button-primary span {
+.button-primary span,
+.button-secondary span,
+.button-light span {
   font-size: 17px;
 }
 
@@ -180,9 +164,7 @@ select {
   display: none;
 }
 
-/* =========================================
-   DESTAQUE PRINCIPAL
-========================================= */
+/* DESTAQUE PRINCIPAL */
 
 .hero {
   min-height: 600px;
@@ -195,9 +177,7 @@ select {
 
 .hero-photo {
   min-height: 600px;
-  background-image: url(
-    "https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1800&q=90"
-  );
+  background-image: url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=90");
   background-size: cover;
   background-position: center;
   position: relative;
@@ -209,8 +189,8 @@ select {
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(17, 49, 31, .05),
-    rgba(17, 49, 31, .12)
+    rgba(17, 49, 31, .02),
+    rgba(17, 49, 31, .15)
   );
 }
 
@@ -243,8 +223,7 @@ select {
 
 .hero h1 span,
 .section-heading h2 span,
-.about-content h2 span,
-.final-cta h2 span {
+.about-content h2 span {
   color: var(--green-mid);
 }
 
@@ -316,9 +295,7 @@ select {
   color: var(--muted);
 }
 
-/* =========================================
-   FAIXA DE MENSAGEM
-========================================= */
+/* FAIXA DE MENSAGEM */
 
 .intro-strip {
   padding: 22px 7%;
@@ -340,9 +317,7 @@ select {
   color: var(--green-dark);
 }
 
-/* =========================================
-   RECURSOS E CARTÕES
-========================================= */
+/* RECURSOS E CARTÕES */
 
 .section-wrap {
   padding: 88px 5.2%;
@@ -350,11 +325,7 @@ select {
 
 .features {
   background:
-    radial-gradient(
-      ellipse at top,
-      rgba(72, 111, 75, .25),
-      transparent 55%
-    ),
+    radial-gradient(ellipse at top, rgba(72, 111, 75, .25), transparent 55%),
     var(--green-dark);
   color: #fff;
 }
@@ -403,9 +374,7 @@ select {
   background: #fbfaf5;
   color: var(--text);
   box-shadow: 0 8px 28px rgba(0, 0, 0, .09);
-  transition:
-    transform .25s,
-    box-shadow .25s;
+  transition: transform .25s, box-shadow .25s;
 }
 
 .feature-card:hover {
@@ -503,13 +472,11 @@ select {
 .features-note {
   margin-top: 22px;
   text-align: center;
-  color: rgba(255, 255, 255, .62);
+  color: rgba(255, 255, 255, .72);
   font-size: 11px;
 }
 
-/* =========================================
-   SOBRE O PROJETO
-========================================= */
+/* SOBRE O PROJETO */
 
 .about-section {
   display: grid;
@@ -525,6 +492,7 @@ select {
   overflow: hidden;
   border-radius: 18px;
   box-shadow: var(--shadow);
+  background: #e2e9dc;
 }
 
 .about-image img {
@@ -535,7 +503,7 @@ select {
 }
 
 .about-image:hover img {
-  transform: scale(1.035);
+  transform: scale(1.04);
 }
 
 .about-content h2 {
@@ -566,27 +534,24 @@ select {
   color: #405648;
 }
 
-/* =========================================
-   CHAMADA FINAL
-========================================= */
+/* CHAMADA FINAL COM FOTO */
 
 .final-cta {
-  padding: 65px 24px 72px;
+  padding: 75px 24px;
   text-align: center;
   color: #fff;
   background:
     linear-gradient(
       115deg,
-      rgba(18, 57, 39, .96),
-      rgba(38, 83, 52, .91)
+      rgba(18, 57, 39, .84),
+      rgba(38, 83, 52, .76)
     ),
-    url(
-      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=85"
-    ) center / cover;
+    url("https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1600&q=85")
+    center / cover;
 }
 
 .final-cta .section-kicker {
-  color: #c4d9a2;
+  color: #d5e7b8;
 }
 
 .final-cta h2 {
@@ -598,13 +563,13 @@ select {
 }
 
 .final-cta h2 span {
-  color: #c4d9a2;
+  color: #d5e7b8;
 }
 
 .final-cta p {
   max-width: 620px;
   margin: 0 auto 24px;
-  color: rgba(255, 255, 255, .77);
+  color: rgba(255, 255, 255, .9);
   font-size: 13px;
   line-height: 1.8;
 }
@@ -620,9 +585,7 @@ select {
   transform: translateY(-2px);
 }
 
-/* =========================================
-   RODAPÉ
-========================================= */
+/* RODAPÉ */
 
 .site-footer {
   display: flex;
@@ -649,7 +612,7 @@ select {
 }
 
 .site-footer > p {
-  color: rgba(255, 255, 255, .68);
+  color: rgba(255, 255, 255, .8);
   font-size: 11px;
 }
 
@@ -662,16 +625,14 @@ select {
 .footer-links a,
 .site-footer > small {
   font-size: 11px;
-  color: rgba(255, 255, 255, .72);
+  color: rgba(255, 255, 255, .8);
 }
 
 .footer-links a:hover {
   color: #d3e5b5;
 }
 
-/* =========================================
-   TABLETS E TELAS MÉDIAS
-========================================= */
+/* TABLETS */
 
 @media (max-width: 1100px) {
   .hero {
@@ -701,7 +662,7 @@ select {
   }
 
   .section-heading {
-    align-items: start;
+    align-items: flex-start;
     flex-direction: column;
     gap: 12px;
   }
@@ -711,9 +672,7 @@ select {
   }
 }
 
-/* =========================================
-   CELULARES E TABLETS PEQUENOS
-========================================= */
+/* CELULARES */
 
 @media (max-width: 780px) {
   .site-header {
@@ -829,10 +788,6 @@ select {
   }
 }
 
-/* =========================================
-   CELULARES
-========================================= */
-
 @media (max-width: 520px) {
   .hero-photo {
     height: 260px;
@@ -841,14 +796,6 @@ select {
 
   .hero-panel {
     padding: 35px 20px;
-  }
-
-  .hero h1 {
-    font-size: 34px;
-  }
-
-  .hero-panel > p {
-    font-size: 13px;
   }
 
   .hero-buttons {
