@@ -1,14 +1,12 @@
-
 :root {
-  --green: #244d36;
-  --green-dark: #153b2a;
-  --green-mid: #648a52;
-  --lime: #dfe9c9;
-  --cream: #f8f7f0;
-  --white: #fff;
-  --text: #20382b;
-  --muted: #65736a;
-  --border: #e2e7dc;
+  --green: #2e7548;
+  --green-mid: #527f4a;
+  --green-dark: #173f2b;
+  --green-deep: #102f21;
+  --cream: #faf9f4;
+  --text: #1c2c22;
+  --muted: #69766d;
+  --border: #dce5da;
   --shadow: 0 14px 38px rgba(18, 53, 34, .11);
   --radius: 15px;
 }
@@ -44,7 +42,7 @@ img {
 /* CABEÇALHO */
 
 .site-header {
-  min-height: 76px;
+  height: 76px;
   padding: 0 5.2%;
   display: flex;
   align-items: center;
@@ -146,17 +144,24 @@ img {
 }
 
 .header-button span,
-.button-primary span,
-.button-light span {
+.button-primary span {
   font-size: 17px;
 }
 
-.menu-toggle,
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  color: var(--green-dark);
+  font-size: 27px;
+  cursor: pointer;
+}
+
 .mobile-actions {
   display: none;
 }
 
-/* APRESENTAÇÃO PRINCIPAL */
+/* DESTAQUE PRINCIPAL */
 
 .hero {
   min-height: 600px;
@@ -181,7 +186,7 @@ img {
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(17, 49, 31, .02),
+    rgba(17, 49, 31, .05),
     rgba(17, 49, 31, .12)
   );
 }
@@ -288,7 +293,7 @@ img {
   color: var(--muted);
 }
 
-/* FAIXA DE TRANSIÇÃO */
+/* FAIXA DE MENSAGEM */
 
 .intro-strip {
   padding: 22px 7%;
@@ -310,7 +315,7 @@ img {
   color: var(--green-dark);
 }
 
-/* CARTÕES */
+/* RECURSOS E CARTÕES */
 
 .section-wrap {
   padding: 88px 5.2%;
@@ -318,11 +323,7 @@ img {
 
 .features {
   background:
-    radial-gradient(
-      ellipse at top,
-      rgba(72, 111, 75, .25),
-      transparent 55%
-    ),
+    radial-gradient(ellipse at top, rgba(72, 111, 75, .25), transparent 55%),
     var(--green-dark);
   color: #fff;
 }
@@ -330,7 +331,7 @@ img {
 .section-heading {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: end;
   gap: 36px;
   margin-bottom: 34px;
 }
@@ -446,10 +447,6 @@ img {
   list-style: none;
 }
 
-.feature-card summary::-webkit-details-marker {
-  display: none;
-}
-
 .feature-card summary::after {
   content: "＋";
   float: right;
@@ -495,11 +492,6 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform .5s;
-}
-
-.about-image:hover img {
-  transform: scale(1.035);
 }
 
 .about-content h2 {
@@ -530,6 +522,10 @@ img {
   color: #405648;
 }
 
+.about-content li::first-letter {
+  color: #67904f;
+}
+
 /* CHAMADA FINAL */
 
 .final-cta {
@@ -537,13 +533,8 @@ img {
   text-align: center;
   color: #fff;
   background:
-    linear-gradient(
-      115deg,
-      rgba(18, 57, 39, .96),
-      rgba(38, 83, 52, .91)
-    ),
-    url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=85")
-    center / cover;
+    linear-gradient(115deg, rgba(18, 57, 39, .96), rgba(38, 83, 52, .91)),
+    url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=85") center/cover;
 }
 
 .final-cta .section-kicker {
@@ -628,7 +619,7 @@ img {
   color: #d3e5b5;
 }
 
-/* TABLETS */
+/* TELAS MENORES */
 
 @media (max-width: 1100px) {
   .hero {
@@ -658,7 +649,7 @@ img {
   }
 
   .section-heading {
-    align-items: flex-start;
+    align-items: start;
     flex-direction: column;
     gap: 12px;
   }
@@ -668,23 +659,15 @@ img {
   }
 }
 
-/* MENU E LAYOUT PARA CELULAR */
-
 @media (max-width: 780px) {
   .site-header {
     height: 68px;
-    min-height: 68px;
     padding: 0 22px;
   }
 
   .menu-toggle {
     display: block;
     margin-left: auto;
-    border: 0;
-    background: transparent;
-    color: var(--green-dark);
-    font-size: 27px;
-    cursor: pointer;
   }
 
   .main-nav {
@@ -693,7 +676,6 @@ img {
     top: 68px;
     left: 0;
     right: 0;
-    margin: 0;
     background: var(--cream);
     padding: 18px 22px 24px;
     box-shadow: 0 12px 18px rgba(0, 0, 0, .08);
@@ -723,7 +705,6 @@ img {
     border-radius: 7px;
     font-size: 12px;
     font-weight: 700;
-    text-align: center;
   }
 
   .mobile-login {
@@ -791,8 +772,6 @@ img {
     justify-content: center;
   }
 }
-
-/* CELULARES PEQUENOS */
 
 @media (max-width: 520px) {
   .hero-photo {
