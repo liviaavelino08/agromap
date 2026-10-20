@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -14,15 +13,19 @@
   <link rel="stylesheet" href="cadastro.css">
 </head>
 
-<body>
+<body class="cadastro-page">
+
   <header class="header">
-    <a class="logo" href="index.html">🌱 Agro<span>Map</span></a>
+    <a class="logo" href="index.html" aria-label="AgroMap - página inicial">
+      🌱 Agro<span>Map</span>
+    </a>
+
     <a class="back" href="index.html">← Voltar à página inicial</a>
   </header>
 
   <main class="cadastro-layout">
 
-    <section class="cadastro-visual">
+    <section class="cadastro-visual" aria-label="Apresentação do AgroMap">
       <div class="visual-shade"></div>
 
       <a class="visual-brand" href="index.html">
@@ -35,8 +38,8 @@
         <h1>Cuide da sua produção com mais organização.</h1>
 
         <p>
-          Reúna as informações da sua propriedade e tenha
-          uma visão mais clara do seu planejamento rural.
+          Reúna as informações da sua propriedade e tenha uma visão
+          mais clara do seu planejamento rural.
         </p>
       </div>
 
@@ -61,8 +64,8 @@
           <span class="eyebrow">CADASTRO DO PRODUTOR</span>
           <h2>Criar minha conta</h2>
           <p>
-            Preencha seus dados para começar.
-            As informações da propriedade são opcionais.
+            Preencha seus dados para começar. As informações da
+            propriedade são opcionais.
           </p>
         </div>
 
@@ -114,9 +117,7 @@
             </div>
 
             <div>
-              <label for="confirmarSenha">
-                Confirme a senha <span>*</span>
-              </label>
+              <label for="confirmarSenha">Confirme a senha <span>*</span></label>
               <input
                 id="confirmarSenha"
                 name="confirmarSenha"
@@ -170,7 +171,7 @@
 
             <div>
               <label for="estado">Estado (UF)</label>
-              <select id="estado" name="estado">
+              <select id="estado" name="estado" autocomplete="address-level1">
                 <option value="">Selecione</option>
                 <option value="AC">AC</option>
                 <option value="AL">AL</option>
@@ -217,9 +218,7 @@
             </div>
 
             <div>
-              <label for="hectaresPlantados">
-                Área plantada (hectares)
-              </label>
+              <label for="hectaresPlantados">Área plantada (hectares)</label>
               <input
                 id="hectaresPlantados"
                 name="hectaresPlantados"
@@ -279,21 +278,11 @@
             placeholder="Informações adicionais sobre a propriedade"
           ></textarea>
 
-          <button
-            class="submit-button"
-            id="botaoCadastro"
-            type="submit"
-          >
+          <button class="submit-button" id="botaoCadastro" type="submit">
             Criar minha conta <span>→</span>
           </button>
 
-          <p
-            id="mensagem"
-            class="form-message"
-            role="status"
-            aria-live="polite"
-          ></p>
-
+          <p id="mensagem" class="form-message" role="status" aria-live="polite"></p>
         </form>
 
         <p class="auth-switch">
@@ -301,14 +290,11 @@
           <a href="login.html">Entrar</a>
         </p>
 
-        <a href="index.html" class="back-home">
-          ← Voltar à página inicial
-        </a>
+        <a href="index.html" class="back-home">← Voltar à página inicial</a>
 
         <footer class="auth-footer">
           © 2026 AgroMap · Projeto acadêmico
         </footer>
-
       </div>
     </section>
 
