@@ -1,27 +1,37 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#234b32">
+  <meta name="theme-color" content="#173f2b">
   <meta name="description" content="AgroMap: tecnologia e dados climáticos para auxiliar o planejamento da produção rural.">
+
   <title>AgroMap | Gestão Rural Inteligente</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
 <header class="site-header">
   <a href="#inicio" class="brand" aria-label="AgroMap - início">
     <span class="brand-symbol">A</span>
     <span class="brand-name">Agro<span>Map</span></span>
   </a>
 
-  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" type="button">☰</button>
+  <button
+    class="menu-toggle"
+    id="menuToggle"
+    aria-label="Abrir menu"
+    aria-expanded="false"
+    aria-controls="mainNav"
+    type="button"
+  >☰</button>
 
   <nav class="main-nav" id="mainNav" aria-label="Menu principal">
     <a href="#inicio">Início</a>
@@ -36,16 +46,29 @@
 
   <div class="header-actions">
     <a href="login.html" class="login-link">Entrar</a>
-    <a href="cadastro.html" class="header-button">Criar minha conta <span>↗</span></a>
+    <a href="cadastro.html" class="header-button">
+      Criar minha conta <span>↗</span>
+    </a>
   </div>
 </header>
 
 <main>
+
+  <!-- DESTAQUE PRINCIPAL COM FOTO GRANDE -->
+
   <section class="hero" id="inicio">
-    <div class="hero-photo" role="img" aria-label="Paisagem agrícola ampla com campos verdes"></div>
+
+    <div
+      class="hero-photo"
+      role="img"
+      aria-label="Paisagem agrícola ampla com campos verdes"
+    ></div>
 
     <div class="hero-panel">
-      <span class="section-kicker">CONECTANDO DADOS, PLANEJANDO O FUTURO</span>
+
+      <span class="section-kicker">
+        CONECTANDO DADOS, PLANEJANDO O FUTURO
+      </span>
 
       <h1>
         Organize sua propriedade.
@@ -59,16 +82,24 @@
       </p>
 
       <div class="hero-buttons">
-        <a href="cadastro.html" class="button-primary">Criar minha conta <span>→</span></a>
-        <a href="login.html" class="button-secondary">Acessar plataforma <span>→</span></a>
+        <a href="cadastro.html" class="button-primary">
+          Criar minha conta <span>→</span>
+        </a>
+
+        <a href="login.html" class="button-secondary">
+          Acessar plataforma <span>→</span>
+        </a>
       </div>
 
       <div class="hero-benefits">
+
         <div class="benefit-item">
           <span class="benefit-icon">♧</span>
           <div>
             <strong>Mais produtividade</strong>
-            <small>Planejamento eficiente e decisões assertivas.</small>
+            <small>
+              Planejamento eficiente e decisões assertivas.
+            </small>
           </div>
         </div>
 
@@ -76,7 +107,9 @@
           <span class="benefit-icon">☁</span>
           <div>
             <strong>Dados climáticos</strong>
-            <small>Informações para apoiar seu planejamento.</small>
+            <small>
+              Informações para apoiar seu planejamento.
+            </small>
           </div>
         </div>
 
@@ -84,23 +117,35 @@
           <span class="benefit-icon">▥</span>
           <div>
             <strong>Gestão completa</strong>
-            <small>Dados da propriedade em um só lugar.</small>
+            <small>
+              Dados da propriedade em um só lugar.
+            </small>
           </div>
         </div>
+
       </div>
     </div>
   </section>
+
+  <!-- FRASE DE DESTAQUE -->
 
   <section class="intro-strip">
     <p>O campo está sempre mudando.</p>
     <strong>Sua forma de planejar também pode evoluir.</strong>
   </section>
 
+  <!-- RECURSOS DO AGROMAP -->
+
   <section class="features section-wrap" id="recursos">
+
     <div class="section-heading">
       <div>
         <span class="section-kicker">O QUE O AGROMAP OFERECE</span>
-        <h2>Informação que ajuda você a <span>planejar melhor.</span></h2>
+
+        <h2>
+          Informação que ajuda você a
+          <span>planejar melhor.</span>
+        </h2>
       </div>
 
       <p class="section-intro">
@@ -110,132 +155,255 @@
     </div>
 
     <div class="feature-grid">
+
       <article class="feature-card">
-        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=85" alt="Campos agrícolas amplos vistos em uma paisagem rural" loading="lazy">
+        <img
+          src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=85"
+          alt="Campos agrícolas amplos vistos em uma paisagem rural"
+          loading="lazy"
+        >
+
         <div class="feature-body">
           <span class="feature-label">01 · PLANEJAMENTO</span>
+
           <h3>Sua propriedade em um só lugar</h3>
-          <p>Reúna as informações essenciais da propriedade para consultar seus dados com mais facilidade e organizar o planejamento rural.</p>
+
+          <p>
+            Reúna as informações essenciais da propriedade para consultar
+            seus dados com mais facilidade e organizar o planejamento rural.
+          </p>
+
           <ul class="feature-points">
             <li>Registro dos dados da propriedade</li>
             <li>Organização das áreas e dos talhões cadastrados</li>
             <li>Informações reunidas para consulta</li>
           </ul>
+
           <details>
             <summary>Saiba mais</summary>
-            <p>O cadastro permite registrar os dados da propriedade e as informações disponíveis no sistema. Manter esses registros atualizados facilita o acompanhamento das atividades.</p>
+            <p>
+              O cadastro permite registrar os dados da propriedade e as
+              informações disponíveis no sistema. Manter esses registros
+              atualizados facilita o acompanhamento das atividades.
+            </p>
           </details>
         </div>
       </article>
 
       <article class="feature-card">
-        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=85" alt="Montanhas verdes e céu com nuvens" loading="lazy">
+        <img
+          src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=85"
+          alt="Montanhas verdes e céu com nuvens"
+          loading="lazy"
+        >
+
         <div class="feature-body">
           <span class="feature-label">02 · DADOS CLIMÁTICOS</span>
+
           <h3>Entenda as condições do clima</h3>
-          <p>Observe variáveis que podem influenciar o desenvolvimento das culturas e as atividades no campo.</p>
+
+          <p>
+            Observe variáveis que podem influenciar o desenvolvimento
+            das culturas e as atividades no campo.
+          </p>
+
           <ul class="feature-points">
             <li>Temperatura média</li>
             <li>Precipitação e ocorrência de chuva</li>
             <li>Umidade e vento, quando registrados</li>
           </ul>
+
           <details>
             <summary>Saiba mais</summary>
-            <p>Os registros climáticos ajudam a contextualizar as condições enfrentadas pela lavoura. A precisão das análises depende da qualidade, do período e da origem dos dados informados.</p>
+            <p>
+              Os registros climáticos ajudam a contextualizar as condições
+              enfrentadas pela lavoura. A precisão das análises depende da
+              qualidade, do período e da origem dos dados informados.
+            </p>
           </details>
         </div>
       </article>
 
       <article class="feature-card">
-        <img src="https://images.unsplash.com/photo-1499529112087-3cb3b73feedb?auto=format&fit=crop&w=1200&q=85" alt="Cultivo agrícola verde em uma propriedade rural" loading="lazy">
+        <img
+          src="https://images.unsplash.com/photo-1499529112087-3cb3b73feedb?auto=format&fit=crop&w=1200&q=85"
+          alt="Cultivo agrícola verde em uma propriedade rural"
+          loading="lazy"
+        >
+
         <div class="feature-body">
           <span class="feature-label">03 · PRODUÇÃO AGRÍCOLA</span>
+
           <h3>Planeje o próximo cultivo</h3>
-          <p>Organize as informações sobre plantio e produção para apoiar a avaliação das atividades da propriedade.</p>
+
+          <p>
+            Organize as informações sobre plantio e produção para apoiar
+            a avaliação das atividades da propriedade.
+          </p>
+
           <ul class="feature-points">
             <li>Registro das informações de plantio</li>
             <li>Acompanhamento do ciclo agrícola</li>
             <li>Dados de apoio ao planejamento</li>
           </ul>
+
           <details>
             <summary>Saiba mais</summary>
-            <p>O planejamento pode considerar a cultura escolhida, a área cultivada, a época de plantio e as condições climáticas disponíveis. Uma estimativa confiável também exige dados adequados e validação.</p>
+            <p>
+              O planejamento pode considerar a cultura escolhida, a área
+              cultivada, a época de plantio e as condições climáticas
+              disponíveis. Uma estimativa confiável também exige dados
+              adequados e validação.
+            </p>
           </details>
         </div>
       </article>
 
       <article class="feature-card">
-        <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1200&q=85" alt="Plantação com vegetação verde e fileiras de cultivo" loading="lazy">
+        <img
+          src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1200&q=85"
+          alt="Plantação com vegetação verde e fileiras de cultivo"
+          loading="lazy"
+        >
+
         <div class="feature-body">
           <span class="feature-label">04 · ACOMPANHAMENTO</span>
+
           <h3>Mais clareza nas decisões</h3>
-          <p>Mantenha os registros organizados para consultar informações relevantes e acompanhar mudanças ao longo do tempo.</p>
+
+          <p>
+            Mantenha os registros organizados para consultar informações
+            relevantes e acompanhar mudanças ao longo do tempo.
+          </p>
+
           <ul class="feature-points">
             <li>Consulta dos dados cadastrados</li>
             <li>Histórico conforme os registros disponíveis</li>
             <li>Apoio à análise e ao planejamento</li>
           </ul>
+
           <details>
             <summary>Saiba mais</summary>
-            <p>Comparar registros de diferentes períodos pode ajudar a identificar mudanças e formular perguntas para o planejamento. Os dados são um apoio à decisão e não substituem a avaliação técnica da propriedade.</p>
+            <p>
+              Comparar registros de diferentes períodos pode ajudar a
+              identificar mudanças e formular perguntas para o planejamento.
+              Os dados são um apoio à decisão e não substituem a avaliação
+              técnica da propriedade.
+            </p>
           </details>
         </div>
       </article>
 
       <article class="feature-card">
-        <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=1200&q=85" alt="Trabalho e cuidados com o cultivo agrícola" loading="lazy">
+        <img
+          src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=1200&q=85"
+          alt="Trabalho e cuidados com o cultivo agrícola"
+          loading="lazy"
+        >
+
         <div class="feature-body">
           <span class="feature-label">05 · PREVENÇÃO DE PERDAS</span>
+
           <h3>Observe fatores de risco</h3>
-          <p>Considere as condições climáticas e os registros da lavoura para reconhecer situações que merecem atenção.</p>
+
+          <p>
+            Considere as condições climáticas e os registros da lavoura
+            para reconhecer situações que merecem atenção.
+          </p>
+
           <ul class="feature-points">
             <li>Atenção às variações do clima</li>
             <li>Identificação de informações relevantes</li>
             <li>Planejamento com base nos registros</li>
           </ul>
+
           <details>
             <summary>Saiba mais</summary>
-            <p>Chuva irregular, temperaturas extremas e outros fatores podem afetar as culturas de formas diferentes. A identificação de riscos depende de dados locais e não representa garantia de previsão de perdas.</p>
+            <p>
+              Chuva irregular, temperaturas extremas e outros fatores
+              podem afetar as culturas de formas diferentes. A identificação
+              de riscos depende de dados locais e não representa garantia
+              de previsão de perdas.
+            </p>
           </details>
         </div>
       </article>
 
       <article class="feature-card">
-        <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=85" alt="Paisagem de atividade agrícola em área rural" loading="lazy">
+        <img
+          src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=85"
+          alt="Paisagem de atividade agrícola em área rural"
+          loading="lazy"
+        >
+
         <div class="feature-body">
           <span class="feature-label">06 · TECNOLOGIA NO CAMPO</span>
+
           <h3>Dados para apoiar o produtor</h3>
-          <p>Use a tecnologia como apoio para reunir informações e visualizar melhor os fatores envolvidos na atividade agrícola.</p>
+
+          <p>
+            Use a tecnologia como apoio para reunir informações e visualizar
+            melhor os fatores envolvidos na atividade agrícola.
+          </p>
+
           <ul class="feature-points">
             <li>Informações centralizadas</li>
             <li>Consulta mais prática dos registros</li>
             <li>Base para evoluções futuras do projeto</li>
           </ul>
+
           <details>
             <summary>Saiba mais</summary>
-            <p>O AgroMap é um projeto em desenvolvimento. Recursos como previsões automatizadas e modelos de inteligência artificial só devem ser considerados disponíveis quando estiverem implementados e validados no sistema.</p>
+            <p>
+              O AgroMap é um projeto em desenvolvimento. Recursos como
+              previsões automatizadas e modelos de inteligência artificial
+              só devem ser considerados disponíveis quando estiverem
+              implementados e validados no sistema.
+            </p>
           </details>
         </div>
       </article>
+
     </div>
 
     <p class="features-note">
-      As informações exibidas dependem dos dados cadastrados e dos recursos efetivamente implementados no AgroMap.
+      As informações exibidas dependem dos dados cadastrados e dos
+      recursos efetivamente implementados no AgroMap.
     </p>
+
   </section>
 
+  <!-- SOBRE O PROJETO -->
+
   <section class="about-section" id="sobre">
+
     <div class="about-image">
-      <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=1400&q=85" alt="Atividade de cultivo e cuidado com a plantação" loading="lazy">
+      <img
+        src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=1400&q=85"
+        alt="Atividade de cultivo e cuidado com a plantação"
+        loading="lazy"
+      >
     </div>
 
     <div class="about-content">
       <span class="section-kicker">SOBRE O PROJETO</span>
-      <h2>O campo tem seus desafios. <span>Os dados podem ajudar.</span></h2>
 
-      <p>A produção agrícola é influenciada por fatores como temperatura, chuva e umidade. Acompanhar essas variáveis pode contribuir para um planejamento mais consciente das atividades rurais.</p>
+      <h2>
+        O campo tem seus desafios.
+        <span>Os dados podem ajudar.</span>
+      </h2>
 
-      <p>O AgroMap é um projeto que propõe utilizar dados climáticos para auxiliar a previsão da produção rural, analisar possíveis perdas e apoiar a escolha de culturas e períodos de plantio.</p>
+      <p>
+        A produção agrícola é influenciada por fatores como temperatura,
+        chuva e umidade. Acompanhar essas variáveis pode contribuir para
+        um planejamento mais consciente das atividades rurais.
+      </p>
+
+      <p>
+        O AgroMap é um projeto que propõe utilizar dados climáticos para
+        auxiliar a previsão da produção rural, analisar possíveis perdas
+        e apoiar a escolha de culturas e períodos de plantio.
+      </p>
 
       <ul>
         <li>✓ Organização de dados da propriedade</li>
@@ -244,19 +412,39 @@
         <li>✓ Desenvolvimento orientado às necessidades do campo</li>
       </ul>
 
-      <a href="cadastro.html" class="button-primary">Faça parte do AgroMap <span>↗</span></a>
+      <a href="cadastro.html" class="button-primary">
+        Faça parte do AgroMap <span>↗</span>
+      </a>
     </div>
+
   </section>
+
+  <!-- CHAMADA FINAL -->
 
   <section class="final-cta">
     <span class="section-kicker">AGROMAP · INTELIGÊNCIA RURAL</span>
-    <h2>Cuide do seu cultivo com <span>mais informação.</span></h2>
-    <p>Organize os dados da propriedade e dê o próximo passo no planejamento da produção rural.</p>
-    <a href="cadastro.html" class="button-light">Criar minha conta <span>↗</span></a>
+
+    <h2>
+      Cuide do seu cultivo com
+      <span>mais informação.</span>
+    </h2>
+
+    <p>
+      Organize os dados da propriedade e dê o próximo passo
+      no planejamento da produção rural.
+    </p>
+
+    <a href="cadastro.html" class="button-light">
+      Criar minha conta <span>↗</span>
+    </a>
   </section>
+
 </main>
 
+<!-- RODAPÉ -->
+
 <footer class="site-footer">
+
   <a href="#inicio" class="brand">
     <span class="brand-symbol">A</span>
     <span class="brand-name">Agro<span>Map</span></span>
@@ -273,6 +461,7 @@
   </div>
 
   <small>© <span id="currentYear"></span> AgroMap</small>
+
 </footer>
 
 <script>
@@ -283,20 +472,27 @@
     const aberto = mainNav.classList.toggle("is-open");
 
     menuToggle.setAttribute("aria-expanded", String(aberto));
-    menuToggle.setAttribute("aria-label", aberto ? "Fechar menu" : "Abrir menu");
+    menuToggle.setAttribute(
+      "aria-label",
+      aberto ? "Fechar menu" : "Abrir menu"
+    );
+
     menuToggle.textContent = aberto ? "×" : "☰";
   });
 
   mainNav.querySelectorAll("a").forEach(function (link) {
     link.addEventListener("click", function () {
       mainNav.classList.remove("is-open");
+
       menuToggle.setAttribute("aria-expanded", "false");
       menuToggle.setAttribute("aria-label", "Abrir menu");
       menuToggle.textContent = "☰";
     });
   });
 
-  document.getElementById("currentYear").textContent = new Date().getFullYear();
+  document.getElementById("currentYear").textContent =
+    new Date().getFullYear();
 </script>
+
 </body>
 </html>
